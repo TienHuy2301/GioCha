@@ -229,6 +229,18 @@ body.nvmini #nv{width:min(380px,calc(100% - 40px))}
 .ptile.sel{border-color:var(--g2);box-shadow:0 0 0 2px var(--g2) inset;background:var(--bar)}
 .ptile.sel .pplus{font-size:0}.ptile.sel .pplus::after{content:'✓';font-size:16px}
 .plist .ptile.sel .pimg{background:var(--c)}
+
+/* ===== p11: giãn cách màn hình bán hàng ===== */
+#chips{margin-bottom:14px}
+#cust:not(:empty){margin:0 0 12px}
+#cust .hs{padding:2px 0 4px}
+#cart{display:flex;flex-direction:column;gap:10px}
+#cart>*{margin:0}
+.row2{padding:12px;margin:0;border-radius:14px}
+.r2{margin-top:12px}
+.qk{margin-top:12px}
+.seg2{margin-bottom:12px}
+.note{margin:0}
 </style></head><body>
 <header id="hd">Giò chả</header>
 <main id="v"></main>
@@ -290,7 +302,7 @@ async function doReset(){if(pw().length<8)return amsg('Mật khẩu cần ít nh
 async function mkShop(){const n=$('#a_n').value.trim();if(!n)return amsg('Nhập tên cơ sở');const r=await SB.rpc('create_shop',{p_name:n});if(r.error)return amsg(r.error.message);location.reload()}
 async function joinShop(){const c=$('#a_c').value.trim();if(!c)return amsg('Nhập mã mời');const r=await SB.rpc('join_shop',{p_code:c});if(r.error)return amsg(r.error.message);location.reload()}
 function logout(){ask('Đăng xuất khỏi thiết bị này?',async()=>{await SB.auth.signOut();location.reload()})}
-function acctH(){return `<div class="card"><small>Tài khoản</small><br><b>${esc(PROF?PROF.email:'')}</b><br><small>${ADM?'Quản trị viên':'Nhân viên'}</small></div>`+`<button class="ghost" onclick="logout()">Đăng xuất</button>`}
+function acctH(){return `<div class="card"><small>Tài khoản</small><br><b>${esc(PROF?PROF.email:'')}</b><br><small>${ADM?'Quản trị viên':'Nhân viên'}</small></div>`+(ADM?memH():'')+`<button class="ghost" onclick="logout()">Đăng xuất</button>`}
 function memH(){return `<div class="card" id="mem">Đang tải…</div>`}
 async function mem(){if(!ADM||!$('#mem'))return;const[a,b]=await Promise.all([SB.from('shops').select('invite_code').single(),SB.from('profiles').select('id,email,role').eq('shop_id',PROF.shop_id)]);if(!$('#mem'))return;
 $('#mem').innerHTML=`<b>Nhân viên</b><p>Mã mời: <b>${esc(a.data?a.data.invite_code:'')}</b> <button class="sm" onclick="regen()">Đổi mã</button><br><small>Nhân viên đăng ký tài khoản, chọn "Tham gia cơ sở" và nhập mã này.</small></p>`+(b.data||[]).map(m=>`<div class="sum"><span>${esc(m.email)}</span><span><select onchange="setRole('${m.id}',this.value)" ${m.id==PROF.id?'disabled':''} style="width:auto"><option value="admin" ${m.role=='admin'?'selected':''}>Quản trị</option><option value="staff" ${m.role=='staff'?'selected':''}>Nhân viên</option></select>${m.id==PROF.id?'':` <button class="sm d" onclick="rmMember('${m.id}')">Xóa</button>`}</span></div>`).join('')}
@@ -466,7 +478,7 @@ function rt(k){C.items[k].ret=!C.items[k].ret;$('#cart').innerHTML=cartH()}
 const swH=(k,l,d)=>`<label class="sw"><span><b>${l}</b><small>${d}</small></span><input type="checkbox" ${S.cfg[k]?'checked':''} onchange="S.cfg['${k}']=this.checked?1:0;save()"><i></i></label>`;
 function hd(){$('#hd').innerHTML=`<span class="ttl">${esc(S.shop)}</span><small id="sy">${esc(SYN)}</small>`}
 let NVH='';
-function R(){updBar();$('#v').innerHTML=T[tab]();const on=n=>n[0]==tab||(n[0]=='sett'&&SUB.includes(tab)),h=NAV.map(n=>`<button class="${on(n)?'on':''}" ${on(n)?'aria-current="page"':''} ${n[0]=='srch'?'aria-label="Tìm kiếm" onclick="openSr()"':`onclick="go('${n[0]}')"`}>${ic(n[1])}<span>${n[2]}</span></button>`).join('');if(h!==NVH){NVH=h;$('#nv').innerHTML=h}if(tab=='sett'&&typeof mem=='function')setTimeout(mem,0)}
+function R(){updBar();$('#v').innerHTML=T[tab]();const on=n=>n[0]==tab||(n[0]=='sett'&&SUB.includes(tab)),h=NAV.map(n=>`<button class="${on(n)?'on':''}" ${on(n)?'aria-current="page"':''} ${n[0]=='srch'?'aria-label="Tìm kiếm" onclick="openSr()"':`onclick="go('${n[0]}')"`}>${ic(n[1])}<span>${n[2]}</span></button>`).join('');if(h!==NVH){NVH=h;$('#nv').innerHTML=h}if(tab=='acct'&&typeof mem=='function')setTimeout(mem,0)}
 function go(t){if(t!=tab){TH.push(tab);if(TH.length>20)TH.shift();pgAnim()}PF=null;FM={};IF=null;FRM=0;tab=t;nvSet(0);R();scrollTo(0,0)}
 /* ===== p9: giao diện cá nhân, drawer, tìm kiếm, nav cuộn ===== */
 let UI={th:'auto',pv:'g'};try{Object.assign(UI,JSON.parse(localStorage.getItem('giocha_ui')||'{}'))}catch(e){}
@@ -484,7 +496,7 @@ const drow=(i,t,sb,a)=>`<button class="drow" onclick="${a}">${ic(i)}<span><b>${t
 function syncNow(){toast('Đang đồng bộ…');if(typeof loadAll=='function')loadAll();push()}
 function settH(){const mm=typeof memH=='function';
 let h=`<h3 class="dg">Quản lý</h3>`+[['prods','Sản phẩm','Danh sách, giá, ảnh'],['cus','Khách hàng','Khách sỉ, lịch sử mua'],['sup','Nhà cung cấp','Thông tin, tiền nhập'],['imp','Nhập nguyên liệu','Phiếu nhập hàng'],['hist','Lịch sử bán hàng','Xem, sửa, hủy đơn hàng'],['stats','Thống kê doanh thu','Theo ngày, tuần, tháng']].filter(vis).map(r=>drow(r[0],r[1],r[2],`go('${r[0]}')`)).join('');
-if(ADM&&mm)h+=`<h3 class="dg">Người dùng</h3>`+dsec('mem','shield','Nhân viên và phân quyền','Mã mời, quyền quản trị / nhân viên',memH());
+if(ADM&&mm)h+=`<h3 class="dg">Người dùng</h3>`+drow('shield','Nhân viên và phân quyền','Mã mời, phân quyền (trong mục Tài khoản)',`go('acct')`);
 h+=`<h3 class="dg">Cài đặt</h3>`;
 if(ADM)h+=dsec('shop','sup','Thông tin cơ sở','Tên cơ sở / cửa hàng',`<label>Tên cơ sở<input value="${esc(S.shop)}" onchange="S.shop=this.value.trim()||'Cơ sở giò chả';save();hd()"></label>`)
 +dsec('units','ruler','Đơn vị tính','Kg, cây, đòn, hộp…',`<label>Đơn vị tính (cách nhau bằng dấu phẩy)<input value="${esc(S.units.join(', '))}" onchange="const u=[...new Set(this.value.split(',').map(x=>x.trim()).filter(Boolean))];if(u.length){S.units=u;save();toast('Đã lưu')}"></label><small>Dùng khi thêm sản phẩm và phiếu nhập.</small>`)
@@ -520,7 +532,7 @@ function srClear(){const e=$('#sri');e.value='';srIn(true);e.focus()}
 function srIn(now){const v=$('#sri').value;$('#src').hidden=!v;clearTimeout(SR.t);if(!v.trim())return srRun();$('#srb').innerHTML='<p class="srm0">Đang tìm…</p>';SR.t=setTimeout(srRun,now===true?0:180)}
 const SRM=()=>[['Tổng quan','Doanh thu, biểu đồ','tong quan dashboard doanh thu bieu do','dash',()=>go('dash')],['Bán hàng','Tạo đơn bán hàng','ban hang tao don khach si khach le','sell',()=>go('sell')],['Sản phẩm','Danh sách sản phẩm','san pham gia ban gia si hinh anh','prods',()=>go('prods')],['Khách hàng','Danh sách khách hàng','khach hang khach si khach le so dien thoai','cus',()=>go('cus')],['Nhà cung cấp','Thông tin nhà cung cấp','nha cung cap ncc','sup',()=>go('sup'),1],['Nhập nguyên liệu','Phiếu nhập hàng','nhap nguyen lieu phieu nhap kho thit','imp',()=>go('imp'),1],['Lịch sử bán hàng','Xem, sửa, hủy đơn','lich su ban hang don hang huy don sua don','hist',()=>go('hist')],['Thống kê doanh thu','Theo ngày, tuần, tháng','thong ke doanh thu bao cao ngay tuan thang','stats',()=>go('stats')],
 ['Tài khoản','Thông tin cá nhân, đăng xuất','tai khoan thong tin ca nhan dang xuat mat khau email','user',()=>go('acct')],
-['Nhân viên và phân quyền','Mã mời, quyền truy cập','nhan vien phan quyen ma moi quan tri','shield',()=>openSett('mem'),1,typeof memH=='function'],
+['Nhân viên và phân quyền','Mã mời, quyền truy cập','nhan vien phan quyen ma moi quan tri','shield',()=>go('acct'),1,typeof memH=='function'],
 ['Thông tin cơ sở','Tên cơ sở / cửa hàng','thong tin co so cua hang ho so ten','sup',()=>openSett('shop'),1],
 ['Đơn vị tính','Kg, cây, đòn, hộp…','don vi tinh kg cay don hop','ruler',()=>openSett('units'),1],
 ['Màn hình bán hàng','Bật/tắt các mục khi bán','cai dat man hinh ban hang ghi chu anh san pham hien thi khach si','sell',()=>openSett('sales'),1],

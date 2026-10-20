@@ -523,7 +523,7 @@ X.writeFile(wb,'bao-cao-gio-cha-'+today()+'.xlsx');toast('Đã tạo tệp Excel
 let TH=[],SG='',T0={x:0,y:0,t:0,e:null};
 const ah=()=>typeof acctH=='function'?acctH():'<div class="card"><b>Bản thử trên claude.ai</b><br><small>Chưa có tài khoản và phân quyền. Bản cài đặt riêng có đăng nhập, nhân viên và mã mời.</small></div>';
 
-function back(){if(!$('#cs').hidden)return csClose();if(!$('#sr').hidden)return closeSr();if(!$('#m').hidden)return closeM();if(PF||FM.cus||FM.sup||IF)return closeF();if(TH.length){tab=TH.pop();pgAnim();R();scrollTo(0,0)}else if(tab!='dash')go('dash')}
+let LB=0;function back(){LB=Date.now();if(!$('#cs').hidden)return csClose();if(!$('#sr').hidden)return closeSr();if(!$('#m').hidden)return closeM();if(PF||FM.cus||FM.sup||IF)return closeF();if(TH.length){tab=TH.pop();pgAnim();R();scrollTo(0,0)}else if(tab!='dash')go('dash')}
 /* ===== Cử chỉ vuốt quay lại: CHỈ bật ở trang con (form sản phẩm, các mục quản lý trong Cài đặt); mọi màn chính tắt hẳn ===== */
 const SWT=['cus','imp','sup','hist','stats'],swOK=()=>SWT.includes(tab)||(tab=='prods'&&(!!PF||!!PFS));
 const tsF=e=>{const q=e.touches[0];T0={x:q.clientX,y:q.clientY,lx:q.clientX,ly:q.clientY,t:Date.now(),e:e.target}},tmF=e=>{const q=e.touches[0];T0.lx=q.clientX;T0.ly=q.clientY};
@@ -532,7 +532,7 @@ let SWA=0;
 function swSync(){const on=swOK();document.body.classList.toggle('nsw',!on);if(on===!!SWA)return;SWA=on?1:0;const m=on?addEventListener:removeEventListener;m('touchstart',tsF,{passive:true});m('touchmove',tmF,{passive:true});m('touchend',swEnd,{passive:true});m('touchcancel',swEnd,{passive:true})}
 /* Chặn cử chỉ vuốt mép của trình duyệt/hệ điều hành ở màn ngoài: dải 12px hai mép + mục lịch sử đệm (không dùng bộ nghe cảm ứng chặn cuộn nên không gây khựng) */
 function gGuard(){try{if(!(history.state&&history.state.g))history.pushState({g:1},'')}catch(e){}}
-addEventListener('popstate',()=>{try{history.pushState({g:1},'')}catch(e){}if(!$('#cs').hidden)csClose();else if(!$('#sr').hidden)closeSr();else if(!$('#m').hidden)closeM();else if(swOK())back()});
+addEventListener('popstate',()=>{try{history.pushState({g:1},'')}catch(e){}if(Date.now()-LB<900)return;if(!$('#cs').hidden)csClose();else if(!$('#sr').hidden)closeSr();else if(!$('#m').hidden)closeM();else if(swOK())back()});
 function typeH(){const t=C.type||'le';return `<div class="seg2"><button class="${t=='le'?'on':''}" onclick="setType('le')">Khách lẻ</button><button class="${t=='si'?'on':''}" onclick="setType('si')">Khách sỉ</button></div>`}
 function setType(t){C.type=t;if(t=='le'){C.cid='';if(C.items.some(i=>i.ret)){C.items=C.items.filter(i=>!i.ret);toast('Đã bỏ dòng trả hàng (chỉ khách sỉ được trả hàng)')}}C.items.forEach(i=>{if(!i.man){const p=S.products.find(x=>x.id==i.pid);if(p)i.price=String(upr(p))}});R()}
 function qs(k,d){const i=C.items[k],q=pq(i.qty)||0,n=d>0?(Math.floor(q*2+1e-9)+1)/2:(Math.ceil(q*2-1e-9)-1)/2;if(n<=0){del(k);return}i.qty=String(n).replace('.',',');$('#q'+k).value=i.qty;qhl(k);upT()}

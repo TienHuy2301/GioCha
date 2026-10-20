@@ -96,7 +96,7 @@ header small{font-weight:500;font-size:12px;color:var(--m);text-align:right}
 
 :root{--glass:rgba(255,255,255,.72)}
 @media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--glass:rgba(22,33,26,.72)}}
-body{touch-action:pan-y pinch-zoom;overscroll-behavior-x:none}.hs,nav{touch-action:pan-x pan-y}
+body{touch-action:pan-y pinch-zoom;overscroll-behavior-x:none;overflow-x:clip}html{overscroll-behavior-x:none}main,#v{touch-action:pan-y pinch-zoom;overscroll-behavior-x:none}#v input,#v select,#v label,#v button{touch-action:manipulation}.hs,nav{touch-action:pan-x pan-y}
 main{padding-bottom:170px}h2{margin:4px 2px 8px;font-size:21px}
 .seg2{padding:3px;margin-bottom:6px;border-radius:12px}.seg2 button{padding:8px;font-size:15px;border-radius:10px}
 .chips{grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:8px}@media(min-width:700px){.chips{grid-template-columns:repeat(6,1fr)}}
@@ -271,14 +271,14 @@ input::placeholder,textarea::placeholder{font-size:16px}
 .csr{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:var(--c);color:var(--t);border:1.5px solid var(--b);border-radius:14px;padding:12px;margin:0 0 8px;min-height:60px}.csr.on{border-color:var(--g2);background:color-mix(in srgb,var(--g2) 12%,var(--c))}
 .csr .av{flex:none;width:40px;height:40px;border-radius:50%;background:var(--bar);color:var(--g);display:flex;align-items:center;justify-content:center;font-weight:700}.cst{flex:1;min-width:0;display:flex;flex-direction:column}.cst b,.cst small{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.cst small{color:var(--m)}
 .tg{flex:none;font-size:12px;font-weight:700;border-radius:999px;padding:3px 9px;background:var(--b);color:var(--m)}.tg.si{background:var(--bar);color:var(--g)}.ck{color:var(--g);font-weight:800;flex:none}
-#csi{border:0;background:none;margin:0;min-height:46px;padding:0 4px;outline:0;color:var(--t);width:100%}body.csopen{overflow:hidden}
+#csi{border:0;background:none;margin:0;min-height:46px;padding:0 4px;outline:0;color:var(--t);width:100%}.edge{position:fixed;top:0;bottom:0;width:12px;z-index:7;touch-action:none;display:none}.edge.l{left:0}.edge.r{right:0}body.nsw .edge{display:block}body.csopen .edge,body.csopen{overflow:hidden}body.csopen .edge{display:none}
 @keyframes csu{from{transform:translateY(100%)}to{transform:none}}@keyframes csf{from{opacity:0}to{opacity:1}}
 </style></head><body>
 <header id="hd">Giò chả</header>
 <main id="v"></main>
 <div id="sr" hidden role="dialog" aria-label="Tìm kiếm"><div class="srh"><label class="srin"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="sri" type="text" inputmode="search" enterkeyhint="search" placeholder="Tìm sản phẩm, khách hàng, đơn hàng…" autocomplete="off" autocapitalize="off" spellcheck="false" oninput="srIn()"><button id="src" class="srx" onclick="srClear()" aria-label="Xóa nội dung" hidden>×</button></label><button class="srcl" onclick="closeSr()">Đóng</button></div><div id="srb"></div></div>
 <div id="bar" hidden></div><nav id="nv"></nav>
-<div id="cs" hidden></div><div id="au" class="modal" style="align-items:flex-start;overflow:auto;background:var(--bg)"><div class="mb" id="ab" style="margin-top:8vh"></div></div>
+<div class="edge l"></div><div class="edge r"></div><div id="cs" hidden></div><div id="au" class="modal" style="align-items:flex-start;overflow:auto;background:var(--bg)"><div class="mb" id="ab" style="margin-top:8vh"></div></div>
 <div id="m" class="modal" hidden></div><div id="toast"></div>
 <script src="config.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
@@ -524,15 +524,15 @@ let TH=[],SG='',T0={x:0,y:0,t:0,e:null};
 const ah=()=>typeof acctH=='function'?acctH():'<div class="card"><b>Bản thử trên claude.ai</b><br><small>Chưa có tài khoản và phân quyền. Bản cài đặt riêng có đăng nhập, nhân viên và mã mời.</small></div>';
 
 function back(){if(!$('#cs').hidden)return csClose();if(!$('#sr').hidden)return closeSr();if(!$('#m').hidden)return closeM();if(PF||FM.cus||FM.sup||IF)return closeF();if(TH.length){tab=TH.pop();pgAnim();R();scrollTo(0,0)}else if(tab!='dash')go('dash')}
-addEventListener('touchstart',e=>{const q=e.touches[0];T0={x:q.clientX,y:q.clientY,lx:q.clientX,ly:q.clientY,t:Date.now(),e:e.target}},{passive:true});
-addEventListener('touchmove',e=>{const q=e.touches[0];T0.lx=q.clientX;T0.ly=q.clientY},{passive:true});
-const swEnd=()=>{const au=$('#au');if(au&&!au.hidden)return;if(tab=='sell')return;const dx=T0.lx-T0.x,dy=T0.ly-T0.y;T0.lx=T0.x;T0.ly=T0.y;if(Date.now()-T0.t>1000||Math.abs(dx)<55||Math.abs(dy)>Math.abs(dx)*.8)return;if(T0.e&&T0.e.closest&&T0.e.closest('input,textarea,select,.hs'))return;if(dx<0||T0.x<40)back()};
-addEventListener('touchend',swEnd,{passive:true});
-/* Màn bán hàng: chặn cử chỉ vuốt mép (quay lại) của trình duyệt, chỉ chuyển trang bằng cách chạm vào thanh dưới */
-addEventListener('touchstart',e=>{if(tab!='sell'||!e.cancelable)return;const x=e.touches[0].clientX,w=innerWidth;if(x<14||x>w-14)e.preventDefault()},{passive:false});
-function gSell(){try{if(tab=='sell'&&!(history.state&&history.state.g))history.pushState({g:1},'')}catch(e){}}
-addEventListener('popstate',()=>{if(tab!='sell')return;try{history.pushState({g:1},'')}catch(e){}if(!$('#cs').hidden)csClose();else if(!$('#m').hidden)closeM()});
-addEventListener('touchcancel',swEnd,{passive:true});
+/* ===== Cử chỉ vuốt quay lại: CHỈ bật ở trang con (form sản phẩm, các mục quản lý trong Cài đặt); mọi màn chính tắt hẳn ===== */
+const SWT=['cus','imp','sup','hist','stats'],swOK=()=>SWT.includes(tab)||(tab=='prods'&&(!!PF||!!PFS));
+const tsF=e=>{const q=e.touches[0];T0={x:q.clientX,y:q.clientY,lx:q.clientX,ly:q.clientY,t:Date.now(),e:e.target}},tmF=e=>{const q=e.touches[0];T0.lx=q.clientX;T0.ly=q.clientY};
+const swEnd=()=>{if(!swOK())return;const au=$('#au');if(au&&!au.hidden)return;if(!$('#cs').hidden||!$('#sr').hidden)return;const dx=T0.lx-T0.x,dy=T0.ly-T0.y;T0.lx=T0.x;T0.ly=T0.y;if(Date.now()-T0.t>1000||Math.abs(dx)<55||Math.abs(dy)>Math.abs(dx)*.8)return;if(T0.e&&T0.e.closest&&T0.e.closest('input,textarea,select,.hs'))return;if(dx<0||T0.x<40)back()};
+let SWA=0;
+function swSync(){const on=swOK();document.body.classList.toggle('nsw',!on);if(on===!!SWA)return;SWA=on?1:0;const m=on?addEventListener:removeEventListener;m('touchstart',tsF,{passive:true});m('touchmove',tmF,{passive:true});m('touchend',swEnd,{passive:true});m('touchcancel',swEnd,{passive:true})}
+/* Chặn cử chỉ vuốt mép của trình duyệt/hệ điều hành ở màn ngoài: dải 12px hai mép + mục lịch sử đệm (không dùng bộ nghe cảm ứng chặn cuộn nên không gây khựng) */
+function gGuard(){try{if(!(history.state&&history.state.g))history.pushState({g:1},'')}catch(e){}}
+addEventListener('popstate',()=>{try{history.pushState({g:1},'')}catch(e){}if(!$('#cs').hidden)csClose();else if(!$('#sr').hidden)closeSr();else if(!$('#m').hidden)closeM();else if(swOK())back()});
 function typeH(){const t=C.type||'le';return `<div class="seg2"><button class="${t=='le'?'on':''}" onclick="setType('le')">Khách lẻ</button><button class="${t=='si'?'on':''}" onclick="setType('si')">Khách sỉ</button></div>`}
 function setType(t){C.type=t;if(t=='le'){C.cid='';if(C.items.some(i=>i.ret)){C.items=C.items.filter(i=>!i.ret);toast('Đã bỏ dòng trả hàng (chỉ khách sỉ được trả hàng)')}}C.items.forEach(i=>{if(!i.man){const p=S.products.find(x=>x.id==i.pid);if(p)i.price=String(upr(p))}});R()}
 function qs(k,d){const i=C.items[k],q=pq(i.qty)||0,n=d>0?(Math.floor(q*2+1e-9)+1)/2:(Math.ceil(q*2-1e-9)-1)/2;if(n<=0){del(k);return}i.qty=String(n).replace('.',',');$('#q'+k).value=i.qty;qhl(k);upT()}
@@ -540,8 +540,8 @@ function rt(k){C.items[k].ret=!C.items[k].ret;$('#cart').innerHTML=cartH()}
 const swH=(k,l,d)=>`<label class="sw"><span><b>${l}</b><small>${d}</small></span><input type="checkbox" ${S.cfg[k]?'checked':''} onchange="S.cfg['${k}']=this.checked?1:0;save()"><i></i></label>`;
 function hd(){$('#hd').innerHTML=`<span class="ttl">${esc(S.shop)}</span><small id="sy">${esc(SYN)}</small>`}
 let NVH='';
-function R(){updBar();$('#v').innerHTML=T[tab]();const on=n=>n[0]==tab||(n[0]=='sett'&&SUB.includes(tab)),h=NAV.map(n=>`<button class="${on(n)?'on':''}" ${on(n)?'aria-current="page"':''} ${n[0]=='srch'?'aria-label="Tìm kiếm" onclick="openSr()"':`onclick="go('${n[0]}')"`}>${ic(n[1])}<span>${n[2]}</span></button>`).join('');if(h!==NVH){NVH=h;$('#nv').innerHTML=h}if(tab=='acct'&&typeof mem=='function')setTimeout(mem,0);gSell()}
-function go(t){if(t!=tab){TH.push(tab);if(TH.length>20)TH.shift();pgAnim()}PF=null;FM={};IF=null;FRM=0;tab=t;if(t=='imp')IQ.d=today();nvSet(0);R();scrollTo(0,0)}
+function R(){updBar();$('#v').innerHTML=T[tab]();const on=n=>(n[0]==tab&&!(tab=='prods'&&PFS))||(n[0]=='sett'&&(SUB.includes(tab)||(tab=='prods'&&PFS))),h=NAV.map(n=>`<button class="${on(n)?'on':''}" ${on(n)?'aria-current="page"':''} ${n[0]=='srch'?'aria-label="Tìm kiếm" onclick="openSr()"':`onclick="go('${n[0]}')"`}>${ic(n[1])}<span>${n[2]}</span></button>`).join('');if(h!==NVH){NVH=h;$('#nv').innerHTML=h}if(tab=='acct'&&typeof mem=='function')setTimeout(mem,0);gGuard();swSync()}
+let PFS=0;function go(t,fs){PFS=fs?1:0;if(t!=tab){TH.push(tab);if(TH.length>20)TH.shift();pgAnim()}PF=null;FM={};IF=null;FRM=0;tab=t;if(t=='imp')IQ.d=today();nvSet(0);R();scrollTo(0,0)}
 /* ===== p9: giao diện cá nhân, drawer, tìm kiếm, nav cuộn ===== */
 let UI={th:'auto',pv:'g'};try{Object.assign(UI,JSON.parse(localStorage.getItem('giocha_ui')||'{}'))}catch(e){}
 const saveUI=()=>{try{localStorage.setItem('giocha_ui',JSON.stringify(UI))}catch(e){}};
@@ -557,7 +557,7 @@ const dsec=(id,i,t,sb,b)=>`<details class="dsec" id="dsec-${id}" ${SO[id]?'open'
 const drow=(i,t,sb,a)=>`<button class="drow" onclick="${a}">${ic(i)}<span><b>${t}</b><small>${sb}</small></span>${CHV}</button>`;
 function syncNow(){toast('Đang đồng bộ…');if(typeof loadAll=='function')loadAll();push()}
 function settH(){const mm=typeof memH=='function';
-let h=`<h3 class="dg">Quản lý</h3>`+[['prods','Sản phẩm','Danh sách, giá, ảnh'],['cus','Khách hàng','Khách sỉ, lịch sử mua'],['sup','Nhà cung cấp','Thông tin, tiền nhập'],['imp','Nhập nguyên liệu','Phiếu nhập hàng'],['hist','Lịch sử bán hàng','Xem, sửa, hủy đơn hàng'],['stats','Thống kê doanh thu','Theo ngày, tuần, tháng']].filter(vis).map(r=>drow(r[0],r[1],r[2],`go('${r[0]}')`)).join('');
+let h=`<h3 class="dg">Quản lý</h3>`+[['prods','Sản phẩm','Danh sách, giá, ảnh'],['cus','Khách hàng','Khách sỉ, lịch sử mua'],['sup','Nhà cung cấp','Thông tin, tiền nhập'],['imp','Nhập nguyên liệu','Phiếu nhập hàng'],['hist','Lịch sử bán hàng','Xem, sửa, hủy đơn hàng'],['stats','Thống kê doanh thu','Theo ngày, tuần, tháng']].filter(vis).map(r=>drow(r[0],r[1],r[2],`go('${r[0]}'${r[0]=='prods'?',1':''})`)).join('');
 if(ADM&&mm)h+=`<h3 class="dg">Người dùng</h3>`+drow('shield','Nhân viên và phân quyền','Mã mời, phân quyền (trong mục Tài khoản)',`go('acct')`);
 h+=`<h3 class="dg">Cài đặt</h3>`;
 if(ADM)h+=dsec('shop','sup','Thông tin cơ sở','Tên cơ sở / cửa hàng',`<label>Tên cơ sở<input value="${esc(S.shop)}" onchange="S.shop=this.value.trim()||'Cơ sở giò chả';save();hd()"></label>`)

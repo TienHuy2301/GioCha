@@ -87,7 +87,7 @@ Sau đó mở bằng biểu tượng xanh lá ngoài màn hình, app chạy toà
 Lưu ý: khôi phục sẽ **ghi đè** dữ liệu hiện có, chỉ làm khi app mới còn trống.
 
 ## Sao lưu định kỳ
-- Trong app: **Cài đặt** > **Xuất lịch sử bán hàng (CSV)** hoặc **Sao lưu toàn bộ dữ liệu** (có nút **Tải tệp**). Nên làm mỗi tuần.
+- Trong app: **Cài đặt** > **Xuất danh sách đơn hàng (CSV)** hoặc **Sao lưu toàn bộ dữ liệu** (có nút **Tải tệp**). Nên làm mỗi tuần.
 - Trong Supabase: **Database > Backups** (gói miễn phí chỉ có xuất thủ công, gói Pro mới có sao lưu hằng ngày).
 - Gói miễn phí của Supabase sẽ **tạm dừng dự án nếu 7 ngày không có hoạt động**. Dùng hằng ngày thì không sao; nếu bị dừng, vào dashboard bấm *Restore*.
 
@@ -107,3 +107,93 @@ Lưu ý: khôi phục sẽ **ghi đè** dữ liệu hiện có, chỉ làm khi a
 - Chỉ dùng khóa **anon** trong `config.js`.
 - Không gửi mật khẩu Supabase hay khóa `service_role` cho ai.
 - Nhân viên nghỉ việc: quản trị viên bấm **Xóa** ở mục Nhân viên, rồi **Đổi mã** mời.
+
+
+---
+
+## Bảo mật và phân quyền (làm một lần)
+
+1. Vào Supabase → **SQL Editor** → **New query**.
+2. Mở tệp `bao-mat.sql`, sao chép toàn bộ nội dung, dán vào ô lệnh, bấm **Run**. Kết quả đúng là "Success. No rows returned". Chạy lại nhiều lần cũng an toàn, dữ liệu không mất.
+   (Nếu cài mới từ đầu thì `supabase.sql` đã gồm sẵn phần này.)
+3. Sau khi chạy:
+   - Nhân viên không đọc được nhà cung cấp và phiếu nhập (giá vốn).
+   - Chỉ quản trị viên được xóa đơn hàng, khách hàng, sản phẩm.
+   - Nhân viên chỉ thấy hồ sơ của chính mình.
+   - Người chưa đăng nhập không đọc được gì.
+   - Mã mời mới dài 12 ký tự (vào mục Tài khoản bấm "Đổi mã" để lấy mã mới).
+4. Nên bật thêm trong Supabase → **Authentication**:
+   - **Sign In / Providers → Email**: mật khẩu tối thiểu 8 ký tự, bật "Prevent use of leaked passwords" nếu có.
+   - Khi nhân viên đã đăng ký đủ, có thể tắt **Allow new users to sign up** (Authentication → Sign In / Providers) để người lạ không tạo thêm tài khoản. Cần thêm nhân viên mới thì bật lại.
+
+
+---
+
+## Bản v18: những tính năng mới và cách dùng
+
+### Cập nhật lên v18 (đã cài app rồi)
+Tải lên GitHub (ghi đè) các tệp: `index.html`, `sw.js`, `manifest.json` và 5 tệp ảnh `icon-192.png`, `icon-512.png`, `icon-maskable-512.png`, `apple-touch-icon.png`, `favicon-32.png`. **Không cần chạy lại SQL.** Mở app, đóng hẳn rồi mở lại 2 lần để nhận bản mới. Nếu icon trên màn hình chính còn cũ: xóa icon, mở lại trang web rồi thêm vào màn hình chính lần nữa.
+
+### Cài mã QR thanh toán (VietQR) — làm một lần
+1. Vào **Cài đặt > Thanh toán và in hóa đơn** (tài khoản quản trị viên).
+2. Chọn **Ngân hàng**, nhập **Số tài khoản** và **Tên chủ tài khoản** (viết hoa, không dấu cho đúng với ngân hàng).
+3. Bấm **Xem thử mã QR**, mở app ngân hàng trên điện thoại khác, quét thử. Phải thấy đúng ngân hàng, số tài khoản, tên chủ tài khoản.
+4. Từ đó, mỗi đơn chọn **Chuyển khoản** sẽ tự hiện mã QR có sẵn **số tiền của đơn** và **nội dung là mã đơn** (ví dụ `DH261021004`, bỏ dấu gạch vì ngân hàng không nhận ký tự đặc biệt).
+
+Nếu có vấn đề:
+| Hiện tượng | Cách xử lý |
+|---|---|
+| App ngân hàng báo "mã QR không hợp lệ" | Kiểm tra lại số tài khoản và chọn đúng ngân hàng (sai ngân hàng là lỗi hay gặp nhất) |
+| Quét ra sai tên chủ tài khoản | Số tài khoản sai hoặc chọn nhầm ngân hàng |
+| Quét xong không thấy số tiền | Một vài app ngân hàng nhỏ bỏ qua số tiền; khách nhập tay theo số tiền trên màn hình |
+| Nội dung chuyển khoản bị cắt hoặc bị đổi | Ngân hàng tự giới hạn độ dài nội dung; mã đơn đã được rút gọn tối đa |
+| Muốn kiểm tra tiền đã về chưa | App **không** tự biết tiền đã vào tài khoản (cần dịch vụ đối soát riêng của ngân hàng). Xem tin nhắn biến động số dư rồi mới bấm hoàn tất đơn |
+| QR không hiện | Chưa nhập ngân hàng/số tài khoản trong Cài đặt |
+
+### Giá vốn, tồn kho và lợi nhuận (theo kế toán Việt Nam)
+- Giá nguyên liệu tồn kho tính theo **bình quân gia quyền tức thời**: mỗi lần nhập kho, đơn giá bình quân được tính lại; xuất dùng và hao hụt được tính theo giá bình quân tại thời điểm đó.
+- Hai cách tính **giá vốn hàng bán** (chọn ở **Cài đặt > Giá vốn và lợi nhuận**):
+  1. **Theo giá vốn từng sản phẩm** (mặc định, dễ dùng): nhập "Giá vốn" cho mỗi sản phẩm, đơn nào bán ra thì giá vốn được chốt ngay lúc bán, nên đổi giá vốn sau này không làm sai đơn cũ.
+  2. **Theo nguyên liệu xuất dùng**: giá vốn = giá trị nguyên liệu đã ghi "Xuất dùng" trong kỳ.
+- Công thức:
+  - Doanh thu thuần = Doanh thu bán hàng − Hàng trả lại − Chiết khấu
+  - Lợi nhuận gộp = Doanh thu thuần − Giá vốn hàng bán
+  - Lợi nhuận ròng = Lợi nhuận gộp − Chi phí vận hành − Nguyên vật liệu hao hụt
+- Trong **Nhập nguyên liệu** có 4 loại phiếu: Nhập kho, Xuất dùng, Hao hụt, Chi phí (điện, nước, mặt bằng, lương...).
+- Nhân viên không thấy giá vốn, lợi nhuận, tồn kho.
+
+### Trang tổng quan và Thống kê
+- Trang tổng quan có 6 ô chỉ số (2 hàng x 3 cột) và 3 nút tắt. Vào **Cài đặt > Trang tổng quan** để chọn ô hiển thị (tối đa 6).
+- **Thống kê** xem theo Ngày / Tuần / Tháng / Năm / Tùy chọn, có so sánh với kỳ trước.
+
+### Xuất Excel
+Trong **Thống kê** bấm **Xuất báo cáo Excel**. Tệp có tiêu đề "BÁO CÁO DOANH THU & LỢI NHUẬN", dòng "Từ ngày … đến ngày …", nhiều trang tính (tổng hợp, theo ngày, chi tiết, sản phẩm, nhập kho, chi phí, tồn kho). Các ô tiền có định dạng VNĐ và dùng công thức, nên **sửa số liệu trực tiếp trong Excel thì tổng tự tính lại**. Tài khoản nhân viên chỉ xuất được phần doanh thu.
+
+### In hóa đơn, gửi Zalo/SMS
+- Sau khi lưu đơn có 4 nút: **In hóa đơn**, **Gửi Zalo / SMS**, **Mã QR thanh toán**, **Xem / Sửa đơn**.
+- **In hóa đơn**: khổ giấy 58mm hoặc 80mm (chọn trong hộp thoại in).
+  - Máy in nhiệt Bluetooth: dùng **Chrome trên Android** (bấm "In qua Bluetooth (máy in nhiệt)", chọn máy in một lần). iPhone/Safari không hỗ trợ Bluetooth trong trình duyệt.
+  - iPhone: dùng nút in thường (AirPrint) hoặc máy in nhiệt có hỗ trợ AirPrint. Máy tính: máy in nhiệt cài driver bình thường rồi chọn khổ giấy.
+  - Mỗi dòng máy in nhiệt khác nhau; nếu in lệch chữ hoặc mất dấu tiếng Việt, báo mình tên máy in để chỉnh.
+- **Gửi Zalo / SMS**: SMS mở sẵn tin nhắn có nội dung hóa đơn; Zalo mở trò chuyện với số điện thoại khách và đã sao chép sẵn nội dung, chỉ cần dán và gửi (Zalo không cho app web gửi tự động).
+
+### Nhiều máy cùng dùng một lúc
+- Mỗi đơn, khách hàng, sản phẩm là một bản ghi riêng; hai máy sửa hai bản ghi khác nhau thì không ảnh hưởng nhau. Hai máy sửa **cùng một** bản ghi cùng lúc thì app báo xung đột, không im lặng ghi đè.
+- Máy mất mạng vẫn bán hàng bình thường và tự đẩy lên khi có mạng lại.
+- **Mã đơn trùng** (hai máy cùng tạo đơn lúc mất mạng): sau khi đồng bộ, đơn tạo sau tự được đánh lại mã (thêm chữ b, c...), tất cả máy cho cùng một kết quả.
+- Lưu ý: app dùng cơ chế phát hiện xung đột theo từng bản ghi thay vì khóa cơ sở dữ liệu, phù hợp cho cửa hàng nhỏ với vài máy.
+
+
+---
+
+## Bản v19: Tổng quan, Đơn hàng, Cài đặt
+
+**Cập nhật:** tải lên GitHub (ghi đè) `index.html`, `sw.js` (và `manifest.json` cùng 5 tệp icon nếu bạn chưa tải ở bản v18). Không cần chạy lại SQL, dữ liệu cũ giữ nguyên. Đóng hẳn app rồi mở lại 2 lần để nhận bản mới.
+
+- **Tổng quan:** bấm biểu tượng bánh răng góc phải để chọn **ô chỉ số** (tối đa 6) và **lối tắt hình tròn** (tối đa 8, có Tạo đơn, Đơn hàng, Sản phẩm, Khách hàng, Thống kê, Tìm kiếm, Nguyên liệu, Xuất dùng, Hao hụt, Chi phí, Nhà cung cấp, Excel tháng này, Thanh toán QR, Cài đặt). Lối tắt hiện theo thứ tự bạn bấm chọn. Nhân viên chỉ thấy các lối tắt được phép. Lựa chọn lưu riêng trên từng thiết bị.
+- **Đơn hàng** (trước đây là Lịch sử bán hàng): mở từ Cài đặt > Quản lý > Đơn hàng hoặc lối tắt. Xem theo Ngày, Tuần, Tháng hoặc Tất cả; lọc theo Tiền mặt, Chuyển khoản, Ghi nợ, Đã hủy; gõ tìm khách, sản phẩm, số điện thoại hoặc mã đơn (tìm trong tất cả đơn). Bấm vào một đơn để xem chi tiết, in hóa đơn, sửa hoặc hủy. Danh sách chỉ vẽ 60 đơn một lần, bấm "Xem thêm" để mở thêm cho máy chạy nhẹ.
+- **Cài đặt:** màn hình đầu có thẻ cơ sở, lưới Quản lý và các nhóm Cửa hàng, Cá nhân hóa, Hệ thống. Bấm một dòng để vào trang riêng, bấm "Quay lại" (hoặc vuốt từ mép trái) để về.
+- **Giá sỉ và giá vốn** trong form sản phẩm để trống khi chưa có, không còn số 0 mặc định.
+- Trang Bán hàng và Tổng quan không còn danh sách đơn gần nhất.
+- **Thanh menu dưới** còn 5 nút (Tổng quan, Bán hàng, Sản phẩm, Cài đặt, Tài khoản) và nằm sát đáy hơn. Muốn tìm kiếm thì thêm lối tắt **Tìm kiếm** vào Tổng quan (bánh răng > Lối tắt).
+- Hộp **Tùy chỉnh Tổng quan** gọn hơn, chạm ra ngoài để đóng.

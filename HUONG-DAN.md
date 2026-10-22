@@ -197,3 +197,38 @@ Trong **Thống kê** bấm **Xuất báo cáo Excel**. Tệp có tiêu đề "B
 - Trang Bán hàng và Tổng quan không còn danh sách đơn gần nhất.
 - **Thanh menu dưới** còn 5 nút (Tổng quan, Bán hàng, Sản phẩm, Cài đặt, Tài khoản) và nằm sát đáy hơn. Muốn tìm kiếm thì thêm lối tắt **Tìm kiếm** vào Tổng quan (bánh răng > Lối tắt).
 - Hộp **Tùy chỉnh Tổng quan** gọn hơn, chạm ra ngoài để đóng.
+
+
+---
+
+## Bản v20: kho tự động theo công thức, kiểm kê, giao diện xanh dương
+
+**Cập nhật:** tải lên GitHub (ghi đè) `index.html` và `sw.js`, và `manifest.json` (đổi màu thanh trạng thái sang xanh dương). Không cần chạy lại SQL, không cần đổi `config.js`; dữ liệu cũ giữ nguyên.
+
+### Hai cách quản lý nguyên liệu (bật/tắt trong Cài đặt > Kho và giá vốn)
+- **Ghi tay (cách cũ):** bạn tự ghi "Xuất dùng" và "Hao hụt" trong trang Nguyên liệu. Giá vốn tính theo sản phẩm hoặc theo nguyên liệu như trước.
+- **Tự động theo công thức (cách mới):**
+  1. Mở từng sản phẩm, kéo xuống mục **Công thức nguyên liệu**, thêm các nguyên liệu và số lượng cần cho **1 đơn vị** sản phẩm (ví dụ 1 kg giò lụa cần 0,8 kg Thịt Heo và 0,1 kg Mỡ Heo). Chọn tên nguyên liệu từ danh sách để trùng với kho. App hiện luôn giá vốn ước tính và lãi gộp theo công thức.
+  2. Bật "Tự động theo công thức" trong Cài đặt, chọn **ngày áp dụng** (mặc định hôm nay).
+  3. Từ ngày đó, mỗi đơn bán xong kho tự trừ nguyên liệu và tự ra **xuất dùng**; đơn hủy hoặc hàng trả tự hoàn lại kho. Không cần ghi tay xuất dùng nữa (trang Nguyên liệu > Xuất dùng có bảng "Xuất dùng tự động" để xem).
+  4. Nguyên liệu vẫn phải **Nhập kho** như bình thường để có giá bình quân.
+  5. Sản phẩm chưa có công thức tạm tính giá vốn theo "Giá vốn" của sản phẩm. Cài đặt cho biết còn bao nhiêu sản phẩm chưa có công thức.
+- Chuyển qua lại **bất cứ lúc nào**, không mất dữ liệu. Đơn trước ngày áp dụng vẫn tính theo cách cũ. Đổi công thức sẽ tính lại các đơn từ ngày áp dụng trở đi.
+
+### Kiểm kê kho (dùng được ở cả hai cách)
+Trang Nguyên liệu > nút **Kiểm kê kho**: chọn ngày, đếm kho thực tế và nhập vào cột "Thực tế" (hoặc bấm "Điền sẵn số theo sổ sách" rồi chỉ sửa món lệch). Nguyên liệu để trống sẽ bỏ qua.
+- Thiếu so với sổ sách: tự ghi thành **hao hụt**, tính theo giá bình quân, trừ vào lợi nhuận ròng.
+- Dư so với sổ sách: cộng lại vào kho và giảm hao hụt tương ứng.
+- Phiếu kiểm kê hiện trong tab Hao hụt (nhãn "Kiểm kê"). Chạm vào để xem hoặc **xóa cả đợt** nếu nhập sai, rồi kiểm kê lại. Nên kiểm kê cuối ngày hoặc cuối tuần.
+
+### Giao diện
+- Màu chính đổi sang **xanh dương**; icon toàn app dùng cùng một kiểu nét và ô màu đặc như trang Cài đặt; bỏ các emoji.
+- **Biểu đồ hai màu:** Tổng quan so sánh *Kỳ này* (xanh) với *Kỳ trước* (cam). Thống kê (quản trị) có hai chế độ: *Thu & lãi* (Doanh thu xanh, Lợi nhuận cam) và *So kỳ trước*. Nhân viên chỉ thấy *So kỳ trước*.
+
+### Bản v20.1: chọn nhiều đơn, in hoặc gửi hóa đơn gộp
+Vào **Đơn hàng**, bấm nút **Chọn đơn** (cạnh nút Excel). Trên mỗi đơn có ô tích; đơn đã hủy không chọn được.
+- **Chọn khách:** chọn tên khách (gõ không dấu cũng tìm được, ví dụ "teo"). App chỉ hiện đơn của khách đó trong tháng (hoặc "Tất cả" nếu tháng này khách chưa mua) và tích sẵn toàn bộ.
+- **Chọn tất cả:** chọn mọi đơn đang hiển thị (kể cả khi bạn đang tìm bằng ô tìm kiếm). **Chỉ đơn nợ:** chỉ chọn các đơn ghi nợ, tự chuyển sang xem tất cả thời gian. **Bỏ chọn:** xóa các lựa chọn.
+- Thanh phía dưới cho biết số đơn và tổng tiền. Bấm **In / Gửi**: chọn nội dung (**Chi tiết từng đơn** hoặc **Tổng hợp sản phẩm**) và khổ giấy, rồi in qua trình duyệt, in Bluetooth, hoặc gửi Zalo, SMS, Chia sẻ, Sao chép.
+- Hóa đơn gộp (bảng kê) ghi từng đơn, tổng tiền, **đã thanh toán** và **còn nợ**. Nếu đã cài tài khoản ngân hàng và khách còn nợ thì có mã QR đúng số tiền nợ.
+- Bấm **Xong** để thoát chế độ chọn. Rời trang Đơn hàng cũng tự thoát.

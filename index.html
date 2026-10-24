@@ -779,7 +779,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;ba
 .pbd.tot .pbr b{font-size:17px}
 .pdash{display:flex;align-items:center;gap:12px;width:100%;margin:12px 0 0;padding:12px 14px;border-radius:22px;background:var(--gl);border:1px solid var(--glb);box-shadow:var(--gls),var(--ghl);text-align:left;color:var(--t)}
 .pdi{flex:none;width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:#fdf0d5;color:#7a3e08}.pdi .ico{width:22px;height:22px}
-.pdt{flex:1;min-width:0}.pdt b{display:block;font-size:15px}.pdt small{display:block;font-size:12.5px;color:var(--m);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pdx{flex:1;min-width:0}.pdx b{display:block;font-size:15px}.pdx small{display:block;font-size:12.5px;color:var(--m);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .pdv{flex:none;text-align:right}.pdv b{display:block;font-size:15px;color:#1d4ed8}.pdv small{font-size:11px;color:var(--m)}
 .pdq{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}.pdq button{height:34px;padding:0 12px;border:0;border-radius:999px;background:#e3ebfd;color:#1d4ed8;font-weight:700;font-size:13px}
 .prh,.prr{display:grid;grid-template-columns:minmax(0,1fr) 96px 68px;gap:8px;align-items:center}.prh{margin-top:10px;font-size:12px;color:var(--m);font-weight:700}.prh span:nth-child(n+2){text-align:right}
@@ -936,11 +936,21 @@ html.hdoff:not(.wd):not(.sybad) #hd{display:none}
 html.hdoff.sybad:not(.wd) #hd{position:fixed;top:calc(env(safe-area-inset-top,0px) + 6px);left:0;right:0;z-index:7;display:flex;justify-content:center;padding:0 12px;background:none;border:0;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none;pointer-events:none}
 html.hdoff.sybad:not(.wd) #hd .ttl{display:none}
 html.hdoff.sybad:not(.wd) #hd small#sy{pointer-events:auto;max-width:100%;background:color-mix(in srgb,var(--bg) 88%,var(--r));box-shadow:0 6px 18px rgba(0,0,0,.16)}
-/* ===== v20.18: lớp mờ dần dưới thanh trạng thái iPhone (chỉ bật khi app chạy toàn màn hình và có tai thỏ) ===== */
-html.sat body::after{content:"";position:fixed;top:0;left:0;right:0;height:calc(env(safe-area-inset-top,0px) + 20px);z-index:7;pointer-events:none;background:linear-gradient(to bottom,rgba(24,60,150,.78) 0%,rgba(24,60,150,.45) 60%,transparent 100%);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);-webkit-mask-image:linear-gradient(#000 70%,transparent);mask-image:linear-gradient(#000 70%,transparent)}
-html.sat.wd body::after{z-index:31}
-@media(prefers-color-scheme:dark){:root.sat:not([data-theme="light"]) body::after{height:calc(env(safe-area-inset-top,0px) + 16px);background:linear-gradient(to bottom,color-mix(in srgb,var(--bg) 90%,transparent) 0%,color-mix(in srgb,var(--bg) 55%,transparent) 62%,transparent 100%);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}}
-:root.sat[data-theme="dark"] body::after{height:calc(env(safe-area-inset-top,0px) + 16px);background:linear-gradient(to bottom,color-mix(in srgb,var(--bg) 90%,transparent) 0%,color-mix(in srgb,var(--bg) 55%,transparent) 62%,transparent 100%);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+/* ===== v20.25: mờ dần kiểu Instagram dưới thanh trạng thái iPhone (3 lớp làm mờ tăng dần + lớp phủ màu nền) ===== */
+html.sat:not(.wd)::before,html.sat:not(.wd)::after,html.sat:not(.wd) body::after{content:"";position:fixed;top:0;left:0;right:0;height:calc(env(safe-area-inset-top,0px) + 30px);z-index:7;pointer-events:none}
+html.sat:not(.wd)::before{-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);-webkit-mask-image:linear-gradient(#000 0,#000 55%,transparent 100%);mask-image:linear-gradient(#000 0,#000 55%,transparent 100%)}
+html.sat:not(.wd)::after{-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);-webkit-mask-image:linear-gradient(#000 0,#000 35%,transparent 80%);mask-image:linear-gradient(#000 0,#000 35%,transparent 80%)}
+html.sat:not(.wd) body::after{-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);background:linear-gradient(to bottom,color-mix(in srgb,var(--bg) 88%,transparent) 0%,color-mix(in srgb,var(--bg) 62%,transparent) 55%,transparent 100%);-webkit-mask-image:linear-gradient(#000 0,#000 18%,transparent 62%);mask-image:linear-gradient(#000 0,#000 18%,transparent 62%)}
+html.sat.wd body::after{content:"";position:fixed;top:0;left:0;right:0;height:calc(env(safe-area-inset-top,0px) + 16px);z-index:31;pointer-events:none;background:linear-gradient(to bottom,color-mix(in srgb,var(--bg) 90%,transparent) 0%,transparent 100%)}
+/* khi bật app toàn màn hình, tiêu đề đầu trang chỉ cộng một lần vùng an toàn (trước đây cộng hai lần nên bị đẩy xuống quá nhiều) */
+html.sat:not(.wd) main>.dh:first-child,html.sat:not(.wd) main>.shd:first-child{margin-top:calc(-14px - env(safe-area-inset-top,0px))}
+html.sat:not(.wd) .bkb+.dh{top:env(safe-area-inset-top,0px);padding-top:12px}
+html.sat:not(.wd) .bkb+.shd{top:env(safe-area-inset-top,0px);padding-top:8px}
+html.sat:not(.wd) main.tsp{top:0!important;padding-top:calc(14px + env(safe-area-inset-top,0px))!important}
+.tsp .dh,.tsp .shd{position:relative!important;top:auto!important}
+html.tsg::before,html.tsg::after{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+html.lite::before,html.lite::after{display:none!important}
+@media(prefers-reduced-transparency:reduce){html.sat::before,html.sat::after{-webkit-backdrop-filter:none;backdrop-filter:none}}
 html.sat:not(.wd) .dh,html.sat:not(.wd) .shd{border-radius:0 0 28px 28px}
 @media(prefers-reduced-transparency:reduce){html.sat body::after{-webkit-backdrop-filter:none;backdrop-filter:none}}
 /* ===== v20.19: tiêu đề trang không còn dải bo tròn, tự ẩn khi cuộn xuống và hiện nổi khi cuộn lên ===== */
@@ -977,6 +987,30 @@ html.lite body::before,html.lite body::after{display:none!important}
 html.lite #nv{background:linear-gradient(var(--navbg),var(--navbg)),var(--bg)!important;box-shadow:0 0 0 1px var(--navbd)!important}
 html.lite #hd{background:var(--bg)!important}
 html.lite .tssw,html.lite .hdsw,html.lite .sysw{display:flex}
+/* v20.26: bỏ dải nền và đường kẻ nằm sau nhóm nút Lưu / Lịch sử / Xóa ở mọi tab (nút vẫn có nền riêng) */
+.abar-fx,.abar.stk .abar-fx,body.kbf .abar.dk .abar-fx{background:none!important;box-shadow:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+.abar .hab.info{background:linear-gradient(color-mix(in srgb,var(--bl) 10%,var(--c)),color-mix(in srgb,var(--bl) 10%,var(--c))),var(--bg)}
+.abar .hab.dng{background:linear-gradient(color-mix(in srgb,var(--r) 9%,var(--c)),color-mix(in srgb,var(--r) 9%,var(--c))),var(--bg)}
+
+/* v20.27: lịch sử bấm được */
+.hlst{display:flex;flex-direction:column;max-height:58vh;overflow:auto;-webkit-overflow-scrolling:touch;margin:0 -4px 10px}
+.hrow{display:flex;align-items:center;gap:10px;width:100%;padding:11px 6px;background:none;border:0;border-bottom:1px solid var(--glb,rgba(0,0,0,.08));color:var(--t);text-align:left;border-radius:0}
+.hrow:last-child{border-bottom:0}.hrow:active{background:rgba(120,120,140,.12)}
+.hrow .hl{flex:1;min-width:0}.hrow .hl b{display:block;font-size:15px}.hrow .hl small{display:block;font-size:12.5px;color:var(--m);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hrow .hv{font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}.hrow .hv.gr{color:#1a7f4b}
+.hrow .chv{flex:none;width:16px;height:16px;color:var(--m);opacity:.7}
+.hcx{font-style:normal;font-size:11px;font-weight:600;color:#b3261e;background:#fde7e5;border-radius:8px;padding:1px 6px;margin-left:4px}
+.mh .srx.bk{font-size:22px;line-height:1;padding:0 0 3px}
+
+/* v20.27: bảo mật (khóa mục nhạy cảm, nhật ký) */
+.ac-row span small.lks{display:block;font-size:12px;color:var(--m);margin-top:2px;line-height:1.3}
+.lkc{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;padding:26px 18px}
+.lkc .lki{width:54px;height:54px;border-radius:18px;display:grid;place-items:center;background:#fdf0d5;color:#7a3e08}.lkc .lki .ico{width:26px;height:26px}
+.lkc input{width:100%;max-width:320px;text-align:center}.lkc .big{width:100%;max-width:320px}.lkc p{margin:0}
+.alr{display:flex;align-items:flex-start;gap:10px;padding:10px 6px;border-bottom:1px solid var(--glb,rgba(0,0,0,.08))}.alr:last-child{border-bottom:0}
+.alr .alt{flex:1;min-width:0}.alr .alt b{display:block;font-size:14px;font-weight:600;word-break:break-word}.alr .alt small{display:block;font-size:12px;color:var(--m)}
+.alr .alc{flex:none;font-style:normal;font-size:11.5px;font-weight:700;border-radius:9px;padding:3px 8px;margin-top:1px}
+.alc.ad{background:#e1f4e8;color:#17703f}.alc.ed{background:#e6ecfb;color:#2b4fa8}.alc.dl{background:#fde7e5;color:#b3261e}
 </style></head><body>
 <header id="hd">Giò chả</header>
 <main id="v"></main>
@@ -1045,9 +1079,24 @@ async function doReset(){if(pw().length<8)return amsg('Mật khẩu cần ít nh
 async function mkShop(){const n=$('#a_n').value.trim();if(!n)return amsg('Nhập tên cơ sở');const r=await SB.rpc('create_shop',{p_name:n});if(r.error)return amsg(r.error.message);location.reload()}
 async function joinShop(){const c=$('#a_c').value.trim();if(!c)return amsg('Nhập mã mời');const r=await SB.rpc('join_shop',{p_code:c});if(r.error)return amsg(r.error.message);location.reload()}
 function logout(){ask('Đăng xuất khỏi thiết bị này?',async()=>{await SB.auth.signOut();location.reload()})}
-const ICO={cp:'<svg class="ico" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 012-2h9"/></svg>',tr:'<svg class="ico" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg>',key:'<svg class="ico" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M16 7l3 3"/></svg>',out:'<svg class="ico" viewBox="0 0 24 24"><path d="M9 4H5v16h4M16 8l4 4-4 4M20 12H9"/></svg>'},ACS={code:''};
+const ICO={cp:'<svg class="ico" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 012-2h9"/></svg>',tr:'<svg class="ico" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg>',key:'<svg class="ico" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M16 7l3 3"/></svg>',out:'<svg class="ico" viewBox="0 0 24 24"><path d="M9 4H5v16h4M16 8l4 4-4 4M20 12H9"/></svg>',lk:'<svg class="ico" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg>',lg:'<svg class="ico" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 9h6M9 13h6M9 17h3"/></svg>'},ACS={code:''};
 const ini=e=>esc(String(e||'?').trim().charAt(0).toUpperCase()||'?');
-function acctH(){const m=PROF||{};return `<div class="ac"><div class="ac-me"><div class="ac-av">${ini(m.email)}</div><div class="ac-id"><b>${esc(m.email||'')}</b><span>${esc(m.sname||'')}</span><div class="ac-sub"><span class="ac-chip ${ADM?'ad':''}">${ADM?'Quản trị viên':'Nhân viên'}</span><span class="sy2">${esc(SYN)}</span></div></div></div>`+(ADM?memH():'')+`<div class="ac-list"><button class="ac-row" onclick="chPw()">${ICO.key}<span>Đổi mật khẩu</span>${CHV}</button><button class="ac-row out" onclick="logout()">${ICO.out}<span>Đăng xuất</span></button></div></div>`}
+function acctH(){const m=PROF||{};return `<div class="ac"><div class="ac-me"><div class="ac-av">${ini(m.email)}</div><div class="ac-id"><b>${esc(m.email||'')}</b><span>${esc(m.sname||'')}</span><div class="ac-sub"><span class="ac-chip ${ADM?'ad':''}">${ADM?'Quản trị viên':'Nhân viên'}</span><span class="sy2">${esc(SYN)}</span></div></div></div>`+(ADM?memH()+secH():'')+`<div class="ac-list"><button class="ac-row" onclick="chPw()">${ICO.key}<span>Đổi mật khẩu</span>${CHV}</button><button class="ac-row out" onclick="logout()">${ICO.out}<span>Đăng xuất</span></button></div></div>`}
+function secH(){return `<div class="ac-list"><button class="ac-row" onclick="auLog()">${ICO.lg}<span>Nhật ký thao tác</span>${CHV}</button><button class="ac-row" onclick="lkTog()">${ICO.lk}<span>Khóa Thống kê, Nhà cung cấp, Nguyên liệu<small class="lks">${UI.pl?'Đang bật · cần nhập lại mật khẩu (cài riêng từng thiết bị)':'Đang tắt'}</small></span>${CHV}</button></div>`}
+const LK={t:0,h:0,on:()=>ADM&&!!UI.pl,ok:()=>Date.now()-LK.t<6e5},LKN={stats:'Thống kê',sup:'Nhà cung cấp',imp:'Nguyên liệu'};
+function lkWrap(){['stats','sup','imp'].forEach(k=>{const o=T[k];T[k]=function(){return LK.on()&&!LK.ok()?lockH(k):o.apply(this,arguments)}})}
+document.addEventListener('visibilitychange',()=>{if(document.hidden){LK.h=Date.now();return}if(LK.h&&Date.now()-LK.h>18e4){LK.t=0;if(LK.on()&&LKN[tab])R()}});
+function lockH(k){return `<div class="dh"><h2>${LKN[k]}</h2></div><div class="card lkc"><div class="lki">${ICO.lk}</div><b>Mục này đang được khóa</b><p class="mut">Nhập mật khẩu quản trị viên để xem.</p><input id="lkp" type="password" autocomplete="current-password" placeholder="Mật khẩu" onkeydown="if(event.key=='Enter')lkGo()"><p id="lkm" class="dn"></p><button class="big" onclick="lkGo()">Mở khóa</button></div>`}
+async function lkChk(p,m){if(!p)return 0;try{const r=await SB.auth.signInWithPassword({email:PROF.email,password:p});if(r.error){m.textContent=/network|fetch|failed/i.test(r.error.message)?'Cần có mạng để xác nhận':'Sai mật khẩu';return 0}}catch(e){m.textContent='Cần có mạng để xác nhận';return 0}return 1}
+async function lkGo(){const p=$('#lkp'),m=$('#lkm');if(!p||!m)return;m.textContent='';if(await lkChk(p.value,m)){LK.t=Date.now();R()}}
+function lkTog(){if(!UI.pl){UI.pl=1;saveUI();LK.t=Date.now();toast('Đã bật khóa. Mở lại sau 10 phút sẽ hỏi mật khẩu');R();return}
+modal(`<b>Tắt khóa mục nhạy cảm?</b><label>Nhập mật khẩu quản trị viên<input id="lkq" type="password" autocomplete="current-password" onkeydown="if(event.key=='Enter')lkOff()"></label><p id="lkm2" class="dn"></p><div class="seg"><button onclick="closeM()">Hủy</button><button class="on" onclick="lkOff()">Tắt khóa</button></div>`)}
+async function lkOff(){const p=$('#lkq'),m=$('#lkm2');if(!p||!m)return;m.textContent='';if(await lkChk(p.value,m)){UI.pl=0;saveUI();closeM();toast('Đã tắt khóa');R()}}
+const AUS={products:'Sản phẩm',orders:'Đơn hàng',customers:'Khách hàng',suppliers:'Nhà cung cấp',imports:'Kho'},AUK={in:'Nhập hàng',use:'Xuất dùng',loss:'Hao hụt',exp:'Chi phí',pay:'Trả nợ NCC',count:'Kiểm kê'};
+async function auLog(){const hd0=`<div class="mh"><b>Nhật ký thao tác</b><button class="srx" onclick="closeM()" aria-label="Đóng">×</button></div>`;modal(hd0+'<p class="ihint">Đang tải…</p>');let r;try{r=await SB.from('audit_log').select('at,email,action,store,summary').order('at',{ascending:false}).limit(150)}catch(e){r={error:e}}
+let b;if(r.error)b=`<p class="ihint">${/audit_log|relation|schema cache|does not exist/i.test(r.error.message||'')?'Chưa cài nhật ký. Mở Supabase, vào SQL Editor và chạy file nhat-ky.sql một lần.':'Không tải được. Kiểm tra mạng rồi thử lại.'}</p>`;
+else{const L=r.data||[];b=L.length?`<p class="ihint">150 thao tác gần nhất, tự xóa sau 90 ngày.</p><div class="hlst">${L.map(x=>{const sm=String(x.summary||'').replace(/^(\w+) · /,(q,k)=>x.store=='imports'?(AUK[k]||k)+' · ':q),cl=x.action=='Xóa'?'dl':x.action=='Thêm'?'ad':'ed';return `<div class="alr"><i class="alc ${cl}">${esc(x.action)}</i><span class="alt"><b>${esc(AUS[x.store]||x.store)}${sm?': '+esc(sm):''}</b><small>${fdt(Date.parse(x.at))} · ${esc(String(x.email||'Hệ thống').split('@')[0])}</small></span></div>`}).join('')}</div>`:'<p class="ihint">Chưa có thao tác nào được ghi.</p>'}
+if(!$('#m').hidden)modal(hd0+b+'<button class="ghost" onclick="closeM()">Đóng</button>')}
 function memH(){return `<div id="mem" class="ac" style="gap:12px"><div class="ac-card"><p class="ac-note" style="margin:0">Đang tải…</p></div></div>`}
 async function mem(){if(!ADM||!$('#mem'))return;let a,b;try{[a,b]=await Promise.all([SB.from('shops').select('invite_code').single(),SB.from('profiles').select('id,email,role').eq('shop_id',PROF.shop_id)])}catch(e){a=b={error:1}}
 if(!$('#mem'))return;if(a.error||b.error)return $('#mem').innerHTML=`<div class="ac-card"><p class="ac-note" style="margin:0 0 10px">Không tải được danh sách. Kiểm tra mạng rồi thử lại.</p><div class="ac-btns"><button class="ac-gh" onclick="mem()">Thử lại</button></div></div>`;
@@ -1314,7 +1363,7 @@ function updFB(){const b=$('#fb');if(b)b.hidden=true;requestAnimationFrame(()=>{
 function fbSave(){const k=fbInfo();if(!k)return;const nm=$('#pn')||document.querySelector('#v [data-k="name"]')||$('#i_n');if(nm&&!nm.value.trim())nm.focus();else if(document.activeElement&&document.activeElement.blur)document.activeElement.blur();k[0]()}
 function updBar(){const b=$('#bar');if(!b)return;const on=tab=='sell'&&!C.done&&C.items.length;b.hidden=!on;if(on){const t=lines().reduce((a,x)=>a+x,0);b.innerHTML=`<span>${C.items.length} món<br><b style="font-size:20px">${t-disc()<0?'Hoàn lại ':''}${money(Math.abs(t-disc()))}</b></span><button onmousedown="event.preventDefault()" onclick="saveO()">${ic('chk')}<span>${C.edit?'Cập nhật đơn':'Lưu đơn'}</span></button>`}}
 let TH=[],SG='',T0={x:0,y:0,t:0,e:null};
-const ah=()=>(typeof acctH=='function'?acctH():'<div class="card"><b>Bản thử trên claude.ai</b><br><small>Chưa có tài khoản và phân quyền. Bản cài đặt riêng có đăng nhập, nhân viên và mã mời.</small></div>')+'<p class="mut" style="text-align:center;font-size:12px">Phiên bản app: v20.24</p>';
+const ah=()=>(typeof acctH=='function'?acctH():'<div class="card"><b>Bản thử trên claude.ai</b><br><small>Chưa có tài khoản và phân quyền. Bản cài đặt riêng có đăng nhập, nhân viên và mã mời.</small></div>')+'<p class="mut" style="text-align:center;font-size:12px">Phiên bản app: v20.27</p>';
 
 let LB=0;function back(){LB=Date.now();if(!$('#cs').hidden)return csClose();if(!$('#sr').hidden)return closeSr();if(!$('#m').hidden)return closeM();if(tab=='sett'&&SS){SS=SSP&&!/^g:/.test(SS)?SSP:null;SSP=null;pgAnim();R();scrollTo(0,0);return}if(PF||FM.cus||FM.sup||IF||PRE)return closeF();if(TH.length){tab=TH.pop();pgAnim();R();scrollTo(0,0)}else if(tab!='dash')go('dash')}
 /* ===== Vuốt quay lại: CHỈ bắt đầu từ mép trái và CHỈ ở trang con/biểu mẫu =====
@@ -1390,7 +1439,7 @@ let h=`<div class="sprof"><img class="slogo" src="${LOGO}" alt=""><div class="sp
 h+=`<h3 class="dg">Quản lý</h3><div class="mgrid">${mg.map(r=>`<button class="mt k-${r[3]}" onclick="go('${r[0]}'${r[0]=='prods'?',1':''})"><span class="mti">${ic(r[2])}</span><b>${r[1]}</b></button>`).join('')}</div>`;
 const g1=by(['shop','units','sales','pay','cogs']);if(g1)h+=`<h3 class="dg">Cửa hàng</h3><div class="slist">${g1}</div>`;
 h+=`<h3 class="dg">Cá nhân hóa</h3><div class="slist">${by(['dw','ui'])}</div>`;
-h+=`<h3 class="dg">Hệ thống</h3><div class="slist">${by(['sync','data'])}${ADM&&mm?srow('shield','p','Nhân viên và phân quyền','Mã mời, quyền truy cập',"go('acct')"):''}${srow('user','g','Tài khoản','Thông tin cá nhân, đăng xuất',"go('acct')")}</div><p class="mut" style="text-align:center;font-size:12px;margin:14px 0 0">Phiên bản app: v20.24</p>`;
+h+=`<h3 class="dg">Hệ thống</h3><div class="slist">${by(['sync','data'])}${ADM&&mm?srow('shield','p','Nhân viên và phân quyền','Mã mời, quyền truy cập',"go('acct')"):''}${srow('user','g','Tài khoản','Thông tin cá nhân, đăng xuất',"go('acct')")}</div><p class="mut" style="text-align:center;font-size:12px;margin:14px 0 0">Phiên bản app: v20.27</p>`;
 return h}
 function sett(){const s=SS&&secAv().find(x=>x.id==SS&&x.b);if(SS&&!s)SS=null;
 if(s)return `<div class="sph"><span class="sq lg k-${s.c}">${ic(s.i)}</span><div><h2>${s.t}</h2><small>${s.s}</small></div></div><div class="card sbody">${s.b()}</div>`;
@@ -2138,7 +2187,7 @@ pSum=x=>{const it=x.items||[];return it.slice(0,2).map(i=>esc(i.name)+' '+num(r3
 const preNeed=()=>memo('preN',()=>pWait().filter(x=>dLeft(x.due)<=3).length);
 const dcOn=id=>!(UI.dc&&UI.dc[id]===0);
 function preDashH(){if(!ADM||!dcOn('pre'))return '';const W=pWait();if(!W.length)return '';const left=W.reduce((s,x)=>s+pLeft(x),0),L=W.slice(0,3);
-return `<div class="pdash"><button type="button" class="pdh" onclick="go('pre')"><span class="pdi">${ic('cal')}</span><span class="pdt"><b>Đặt hàng trước</b><small>${W.length} đơn chờ giao · còn thu ${fd(left)} VND</small></span>${CHV}</button><div class="pdl">${L.map(x=>{const c=pCus(x),d=pDue(x.due);return `<button type="button" class="pdr" onclick="go('pre')"><span class="pdn"><b>${esc(c.name)}${x.type=='si'?' <em class="psi">Sỉ</em>':''}</b><small>${esc(pSum(x))}</small></span><span class="pdu ${d.c}">${d.t}</span></button>`}).join('')}</div>${W.length>3?`<button type="button" class="pdm" onclick="go('pre')">Xem tất cả ${W.length} đơn</button>`:''}</div>`}
+return `<div class="pdash"><button type="button" class="pdh" onclick="go('pre')"><span class="pdi">${ic('cal')}</span><span class="pdx"><b>Đặt hàng trước</b><small>${W.length} đơn chờ giao · còn thu ${fd(left)} VND</small></span>${CHV}</button><div class="pdl">${L.map(x=>{const c=pCus(x),d=pDue(x.due);return `<button type="button" class="pdr" onclick="go('pre')"><span class="pdn"><b>${esc(c.name)}${x.type=='si'?' <em class="psi">Sỉ</em>':''}</b><small>${esc(pSum(x))}</small></span><span class="pdu ${d.c}">${d.t}</span></button>`}).join('')}</div>${W.length>3?`<button type="button" class="pdm" onclick="go('pre')">Xem tất cả ${W.length} đơn</button>`:''}</div>`}
 function prV(){if(PRE)return preForm();const W=pWait(),all=PL(),f=PRQ.f,left=W.reduce((s,x)=>s+pLeft(x),0),dep=W.reduce((s,x)=>s+(+x.dep||0),0),tot=W.reduce((s,x)=>s+pTot(x),0),cn=k=>all.filter(x=>pSt(x)==k).length;
 const tb=[['wait','Chờ giao'],['done','Đã giao'],['cancel','Đã hủy']];
 return `<div class="dh"><h2>Đặt hàng trước</h2><button class="icb pri2" onclick="newPre()" aria-label="Thêm đơn đặt trước">${ic('plus')}</button></div>
@@ -2383,7 +2432,26 @@ if(UI.lt===undefined)UI.lt=0;
 function ltApply(){document.documentElement.classList.toggle('lite',!!UI.lt)}
 function setLt(v){UI.lt=v?1:0;saveUI();ltApply()}
 ltApply();
-(async()=>{if('serviceWorker' in navigator){const had=!!navigator.serviceWorker.controller;navigator.serviceWorker.register('sw.js').catch(()=>{});navigator.serviceWorker.addEventListener('controllerchange',()=>{if(had)try{toast('Đã có bản mới. Mở lại app để cập nhật.')}catch(e){}})}
+
+/* ===== v20.27: bấm vào đơn trong lịch sử khách / nhà cung cấp / sản phẩm để xem chi tiết ===== */
+var DHB=null;
+const dDate=d=>String(d||'').split('-').reverse().join('/');
+function dhBack(){const f=DHB;if(f)f();else closeM()}
+function dhHead(t){return `<div class="mh"><button class="srx bk" onclick="dhBack()" aria-label="Quay lại">‹</button><b>${t}</b><button class="srx" onclick="closeM()" aria-label="Đóng">×</button></div>`}
+function dhList(h,rows,empty){return `<div class="mh"><b>${h}</b><button class="srx" onclick="closeM()" aria-label="Đóng">×</button></div><div class="hlst">${rows||`<p class="ihint">${empty}</p>`}</div>`}
+function dhOrd(oid){const o=S.orders.find(x=>x.id==oid);if(!o)return;modal(dhHead('Hóa đơn '+esc(o.code))+ordCard(o)+actH(oid,1))}
+function dhImp(xid){const x=S.imports.find(y=>y.id==xid);if(!x)return;const k=IKD(x),kv=(a,b,c)=>`<div class="kv ${c||''}"><span>${a}</span><b>${b}</b></div>`;let b;
+if(k=='pay')b=kv('Loại','Trả nợ nhà cung cấp')+kv('Ngày',dDate(x.date))+kv('Nhà cung cấp',esc(x.sname||'—'))+kv('Số tiền',money(+x.amt||0),'tt')+(x.note?kv('Ghi chú',esc(x.note)):'');
+else{const t=iamt(x),p=paidOf(x);b=kv('Nguyên liệu',esc(x.name))+kv('Ngày nhập',dDate(x.date))+kv('Nhà cung cấp',esc(x.sname||'—'))+kv('Số lượng',num(x.qty)+' '+esc(x.unit||''))+kv('Đơn giá',money(x.price))+kv('Thành tiền',money(t),'tt')+kv('Đã trả',money(p))+(t-p>0?kv('Còn nợ',money(t-p),'rr'):'')+(x.note?kv('Ghi chú',esc(x.note)):'')}
+modal(dhHead(k=='pay'?'Phiếu trả nợ':'Phiếu nhập')+`<div class="ocd-s">${b}</div>`)}
+function dh(m,id){const rb=(a,b,v,fn,cl)=>`<button type="button" class="hrow" onclick="${fn}"><span class="hl"><b>${a}</b><small>${b}</small></span><span class="hv ${cl||''}">${v}</span>${CHV}</button>`;let l;
+if(m=='cus')l=valid().filter(o=>o.cid==id).map(o=>({t:o.ts,h:rb(esc(o.code),fdt(o.ts),money(pay(o)),`dhOrd('${o.id}')`)}));
+else l=S.imports.filter(x=>x.sid==id&&['in','pay'].includes(IKD(x))).map(x=>{const t=Date.parse(x.date)+(x.ts||0)%86400000/1e3,pp=IKD(x)=='pay';return{t,h:pp?rb('Trả nợ nhà cung cấp',dDate(x.date)+(x.note?' · '+esc(x.note):''),'-'+money(+x.amt||0),`dhImp('${x.id}')`,'gr'):rb(esc(x.name),dDate(x.date)+' · '+num(x.qty)+' '+esc(x.unit||''),money(iamt(x)),`dhImp('${x.id}')`)}});
+l.sort((a,b)=>b.t-a.t);DHB=()=>dh(m,id);modal(dhList('Lịch sử',l.map(x=>x.h).join(''),'Chưa có giao dịch')+'<button class="ghost" onclick="closeM()">Đóng</button>')}
+function ph(id){const l=S.orders.filter(o=>o.items.some(i=>i.pid==id)).sort((a,b)=>b.ts-a.ts).slice(0,50);
+const rows=l.map(o=>{const it=o.items.filter(i=>i.pid==id),q=it.reduce((a,i)=>a+i.qty,0),v=it.reduce((a,i)=>a+Math.round(i.qty*i.price),0);return `<button type="button" class="hrow" onclick="dhOrd('${o.id}')"><span class="hl"><b>${esc(o.code)}${o.status=='cancelled'?' <em class="hcx">hủy</em>':''}</b><small>${fdt(o.ts)} · ${num(q)} ${esc(it[0].unit)}</small></span><span class="hv">${money(v)}</span>${CHV}</button>`}).join('');
+DHB=()=>ph(id);modal(dhList('Lịch sử bán',rows,'Chưa bán lần nào')+'<button class="ghost" onclick="closeM()">Đóng</button>')}
+(async()=>{lkWrap();if('serviceWorker' in navigator){const had=!!navigator.serviceWorker.controller;navigator.serviceWorker.register('sw.js').catch(()=>{});navigator.serviceWorker.addEventListener('controllerchange',()=>{if(had)try{toast('Đã có bản mới. Mở lại app để cập nhật.')}catch(e){}})}
 const C=window.CFG||{};if(!C.url||!C.key||!window.supabase)return ashow('cfg');
 SB=supabase.createClient(C.url,C.key);
 SB.auth.onAuthStateChange((ev,se)=>{if(ev=='PASSWORD_RECOVERY'){REC=1;return ashow('reset')}if(REC)return;if(ev=='SIGNED_OUT'){location.reload();return}if(se&&!entered){entered=1;setTimeout(()=>enter(se),0)}});

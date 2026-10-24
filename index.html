@@ -1067,7 +1067,8 @@ html.wd #v:has(>.pm5){grid-template-columns:repeat(3,minmax(0,1fr))}
 html.sat:not(.wd)::before,html.sat:not(.wd)::after{content:none!important;display:none!important}
 html.sat:not(.wd) body::after{height:calc(env(safe-area-inset-top,0px)*.85)!important;background:none!important;-webkit-backdrop-filter:blur(9px);backdrop-filter:blur(9px);-webkit-mask-image:linear-gradient(#000 0,#000 78%,transparent 100%);mask-image:linear-gradient(#000 0,#000 78%,transparent 100%)}
 
-html.nosc body::after{display:none!important}
+/* v20.35: đầu màn hình trong suốt hoàn toàn, không làm mờ */
+html.sat:not(.wd) body::after,html.sat:not(.wd)::before,html.sat:not(.wd)::after{display:none!important}
 </style></head><body>
 <header id="hd">Giò chả</header>
 <main id="v"></main>
@@ -1420,7 +1421,7 @@ function updFB(){const b=$('#fb');if(b)b.hidden=true;requestAnimationFrame(()=>{
 function fbSave(){const k=fbInfo();if(!k)return;const nm=$('#pn')||document.querySelector('#v [data-k="name"]')||$('#i_n');if(nm&&!nm.value.trim())nm.focus();else if(document.activeElement&&document.activeElement.blur)document.activeElement.blur();k[0]()}
 function updBar(){const b=$('#bar');if(!b)return;const on=tab=='sell'&&!C.done&&C.items.length;b.hidden=!on;if(on){const t=lines().reduce((a,x)=>a+x,0);b.innerHTML=`<span>${C.items.length} món<br><b style="font-size:20px">${t-disc()<0?'Hoàn lại ':''}${money(Math.abs(t-disc()))}</b></span><button onmousedown="event.preventDefault()" onclick="saveO()">${ic('chk')}<span>${C.edit?'Cập nhật đơn':'Lưu đơn'}</span></button>`}}
 let TH=[],SG='',T0={x:0,y:0,t:0,e:null};
-const ah=()=>(typeof acctH=='function'?acctH():'<div class="card"><b>Bản thử trên claude.ai</b><br><small>Chưa có tài khoản và phân quyền. Bản cài đặt riêng có đăng nhập, nhân viên và mã mời.</small></div>')+'<p class="mut" style="text-align:center;font-size:12px">Phiên bản app: v20.34</p>';
+const ah=()=>(typeof acctH=='function'?acctH():'<div class="card"><b>Bản thử trên claude.ai</b><br><small>Chưa có tài khoản và phân quyền. Bản cài đặt riêng có đăng nhập, nhân viên và mã mời.</small></div>')+'<p class="mut" style="text-align:center;font-size:12px">Phiên bản app: v20.35</p>';
 
 let LB=0;function back(){LB=Date.now();if(!$('#cs').hidden)return csClose();if(!$('#sr').hidden)return closeSr();if(!$('#m').hidden)return closeM();if(tab=='sett'&&SS){SS=SSP&&!/^g:/.test(SS)?SSP:null;SSP=null;pgAnim();R();scrollTo(0,0);return}if(PF||FM.cus||FM.sup||IF||PRE)return closeF();if(TH.length){tab=TH.pop();pgAnim();R();scrollTo(0,0)}else if(tab!='dash')go('dash')}
 /* ===== Vuốt quay lại: CHỈ bắt đầu từ mép trái và CHỈ ở trang con/biểu mẫu =====
@@ -1468,7 +1469,7 @@ function applyTheme(){const r=document.documentElement;if(UI.th=='light'||UI.th=
 applyTheme();
 function setTheme(v){UI.th=v;saveUI();applyTheme();document.querySelectorAll('[data-th]').forEach(b=>b.classList.toggle('on',b.dataset.th==v))}
 function setPV(v){UI.pv=v;saveUI();document.querySelectorAll('[data-pv]').forEach(b=>b.classList.toggle('on',b.dataset.pv==v));const e=$('#pl');if(e&&tab=='prods'&&!PF){e.className=v=='l'?'plist':'pgrid';e.innerHTML=pl()}}
-const uiH=()=>`<div class="lbl">Chế độ màu</div><div class="seg">${[['auto','Tự động'],['light','Sáng'],['dark','Tối']].map(x=>`<button data-th="${x[0]}" class="${UI.th==x[0]?'on':''}" onclick="setTheme('${x[0]}')">${x[1]}</button>`).join('')}</div><div class="lbl">Hiển thị sản phẩm</div><div class="seg">${[['g','Lưới gọn'],['l','Danh sách']].map(x=>`<button data-pv="${x[0]}" class="${UI.pv==x[0]?'on':''}" onclick="setPV('${x[0]}')">${x[1]}</button>`).join('')}</div><div class="nopad"><label class="sw hdsw"><span><b>Hiện tên và logo cơ sở trên đầu trang</b><small>Tắt để màn hình điện thoại rộng hơn. Khi mất mạng hoặc lỗi, app vẫn báo ở đầu trang.</small></span><input type="checkbox" ${UI.hd?'checked':''} onchange="setHd(this.checked)"><i></i></label><label class="sw sysw"><span><b>Hiện trạng thái đồng bộ</b><small>Hiện “Đã đồng bộ ✓” trên đầu trang. Khi mất mạng hoặc lỗi, app vẫn luôn báo.</small></span><input type="checkbox" ${UI.sy?'checked':''} onchange="setSy(this.checked)"><i></i></label><label class="sw scsw"><span><b>Làm mờ phía dưới giờ và pin</b><small>Lớp mờ nhẹ khi nội dung trượt lên dưới thanh giờ, sóng, pin. Tắt nếu muốn thấy nội dung rõ hết.</small></span><input type="checkbox" ${UI.sc?'checked':''} onchange="setSc(this.checked)"><i></i></label><label class="sw tssw"><span><b>Vuốt ngang để chuyển tab</b><small>Vuốt trái hoặc phải để chuyển giữa các tab ở thanh dưới. Ở Bán hàng chỉ vuốt được khi giỏ hàng đang trống.</small></span><input type="checkbox" ${UI.sw?'checked':''} onchange="setSw(this.checked)"><i></i></label><label class="sw ltsw"><span><b>Chế độ nhẹ</b><small>Tắt hiệu ứng mờ kính, bóng đổ, chuyển động và nền màu loang để app chạy mượt hơn trên máy cũ hoặc yếu. Vuốt chuyển tab vẫn dùng được nhưng không có hình xem trước.</small></span><input type="checkbox" ${UI.lt?'checked':''} onchange="setLt(this.checked)"><i></i></label></div><small>Chỉ áp dụng cho thiết bị này.</small>`;
+const uiH=()=>`<div class="lbl">Chế độ màu</div><div class="seg">${[['auto','Tự động'],['light','Sáng'],['dark','Tối']].map(x=>`<button data-th="${x[0]}" class="${UI.th==x[0]?'on':''}" onclick="setTheme('${x[0]}')">${x[1]}</button>`).join('')}</div><div class="lbl">Hiển thị sản phẩm</div><div class="seg">${[['g','Lưới gọn'],['l','Danh sách']].map(x=>`<button data-pv="${x[0]}" class="${UI.pv==x[0]?'on':''}" onclick="setPV('${x[0]}')">${x[1]}</button>`).join('')}</div><div class="nopad"><label class="sw hdsw"><span><b>Hiện tên và logo cơ sở trên đầu trang</b><small>Tắt để màn hình điện thoại rộng hơn. Khi mất mạng hoặc lỗi, app vẫn báo ở đầu trang.</small></span><input type="checkbox" ${UI.hd?'checked':''} onchange="setHd(this.checked)"><i></i></label><label class="sw sysw"><span><b>Hiện trạng thái đồng bộ</b><small>Hiện “Đã đồng bộ ✓” trên đầu trang. Khi mất mạng hoặc lỗi, app vẫn luôn báo.</small></span><input type="checkbox" ${UI.sy?'checked':''} onchange="setSy(this.checked)"><i></i></label><label class="sw tssw"><span><b>Vuốt ngang để chuyển tab</b><small>Vuốt trái hoặc phải để chuyển giữa các tab ở thanh dưới. Ở Bán hàng chỉ vuốt được khi giỏ hàng đang trống.</small></span><input type="checkbox" ${UI.sw?'checked':''} onchange="setSw(this.checked)"><i></i></label><label class="sw ltsw"><span><b>Chế độ nhẹ</b><small>Tắt hiệu ứng mờ kính, bóng đổ, chuyển động và nền màu loang để app chạy mượt hơn trên máy cũ hoặc yếu. Vuốt chuyển tab vẫn dùng được nhưng không có hình xem trước.</small></span><input type="checkbox" ${UI.lt?'checked':''} onchange="setLt(this.checked)"><i></i></label></div><small>Chỉ áp dụng cho thiết bị này.</small>`;
 /* menu ba gạch */
 const SO={};
 const CHV='<svg class="ico chv" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>';
@@ -1496,7 +1497,7 @@ let h=`<div class="sprof"><img class="slogo" src="${LOGO}" alt=""><div class="sp
 h+=`<h3 class="dg">Quản lý</h3><div class="mgrid">${mg.map(r=>`<button class="mt k-${r[3]}" onclick="go('${r[0]}'${r[0]=='prods'?',1':''})"><span class="mti">${ic(r[2])}</span><b>${r[1]}</b></button>`).join('')}</div>`;
 const g1=by(['shop','units','sales','pay','cogs']);if(g1)h+=`<h3 class="dg">Cửa hàng</h3><div class="slist">${g1}</div>`;
 h+=`<h3 class="dg">Cá nhân hóa</h3><div class="slist">${by(['dw','ui'])}</div>`;
-h+=`<h3 class="dg">Hệ thống</h3><div class="slist">${by(['sync','data'])}${ADM&&mm?srow('shield','p','Nhân viên và phân quyền','Mã mời, quyền truy cập',"go('acct')"):''}${srow('user','g','Tài khoản','Thông tin cá nhân, đăng xuất',"go('acct')")}</div><p class="mut" style="text-align:center;font-size:12px;margin:14px 0 0">Phiên bản app: v20.34</p>`;
+h+=`<h3 class="dg">Hệ thống</h3><div class="slist">${by(['sync','data'])}${ADM&&mm?srow('shield','p','Nhân viên và phân quyền','Mã mời, quyền truy cập',"go('acct')"):''}${srow('user','g','Tài khoản','Thông tin cá nhân, đăng xuất',"go('acct')")}</div><p class="mut" style="text-align:center;font-size:12px;margin:14px 0 0">Phiên bản app: v20.35</p>`;
 return h}
 function sett(){const s=SS&&secAv().find(x=>x.id==SS&&x.b);if(SS&&!s)SS=null;
 if(s)return `<div class="sph"><span class="sq lg k-${s.c}">${ic(s.i)}</span><div><h2>${s.t}</h2><small>${s.s}</small></div></div><div class="card sbody">${s.b()}</div>`;
@@ -2153,7 +2154,7 @@ function settHome(){const em=(typeof PROF!='undefined'&&PROF&&PROF.email)||'',by
 const mg=[['prods','Sản phẩm','prods','a',np+' sản phẩm',0],['cus','Khách hàng','cus','p',nd?nd+' khách còn nợ':S.customers.length+' khách',nd],['hist','Đơn hàng','hist','b',nu?nu+' chưa thu':'Xem và sửa đơn',nu],['pre','Đặt hàng trước','cal','a',(()=>{const n=pWait().length;return n?n+' đơn chờ giao':'Đơn Tết, giao sau'})(),preNeed()],['sup','Nhà cung cấp','sup','p',(()=>{const d=supDebt();return d.n?'Còn nợ '+kfmt(d.total):S.suppliers.length+' nhà cung cấp'})(),supDebt().n],['imp','Nguyên liệu','imp','b',nn?nn+' sắp hết':'Tồn kho, nhập hàng',nn],['stats','Thống kê','stats','g','Báo cáo lãi lỗ',0]].filter(x=>vis([x[0]]));
 return `<button type="button" class="sprof" onclick="go('acct')"><img class="slogo" src="${LOGO}" alt=""><span class="spi"><b>${esc(S.shop)}</b><small><span>${ADM?'Quản trị viên':'Nhân viên'}</span> · <span class="sy2">${esc(SYN)}</span></small></span>${CHV}</button>${!ADM?`<div class="card cnc"><label>Tên thu ngân (in trên hóa đơn)<input value="${esc(UI.cn||'')}" placeholder="Ví dụ: Lan" maxlength="40" onchange="cnSave(this.value)"></label><small class="mut">Để trống thì dùng tên tài khoản đang đăng nhập. Quản trị viên luôn ghi ADMIN.</small></div>`:''}
 <h3 class="dg">Quản lý</h3><div class="mgrid mg2">${mg.map(r=>`<button class="mt k-${r[3]}" onclick="go('${r[0]}'${r[0]=='prods'?',1':''})"><span class="mti">${ic(r[2])}</span><span class="mtt"><b>${r[1]}</b><small class="${r[5]?'w':''}">${r[4]}</small></span></button>`).join('')}</div>
-<h3 class="dg">Thiết lập</h3><div class="grl">${GRP().filter(g=>grpRows(g)).map(g=>`<button class="srow gr" onclick="openSec('g:${g.id}')"><span class="sq k-${g.c}">${ic(g.i)}</span><span class="srt"><b>${g.t}</b><small>${g.s}</small></span>${CHV}</button>`).join('')}</div><p class="mut" style="text-align:center;font-size:12px;margin:14px 0 0">Phiên bản app: v20.34<span class="vpi"><br>${vpInfo()}</span></p>`}
+<h3 class="dg">Thiết lập</h3><div class="grl">${GRP().filter(g=>grpRows(g)).map(g=>`<button class="srow gr" onclick="openSec('g:${g.id}')"><span class="sq k-${g.c}">${ic(g.i)}</span><span class="srt"><b>${g.t}</b><small>${g.s}</small></span>${CHV}</button>`).join('')}</div><p class="mut" style="text-align:center;font-size:12px;margin:14px 0 0">Phiên bản app: v20.35<span class="vpi"><br>${vpInfo()}</span></p>`}
 
 /* ===== v20.3: công thức nhiều nguyên liệu, quy đổi đơn vị (g↔kg, lạng, ml↔lít) ===== */
 const UCV={kg:['m',1000],g:['m',1],gr:['m',1],gam:['m',1],gram:['m',1],'lạng':['m',100],'lít':['v',1000],l:['v',1000],lit:['v',1000],ml:['v',1]};
@@ -2414,9 +2415,7 @@ if(UI.sy===undefined)UI.sy=0;
 const syBad=m=>/lỗi|Mất mạng|Không có quyền|Ngoại tuyến|rỗng/i.test(m||'');
 function syFlag(m){clearTimeout(SYT);const de=document.documentElement;de.classList.toggle('sybad',syBad(m));if(/^Đang/.test(m||''))SYT=setTimeout(()=>de.classList.add('sybad'),15000)}
 if(UI.hd===undefined)UI.hd=1;
-if(UI.sc===undefined)UI.sc=1;
-function syApply(){const c=document.documentElement.classList;c.toggle('syon',!!UI.sy);c.toggle('hdoff',!UI.hd);c.toggle('nosc',!UI.sc)}
-function setSc(v){UI.sc=v?1:0;saveUI();syApply()}
+function syApply(){const c=document.documentElement.classList;c.toggle('syon',!!UI.sy);c.toggle('hdoff',!UI.hd)}
 function setSy(v){UI.sy=v?1:0;saveUI();syApply()}
 function setHd(v){UI.hd=v?1:0;saveUI();syApply()}
 function syTap(){if(!document.documentElement.classList.contains('sybad')&&!UI.sy)return;try{openSett('sync')}catch(e){}}
@@ -2453,7 +2452,7 @@ if(/^(INPUT|TEXTAREA|SELECT)$/.test(e.tagName)||e.isContentEditable||e.id=='nv'|
 const c=getComputedStyle(e);if((c.overflowX=='auto'||c.overflowX=='scroll')&&e.scrollWidth>e.clientWidth+2)return true}return false}
 /* Trang bên cạnh được dựng sẵn và trượt cùng ngón tay như một dải trang */
 function tsPrep(dir){if(UI.lt)return null;try{const ids=tsIds(),ni=TS.i+dir;if(ni<0||ni>=ids.length)return null;const nt=ids[ni];if(nt=='sett'&&SETM)return null;
-const v=$('#v'),p=document.createElement('main');p.id='v';p.className='tsp';p.setAttribute('aria-hidden','true');p.innerHTML=T[nt]();
+const v=$('#v'),p=document.createElement('main');p.id='v';p.className='tsp';p.setAttribute('aria-hidden','true');p.innerHTML=T[nt]();p.querySelectorAll('img').forEach(i=>{i.loading='eager'});
 p.style.top=Math.max(0,Math.round(v.getBoundingClientRect().top+scrollY))+'px';p.style.transform='translateX('+(dir*TS.W)+'px)';v.after(p);return p}catch(e){return null}}
 function tsDrag(){const v=$('#v');const ids=tsIds(),ni=TS.i+TS.dir,has=ni>=0&&ni<ids.length;let x=has?TS.dx:Math.sign(TS.dx)*Math.min(64,Math.abs(TS.dx)*.3);TS.cx=x;
 if(TS.p||!has)v.style.transform='translate3d('+x+'px,0,0)';if(TS.p)TS.p.style.transform='translate3d('+(x+TS.dir*TS.W)+'px,0,0)';
@@ -2465,7 +2464,7 @@ function tsClear(v){v.style.transition='';v.style.transform='';v.style.opacity='
 function tsEnd(cancel){if(!TS.on)return;const lock=TS.lock;TS.on=0;if(lock!=1)return;
 const v=$('#v'),ids=tsIds(),W=TS.W,dir=TS.dir,ni=TS.i+dir,has=ni>=0&&ni<ids.length,dx=TS.dx,vel=tsVel(),p=TS.p,from=TS.cx,
 commit=!cancel&&has&&(Math.abs(dx)>W*.28||(Math.abs(dx)>36&&vel>.45)),red=matchMedia('(prefers-reduced-motion:reduce)').matches;TS.p=null;
-const fin=()=>{tsClear(v);if(p)p.remove();if(commit){nvSet(0);navTo(ids[ni]);const nv=$('#v');nv.classList.remove('pg')}if(NVP)NVP.style.transition='';nvpSync();nvHot(-1);document.documentElement.classList.remove('nvdrag');TS.busy=0;tsG(0)};
+const pim=p?[...p.querySelectorAll('img')]:[];const fin=()=>{tsClear(v);if(p)p.remove();if(commit){nvSet(0);navTo(ids[ni]);const nv=$('#v');nv.classList.remove('pg');imSwap(nv,pim)}if(NVP)NVP.style.transition='';nvpSync();nvHot(-1);document.documentElement.classList.remove('nvdrag');TS.busy=0;tsG(0)};
 if(red){fin();return}
 if(!p&&has){/* không có hình xem trước (Chế độ nhẹ…): trang đứng yên, chỉ đổi tab, không trượt qua lại */
 TS.busy=1;const dur=UI.lt?0:200;if(NVP)NVP.style.transition=dur?'left '+dur+'ms '+TSE:'';nvpSet(commit?ni:TS.i);nvHot(commit?ni:TS.i);tsClear(v);
@@ -2528,6 +2527,9 @@ document.addEventListener('focusout',()=>setTimeout(vpNudge,150));
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)setTimeout(vpNudge,200)});
 addEventListener('pageshow',()=>setTimeout(vpNudge,200));
 setTimeout(vpNudge,700);
+
+/* v20.35: khi vuốt xong, dùng lại đúng các ảnh đã vẽ ở trang xem trước để không bị nháy khi dựng lại trang thật */
+function imSwap(nv,pim){try{if(!nv||!pim||!pim.length)return;nv.querySelectorAll('img').forEach(im=>{const s=im.getAttribute('src'),k=pim.findIndex(x=>x.getAttribute('src')===s&&x.complete&&x.naturalWidth>0);if(k<0)return;const x=pim.splice(k,1)[0];x.removeAttribute('aria-hidden');im.replaceWith(x)})}catch(e){}}
 (async()=>{lkWrap();if('serviceWorker' in navigator){const had=!!navigator.serviceWorker.controller;navigator.serviceWorker.register('sw.js').catch(()=>{});navigator.serviceWorker.addEventListener('controllerchange',()=>{if(had)try{toast('Đã có bản mới. Mở lại app để cập nhật.')}catch(e){}})}
 const C=window.CFG||{};if(!C.url||!C.key||!window.supabase)return ashow('cfg');
 SB=supabase.createClient(C.url,C.key);

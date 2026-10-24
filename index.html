@@ -1062,6 +1062,10 @@ html.wd #v:has(>.pm5)>.card{grid-column:auto}
 html.wd #kl,html.wd #stv{grid-template-columns:repeat(auto-fill,minmax(440px,1fr))}
 html.wd #v:has(>.pm5){grid-template-columns:repeat(3,minmax(0,1fr))}
 }
+
+/* v20.33: giống Instagram – 1 lớp nhòe mạnh, KHÔNG phủ màu, cao ~85% vùng thanh trạng thái, mất dần rất nhanh ở mép dưới */
+html.sat:not(.wd)::before,html.sat:not(.wd)::after{content:none!important;display:none!important}
+html.sat:not(.wd) body::after{height:calc(env(safe-area-inset-top,0px)*.85)!important;background:none!important;-webkit-backdrop-filter:blur(9px);backdrop-filter:blur(9px);-webkit-mask-image:linear-gradient(#000 0,#000 78%,transparent 100%);mask-image:linear-gradient(#000 0,#000 78%,transparent 100%)}
 </style></head><body>
 <header id="hd">Giò chả</header>
 <main id="v"></main>
@@ -1414,7 +1418,7 @@ function updFB(){const b=$('#fb');if(b)b.hidden=true;requestAnimationFrame(()=>{
 function fbSave(){const k=fbInfo();if(!k)return;const nm=$('#pn')||document.querySelector('#v [data-k="name"]')||$('#i_n');if(nm&&!nm.value.trim())nm.focus();else if(document.activeElement&&document.activeElement.blur)document.activeElement.blur();k[0]()}
 function updBar(){const b=$('#bar');if(!b)return;const on=tab=='sell'&&!C.done&&C.items.length;b.hidden=!on;if(on){const t=lines().reduce((a,x)=>a+x,0);b.innerHTML=`<span>${C.items.length} món<br><b style="font-size:20px">${t-disc()<0?'Hoàn lại ':''}${money(Math.abs(t-disc()))}</b></span><button onmousedown="event.preventDefault()" onclick="saveO()">${ic('chk')}<span>${C.edit?'Cập nhật đơn':'Lưu đơn'}</span></button>`}}
 let TH=[],SG='',T0={x:0,y:0,t:0,e:null};
-const ah=()=>(typeof acctH=='function'?acctH():'<div class="card"><b>Bản thử trên claude.ai</b><br><small>Chưa có tài khoản và phân quyền. Bản cài đặt riêng có đăng nhập, nhân viên và mã mời.</small></div>')+'<p class="mut" style="text-align:center;font-size:12px">Phiên bản app: v20.32</p>';
+const ah=()=>(typeof acctH=='function'?acctH():'<div class="card"><b>Bản thử trên claude.ai</b><br><small>Chưa có tài khoản và phân quyền. Bản cài đặt riêng có đăng nhập, nhân viên và mã mời.</small></div>')+'<p class="mut" style="text-align:center;font-size:12px">Phiên bản app: v20.33</p>';
 
 let LB=0;function back(){LB=Date.now();if(!$('#cs').hidden)return csClose();if(!$('#sr').hidden)return closeSr();if(!$('#m').hidden)return closeM();if(tab=='sett'&&SS){SS=SSP&&!/^g:/.test(SS)?SSP:null;SSP=null;pgAnim();R();scrollTo(0,0);return}if(PF||FM.cus||FM.sup||IF||PRE)return closeF();if(TH.length){tab=TH.pop();pgAnim();R();scrollTo(0,0)}else if(tab!='dash')go('dash')}
 /* ===== Vuốt quay lại: CHỈ bắt đầu từ mép trái và CHỈ ở trang con/biểu mẫu =====
@@ -1490,7 +1494,7 @@ let h=`<div class="sprof"><img class="slogo" src="${LOGO}" alt=""><div class="sp
 h+=`<h3 class="dg">Quản lý</h3><div class="mgrid">${mg.map(r=>`<button class="mt k-${r[3]}" onclick="go('${r[0]}'${r[0]=='prods'?',1':''})"><span class="mti">${ic(r[2])}</span><b>${r[1]}</b></button>`).join('')}</div>`;
 const g1=by(['shop','units','sales','pay','cogs']);if(g1)h+=`<h3 class="dg">Cửa hàng</h3><div class="slist">${g1}</div>`;
 h+=`<h3 class="dg">Cá nhân hóa</h3><div class="slist">${by(['dw','ui'])}</div>`;
-h+=`<h3 class="dg">Hệ thống</h3><div class="slist">${by(['sync','data'])}${ADM&&mm?srow('shield','p','Nhân viên và phân quyền','Mã mời, quyền truy cập',"go('acct')"):''}${srow('user','g','Tài khoản','Thông tin cá nhân, đăng xuất',"go('acct')")}</div><p class="mut" style="text-align:center;font-size:12px;margin:14px 0 0">Phiên bản app: v20.32</p>`;
+h+=`<h3 class="dg">Hệ thống</h3><div class="slist">${by(['sync','data'])}${ADM&&mm?srow('shield','p','Nhân viên và phân quyền','Mã mời, quyền truy cập',"go('acct')"):''}${srow('user','g','Tài khoản','Thông tin cá nhân, đăng xuất',"go('acct')")}</div><p class="mut" style="text-align:center;font-size:12px;margin:14px 0 0">Phiên bản app: v20.33</p>`;
 return h}
 function sett(){const s=SS&&secAv().find(x=>x.id==SS&&x.b);if(SS&&!s)SS=null;
 if(s)return `<div class="sph"><span class="sq lg k-${s.c}">${ic(s.i)}</span><div><h2>${s.t}</h2><small>${s.s}</small></div></div><div class="card sbody">${s.b()}</div>`;
@@ -2147,7 +2151,7 @@ function settHome(){const em=(typeof PROF!='undefined'&&PROF&&PROF.email)||'',by
 const mg=[['prods','Sản phẩm','prods','a',np+' sản phẩm',0],['cus','Khách hàng','cus','p',nd?nd+' khách còn nợ':S.customers.length+' khách',nd],['hist','Đơn hàng','hist','b',nu?nu+' chưa thu':'Xem và sửa đơn',nu],['pre','Đặt hàng trước','cal','a',(()=>{const n=pWait().length;return n?n+' đơn chờ giao':'Đơn Tết, giao sau'})(),preNeed()],['sup','Nhà cung cấp','sup','p',(()=>{const d=supDebt();return d.n?'Còn nợ '+kfmt(d.total):S.suppliers.length+' nhà cung cấp'})(),supDebt().n],['imp','Nguyên liệu','imp','b',nn?nn+' sắp hết':'Tồn kho, nhập hàng',nn],['stats','Thống kê','stats','g','Báo cáo lãi lỗ',0]].filter(x=>vis([x[0]]));
 return `<button type="button" class="sprof" onclick="go('acct')"><img class="slogo" src="${LOGO}" alt=""><span class="spi"><b>${esc(S.shop)}</b><small><span>${ADM?'Quản trị viên':'Nhân viên'}</span> · <span class="sy2">${esc(SYN)}</span></small></span>${CHV}</button>${!ADM?`<div class="card cnc"><label>Tên thu ngân (in trên hóa đơn)<input value="${esc(UI.cn||'')}" placeholder="Ví dụ: Lan" maxlength="40" onchange="cnSave(this.value)"></label><small class="mut">Để trống thì dùng tên tài khoản đang đăng nhập. Quản trị viên luôn ghi ADMIN.</small></div>`:''}
 <h3 class="dg">Quản lý</h3><div class="mgrid mg2">${mg.map(r=>`<button class="mt k-${r[3]}" onclick="go('${r[0]}'${r[0]=='prods'?',1':''})"><span class="mti">${ic(r[2])}</span><span class="mtt"><b>${r[1]}</b><small class="${r[5]?'w':''}">${r[4]}</small></span></button>`).join('')}</div>
-<h3 class="dg">Thiết lập</h3><div class="grl">${GRP().filter(g=>grpRows(g)).map(g=>`<button class="srow gr" onclick="openSec('g:${g.id}')"><span class="sq k-${g.c}">${ic(g.i)}</span><span class="srt"><b>${g.t}</b><small>${g.s}</small></span>${CHV}</button>`).join('')}</div><p class="mut" style="text-align:center;font-size:12px;margin:14px 0 0">Phiên bản app: v20.32<span class="vpi"><br>${vpInfo()}</span></p>`}
+<h3 class="dg">Thiết lập</h3><div class="grl">${GRP().filter(g=>grpRows(g)).map(g=>`<button class="srow gr" onclick="openSec('g:${g.id}')"><span class="sq k-${g.c}">${ic(g.i)}</span><span class="srt"><b>${g.t}</b><small>${g.s}</small></span>${CHV}</button>`).join('')}</div><p class="mut" style="text-align:center;font-size:12px;margin:14px 0 0">Phiên bản app: v20.33<span class="vpi"><br>${vpInfo()}</span></p>`}
 
 /* ===== v20.3: công thức nhiều nguyên liệu, quy đổi đơn vị (g↔kg, lạng, ml↔lít) ===== */
 const UCV={kg:['m',1000],g:['m',1],gr:['m',1],gam:['m',1],gram:['m',1],'lạng':['m',100],'lít':['v',1000],l:['v',1000],lit:['v',1000],ml:['v',1]};

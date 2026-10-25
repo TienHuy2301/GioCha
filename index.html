@@ -1241,6 +1241,26 @@ html.swp #nv{background:var(--c)!important}
 .edge{bottom:calc(92px + env(safe-area-inset-bottom,0px))}
 body.mpg .edge,body.csopen .edge{bottom:0}
 #nv{touch-action:pan-y}
+/* v23.2: nhắc sao lưu, xóa toàn bộ */
+.bkn{display:flex;flex-direction:column;gap:10px;border:1px solid var(--g);background:var(--c)}
+.bkn .bkt{display:flex;flex-direction:column;gap:2px}.bkn .bkt span{color:var(--m);font-size:13px}
+.bkn .bkx{display:flex;gap:8px}.bkn .bkx button{flex:1;margin:0}
+.dz{margin-top:18px;padding-top:14px;border-top:1px solid var(--b)}.dz>b{display:block;color:var(--r);margin-bottom:6px}
+.wpc{display:flex;flex-direction:column;gap:10px}.wpc p{margin:0}
+.wpk{display:flex;align-items:center;gap:10px;flex-direction:row}.wpk input{width:22px;height:22px;flex:none}
+.rsf{display:block;margin-bottom:8px}
+.bkst{margin:0 0 6px}
+/* v23.3: nhật ký thao tác chi tiết */
+.auq{width:100%;margin:2px 0 8px}
+.auch{display:flex;gap:6px;overflow-x:auto;padding:2px 0 8px;-webkit-overflow-scrolling:touch;scrollbar-width:none}.auch::-webkit-scrollbar{display:none}
+.auc{flex:none;border:1px solid var(--b);background:var(--c);color:var(--t);border-radius:999px;padding:7px 13px;font-size:13px;font-weight:600;margin:0;width:auto;min-height:0}
+.auc.on{background:var(--g);border-color:var(--g);color:#fff}
+.aud{font-size:12px;font-weight:700;color:var(--m);text-transform:uppercase;letter-spacing:.04em;padding:14px 6px 4px}
+.alr.hd{cursor:pointer}.alr .alx{flex:none;align-self:center;color:var(--m);display:flex;transition:transform .15s}.alr .alx.op{transform:rotate(90deg)}.alr .alx svg{width:16px;height:16px}
+.alc.sy{background:#efe7fb;color:#5b3aa6}
+.aud-d{margin-top:8px;padding:8px 10px;border-radius:10px;background:var(--bg,#f4f6fb);display:flex;flex-direction:column;gap:5px}
+.aud-d div{display:flex;justify-content:space-between;gap:10px;font-size:13px}.aud-d span{color:var(--m);flex:none}.aud-d b{font-weight:600;text-align:right;word-break:break-word}.aud-d b.o{color:var(--r)}.aud-d s{color:var(--m);font-weight:400}
+.alr .alc{min-width:58px;text-align:center}
 </style></head><body>
 <header id="hd">Giò chả</header>
 <main id="v"></main>
@@ -1275,7 +1295,7 @@ const KND={products:'Sản phẩm',orders:'Đơn',customers:'Khách hàng',suppl
 const TBL='records',chk=r=>{if(r.error)throw{code:(r.error.code=='42501'||r.status==403)?'invalid_argument':'net',message:r.error.message}};
 function mkDB(){return{doc:p=>{const i=p.indexOf('/'),st=p.slice(0,i),id=p.slice(i+1);return{
 set:async x=>chk(await SB.from(TBL).upsert({shop_id:PROF.shop_id,store:st,id,data:x},{onConflict:'shop_id,store,id'})),
-delete:async()=>chk(await SB.from(TBL).delete().eq('shop_id',PROF.shop_id).eq('store',st).eq('id',id))}}}}
+delete:async()=>chk(await SB.from(TBL).delete().eq('shop_id',PROF.shop_id).eq('store',st).eq('id',id))}},wipe:async()=>{let r=await SB.rpc('wipe_shop');if(r.error)r=await SB.from(TBL).delete().eq('shop_id',PROF.shop_id).in('store',COLS);chk(r)}}}
 function apply(c,rem,t0){const dqs=S.dq||[];rem=rem.filter(x=>{const k=c+'/'+x.id;return !dqs.includes(k)&&!(CD[k]>t0)});
 const has=new Set(rem.map(x=>x.id)),rk=new Set(rem.map(x=>c+'/'+x.id));
 W(c)&&S[c].forEach(x=>{const k=c+'/'+x.id;if(CA[k]!==undefined&&!rk.has(k)&&CA[k]!==hj(x)&&!(CT[k]>t0))CFL.push(lbl(c,x))});
@@ -1322,11 +1342,27 @@ async function lkGo(){const p=$('#lkp'),m=$('#lkm');if(!p||!m)return;m.textConte
 function lkTog(){if(!UI.pl){UI.pl=1;saveUI();LK.t=0;toast('Đã bật khóa. Thống kê, Nhà cung cấp, Nguyên liệu giờ cần mật khẩu');R();return}
 modal(`<b>Tắt khóa mục nhạy cảm?</b><label>Nhập mật khẩu quản trị viên<input id="lkq" type="password" autocomplete="current-password" onkeydown="if(event.key=='Enter')lkOff()"></label><p id="lkm2" class="dn"></p><div class="seg"><button onclick="closeM()">Hủy</button><button class="on" onclick="lkOff()">Tắt khóa</button></div>`)}
 async function lkOff(){const p=$('#lkq'),m=$('#lkm2');if(!p||!m)return;m.textContent='';if(await lkChk(p.value,m)){UI.pl=0;saveUI();closeM();toast('Đã tắt khóa');R()}}
-const AUS={products:'Sản phẩm',orders:'Đơn hàng',customers:'Khách hàng',suppliers:'Nhà cung cấp',imports:'Kho'},AUK={in:'Nhập hàng',use:'Xuất dùng',loss:'Hao hụt',exp:'Chi phí',pay:'Trả nợ NCC',count:'Kiểm kê'};
-async function auLog(){const hd0=`<div class="mh"><b>Nhật ký thao tác</b><button class="srx" onclick="closeM()" aria-label="Đóng">×</button></div>`;modal(hd0+'<p class="ihint">Đang tải…</p>');let r;try{r=await SB.from('audit_log').select('at,email,action,store,summary').order('at',{ascending:false}).limit(150)}catch(e){r={error:e}}
-let b;if(r.error)b=`<p class="ihint">${/audit_log|relation|schema cache|does not exist/i.test(r.error.message||'')?'Chưa cài nhật ký. Mở Supabase, vào SQL Editor và chạy file nhat-ky.sql một lần.':'Không tải được. Kiểm tra mạng rồi thử lại.'}</p>`;
-else{const L=r.data||[];b=L.length?`<p class="ihint">150 thao tác gần nhất, tự xóa sau 90 ngày.</p><div class="hlst">${L.map(x=>{const sm=String(x.summary||'').replace(/^(\w+) · /,(q,k)=>x.store=='imports'?(AUK[k]||k)+' · ':q),cl=x.action=='Xóa'?'dl':x.action=='Thêm'?'ad':'ed';return `<div class="alr"><i class="alc ${cl}">${esc(x.action)}</i><span class="alt"><b>${esc(AUS[x.store]||x.store)}${sm?': '+esc(sm):''}</b><small>${fdt(Date.parse(x.at))} · ${esc(String(x.email||'Hệ thống').split('@')[0])}</small></span></div>`}).join('')}</div>`:'<p class="ihint">Chưa có thao tác nào được ghi.</p>'}
-if(!$('#m').hidden)modal(hd0+b+'<button class="ghost" onclick="closeM()">Đóng</button>')}
+const AUS={products:'Sản phẩm',orders:'Đơn hàng',customers:'Khách hàng',suppliers:'Nhà cung cấp',imports:'Kho',app:'Hệ thống'},AUK={in:'Nhập hàng',use:'Xuất dùng',loss:'Hao hụt',exp:'Chi phí',pay:'Trả nợ NCC',count:'Kiểm kê'};
+const AUC=[['','Tất cả'],['orders','Đơn hàng'],['products','Sản phẩm'],['customers','Khách hàng'],['suppliers','Nhà cung cấp'],['imports','Kho'],['app','Hệ thống']],AUA=[['','Mọi thao tác'],['Thêm','Thêm'],['Sửa','Sửa'],['Xóa','Xóa']];
+let AU={rows:[],st:'',ac:'',q:'',more:0,open:{},nod:0};
+async function auLog(){AU={rows:[],st:'',ac:'',q:'',more:0,open:{},nod:0};modal(mph('Nhật ký thao tác','','','closeM()')+'<p class="ihint">Đang tải…</p>');await auLoad(1)}
+async function auLoad(first){let r,n0=AU.rows.length;const sel=AU.nod?'id,at,email,action,store,rec_id,summary':'id,at,email,action,store,rec_id,summary,detail';
+try{r=await SB.from('audit_log').select(sel).order('at',{ascending:false}).range(n0,n0+199)}catch(e){r={error:e}}
+if(r.error&&!AU.nod&&/detail|column/i.test(r.error.message||'')){AU.nod=1;return auLoad(first)}
+if(!$('#m')||$('#m').hidden)return;
+if(r.error){const m=/audit_log|relation|schema cache|does not exist/i.test(r.error.message||'')?'Chưa cài nhật ký. Mở Supabase, vào SQL Editor và chạy file nhat-ky.sql một lần.':'Không tải được. Kiểm tra mạng rồi thử lại.';if(first)modal(mph('Nhật ký thao tác','','','closeM()')+`<p class="ihint">${m}</p><button class="ghost" onclick="auLog()">Thử lại</button>`);else toast(m);return}
+AU.rows=AU.rows.concat(r.data||[]);AU.more=(r.data||[]).length>=200;if(first)auShell();else auR()}
+function auShell(){modal(mph('Nhật ký thao tác','','','closeM()')+`<input id="auq" class="auq" type="search" placeholder="Tìm trong nhật ký (mã đơn, tên, người làm...)" oninput="AU.q=this.value;auR()"><div class="auch" id="auc"></div><div class="auch" id="aua"></div><p class="ihint" id="aun"></p><div id="aul"></div><div id="aum"></div>`);auR()}
+function auChips(){$('#auc').innerHTML=AUC.map(c=>`<button class="auc ${AU.st==c[0]?'on':''}" onclick="AU.st='${c[0]}';auR()">${c[1]}</button>`).join('');$('#aua').innerHTML=AUA.map(c=>`<button class="auc ${AU.ac==c[0]?'on':''}" onclick="AU.ac='${c[0]}';auR()">${c[1]}</button>`).join('')}
+const auWho=x=>esc(String(x.email||'Hệ thống').split('@')[0]),auSm=x=>String(x.summary||'').replace(/^(\w+) · /,(q,k)=>x.store=='imports'?(AUK[k]||k)+' · ':q);
+function auD(d,x){if(!Array.isArray(d)||!d.length)return '';return `<div class="aud-d">${d.map(z=>{const l=esc(z[0]);if(z[1]==null)return `<div><span>${l}</span><b>${esc(z[2])}</b></div>`;if(z[2]==null)return `<div><span>${l}</span><b class="o">${esc(z[1])}</b></div>`;return `<div><span>${l}</span><b><s>${esc(z[1])}</s> → ${esc(z[2])}</b></div>`}).join('')}</div>`}
+function auR(){if(!$('#aul'))return;auChips();const q=noAcc(AU.q||'').toLowerCase();let L=AU.rows.filter(x=>(!AU.st||x.store==AU.st)&&(!AU.ac||x.action==AU.ac)&&(!q||noAcc([x.summary,x.email,x.action,AUS[x.store],JSON.stringify(x.detail||'')].join(' ')).toLowerCase().includes(q)));
+$('#aun').textContent=L.length?`Hiển thị ${L.length} thao tác (đã tải ${AU.rows.length}). Nhật ký tự xóa sau 90 ngày. Bấm vào dòng có mũi tên để xem chi tiết.`:'Không có thao tác nào khớp.';
+const td=fdt(Date.now()).slice(0,10),yd=fdt(Date.now()-864e5).slice(0,10);let day='',h='';
+L.forEach(x=>{const f=fdt(Date.parse(x.at)),d=f.slice(0,10);if(d!=day){day=d;h+=`<div class="aud">${d==td?'Hôm nay':d==yd?'Hôm qua':d}</div>`}
+const cl=x.action=='Xóa'||x.action=='Xóa toàn bộ'?'dl':x.action=='Thêm'?'ad':x.store=='app'?'sy':'ed',hasD=Array.isArray(x.detail)&&x.detail.length,op=AU.open[x.id],sm=auSm(x);
+h+=`<div class="alr ${hasD?'hd':''}" ${hasD?`onclick="AU.open[${x.id}]=!AU.open[${x.id}];auR()"`:''}><i class="alc ${cl}">${esc(x.action)}</i><span class="alt"><b>${x.store=='app'?'':esc(AUS[x.store]||x.store)+(sm?': ':'')}${esc(sm)}</b><small>${f.slice(11)} · ${auWho(x)}</small>${op?auD(x.detail,x):''}</span>${hasD?`<em class="alx ${op?'op':''}">${CHV}</em>`:''}</div>`});
+$('#aul').innerHTML=h;$('#aum').innerHTML=AU.more?'<button class="ghost" onclick="auLoad(0)">Tải thêm 200 thao tác cũ hơn</button>':''}
 function memH(){return `<div id="mem" class="ac" style="gap:12px"><div class="ac-card"><p class="ac-note" style="margin:0">Đang tải…</p></div></div>`}
 async function mem(){if(!ADM||!$('#mem'))return;let a,b;try{[a,b]=await Promise.all([SB.from('shops').select('invite_code').single(),SB.from('profiles').select('id,email,role').eq('shop_id',PROF.shop_id)])}catch(e){a=b={error:1}}
 if(!$('#mem'))return;if(a.error||b.error)return $('#mem').innerHTML=`<div class="ac-card"><p class="ac-note" style="margin:0 0 10px">Không tải được danh sách. Kiểm tra mạng rồi thử lại.</p><div class="ac-btns"><button class="ac-gh" onclick="mem()">Thử lại</button></div></div>`;
@@ -1564,8 +1600,8 @@ function expO(a,b){const r=[['Mã đơn','Ngày giờ','Trạng thái','Sản ph
 S.orders.filter(o=>{const k=dk(o.ts);return k>=a&&k<=b}).sort((x,y)=>x.ts-y.ts).forEach(o=>o.items.forEach(i=>r.push([o.code,fdt(o.ts),o.status=='cancelled'?'Đã hủy':'Hợp lệ',i.name,i.unit,i.qty,i.price,Math.round(i.qty*i.price),o.discount||0,pay(o),o.note||''])));
 showText('Đơn hàng (CSV)',r.map(x=>x.map(q).join(',')).join('\n'))}
 function expP(){showText('Sản phẩm (CSV)',[['Mã','Tên','Đơn vị','Giá bán','Ghi chú','Trạng thái'],...S.products.map(p=>[p.code,p.name,p.unit,p.price,p.note,p.active?'Đang KD':'Ngừng KD'])].map(x=>x.map(q).join(',')).join('\n'))}
-function rs(){modal(mph('Dán bản sao lưu','rs2()','Khôi phục')+`<textarea id="rt" rows="8"></textarea><div class="seg"><button onclick="closeM()">Hủy</button><button class="on" onclick="rs2()">Khôi phục</button></div>`)}
-function rs2(){try{const d=JSON.parse($('#rt').value);if(!Array.isArray(d.products)||!Array.isArray(d.orders))throw 0;closeM();ask('Ghi đè dữ liệu hiện tại bằng bản sao lưu?',()=>{const ok=Object.keys(CA).filter(k=>k!='cfg'),q=(S.dq||[]).slice();S=d;delete S.ca;delete S.dq;norm();if(q.length)S.dq=q;S.ca=CA;ok.forEach(k=>{const[c,id]=k.split('/');if(!S[c]||!S[c].some(x=>x.id==id))dqa(k)});save();hd();R();toast('Đã khôi phục')},'Khôi phục')}catch(e){toast('Bản sao lưu không hợp lệ')}}
+function rs(){modal(mph('Dán bản sao lưu','rs2()','Khôi phục')+`<label class="rsf">Chọn file sao lưu (.json)<input type="file" accept=".json,application/json" onchange="rsFile(this)"></label><textarea id="rt" rows="8" placeholder="hoặc dán nội dung sao lưu vào đây"></textarea><div class="seg"><button onclick="closeM()">Hủy</button><button class="on" onclick="rs2()">Khôi phục</button></div>`)}
+function rs2(){try{const d=JSON.parse($('#rt').value);if(!Array.isArray(d.products)||!Array.isArray(d.orders))throw 0;closeM();ask('Ghi đè dữ liệu hiện tại bằng bản sao lưu?',()=>{const ok=Object.keys(CA).filter(k=>k!='cfg'),q=(S.dq||[]).slice();S=d;delete S.ca;delete S.dq;norm();if(q.length)S.dq=q;S.ca=CA;ok.forEach(k=>{const[c,id]=k.split('/');if(!S[c]||!S[c].some(x=>x.id==id))dqa(k)});save();hd();R();auEv('Khôi phục','Khôi phục dữ liệu từ bản sao lưu');toast('Đã khôi phục')},'Khôi phục')}catch(e){toast('Bản sao lưu không hợp lệ')}}
 const MD={cus:{k:'customers',t:'Khách hàng',f:[['name','Tên'],['phone','Điện thoại'],['addr','Địa chỉ'],['note','Ghi chú']]},sup:{k:'suppliers',t:'Nhà cung cấp',f:[['name','Tên nhà cung cấp'],['phone','Điện thoại'],['addr','Địa chỉ'],['contact','Người liên hệ'],['note','Ghi chú']]}};
 let FM={},FQ={},IF=null,IQ={s:'',d:today()};
 const iamt=x=>Math.round(x.qty*x.price),impSum=(a,b)=>S.imports.filter(x=>x.date>=a&&x.date<=b).reduce((s,x)=>s+iamt(x),0);
@@ -1593,7 +1629,7 @@ function updFB(){const b=$('#fb');if(b)b.hidden=true;requestAnimationFrame(()=>{
 function fbSave(){const k=fbInfo();if(!k)return;const nm=$('#pn')||document.querySelector('#v [data-k="name"]')||$('#i_n');if(nm&&!nm.value.trim())nm.focus();else if(document.activeElement&&document.activeElement.blur)document.activeElement.blur();k[0]()}
 function updBar(){const b=$('#bar');if(!b)return;const on=tab=='sell'&&!C.done&&C.items.length;b.hidden=!on;if(on){const t=lines().reduce((a,x)=>a+x,0);b.innerHTML=`<span>${C.items.length} món<br><b style="font-size:20px">${t-disc()<0?'Hoàn lại ':''}${money(Math.abs(t-disc()))}</b></span><button onmousedown="event.preventDefault()" onclick="saveO()">${ic('chk')}<span>${C.edit?'Cập nhật đơn':'Lưu đơn'}</span></button>`}}
 let TH=[],SG='',T0={x:0,y:0,t:0,e:null};
-const ah=()=>(typeof acctH=='function'?acctH():'<div class="card"><b>Bản thử trên claude.ai</b><br><small>Chưa có tài khoản và phân quyền. Bản cài đặt riêng có đăng nhập, nhân viên và mã mời.</small></div>')+'<p class="mut" style="text-align:center;font-size:12px">Phiên bản app: v23.1.1</p>';
+const ah=()=>(typeof acctH=='function'?acctH():'<div class="card"><b>Bản thử trên claude.ai</b><br><small>Chưa có tài khoản và phân quyền. Bản cài đặt riêng có đăng nhập, nhân viên và mã mời.</small></div>')+'<p class="mut" style="text-align:center;font-size:12px">Phiên bản app: v23.3.1</p>';
 
 let LB=0;function back(){LB=Date.now();if(!$('#cs').hidden)return csClose();if(!$('#sr').hidden)return closeSr();if(!$('#m').hidden)return closeM();if(tab=='sett'&&SS){SS=SSP&&!/^g:/.test(SS)?SSP:null;SSP=null;pgAnim();R();scrollTo(0,0);return}if(shOn())return shClose();if(PF||FM.cus||FM.sup||IF||PRE)return closeF();if(TH.length){tab=TH.pop();pgAnim();R();scrollTo(0,0)}else if(tab!='dash')go('dash')}
 /* ===== Vuốt quay lại: CHỈ bắt đầu từ mép trái và CHỈ ở trang con/biểu mẫu =====
@@ -1676,7 +1712,7 @@ const secs=()=>[
 {id:'dw',i:'dash',c:'p',t:'Trang tổng quan',s:'Ô chỉ số và lối tắt hiển thị',act:'dwSet()'},
 {id:'ui',i:'palette',c:'a',t:'Giao diện',s:'Sáng / tối, kiểu hiển thị sản phẩm',b:()=>uiH()},
 {id:'sync',i:'sync',c:'b',t:'Đồng bộ',s:'Trạng thái, đồng bộ ngay',b:()=>`<p>Trạng thái: <b class="sy2">${esc(SYN)}</b></p><button class="ghost" onclick="syncNow()">Đồng bộ ngay</button>`},
-{id:'data',i:'db',c:'r',t:'Dữ liệu và sao lưu',s:'Xuất Excel, sao lưu, khôi phục',adm:1,b:()=>`<button class="ghost" onclick="expX('0000','9999')">Báo cáo Excel (toàn bộ)</button><button class="ghost" onclick="expH('0000','9999')">Danh sách đơn hàng (Excel)</button><button class="ghost" onclick="expPX()">Danh sách sản phẩm (Excel)</button><button class="ghost" onclick="showText('Sao lưu dữ liệu (JSON)',JSON.stringify({...S,ca:void 0,dq:void 0}))">Sao lưu toàn bộ dữ liệu</button><button class="ghost" onclick="rs()">Khôi phục từ bản sao lưu</button>`}];
+{id:'data',i:'db',c:'r',t:'Dữ liệu và sao lưu',s:'Xuất Excel, sao lưu, khôi phục',adm:1,b:()=>`<p class="mut bkst">${esc(bkTxt())}</p><button class="ghost" onclick="expAllX()">Xuất Excel theo dõi (đơn, sản phẩm, khách, nhập hàng)</button><button class="ghost" onclick="expX('0000','9999')">Báo cáo Excel (toàn bộ)</button><button class="ghost" onclick="expH('0000','9999')">Danh sách đơn hàng (Excel)</button><button class="ghost" onclick="expPX()">Danh sách sản phẩm (Excel)</button><button class="ghost" onclick="bkDo()">Sao lưu ra file (tải về)</button><button class="ghost" onclick="showText('Sao lưu dữ liệu (JSON)',bkJson())">Xem và sao chép nội dung sao lưu</button><button class="ghost" onclick="rs()">Khôi phục từ bản sao lưu</button>${wpUndoAvail()?`<button class="ghost" onclick="wpUndo()">Hoàn tác lần xóa gần nhất</button>`:''}<div class="dz"><b>Vùng nguy hiểm</b><button class="btn-red" onclick="wpOpen()">Xóa toàn bộ dữ liệu</button></div>`}];
 const secAv=()=>secs().filter(x=>ADM||!x.adm);
 function openSec(id){SS=id;pgAnim();R();scrollTo(0,0)}
 function openSett(sec){go('sett');SS=sec;R();scrollTo(0,0)}
@@ -1688,7 +1724,7 @@ let h=`<div class="sprof"><img class="slogo" src="${LOGO}" alt=""><div class="sp
 h+=`<h3 class="dg">Quản lý</h3><div class="mgrid">${mg.map(r=>`<button class="mt k-${r[3]}" onclick="go('${r[0]}'${r[0]=='prods'?',1':''})"><span class="mti">${ic(r[2])}</span><b>${r[1]}</b></button>`).join('')}</div>`;
 const g1=by(['shop','units','sales','pay','cogs']);if(g1)h+=`<h3 class="dg">Cửa hàng</h3><div class="slist">${g1}</div>`;
 h+=`<h3 class="dg">Cá nhân hóa</h3><div class="slist">${by(['dw','ui'])}</div>`;
-h+=`<h3 class="dg">Hệ thống</h3><div class="slist">${by(['sync','data'])}${ADM&&mm?srow('shield','p','Nhân viên và phân quyền','Mã mời, quyền truy cập',"go('acct')"):''}${srow('user','g','Tài khoản','Thông tin cá nhân, đăng xuất',"go('acct')")}</div><p class="mut" style="text-align:center;font-size:12px;margin:14px 0 0">Phiên bản app: v23.1.1</p>`;
+h+=`<h3 class="dg">Hệ thống</h3><div class="slist">${by(['sync','data'])}${ADM&&mm?srow('shield','p','Nhân viên và phân quyền','Mã mời, quyền truy cập',"go('acct')"):''}${srow('user','g','Tài khoản','Thông tin cá nhân, đăng xuất',"go('acct')")}</div><p class="mut" style="text-align:center;font-size:12px;margin:14px 0 0">Phiên bản app: v23.3.1</p>`;
 return h}
 function sett(){const s=SS&&secAv().find(x=>x.id==SS&&x.b);if(SS&&!s)SS=null;
 if(s)return `<div class="sph"><span class="sq lg k-${s.c}">${ic(s.i)}</span><div><h2>${s.t}</h2><small>${s.s}</small></div></div><div class="card sbody">${s.b()}</div>`;
@@ -2159,7 +2195,7 @@ const perTxt=(a,b)=>(a=='0000'?'Từ đầu':'Từ ngày '+dmy(a))+(b=='9999'?' 
 function xlsOut(name,sheets){try{const b=XL.book(sheets);XL.saveFile(name,b);toast('Đã tạo tệp Excel')}catch(e){console.error(e);toast('Không tạo được tệp Excel')}}
 const stTxt=o=>o.status=='cancelled'?'Đã hủy':'Hợp lệ';
 /* Báo cáo doanh thu & lợi nhuận */
-function expX(a,b){const R=plR(a,b),I=inv(b),adm=ADM,p=perTxt(a,b),os=S.orders.filter(o=>{const k=dk(o.ts);return k>=a&&k<=b}).sort((x,y)=>x.ts-y.ts),nc=os.filter(o=>o.status=='cancelled').length,sh=[];
+function expX(a,b){auEv('Xuất Excel','Báo cáo doanh thu, lợi nhuận');const R=plR(a,b),I=inv(b),adm=ADM,p=perTxt(a,b),os=S.orders.filter(o=>{const k=dk(o.ts);return k>=a&&k<=b}).sort((x,y)=>x.ts-y.ts),nc=os.filter(o=>o.status=='cancelled').length,sh=[];
 const rows=[],mg=['A1:C1','A2:C2','A3:C3'],K=(l,v,s,f,nt)=>rows.push([{v:l,s:s==11||s==15?(s==11?10:13):13},f?{f,v,s:s||15}:{v,s:s||15},{v:nt||'',s:14}]);
 rows.push([{v:'BÁO CÁO DOANH THU & LỢI NHUẬN',s:1}]);rows.push([{v:p,s:2}]);rows.push([{v:S.shop+(S.cfg.addr?' · '+S.cfg.addr:'')+(S.cfg.phone?' · ĐT '+S.cfg.phone:''),s:2}]);rows.push([]);
 rows.push([{v:'CHỈ TIÊU',s:3},{v:'SỐ TIỀN (VNĐ)',s:3},{v:'GHI CHÚ',s:3}]);
@@ -2193,14 +2229,14 @@ sh.push(XL.table({name:'Chi phí',title:'CHI PHÍ VẬN HÀNH',sub:p,head:[{h:'N
 sh.push(XL.table({name:'Tồn kho',title:'TỒN KHO NGUYÊN LIỆU CUỐI KỲ',sub:(b=='9999'?'Hiện tại':'Tính đến ngày '+dmy(b)),head:[{h:'Nguyên liệu',w:28},{h:'ĐVT',w:8,t:'c'},{h:'Tồn',w:12,t:'q'},{h:'Giá bình quân (VNĐ)',w:22,t:'m'},{h:'Giá trị (VNĐ)',w:22,t:'m'}],rows:I.items.map(s=>[s.name,s.unit||'',Math.round(s.q*1000)/1000,Math.round(s.avg),s.v]),foot:(r0,r1)=>['TỔNG CỘNG',null,null,null,XL.sumF('E',r0,r1,I.total)],note:['Giá bình quân tính theo phương pháp bình quân tức thời (bình quân gia quyền liên hoàn).']}))}
 xlsOut('bao-cao-doanh-thu-loi-nhuan-'+today()+'.xlsx',sh)}
 /* Lịch sử bán hàng */
-function expH(a,b){const os=S.orders.filter(o=>{const k=dk(o.ts);return k>=a&&k<=b}).sort((x,y)=>x.ts-y.ts),p=perTxt(a,b),sh=[];
+function expH(a,b){auEv('Xuất Excel','Danh sách đơn hàng');const os=S.orders.filter(o=>{const k=dk(o.ts);return k>=a&&k<=b}).sort((x,y)=>x.ts-y.ts),p=perTxt(a,b),sh=[];
 sh.push(XL.table({name:'Danh sách đơn',title:'DANH SÁCH ĐƠN HÀNG',sub:p,head:[{h:'Mã đơn',w:16,t:'c'},{h:'Ngày giờ',w:17,t:'dt'},{h:'Trạng thái',w:12,t:'c'},{h:'Khách hàng',w:24},{h:'Thanh toán',w:14,t:'c'},{h:'Tổng tiền hàng (VNĐ)',w:20,t:'m'},{h:'Chiết khấu (VNĐ)',w:18,t:'m'},{h:'Phải thanh toán (VNĐ)',w:22,t:'m'},{h:'Ghi chú',w:26}],
 rows:os.map((o,i)=>[o.code,o.ts,stTxt(o),o.cname||(o.type=='si'?'Khách sỉ':'Khách lẻ'),pmL[opm(o)],tot(o),o.discount||0,{f:`F${6+i}-G${6+i}`,v:pay(o)},o.note||'']),foot:(r0,r1)=>['TỔNG (đơn hợp lệ)',null,null,null,null,{f:`SUMIF(C${r0}:C${r1},"Hợp lệ",F${r0}:F${r1})`,v:os.filter(o=>o.status!='cancelled').reduce((s,o)=>s+tot(o),0),s:11},{f:`SUMIF(C${r0}:C${r1},"Hợp lệ",G${r0}:G${r1})`,v:os.filter(o=>o.status!='cancelled').reduce((s,o)=>s+(o.discount||0),0),s:11},{f:`SUMIF(C${r0}:C${r1},"Hợp lệ",H${r0}:H${r1})`,v:os.filter(o=>o.status!='cancelled').reduce((s,o)=>s+pay(o),0),s:11},null]}));
 const L=[];os.forEach(o=>o.items.forEach(i=>L.push([o.code,o.ts,stTxt(o),o.cname||(o.type=='si'?'Khách sỉ':'Khách lẻ'),i.name,i.unit,i.qty,i.price,Math.round(i.qty*i.price)])));
 sh.push(XL.table({name:'Chi tiết sản phẩm',title:'CHI TIẾT SẢN PHẨM ĐÃ BÁN',sub:p,head:[{h:'Mã đơn',w:16,t:'c'},{h:'Ngày giờ',w:17,t:'dt'},{h:'Trạng thái',w:12,t:'c'},{h:'Khách hàng',w:22},{h:'Sản phẩm',w:26},{h:'ĐVT',w:8,t:'c'},{h:'Số lượng',w:10,t:'q'},{h:'Đơn giá (VNĐ)',w:16,t:'m'},{h:'Thành tiền (VNĐ)',w:18,t:'m'}],rows:L.map((x,i)=>[x[0],x[1],x[2],x[3],x[4],x[5],x[6],x[7],{f:`G${6+i}*H${6+i}`,v:x[8]}]),foot:(r0,r1)=>['TỔNG (đơn hợp lệ)',null,null,null,null,null,null,null,{f:`SUMIF(C${r0}:C${r1},"Hợp lệ",I${r0}:I${r1})`,v:L.filter(x=>x[2]=='Hợp lệ').reduce((s,x)=>s+x[8],0),s:11}]}));
 xlsOut('don-hang-'+today()+'.xlsx',sh)}
 /* Danh sách sản phẩm */
-function expPX(){const ps=S.products;xlsOut('san-pham-'+today()+'.xlsx',[XL.table({name:'Sản phẩm',title:'DANH SÁCH SẢN PHẨM',sub:'Ngày lập: '+dmy(today()),head:[{h:'Mã',w:10,t:'c'},{h:'Tên sản phẩm',w:30},{h:'ĐVT',w:8,t:'c'},{h:'Giá bán (VNĐ)',w:18,t:'m'},{h:'Giá sỉ (VNĐ)',w:18,t:'m'},...(ADM?[{h:'Giá vốn (VNĐ)',w:18,t:'m'}]:[]),{h:'Trạng thái',w:18,t:'c'},{h:'Ghi chú',w:26}],rows:ps.map(p=>[p.code||'',p.name,p.unit,p.price,p.wprice||0,...(ADM?[+p.cost||0]:[]),p.active?'Đang kinh doanh':'Ngừng kinh doanh',p.note||''])})])}
+function expPX(){auEv('Xuất Excel','Danh sách sản phẩm');const ps=S.products;xlsOut('san-pham-'+today()+'.xlsx',[XL.table({name:'Sản phẩm',title:'DANH SÁCH SẢN PHẨM',sub:'Ngày lập: '+dmy(today()),head:[{h:'Mã',w:10,t:'c'},{h:'Tên sản phẩm',w:30},{h:'ĐVT',w:8,t:'c'},{h:'Giá bán (VNĐ)',w:18,t:'m'},{h:'Giá sỉ (VNĐ)',w:18,t:'m'},...(ADM?[{h:'Giá vốn (VNĐ)',w:18,t:'m'}]:[]),{h:'Trạng thái',w:18,t:'c'},{h:'Ghi chú',w:26}],rows:ps.map(p=>[p.code||'',p.name,p.unit,p.price,p.wprice||0,...(ADM?[+p.cost||0]:[]),p.active?'Đang kinh doanh':'Ngừng kinh doanh',p.note||''])})])}
 
 /* ===== v18: cài đặt thanh toán, giá vốn ===== */
 function bkSave(){const bin=$('#bk_b').value,acc=($('#bk_a').value||'').replace(/\D/g,''),nm=noAcc($('#bk_n').value||'').toUpperCase().replace(/[^A-Z0-9 ]/g,'').replace(/\s+/g,' ').trim();$('#bk_a').value=acc;$('#bk_n').value=nm;S.cfg.bank=(bin&&acc)?{bin,acc,name:nm}:{bin,acc,name:nm};save();toast(bin&&acc?'Đã lưu tài khoản nhận tiền':'Chọn ngân hàng và nhập số tài khoản để bật mã QR')}
@@ -2345,7 +2381,7 @@ function settHome(){const em=(typeof PROF!='undefined'&&PROF&&PROF.email)||'',by
 const mg=[['prods','Sản phẩm','prods','a',np+' sản phẩm',0],['cus','Khách hàng','cus','p',nd?nd+' khách còn nợ':S.customers.length+' khách',nd],['hist','Đơn hàng','hist','b',nu?nu+' chưa thu':'Xem và sửa đơn',nu],['pre','Đặt hàng trước','cal','a',(()=>{const n=pWait().length;return n?n+' đơn chờ giao':'Đơn Tết, giao sau'})(),preNeed()],['sup','Nhà cung cấp','sup','p',(()=>{const d=supDebt();return d.n?'Còn nợ '+kfmt(d.total):S.suppliers.length+' nhà cung cấp'})(),supDebt().n],['imp','Nguyên liệu','imp','b',nn?nn+' sắp hết':'Tồn kho, nhập hàng',nn],['stats','Thống kê','stats','g','Báo cáo lãi lỗ',0]].filter(x=>vis([x[0]]));
 return `<button type="button" class="sprof" onclick="go('acct')"><img class="slogo" src="${LOGO}" alt=""><span class="spi"><b>${esc(S.shop)}</b><small><span>${ADM?'Quản trị viên':'Nhân viên'}</span> · <span class="sy2">${esc(SYN)}</span></small></span>${CHV}</button>${!ADM?`<div class="card cnc"><label>Tên thu ngân (in trên hóa đơn)<input value="${esc(UI.cn||'')}" placeholder="Ví dụ: Lan" maxlength="40" onchange="cnSave(this.value)"></label><small class="mut">Để trống thì dùng tên tài khoản đang đăng nhập. Quản trị viên luôn ghi ADMIN.</small></div>`:''}
 <h3 class="dg">Quản lý</h3><div class="mgrid mg2">${mg.map(r=>`<button class="mt k-${r[3]}" onclick="go('${r[0]}'${r[0]=='prods'?',1':''})"><span class="mti">${ic(r[2])}</span><span class="mtt"><b>${r[1]}</b><small class="${r[5]?'w':''}">${r[4]}</small></span></button>`).join('')}</div>
-<h3 class="dg">Thiết lập</h3><div class="grl">${GRP().filter(g=>grpRows(g)).map(g=>`<button class="srow gr" onclick="openSec('g:${g.id}')"><span class="sq k-${g.c}">${ic(g.i)}</span><span class="srt"><b>${g.t}</b><small>${g.s}</small></span>${CHV}</button>`).join('')}</div><p class="mut" style="text-align:center;font-size:12px;margin:14px 0 0">Phiên bản app: v23.1.1</p>`}
+<h3 class="dg">Thiết lập</h3><div class="grl">${GRP().filter(g=>grpRows(g)).map(g=>`<button class="srow gr" onclick="openSec('g:${g.id}')"><span class="sq k-${g.c}">${ic(g.i)}</span><span class="srt"><b>${g.t}</b><small>${g.s}</small></span>${CHV}</button>`).join('')}</div><p class="mut" style="text-align:center;font-size:12px;margin:14px 0 0">Phiên bản app: v23.3.1</p>`}
 
 /* ===== v20.3: công thức nhiều nguyên liệu, quy đổi đơn vị (g↔kg, lạng, ml↔lít) ===== */
 const UCV={kg:['m',1000],g:['m',1],gr:['m',1],gam:['m',1],gram:['m',1],'lạng':['m',100],'lít':['v',1000],l:['v',1000],lit:['v',1000],ml:['v',1]};
@@ -2891,6 +2927,36 @@ const qcX=()=>{closeM();csOpen()};
 function ctSet(t){const h=$('#ctp');if(h)h.value=t;document.querySelectorAll('#ctsg button').forEach(x=>x.classList.toggle('on',x.dataset.t==t))}
 /* v20.52: mở bàn phím → đưa ô đang gõ lên phần trên màn hình NGAY khi chọn ô, để iPhone không phải kéo cả màn hình (kể cả thanh Claude phía trên) lên */
 document.addEventListener('focusin',e=>{const t=e.target;if(!kbIs(t)||!matchMedia('(pointer:coarse)').matches||shWd())return;const h=document.documentElement;h.classList.add('kbo');const r=t.getBoundingClientRect(),vis=innerHeight-430;if(r.bottom>vis-30||r.top<60){const want=Math.min(170,Math.max(70,vis*.28));window.scrollTo(0,Math.max(0,scrollY+r.top-want))}},true);
+
+/* v23.2: sao lưu ra file + nhắc sao lưu, Excel theo dõi tổng hợp, xóa toàn bộ dữ liệu (mật khẩu quản trị + xác nhận) */
+const bkJson=()=>JSON.stringify({...S,ca:void 0,dq:void 0});
+function bkTxt(){if(!UI.lb)return 'Chưa sao lưu lần nào';const d=Math.floor((Date.now()-UI.lb)/864e5);return 'Sao lưu gần nhất: '+(d<1?'hôm nay':d+' ngày trước')+' ('+dmy(dk(UI.lb))+')'}
+function bkDo(){try{auEv('Sao lưu','Sao lưu ra file ('+S.orders.length+' đơn, '+S.products.length+' sản phẩm)');XL.saveFile('sao-luu-giocha-'+today()+'.json',new Blob([bkJson()],{type:'application/json'}));UI.lb=Date.now();UI.lbn=S.orders.length;saveUI();toast('Đã tạo file sao lưu');if(tab=='sett'||tab=='dash')R()}catch(e){toast('Không tạo được file sao lưu')}}
+function bkNeed(){if(!ADM||(UI.lbs&&Date.now()-UI.lbs<864e5))return 0;const n=S.orders.length;if(!UI.lb)return n>=20?1:0;return (Date.now()-UI.lb)/864e5>=7||n-(UI.lbn||0)>=200?1:0}
+function bkBan(){if(!bkNeed())return '';return `<div class="card bkn"><div class="bkt"><b>Nên sao lưu dữ liệu</b><span>${esc(bkTxt())}</span></div><div class="bkx"><button class="big" onclick="bkDo()">Sao lưu ngay</button><button class="ghost" onclick="UI.lbs=Date.now();saveUI();R()">Để sau</button></div></div>`}
+{const o=T.dash;T.dash=function(){return bkBan()+o.apply(this,arguments)}}
+function rsFile(i){const f=i.files&&i.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{$('#rt').value=String(r.result||'');toast('Đã nạp file, bấm Khôi phục')};r.readAsText(f)}
+function expAllX(){auEv('Xuất Excel','Xuất Excel theo dõi (đơn, sản phẩm, khách, nhập hàng)');const T0='Ngày lập: '+dmy(today()),sh=[],os=S.orders.slice().sort((a,b)=>a.ts-b.ts),db=debtOf().by;
+sh.push(XL.table({name:'Đơn hàng',title:'DANH SÁCH ĐƠN HÀNG',sub:T0,head:[{h:'Mã đơn',w:16,t:'c'},{h:'Ngày giờ',w:17,t:'dt'},{h:'Trạng thái',w:12,t:'c'},{h:'Khách hàng',w:24},{h:'Thanh toán',w:14,t:'c'},{h:'Phải thanh toán (VNĐ)',w:22,t:'m'},{h:'Ghi chú',w:26}],rows:os.map(o=>[o.code,o.ts,stTxt(o),o.cname||(o.type=='si'?'Khách sỉ':'Khách lẻ'),pmL[opm(o)],pay(o),o.note||''])}));
+sh.push(XL.table({name:'Sản phẩm',title:'DANH SÁCH SẢN PHẨM',sub:T0,head:[{h:'Mã',w:10,t:'c'},{h:'Tên sản phẩm',w:30},{h:'ĐVT',w:8,t:'c'},{h:'Giá bán (VNĐ)',w:18,t:'m'},{h:'Giá sỉ (VNĐ)',w:18,t:'m'},...(ADM?[{h:'Giá vốn (VNĐ)',w:18,t:'m'}]:[]),{h:'Trạng thái',w:18,t:'c'},{h:'Ghi chú',w:26}],rows:S.products.map(p=>[p.code||'',p.name,p.unit,p.price,p.wprice||0,...(ADM?[+p.cost||0]:[]),p.active?'Đang kinh doanh':'Ngừng kinh doanh',p.note||''])}));
+sh.push(XL.table({name:'Khách hàng',title:'DANH SÁCH KHÁCH HÀNG VÀ CÔNG NỢ',sub:T0,head:[{h:'Tên khách',w:28},{h:'Điện thoại',w:16},{h:'Địa chỉ',w:30},{h:'Công nợ (VNĐ)',w:18,t:'m'},{h:'Ghi chú',w:26}],rows:(S.customers||[]).map(c=>[c.name||'',c.phone||'',c.addr||'',db[c.id]||0,c.note||''])}));
+if(ADM){sh.push(XL.table({name:'Nhà cung cấp',title:'DANH SÁCH NHÀ CUNG CẤP',sub:T0,head:[{h:'Tên',w:28},{h:'Điện thoại',w:16},{h:'Người liên hệ',w:20},{h:'Địa chỉ',w:30},{h:'Ghi chú',w:26}],rows:(S.suppliers||[]).map(c=>[c.name||'',c.phone||'',c.contact||'',c.addr||'',c.note||''])}));
+sh.push(XL.table({name:'Nhập hàng',title:'NHẬP HÀNG, TRẢ NỢ NHÀ CUNG CẤP',sub:T0,head:[{h:'Ngày',w:12,t:'c'},{h:'Loại',w:20,t:'c'},{h:'Nội dung',w:28},{h:'Nhà cung cấp',w:22},{h:'Số lượng',w:10,t:'q'},{h:'ĐVT',w:8,t:'c'},{h:'Đơn giá (VNĐ)',w:16,t:'m'},{h:'Thành tiền (VNĐ)',w:18,t:'m'},{h:'Ghi chú',w:24}],rows:(S.imports||[]).slice().sort((a,b)=>(a.ts||0)-(b.ts||0)).map(x=>[dmy(x.date||dk(x.ts)),x.kind=='pay'?'Trả nợ NCC':x.kind=='loss'?'Chênh lệch kiểm kê':'Nhập hàng',x.name||'',x.sname||'',+x.qty||0,x.unit||'',+x.price||0,x.amt!=null?+x.amt:Math.round((+x.qty||0)*(+x.price||0)),x.note||''])}))}
+xlsOut('theo-doi-giocha-'+today()+'.xlsx',sh)}
+let WP={bk:0};
+function wpPw(){return typeof lkChk=='function'&&typeof PROF!='undefined'&&PROF}
+function wpOpen(){if(!ADM)return toast('Chỉ quản trị viên được xóa dữ liệu');WP={bk:0};modal(mph('Xóa toàn bộ dữ liệu','','','closeM()')+`<div class="card wpc"><b>Xóa sẽ mất hết</b><p>Toàn bộ đơn hàng, sản phẩm, khách hàng, nhà cung cấp và phiếu nhập sẽ bị xóa trên máy này và trên máy chủ. Các máy khác cũng mất theo. Hãy sao lưu trước khi xóa.</p><p class="mut">${esc(bkTxt())}</p><button class="ghost" onclick="WP.bk=1;bkDo();$('#wpa').checked=true;this.querySelector('span').textContent='Đã sao lưu'">${ic('file')}<span>Sao lưu ngay (tải file)</span></button><label class="wpk"><input type="checkbox" id="wpa"><span>Tôi hiểu, xóa mà không cần sao lưu</span></label>${wpPw()?`<label>Mật khẩu quản trị viên<input id="wpp" type="password" autocomplete="current-password" onkeydown="if(event.key=='Enter')wpGo()"></label>`:''}<p id="wpm" class="dn"></p><button class="btn-red" onclick="wpGo()">Xóa toàn bộ dữ liệu</button></div>`)}
+async function wpGo(){if(!ADM)return;const m=$('#wpm');m.textContent='';if(!(WP.bk||$('#wpa').checked)){m.textContent='Hãy sao lưu trước, hoặc tích ô xác nhận không sao lưu';return}
+if(wpPw()){const p=$('#wpp');if(!p||!p.value){m.textContent='Nhập mật khẩu quản trị viên';return}if(!(await lkChk(p.value,m)))return}
+ask('Chắc chắn xóa toàn bộ dữ liệu? Xóa xong không thể lấy lại, chỉ có bản hoàn tác tạm trên máy này trong 24 giờ.',wpDo,'Xóa vĩnh viễn')}
+async function wpDo(){if(!ADM)return;try{localStorage.setItem(K+'_undo',JSON.stringify({t:Date.now(),d:JSON.parse(bkJson())}))}catch(e){}
+let bulk=0;if(DB&&DB.wipe){try{await DB.wipe();bulk=1}catch(e){}}
+COLS.forEach(c=>{(S[c]||[]).forEach(x=>{if(bulk)delete CA[c+'/'+x.id];else dq(c,x.id)});S[c]=[]});S.seq=0;S.pseq=0;C={items:[],discount:'',note:'',edit:null,done:null,lock:0};TH.length=0;save();hd();go('dash');toast('Đã xóa toàn bộ dữ liệu. Có thể hoàn tác trong 24 giờ ở Cài đặt')}
+function wpUndoAvail(){try{const u=JSON.parse(localStorage.getItem(K+'_undo')||'null');return u&&u.d&&Date.now()-u.t<864e5?u:null}catch(e){return null}}
+function wpUndo(){const u=wpUndoAvail();if(!u)return toast('Đã hết thời gian hoàn tác');ask('Khôi phục dữ liệu như trước lần xóa gần nhất?',()=>{const q=(S.dq||[]).slice();S=u.d;delete S.ca;delete S.dq;norm();const r=q.filter(k=>{const[c,id]=k.split('/');return !(S[c]||[]).some(x=>x.id==id)});if(r.length)S.dq=r;S.ca=CA;try{localStorage.removeItem(K+'_undo')}catch(e){}auEv('Hoàn tác','Khôi phục dữ liệu như trước lần xóa toàn bộ');save();hd();R();toast('Đã hoàn tác')},'Khôi phục')}
+
+/* v23.3: ghi sự kiện hệ thống vào nhật ký (chỉ khi đã đăng nhập Supabase) */
+function auEv(a,s){try{if(typeof SB!='undefined'&&SB&&typeof PROF!='undefined'&&PROF){const r=SB.rpc('log_event',{p_action:a,p_summary:s});if(r&&r.then)r.then(()=>{},()=>{})}}catch(e){}}
 (async()=>{lkWrap();if('serviceWorker' in navigator){const had=!!navigator.serviceWorker.controller;navigator.serviceWorker.register('sw.js').catch(()=>{});navigator.serviceWorker.addEventListener('controllerchange',()=>{if(had)try{toast('Đã có bản mới. Mở lại app để cập nhật.')}catch(e){}})}
 const C=window.CFG||{};if(!C.url||!C.key||!window.supabase)return ashow('cfg');
 SB=supabase.createClient(C.url,C.key);

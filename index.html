@@ -1556,7 +1556,7 @@ html.wd .grl{display:flex!important;flex-direction:column}
 
 /* ===== v26.0b: trang dạng khung nhập (Xay giò, Ghi số cối, Lịch sử xay giò, Công thức...) giống trang thường:
    có đầu trang + menu dưới, nền xám nhóm, bỏ tấm trắng bo góc dính sát mép ===== */
-html body.mpg #hd{display:flex!important}
+html:not(.hdoff) body.mpg #hd,html.hdoff.sybad body.mpg #hd{display:flex!important}
 html body.mpg #nv{display:flex!important}
 html body.kbf.mpg #nv{display:none!important}
 html body.mpg #m.modal{padding:14px var(--pad,14px) 0!important;background:none!important;min-height:0}
@@ -1569,6 +1569,15 @@ html body.mpg #m .sgtw{background:var(--io-card,var(--c));border-radius:16px;pad
 main label.hsr input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=file]),#m label.hsr input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=file]){background:transparent!important;border:0!important;box-shadow:none!important;border-radius:0!important;padding-left:0!important}
 /* v26.0b: danh sách nhà cung cấp trùng tên lớp với nút cũ của Xay giò (.sgl) → hiện viền tròn to phía sau các thẻ: bỏ */
 #dl.sgl{border:0!important;background:none!important;color:inherit!important;border-radius:0!important;padding:0!important;font-size:inherit!important;font-weight:inherit!important;min-height:0}
+
+/* v26.0c: form Ghi số cối và mục Cách tính nằm trong thẻ trắng như form Phiếu nhập */
+.sgcard{background:var(--io-card,var(--c));border-radius:26px;padding:16px 16px 18px;margin:10px 0 12px}
+.sgcard>label:first-child{margin-top:0}
+.sgcard .sgsum>div,.sgcard .sgpk{background:var(--io-fill,rgba(118,118,128,.12))!important;border:0!important;box-shadow:none!important}
+html body.mpg #m .sgcard .sgtw{background:none!important;padding:0!important;margin:6px 0 0!important;border-radius:0}
+html body.mpg #m details.sgdt{background:var(--io-card,var(--c));border-radius:26px;padding:14px 16px;margin:10px 0 12px}
+html body.mpg #m details.sgdt>summary{font-weight:600;color:var(--t)}
+html body.mpg #m details.sgdt .sgnote{border:0!important;background:none!important;padding:8px 0 0!important}
 </style></head><body>
 <header id="hd">Giò chả</header>
 <main id="v"></main>
@@ -3748,6 +3757,9 @@ document.addEventListener('focusin',mv,true)})();
 /* (3) báo cho trình duyệt giao diện Sáng/Tối đang chọn trong app (ô chọn ngày, danh sách chọn theo đúng màu app) */
 {const sm=()=>{let m=document.querySelector('meta[name="color-scheme"]');if(!m){m=document.createElement('meta');m.name='color-scheme';document.head.appendChild(m)}m.content=UI.th=='light'?'light':UI.th=='dark'?'dark':'light dark'};
 const o=applyTheme;applyTheme=function(){const r=o.apply(this,arguments);try{sm()}catch(e){}return r};try{sm()}catch(e){}}
+
+/* v26.0c: form Ghi số cối: gom các ô nhập + phần xem trước vào 1 thẻ trắng */
+{const o=sgForm;sgForm=function(){const h=o.apply(this,arguments),i=h.indexOf('<label'),j=h.lastIndexOf('<div class="seg">');if(i<0||j<i)return h;return h.slice(0,i)+'<div class="sgcard">'+h.slice(i,j)+'</div>'+h.slice(j)}}
 (async()=>{lkWrap();if('serviceWorker' in navigator){const had=!!navigator.serviceWorker.controller;navigator.serviceWorker.register('sw.js').then(r=>{const up=()=>{try{r.update()}catch(e){}};document.addEventListener('visibilitychange',()=>{if(!document.hidden){up();if(window.__upd)try{updAsk()}catch(e){}}});setInterval(up,30*60e3)}).catch(()=>{});navigator.serviceWorker.addEventListener('controllerchange',()=>{if(had){window.__upd=1;try{updAsk()}catch(e){try{toast('Đã có bản mới. Mở lại app để cập nhật.')}catch(x){}}}})}
 const C=window.CFG||{};if(!C.url||!C.key||!window.supabase)return ashow('cfg');
 SB=supabase.createClient(C.url,C.key);

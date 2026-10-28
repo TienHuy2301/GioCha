@@ -1553,6 +1553,22 @@ html.wd .grl{display:flex!important;flex-direction:column}
 .rx-pv span{font-size:11.5px;font-weight:700;color:var(--m);text-transform:uppercase;letter-spacing:.04em}
 .rx-pv b{font-size:14px;color:var(--t);font-weight:600;overflow-wrap:anywhere}
 .rx-lk{border:0;background:none;color:var(--g2);font-weight:600;font-size:13.5px;padding:8px 0 0;min-height:32px}
+
+/* ===== v26.0b: trang dạng khung nhập (Xay giò, Ghi số cối, Lịch sử xay giò, Công thức...) giống trang thường:
+   có đầu trang + menu dưới, nền xám nhóm, bỏ tấm trắng bo góc dính sát mép ===== */
+html body.mpg #hd{display:flex!important}
+html body.mpg #nv{display:flex!important}
+html body.kbf.mpg #nv{display:none!important}
+html body.mpg #m.modal{padding:14px var(--pad,14px) 0!important;background:none!important;min-height:0}
+html body.mpg #m .mb{background:none!important;border-radius:0!important;box-shadow:none!important;padding:0 0 calc(150px + var(--shkb,0px))!important}
+html body.mpg #m .sgtw{background:var(--io-card,var(--c));border-radius:16px;padding:2px 12px;margin:8px 0}
+/* nút Lưu dính trên đầu: ẩn khi đang dịch chuyển lúc mở bàn phím */
+.abar.stk .abar-fx{transition:opacity .16s ease}
+.abar.stk.mv .abar-fx{opacity:0;transition:none;pointer-events:none}
+/* v26.0b: ô tìm kiếm dạng viên (Nhà cung cấp, Khách hàng, Đơn hàng): bỏ ô xám thứ hai lồng bên trong */
+main label.hsr input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=file]),#m label.hsr input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=file]){background:transparent!important;border:0!important;box-shadow:none!important;border-radius:0!important;padding-left:0!important}
+/* v26.0b: danh sách nhà cung cấp trùng tên lớp với nút cũ của Xay giò (.sgl) → hiện viền tròn to phía sau các thẻ: bỏ */
+#dl.sgl{border:0!important;background:none!important;color:inherit!important;border-radius:0!important;padding:0!important;font-size:inherit!important;font-weight:inherit!important;min-height:0}
 </style></head><body>
 <header id="hd">Giò chả</header>
 <main id="v"></main>
@@ -3255,7 +3271,8 @@ const known=()=>vv?Math.max(0,Math.round(innerHeight-vv.height-vv.offsetTop)):0;
 const view=()=>{const k=known(),vt=vv?vv.offsetTop:0;if(k>=100)return{t:vt,b:vt+vv.height,kb:k};const e=est();return{t:vt,b:vt+innerHeight-e,kb:e}};
 const editing=()=>{const a=document.activeElement;return !!(a&&a!==document.body&&document.contains(a)&&kbIs(a)&&coarse()&&!shWd())};
 const sync=()=>{const on=editing();if(on){if(!h.classList.contains('kbo'))h.classList.add('kbo');h.style.setProperty('--kbp',(view().kb+90)+'px')}
-else if(h.classList.contains('kbo')){h.classList.remove('kbo');h.style.removeProperty('--kbp');if(typeof KBFB!='undefined'&&KBFB)kbSet(0)}};
+else if(h.classList.contains('kbo')&&!rmT){/* v26.0b: chờ 150ms mới bỏ phần đệm dưới — khi chuyển ô bằng mũi tên trên bàn phím iPhone, trang không bị ngắn lại tức thời rồi giật về đầu */
+rmT=setTimeout(()=>{rmT=0;if(editing())return;h.classList.remove('kbo');h.style.removeProperty('--kbp');if(typeof KBFB!='undefined'&&KBFB)kbSet(0)},150)}};let rmT=0;
 /* v23.7: iPhone tự đẩy cả trang (cả thanh Claude phía trên) lên khi ô nhập nằm dưới bàn phím. Nên đưa ô về giữa vùng trên bàn phím NGAY khi chạm vào ô (cuộn tức thì, không mượt), trước khi iPhone kịp đẩy; các lần chỉnh sau chỉ sửa khi ô lệch rõ. */
 const fit=(t,first)=>{if(!t||!document.contains(t)||!kbIs(t)||t.tagName=='SELECT'||!coarse()||shWd())return;
 if(t.closest('#m .mb')&&!document.body.classList.contains('mpg'))return;
@@ -3271,8 +3288,9 @@ let gT=0;
 const fitG=(t,late)=>{if(!t||t!==document.activeElement||!document.contains(t)||!kbIs(t)||t.tagName=='SELECT'||!coarse()||shWd())return;
 if(t.closest('#m .mb')&&!document.body.classList.contains('mpg'))return;
 if(known()<100&&!late)return;
-const V=view(),r=t.getBoundingClientRect(),top=V.t+76,bot=V.b-14;let d=0;
-if(r.bottom>bot)d=(r.top+r.bottom)/2-(V.t+(V.b-V.t)*.66);else if(r.top<top)d=r.top-(V.t+100);
+/* v26.0b: chỉ cuộn khi ô THẬT SỰ bị che (đáy ô nằm dưới mép bàn phím, hoặc đỉnh ô khuất phía trên) — iPhone đã tự đưa ô lên thì để yên */
+const V=view(),r=t.getBoundingClientRect(),top=V.t+4,bot=V.b-2;let d=0;
+if(r.bottom>bot)d=(r.top+r.bottom)/2-(V.t+(V.b-V.t)*.6);else if(r.top<top)d=r.top-(V.t+90);
 if(Math.abs(d)<6)return;window.scrollTo({top:Math.max(0,scrollY+d),behavior:'smooth'})};
 document.addEventListener('focusin',e=>{const t=e.target;if(!kbIs(t))return;cur=t;sync();tm.forEach(clearTimeout);if(!EMB){tm=[setTimeout(()=>fitG(cur),450),setTimeout(()=>{if(known()<100)fitG(cur,1)},900)];return}fit(cur,1);tm=[120,350,700].map(ms=>setTimeout(()=>fit(cur),ms))},true);
 document.addEventListener('focusout',()=>{setTimeout(sync,120)},true);
@@ -3718,6 +3736,18 @@ function mtBox(k){const c=mtCfg(),d=MTD[k],tp=mtPrev(k);return `<details class="
 {const o=rxCard;rxCard=function(c){const k={'Nhắc nhập liệu':'rem','Đơn đặt trước mới':'pnew','Thư tổng hợp mỗi ngày':'pdg'}[c&&c.t];if(k)c=Object.assign({},c,{foot:(c.foot||'')+mtBox(k)});return o.call(this,c)}}
 {const o=rmH;rmH=function(){const h=o(),c=mtCfg();const box=`<section class="rx-box"><div class="rx-bh"><b>Tên người gửi</b></div><label class="rx-mtl">Hiện ở mục người gửi trong hộp thư<input id="mt_from" maxlength="60" value="${esc(c.from)}" placeholder="Giò chả" onchange="mtSet('from')" autocomplete="off" enterkeyhint="done"></label><p class="rx-note">Để trống thì dùng “Giò chả”. Địa chỉ gửi không đổi.</p></section>`;
 return h.replace('<aside class="rx-side">','<aside class="rx-side">'+box)}}
+
+/* ===== v26.0b ===== */
+/* (1) bàn phím mở + nút Lưu dính trên đầu: ẩn nút trong lúc trang/bàn phím đang dịch chuyển, hiện lại đúng chỗ khi đã đứng yên (hết cảnh nút Lưu nằm lơ lửng giữa màn hình) */
+(()=>{const vv=window.visualViewport;let t=0;
+const mv=()=>{if(!document.body.classList.contains('kbf'))return;const a=document.querySelector('.abar');if(!a)return;a.classList.add('mv');clearTimeout(t);t=setTimeout(()=>{try{abSync()}catch(e){}const b=document.querySelector('.abar');if(b)b.classList.remove('mv')},260)};
+addEventListener('scroll',mv,{passive:true});if(vv){vv.addEventListener('scroll',mv);vv.addEventListener('resize',mv)}
+document.addEventListener('focusin',mv,true)})();
+/* (2) bấm menu dưới khi đang ở trang dạng khung nhập (Xay giò, Ghi số cối...) → đóng trang đó rồi mới chuyển */
+{const o=navTo;navTo=function(t){if(document.body.classList.contains('mpg')&&!$('#m').hidden){try{closeM()}catch(e){}}return o.call(this,t)}}
+/* (3) báo cho trình duyệt giao diện Sáng/Tối đang chọn trong app (ô chọn ngày, danh sách chọn theo đúng màu app) */
+{const sm=()=>{let m=document.querySelector('meta[name="color-scheme"]');if(!m){m=document.createElement('meta');m.name='color-scheme';document.head.appendChild(m)}m.content=UI.th=='light'?'light':UI.th=='dark'?'dark':'light dark'};
+const o=applyTheme;applyTheme=function(){const r=o.apply(this,arguments);try{sm()}catch(e){}return r};try{sm()}catch(e){}}
 (async()=>{lkWrap();if('serviceWorker' in navigator){const had=!!navigator.serviceWorker.controller;navigator.serviceWorker.register('sw.js').then(r=>{const up=()=>{try{r.update()}catch(e){}};document.addEventListener('visibilitychange',()=>{if(!document.hidden){up();if(window.__upd)try{updAsk()}catch(e){}}});setInterval(up,30*60e3)}).catch(()=>{});navigator.serviceWorker.addEventListener('controllerchange',()=>{if(had){window.__upd=1;try{updAsk()}catch(e){try{toast('Đã có bản mới. Mở lại app để cập nhật.')}catch(x){}}}})}
 const C=window.CFG||{};if(!C.url||!C.key||!window.supabase)return ashow('cfg');
 SB=supabase.createClient(C.url,C.key);

@@ -1335,6 +1335,224 @@ label[hidden]{display:none!important}.sgmg+label{margin-top:12px}
 .oc.cx .oa .okg{color:var(--m);font-weight:600}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .oc .oa .okg,:root:not([data-theme="light"]) .dgh .kgh,:root:not([data-theme="light"]) .hk .kgt{color:#4ade80}}
 :root[data-theme="dark"] .oc .oa .okg,:root[data-theme="dark"] .dgh .kgh,:root[data-theme="dark"] .hk .kgt{color:#4ade80}
+/* v25.27: chip số lượng nhanh xuống dòng thay vì bị khuất; nhãn trạng thái đồng bộ không tràn đè tên cơ sở ở máy màn hẹp */
+.qk{flex-wrap:wrap;overflow:visible}
+#hd small#sy{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;max-width:56vw}
+/* ===== v25.27: trang Nhắc qua email ===== */
+.sbody:has(> .rx),.card.sbody:has(.rx){background:none!important;box-shadow:none!important;border:0!important;padding:0!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+.rx{display:flex;flex-direction:column;gap:14px}
+.rx .ico{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.rx-hero{display:flex;align-items:center;gap:16px;padding:18px;border-radius:22px;background:linear-gradient(135deg,color-mix(in srgb,var(--g2) 13%,var(--c)),color-mix(in srgb,var(--g2) 4%,var(--c)));border:1px solid color-mix(in srgb,var(--g2) 18%,var(--b));box-shadow:var(--gls,0 8px 22px rgba(31,60,140,.09))}
+.rx-hl{flex:1;min-width:0}
+.rx-kick{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--g2);background:color-mix(in srgb,var(--g2) 12%,var(--c));padding:4px 10px;border-radius:99px}
+.rx-kick .ico{width:14px;height:14px}
+.rx-hero h3{margin:10px 0 4px;font-size:clamp(16px,4.3vw,22px);font-weight:800;color:var(--t);overflow-wrap:anywhere;line-height:1.25}
+.rx-hero p{margin:0 0 10px;color:var(--m);font-size:13.5px;line-height:1.45}
+.rx-pills{display:flex;flex-wrap:wrap;gap:6px}
+.rx-pill{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;padding:5px 10px;border-radius:99px;background:var(--c);border:1px solid var(--b);color:var(--m)}
+.rx-pill i{width:7px;height:7px;border-radius:50%;background:currentColor;flex:none}
+.rx-pill.ok{color:var(--gn,#157347);background:var(--gnb,rgba(21,115,71,.12));border-color:transparent}
+.rx-pill.warn{color:var(--amb,#b45309);background:var(--ambb,#fdecd0);border-color:transparent}
+.rx-pill.bad{color:var(--r);background:color-mix(in srgb,var(--r) 12%,var(--c));border-color:transparent}
+.rx-ring{position:relative;width:84px;height:84px;flex:none}
+.rx-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.rx-ring circle{fill:none;stroke-width:7}
+.rx-rt{stroke:color-mix(in srgb,var(--g2) 14%,var(--c))}
+.rx-rv{stroke:var(--g2);stroke-linecap:round}
+.rx-ring span{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.1}
+.rx-ring b{font-size:19px;font-weight:800;color:var(--t)}.rx-ring small{font-size:10.5px;color:var(--m)}
+.rx-grid{display:flex;flex-direction:column;gap:14px}
+.rx-main{display:grid;gap:12px;grid-template-columns:minmax(0,1fr)}
+.rx-card{background:var(--c);border:1px solid var(--b);border-radius:20px;padding:16px;display:flex;flex-direction:column;gap:10px;box-shadow:0 4px 14px rgba(31,60,140,.06);min-width:0}
+.rx-ch{display:flex;align-items:center;gap:10px;text-align:left}
+.rx-ic{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;flex:none}
+.rx-ic.b{color:var(--h0,#1d4ed8);background:color-mix(in srgb,var(--h0,#1d4ed8) 12%,var(--c))}
+.rx-ic.g{color:var(--h2,#157347);background:color-mix(in srgb,var(--h2,#157347) 13%,var(--c))}
+.rx-ic.p{color:var(--h3,#6d3fe0);background:color-mix(in srgb,var(--h3,#6d3fe0) 12%,var(--c))}
+.rx-tt{flex:1;min-width:0;display:flex;flex-direction:column;align-items:flex-start;text-align:left}
+.rx-tt b{font-size:16px;color:var(--t)}.rx-tt small{font-size:12.5px;color:var(--m)}
+.rx-st{flex:none;font-size:12px;font-weight:800;padding:4px 10px;border-radius:99px;color:var(--m);background:color-mix(in srgb,var(--m) 12%,var(--c))}
+.rx-st.ok{color:var(--gn,#157347);background:var(--gnb,rgba(21,115,71,.12))}
+.rx-big{display:flex}
+.rx-time{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;margin:0!important;padding:4px 4px 4px 14px;border-radius:14px;background:var(--bg);border:1px solid var(--b);font-size:13px;color:var(--m)}
+.rx-time input{flex:0 1 190px;min-width:132px;margin:0!important;border:0!important;background:var(--c)!important;font-size:22px!important;font-weight:800;text-align:center;color:var(--t);border-radius:10px!important;min-height:44px}
+.rx-now{display:flex;flex-direction:column;padding:8px 14px;border-radius:14px;background:var(--bg);border:1px solid var(--b);width:100%}
+.rx-now b{font-size:20px;font-weight:800;color:var(--t)}.rx-now small{color:var(--m);font-size:12.5px}
+.rx-d{margin:0;color:var(--m);font-size:13.5px;line-height:1.45}.rx-d b{color:var(--t)}
+.rx-sw.sggrp{margin:0}
+.rx-tb{display:flex;align-items:center;justify-content:center;gap:8px;min-height:44px;border-radius:14px;border:1px solid color-mix(in srgb,var(--g2) 35%,var(--b));background:color-mix(in srgb,var(--g2) 7%,var(--c));color:var(--g2);font-weight:750;font-size:14.5px;width:100%}
+.rx-tb:disabled{opacity:.55}
+.rx-side{display:flex;flex-direction:column;gap:12px;min-width:0}
+.rx-box{background:var(--c);border:1px solid var(--b);border-radius:20px;padding:16px;box-shadow:0 4px 14px rgba(31,60,140,.06)}
+.rx-bh{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}.rx-bh b{font-size:16px;color:var(--t)}
+.rx-steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.rx-steps li{display:flex;gap:10px;align-items:flex-start;text-align:left;margin:0;padding:0}
+.rx-steps li>i{width:24px;height:24px;border-radius:50%;border:2px solid var(--b);flex:none;display:grid;place-items:center;margin-top:1px}
+.rx-steps li.ok>i{border-color:var(--gn,#157347);color:var(--gn,#157347)}
+.rx-steps li>i .ico{width:14px;height:14px;stroke-width:2.6}
+.rx-steps li span{display:flex;flex-direction:column;align-items:flex-start;min-width:0;flex:1}.rx-steps li b{font-size:14px;color:var(--t)}.rx-steps li small{font-size:12.5px;color:var(--m);overflow-wrap:anywhere}
+.rx-steps li.ok b{color:var(--m);text-decoration:line-through;text-decoration-color:color-mix(in srgb,var(--m) 50%,transparent)}
+.rx-up{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.rx-up>div{border-radius:14px;padding:10px 12px;display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 6px}
+.rx-up small{flex-basis:100%;font-size:12px;font-weight:700}.rx-up b{font-size:24px;font-weight:800}.rx-up em{font-style:normal;font-size:12.5px}
+.rx-up .t{background:#e8efff;color:#1d4ed8}.rx-up .m{background:#fff3d6;color:#7a4b00}
+.rx-note{margin:8px 0 0;font-size:12.5px;color:var(--m)}
+.rx-tips b{font-size:14px;color:var(--t)}.rx-tips p{margin:6px 0 0;font-size:13px;color:var(--m);line-height:1.45}
+@media(min-width:900px){.rx-grid{display:grid;grid-template-columns:minmax(0,1fr) 330px;align-items:start;gap:16px}.rx-side{position:sticky;top:12px}.rx-hero{padding:22px 24px}.rx-ring{width:96px;height:96px}}
+@media(max-width:380px){.rx-hero{flex-direction:column-reverse;align-items:flex-start}.rx-ring{width:72px;height:72px}}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .rx-up .t{background:rgba(59,130,246,.18);color:#93b4ff}:root:not([data-theme="light"]) .rx-up .m{background:rgba(245,158,11,.16);color:#fbbf24}}
+:root[data-theme="dark"] .rx-up .t{background:rgba(59,130,246,.18);color:#93b4ff}:root[data-theme="dark"] .rx-up .m{background:rgba(245,158,11,.16);color:#fbbf24}
+/* ===== v25.28: thông báo kiểu iOS (kính mờ) ===== */
+#ia{position:fixed;inset:0;z-index:2147483000;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;transition:opacity .18s ease}
+#ia.on{opacity:1}
+.ia-dim{position:absolute;inset:0;background:rgba(0,0,0,.24)}
+.ia-c{position:relative;width:min(312px,100%);border-radius:34px;padding:24px 18px 16px;text-align:center;font-family:-apple-system,'SF Pro Text',system-ui,sans-serif;background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(32px) saturate(190%);backdrop-filter:blur(32px) saturate(190%);border:1px solid rgba(255,255,255,.66);box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 22px 60px rgba(0,0,0,.24);color:#111;transform:scale(1.06);transition:transform .2s cubic-bezier(.2,.9,.3,1.2)}
+#ia.on .ia-c{transform:scale(1)}
+.ia-c h4{margin:0 4px 6px;font-size:17px;font-weight:650;letter-spacing:-.01em;line-height:1.3;overflow-wrap:anywhere}
+.ia-c p{margin:0 6px;font-size:14px;font-weight:400;line-height:1.4;color:rgba(0,0,0,.68);overflow-wrap:anywhere;max-height:40vh;overflow:auto}
+.ia-bt{display:flex;gap:10px;margin-top:18px}
+.ia-bt.v{flex-direction:column}
+.ia-bt button{flex:1;min-height:48px;margin:0;padding:0 14px;border-radius:999px;border:0;font-size:16px;font-weight:600;font-family:inherit;background:rgba(120,120,128,.16);color:#111;box-shadow:inset 0 1px 0 rgba(255,255,255,.55);white-space:nowrap;width:auto}
+.ia-bt.v button{flex:none;width:100%}
+.ia-bt button.pri{background:#0a84ff;color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 14px rgba(10,132,255,.32)}
+.ia-bt button:focus{outline:none}.ia-bt button:focus-visible{outline:2px solid rgba(10,132,255,.5);outline-offset:2px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .ia-c{background:rgba(44,44,48,.7);border-color:rgba(255,255,255,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 22px 60px rgba(0,0,0,.5);color:#f5f5f7}:root:not([data-theme="light"]) .ia-c p{color:rgba(235,235,245,.72)}:root:not([data-theme="light"]) .ia-bt button{background:rgba(120,120,128,.32);color:#f5f5f7;box-shadow:inset 0 1px 0 rgba(255,255,255,.12)}:root:not([data-theme="light"]) .ia-bt button.pri{background:#0a84ff;color:#fff}:root:not([data-theme="light"]) .ia-dim{background:rgba(0,0,0,.42)}}
+:root[data-theme="dark"] .ia-c{background:rgba(44,44,48,.7);border-color:rgba(255,255,255,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 22px 60px rgba(0,0,0,.5);color:#f5f5f7}:root[data-theme="dark"] .ia-c p{color:rgba(235,235,245,.72)}:root[data-theme="dark"] .ia-bt button{background:rgba(120,120,128,.32);color:#f5f5f7;box-shadow:inset 0 1px 0 rgba(255,255,255,.12)}:root[data-theme="dark"] .ia-bt button.pri{background:#0a84ff;color:#fff}:root[data-theme="dark"] .ia-dim{background:rgba(0,0,0,.42)}
+@media (prefers-reduced-transparency:reduce){.ia-c{background:#fff}}
+/* thành công: khung nhỏ nổi phía trên, tự ẩn */
+#toast.it{top:calc(env(safe-area-inset-top,0px) + 10px)!important;bottom:auto!important;position:fixed;padding:10px 10px 12px 12px;border-radius:20px;min-width:min(340px,calc(100vw - 32px));max-width:min(440px,calc(100vw - 32px));overflow:hidden;z-index:2147482000}
+#toast.it .tmg{flex:1;font-weight:650;font-size:14.5px}
+#toast.it .itx{flex:none;width:28px;height:28px;border-radius:50%;border:0;background:rgba(100,116,139,.14);color:#64748b;font-size:17px;line-height:1;padding:0;margin:0}
+#toast.it .itb{position:absolute;left:12px;right:12px;bottom:5px;height:3px;border-radius:3px;background:#16a34a;transform-origin:left;animation:itb linear forwards;opacity:.75}
+@keyframes itb{from{transform:scaleX(1)}to{transform:scaleX(0)}}
+/* =====================================================================
+   v26.0: GIAO DIỆN KIỂU iOS 27 (Liquid Glass) — lớp phủ cuối cùng
+   nền xám nhóm #F2F2F7 / đen, màu hệ thống iOS, chữ SF, thẻ bo lớn, kính mờ cho thanh trên/dưới,
+   nút viên thuốc, điều khiển phân đoạn kiểu iOS, công tắc xanh lá
+   ===================================================================== */
+:root{--io-bg:#f2f2f7;--io-card:#fff;--io-card2:#f2f2f7;--io-lbl:#000;--io-lbl2:rgba(60,60,67,.6);--io-sep:rgba(60,60,67,.16);--io-fill:rgba(118,118,128,.12);--io-fill2:rgba(118,118,128,.2);
+--io-blue:#007aff;--io-green:#34c759;--io-red:#ff3b30;--io-orange:#ff9500;--io-glass:rgba(255,255,255,.66);--io-glassb:rgba(255,255,255,.7);--io-hl:inset 0 1px 0 rgba(255,255,255,.85);--io-sh:0 6px 22px rgba(0,0,0,.08);
+--bg:var(--io-bg);--c:var(--io-card);--t:#0b0b0f;--m:var(--io-lbl2);--b:var(--io-sep);--g:var(--io-blue);--g2:var(--io-blue);--r:var(--io-red);--bar:rgba(0,122,255,.12);--tint:rgba(0,122,255,.12);--gl:var(--io-glass);--glb:var(--io-glassb);--gls:var(--io-sh);--ghl:var(--io-hl);--sline:var(--io-sep);--sgln:var(--io-sep);--navon:transparent;
+--h0:#007aff;--h1:#ff9500;--h2:#34c759;--h3:#af52de;--h4:#30b0c7;--h5:#ff2d55;--h6:#ff3b30;--gn:#248a3d;--gnb:rgba(52,199,89,.15);--amb:#c93400;--ambb:rgba(255,149,0,.16)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--io-bg:#000;--io-card:#1c1c1e;--io-card2:#2c2c2e;--io-lbl:#fff;--io-lbl2:rgba(235,235,245,.6);--io-sep:rgba(84,84,88,.55);--io-fill:rgba(118,118,128,.24);--io-fill2:rgba(118,118,128,.36);
+--io-blue:#0a84ff;--io-green:#30d158;--io-red:#ff453a;--io-orange:#ff9f0a;--io-glass:rgba(30,30,32,.62);--io-glassb:rgba(255,255,255,.12);--io-hl:inset 0 1px 0 rgba(255,255,255,.14);--io-sh:0 8px 26px rgba(0,0,0,.5);
+--bg:var(--io-bg);--c:var(--io-card);--m:var(--io-lbl2);--b:var(--io-sep);--g:var(--io-blue);--g2:var(--io-blue);--r:var(--io-red);--gl:var(--io-glass);--glb:var(--io-glassb);--gls:var(--io-sh);--ghl:var(--io-hl);--sline:var(--io-sep);--sgln:var(--io-sep);--navon:transparent;--t:#fff;--bar:rgba(10,132,255,.2);--tint:rgba(10,132,255,.22);--h0:#0a84ff;--h1:#ff9f0a;--h2:#30d158;--h3:#bf5af2;--h4:#40c8e0;--h5:#ff375f;--h6:#ff453a;--gn:#30d158;--gnb:rgba(48,209,88,.18);--amb:#ff9f0a;--ambb:rgba(255,159,10,.18)}}
+:root[data-theme="dark"]{--io-bg:#000;--io-card:#1c1c1e;--io-card2:#2c2c2e;--io-lbl:#fff;--io-lbl2:rgba(235,235,245,.6);--io-sep:rgba(84,84,88,.55);--io-fill:rgba(118,118,128,.24);--io-fill2:rgba(118,118,128,.36);
+--io-blue:#0a84ff;--io-green:#30d158;--io-red:#ff453a;--io-orange:#ff9f0a;--io-glass:rgba(30,30,32,.62);--io-glassb:rgba(255,255,255,.12);--io-hl:inset 0 1px 0 rgba(255,255,255,.14);--io-sh:0 8px 26px rgba(0,0,0,.5);
+--bg:var(--io-bg);--c:var(--io-card);--m:var(--io-lbl2);--b:var(--io-sep);--g:var(--io-blue);--g2:var(--io-blue);--r:var(--io-red);--gl:var(--io-glass);--glb:var(--io-glassb);--gls:var(--io-sh);--ghl:var(--io-hl);--sline:var(--io-sep);--sgln:var(--io-sep);--navon:transparent;--t:#fff;--bar:rgba(10,132,255,.2);--tint:rgba(10,132,255,.22);--h0:#0a84ff;--h1:#ff9f0a;--h2:#30d158;--h3:#bf5af2;--h4:#40c8e0;--h5:#ff375f;--h6:#ff453a;--gn:#30d158;--gnb:rgba(48,209,88,.18);--amb:#ff9f0a;--ambb:rgba(255,159,10,.18)}
+:root:not([data-theme="dark"]){--bg:var(--io-bg);--c:var(--io-card);--m:var(--io-lbl2);--b:var(--io-sep);--g:var(--io-blue);--g2:var(--io-blue);--r:var(--io-red);--gl:var(--io-glass);--glb:var(--io-glassb);--gls:var(--io-sh);--ghl:var(--io-hl);--sline:var(--io-sep);--sgln:var(--io-sep);--navon:transparent;}
+html,body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Helvetica Neue",system-ui,"Segoe UI",Roboto,sans-serif!important;-webkit-font-smoothing:antialiased}
+html,body{background:var(--io-bg)!important}
+body::before,body::after{display:none!important}
+/* thanh trên cùng: kính mờ */
+#hd{background:var(--io-glass)!important;-webkit-backdrop-filter:blur(24px) saturate(180%)!important;backdrop-filter:blur(24px) saturate(180%)!important;border-bottom:.5px solid var(--io-sep)!important;box-shadow:none!important}
+#hd .ttl{font-weight:700;letter-spacing:-.01em}
+#hd small#sy{border-radius:999px!important}
+/* tiêu đề lớn */
+main h2,#m .mb>h2{font-size:34px!important;font-weight:700!important;letter-spacing:-.022em!important;line-height:1.12!important;color:var(--t)}
+.dh h2{font-size:34px!important}
+.sph h2{font-size:28px!important}
+/* nút quay lại: viên kính */
+.bkb{background:var(--io-glass)!important;-webkit-backdrop-filter:blur(20px) saturate(180%);backdrop-filter:blur(20px) saturate(180%);border:.5px solid var(--io-glassb)!important;box-shadow:var(--io-hl),0 2px 10px rgba(0,0,0,.06)!important;color:var(--io-blue)!important;border-radius:999px!important;font-weight:600!important}
+/* thẻ: trắng, bo lớn, không viền */
+.card,.kr,.rx-card,.rx-box,.rx-hero,.hk>div,.bento>*,.sgc,.sggrp,.klist .kr,.ilr,.oc,.pcard,.pi,.st-t,.n2sum>div,.nc{border-color:transparent!important}
+.card,.rx-card,.rx-box,.oc,.sggrp{border-radius:26px!important;background:var(--io-card)!important;box-shadow:0 1px 2px rgba(0,0,0,.04)!important}
+.kr,.ilr,.n2sum>div,.hk>div{border-radius:20px!important}
+.rx-hero{background:var(--io-card)!important;border-radius:28px!important;box-shadow:0 1px 2px rgba(0,0,0,.04)!important}
+.sbody.card{background:var(--io-card)!important}
+/* nút: viên thuốc */
+button,.gbtn,.ghost,.asv,.hab,.rx-tb,.cc{border-radius:999px}
+.gbtn.pri,.asv,.rx-tb.pri,button.pri,.seg .on:not(.cc){background:var(--io-blue)!important;color:#fff!important;border-color:transparent!important;box-shadow:none!important}
+.gbtn:not(.pri),.ghost,.rx-tb,.hab{background:var(--tint)!important;color:var(--io-blue)!important;border:0!important;box-shadow:none!important}
+.hab.dng{background:rgba(255,59,48,.12)!important;color:var(--io-red)!important}
+/* chip lọc */
+.cc{background:var(--io-fill)!important;color:var(--t)!important;border:0!important;box-shadow:none!important;font-weight:600}
+.cc i{color:var(--m)}
+.cc.on{background:var(--io-blue)!important;color:#fff!important}.cc.on i{color:rgba(255,255,255,.8)!important}
+/* điều khiển phân đoạn iOS */
+.seg2{background:var(--io-fill)!important;border:0!important;border-radius:999px!important;padding:2px!important;box-shadow:none!important}
+.seg2 button{border-radius:999px!important;color:var(--t)!important;font-weight:600}
+.seg2 button.on{background:var(--io-card)!important;color:var(--t)!important;box-shadow:0 3px 8px rgba(0,0,0,.12),0 0 0 .5px rgba(0,0,0,.04)!important}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .seg2 button.on{background:#636366!important;color:#fff!important}}
+:root[data-theme="dark"] .seg2 button.on{background:#636366!important;color:#fff!important}
+/* ô nhập: nền xám nhạt, không viền */
+main input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=file]),main select,main textarea,#m input:not([type=checkbox]):not([type=radio]):not([type=file]),#m select,#m textarea{background:var(--io-fill)!important;border:1px solid transparent!important;border-radius:12px!important;box-shadow:none!important;color:var(--t)}
+main input:focus,main select:focus,main textarea:focus,#m input:focus,#m select:focus,#m textarea:focus{border-color:var(--io-blue)!important;background:var(--io-card)!important;box-shadow:0 0 0 3px rgba(0,122,255,.18)!important;outline:none}
+.hsr,.vt>input{border-radius:999px!important}
+label.hsr{background:var(--io-fill)!important;border:0!important;box-shadow:none!important}
+label.hsr input{background:transparent!important}
+/* công tắc iOS (xanh lá, 51x31) */
+.sgtr,.sw i{background:var(--io-fill2)!important}
+.sgsw.on .sgtr,.sw input:checked+i{background:var(--io-green)!important}
+.sw i{width:51px!important;height:31px!important;border-radius:999px!important}
+.sw i::after{top:2px!important;left:2px!important;width:27px!important;height:27px!important;box-shadow:0 3px 8px rgba(0,0,0,.15),0 1px 1px rgba(0,0,0,.06)!important}
+.sw input:checked+i::after{left:22px!important}
+/* thanh dưới: viên kính nổi */
+#nv{background:var(--io-glass)!important;-webkit-backdrop-filter:blur(26px) saturate(190%)!important;backdrop-filter:blur(26px) saturate(190%)!important;border:.5px solid var(--io-glassb)!important;box-shadow:var(--io-hl),0 10px 30px rgba(0,0,0,.14)!important}
+#nv button{color:var(--t)!important}
+#nv button.on{color:var(--io-blue)!important}
+html:not(.wd) #nvp{background:var(--io-fill)!important;box-shadow:none!important;border:0!important}
+/* thanh bên trái (máy tính / iPad ngang) */
+html.wd #nv{background:var(--io-card2)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;box-shadow:none!important;border:0!important;border-right:.5px solid var(--io-sep)!important}
+html.wd #nv button.on{background:var(--io-blue)!important;color:#fff!important;border-radius:12px!important}
+/* nhãn nhỏ, tiêu đề nhóm kiểu iOS */
+.sgsec,.ksh,.qh>b,.isec{color:var(--m)!important;letter-spacing:.02em}
+/* số tiền xanh dương -> nhãn chính */
+.om{color:var(--io-blue)!important}
+/* cửa sổ (modal/sheet) */
+#m .mb{border-radius:30px!important}
+#m.modal .mb{background:var(--io-card)!important}
+/* khung báo */
+.sgw>div,.ieb,.sdb{border-radius:16px!important}
+/* nút nổi + */
+#fb{background:var(--io-blue)!important;box-shadow:0 8px 24px rgba(0,122,255,.35)!important}
+@media (prefers-reduced-transparency:reduce){#hd,#nv,.bkb{background:var(--io-card)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}}
+/* v26.0 (tiếp): biểu tượng ô vuông màu kiểu Cài đặt iOS, danh sách nhóm, thẻ hồ sơ, nút biểu tượng kính */
+.k-a{--kc:#ff9500}.k-p{--kc:#af52de}.k-b{--kc:var(--io-blue)}.k-g{--kc:#34c759}.k-r{--kc:#ff3b30}
+.k-g.sq,.k-g.mti,.k-g.ki{--kc:#34c759}.k-b.sq,.k-b.mti,.k-b.ki{--kc:var(--io-blue)}
+.ki,.mti,.sq,.sci,.nci{background:var(--kc,var(--io-blue))!important;color:#fff!important;box-shadow:none!important}
+.sq{border-radius:9px!important}.sq.lg{border-radius:13px!important}.srow.gr .sq{width:34px!important;height:34px!important;border-radius:9px!important}
+.sq .ico,.mti .ico,.ki .ico{stroke:#fff!important}
+/* danh sách nhóm (inset grouped) */
+.slist,.grl{background:var(--io-card)!important;border:0!important;border-radius:26px!important;box-shadow:0 1px 2px rgba(0,0,0,.04)!important;overflow:hidden}
+.grl{gap:0!important}
+.grl .srow.gr,.slist .srow{background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;margin:0!important;position:relative}
+.grl .srow.gr+.srow.gr::before,.slist .srow+.srow::before{content:"";position:absolute;top:0;left:62px;right:0;border-top:.5px solid var(--io-sep)}
+.slist .srow+.srow{border-top:0!important}
+.srow .chv{color:rgba(60,60,67,.3)!important}
+html.wd .grl{display:flex!important;flex-direction:column}
+/* thẻ hồ sơ kiểu Apple ID */
+.sprof{background:var(--io-card)!important;color:var(--t)!important;border:0!important;box-shadow:0 1px 2px rgba(0,0,0,.04)!important}
+.sprof .spi b{color:var(--t)!important}.sprof .spi small{color:var(--m)!important}.sprof .chv{color:rgba(60,60,67,.3)!important}
+.sprof .slogo{background:transparent!important;padding:0!important;border-radius:14px!important}
+/* ô chức năng (Quản lý) */
+.mt{background:var(--io-card)!important;border:0!important;box-shadow:0 1px 2px rgba(0,0,0,.04)!important;border-radius:22px!important}
+/* nút biểu tượng: vòng kính */
+.icb,.tbn,.hselb{background:var(--io-glass)!important;-webkit-backdrop-filter:blur(20px) saturate(180%);backdrop-filter:blur(20px) saturate(180%);border:.5px solid var(--io-glassb)!important;box-shadow:var(--io-hl),0 2px 10px rgba(0,0,0,.06)!important;color:var(--io-blue)!important;border-radius:999px!important}
+/* khối doanh thu lớn: màu xanh iOS */
+.bento>:first-child{background:linear-gradient(160deg,#2f8bff,#0060df)!important;border:0!important}
+/* chữ phụ và số */
+.eyebrow{color:var(--m)!important;text-transform:none!important;letter-spacing:0!important;font-weight:600}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .srow .chv,:root:not([data-theme="light"]) .sprof .chv{color:rgba(235,235,245,.3)!important}}
+:root[data-theme="dark"] .srow .chv,:root[data-theme="dark"] .sprof .chv{color:rgba(235,235,245,.3)!important}
+/* v26.0: ô sửa tiêu đề thư */
+.rx-mt{border-top:.5px solid var(--b);padding-top:10px;margin-top:2px}
+.rx-mt summary{list-style:none;display:flex;flex-direction:column;gap:2px;cursor:pointer;padding-right:24px;position:relative}
+.rx-mt summary::-webkit-details-marker{display:none}
+.rx-mt summary::after{content:"";position:absolute;right:4px;top:8px;width:8px;height:8px;border-right:2px solid var(--m);border-bottom:2px solid var(--m);transform:rotate(45deg);transition:transform .2s}
+.rx-mt[open] summary::after{transform:rotate(-135deg);top:12px}
+.rx-mt summary span{font-size:12.5px;color:var(--m);font-weight:600}
+.rx-mt summary b{font-size:14px;color:var(--t);font-weight:600;overflow-wrap:anywhere}
+.rx-mt[open] summary b{display:none}
+.rx-mtl{display:flex;flex-direction:column;gap:6px;margin:10px 0 0!important;font-size:12.5px;color:var(--m)}
+.rx-mtl input{font-size:15px!important}
+.rx-chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:8px}
+.rx-chips small{font-size:12px;color:var(--m);margin-right:2px}
+.rx-chip{border:0;border-radius:999px;padding:5px 10px;font-size:12.5px;font-weight:600;background:var(--tint,rgba(0,122,255,.12));color:var(--g2);min-height:30px}
+.rx-pv{margin:10px 0 0;padding:10px 12px;border-radius:14px;background:var(--io-fill,rgba(118,118,128,.12));display:flex;flex-direction:column;gap:2px}
+.rx-pv span{font-size:11.5px;font-weight:700;color:var(--m);text-transform:uppercase;letter-spacing:.04em}
+.rx-pv b{font-size:14px;color:var(--t);font-weight:600;overflow-wrap:anywhere}
+.rx-lk{border:0;background:none;color:var(--g2);font-weight:600;font-size:13.5px;padding:8px 0 0;min-height:32px}
 </style></head><body>
 <header id="hd">Giò chả</header>
 <main id="v"></main>
@@ -1703,7 +1921,7 @@ function updFB(){const b=$('#fb');if(b)b.hidden=true;requestAnimationFrame(()=>{
 function fbSave(){const k=fbInfo();if(!k)return;const nm=$('#pn')||document.querySelector('#v [data-k="name"]')||$('#i_n');if(nm&&!nm.value.trim())nm.focus();else if(document.activeElement&&document.activeElement.blur)document.activeElement.blur();k[0]()}
 function updBar(){const b=$('#bar');if(!b)return;const on=tab=='sell'&&!C.done&&C.items.length;b.hidden=!on;if(on){const t=lines().reduce((a,x)=>a+x,0);b.innerHTML=`<span>${C.items.length} món<br><b style="font-size:20px">${t-disc()<0?'Hoàn lại ':''}${money(Math.abs(t-disc()))}</b></span><button onmousedown="event.preventDefault()" onclick="saveO()">${ic('chk')}<span>${C.edit?'Cập nhật đơn':'Lưu đơn'}</span></button>`}}
 let TH=[],SG='',T0={x:0,y:0,t:0,e:null};
-const ah=()=>(typeof acctH=='function'?acctH():'<div class="card"><b>Bản thử trên claude.ai</b><br><small>Chưa có tài khoản và phân quyền. Bản cài đặt riêng có đăng nhập, nhân viên và mã mời.</small></div>')+'<p class="mut" style="text-align:center;font-size:12px">Phiên bản app: v25.26</p>';
+const ah=()=>(typeof acctH=='function'?acctH():'<div class="card"><b>Bản thử trên claude.ai</b><br><small>Chưa có tài khoản và phân quyền. Bản cài đặt riêng có đăng nhập, nhân viên và mã mời.</small></div>')+'<p class="mut" style="text-align:center;font-size:12px">Phiên bản app: v26.0</p>';
 
 let LB=0;function back(){LB=Date.now();kbBlur();if(!$('#cs').hidden)return csClose();if(!$('#sr').hidden)return closeSr();if(!$('#m').hidden){if($('#m .sgsub')){sgPage();return}return closeM()}if(tab=='sett'&&SS){SS=SSP&&!/^g:/.test(SS)?SSP:null;SSP=null;pgAnim();R();scrollTo(0,0);return}if(shOn())return shClose();if(PF||FM.cus||FM.sup||IF||PRE)return closeF();if(TH.length){tab=TH.pop();pgAnim();R();scrollTo(0,0)}else if(tab!='dash')go('dash')}
 /* ===== Vuốt quay lại: CHỈ bắt đầu từ mép trái và CHỈ ở trang con/biểu mẫu =====
@@ -1791,7 +2009,7 @@ let h=`<div class="sprof"><img class="slogo" src="${LOGO}" alt=""><div class="sp
 h+=`<h3 class="dg">Quản lý</h3><div class="mgrid">${mg.map(r=>`<button class="mt k-${r[3]}" onclick="go('${r[0]}'${r[0]=='prods'?',1':''})"><span class="mti">${ic(r[2])}</span><b>${r[1]}</b></button>`).join('')}</div>`;
 const g1=by(['shop','units','sales','pay','cogs']);if(g1)h+=`<h3 class="dg">Cửa hàng</h3><div class="slist">${g1}</div>`;
 h+=`<h3 class="dg">Cá nhân hóa</h3><div class="slist">${by(['dw','ui'])}</div>`;
-h+=`<h3 class="dg">Hệ thống</h3><div class="slist">${by(['sync','data'])}${ADM&&mm?srow('shield','p','Nhân viên và phân quyền','Mã mời, quyền truy cập',"go('acct')"):''}${srow('user','g','Tài khoản','Thông tin cá nhân, đăng xuất',"go('acct')")}</div><p class="mut" style="text-align:center;font-size:12px;margin:14px 0 0">Phiên bản app: v25.26</p>`;
+h+=`<h3 class="dg">Hệ thống</h3><div class="slist">${by(['sync','data'])}${ADM&&mm?srow('shield','p','Nhân viên và phân quyền','Mã mời, quyền truy cập',"go('acct')"):''}${srow('user','g','Tài khoản','Thông tin cá nhân, đăng xuất',"go('acct')")}</div><p class="mut" style="text-align:center;font-size:12px;margin:14px 0 0">Phiên bản app: v26.0</p>`;
 return h}
 function sett(){const s=SS&&secAv().find(x=>x.id==SS&&x.b);if(SS&&!s)SS=null;
 if(s)return `<div class="sph"><span class="sq lg k-${s.c}">${ic(s.i)}</span><div><h2>${s.t}</h2><small>${s.s}</small></div></div><div class="card sbody">${s.b()}</div>`;
@@ -1877,7 +2095,7 @@ if(dk){const h=f2.offsetHeight||50,ac=parseFloat(getComputedStyle(root).getPrope
 const st=parseFloat(getComputedStyle(root).paddingTop)||0,vt=vv?vv.offsetTop:0;root.style.setProperty('--sp',st+'px');root.style.setProperty('--vt',vt+'px');a2.classList.toggle('stk',!on&&a2.getBoundingClientRect().top<st+vt)};
 addEventListener('scroll',abSync,{passive:true});addEventListener('resize',abSync);if(vv){vv.addEventListener('scroll',abSync);vv.addEventListener('resize',abSync)}
 const sv0=()=>{try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}};addEventListener('pagehide',sv0);document.addEventListener('visibilitychange',()=>{if(document.hidden)sv0()});
-const kbT=()=>{document.body.classList.toggle('kbf',kbEd());abSync()};addEventListener('focusin',()=>{FT=Date.now();kbT();setTimeout(kbT,150);setTimeout(kbT,450);setTimeout(kbT,600)});addEventListener('focusout',()=>setTimeout(kbT,250))})();
+const kbT=()=>{document.body.classList.toggle('kbf',kbEd());abSync()};addEventListener('focusin',e=>{FT=Date.now();const t=e.target,inp=t&&/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName);if(inp){kbT();setTimeout(kbT,150)}setTimeout(kbT,450);setTimeout(kbT,600)});addEventListener('focusout',()=>setTimeout(kbT,250))})();
 /* chạm vào vùng trống thì ẩn bàn phím (bàn phím số của iPhone không có nút Xong) */
 document.addEventListener('click',e=>{const a=document.activeElement;if(Date.now()-FT<700)return;if(a&&(a.tagName=='INPUT'||a.tagName=='TEXTAREA')&&!e.target.closest('input,textarea,select,button,label,a,.dbx,.stp,.cc,.hs'))a.blur()});
 /* gợi ý phím Enter trên bàn phím ảo: Xong / Tìm */
@@ -2450,7 +2668,7 @@ function settHome(){const em=(typeof PROF!='undefined'&&PROF&&PROF.email)||'',by
 const mg=[['prods','Sản phẩm','prods','a',np+' sản phẩm',0],['cus','Khách hàng','cus','p',nd?nd+' khách còn nợ':S.customers.length+' khách',nd],['hist','Đơn hàng','hist','b',nu?nu+' chưa thu':'Xem và sửa đơn',nu],['pre','Đặt hàng trước','cal','a',(()=>{const n=pWait().length;return n?n+' đơn chờ giao':'Đơn Tết, giao sau'})(),preNeed()],['sup','Nhà cung cấp','sup','p',(()=>{const d=supDebt();return d.n?'Còn nợ '+kfmt(d.total):S.suppliers.length+' nhà cung cấp'})(),supDebt().n],['imp','Kho nguyên liệu','imp','b',nn?nn+' sắp hết':'Tồn kho, nhập hàng',nn],['stats','Thống kê','stats','g','Báo cáo lãi lỗ',0]].filter(x=>vis([x[0]]));
 return `<button type="button" class="sprof" onclick="go('acct')"><img class="slogo" src="${LOGO}" alt=""><span class="spi"><b>${esc(S.shop)}</b><small><span>${ADM?'Quản trị viên':'Nhân viên'}</span> · <span class="sy2">${esc(SYN)}</span></small></span>${CHV}</button>${!ADM?`<div class="card cnc"><label>Tên thu ngân (in trên hóa đơn)<input value="${esc(UI.cn||'')}" placeholder="Ví dụ: Lan" maxlength="40" onchange="cnSave(this.value)"></label><small class="mut">Để trống thì dùng tên tài khoản đang đăng nhập. Quản trị viên luôn ghi ADMIN.</small></div>`:''}
 <h3 class="dg">Quản lý</h3><div class="mgrid mg2">${mg.map(r=>`<button class="mt k-${r[3]}" onclick="go('${r[0]}'${r[0]=='prods'?',1':''})"><span class="mti">${ic(r[2])}</span><span class="mtt"><b>${r[1]}</b><small class="${r[5]?'w':''}">${r[4]}</small></span></button>`).join('')}</div>
-<h3 class="dg">Thiết lập</h3><div class="grl">${GRP().filter(g=>grpRows(g)).map(g=>`<button class="srow gr" onclick="openSec('g:${g.id}')"><span class="sq k-${g.c}">${ic(g.i)}</span><span class="srt"><b>${g.t}</b><small>${g.s}</small></span>${CHV}</button>`).join('')}</div><p class="mut" style="text-align:center;font-size:12px;margin:14px 0 0">Phiên bản app: v25.26</p>`}
+<h3 class="dg">Thiết lập</h3><div class="grl">${GRP().filter(g=>grpRows(g)).map(g=>`<button class="srow gr" onclick="openSec('g:${g.id}')"><span class="sq k-${g.c}">${ic(g.i)}</span><span class="srt"><b>${g.t}</b><small>${g.s}</small></span>${CHV}</button>`).join('')}</div><p class="mut" style="text-align:center;font-size:12px;margin:14px 0 0">Phiên bản app: v26.0</p>`}
 
 /* ===== v20.3: công thức nhiều nguyên liệu, quy đổi đơn vị (g↔kg, lạng, ml↔lít) ===== */
 const UCV={kg:['m',1000],g:['m',1],gr:['m',1],gam:['m',1],gram:['m',1],'lạng':['m',100],'lít':['v',1000],l:['v',1000],lit:['v',1000],ml:['v',1]};
@@ -3046,9 +3264,19 @@ const lo=first?.3:.12,hi=first?.6:.75;
 if(c>=V.t+H*lo&&c<=V.t+H*hi&&r.top>=V.t+6&&r.bottom<=V.b-10)return;
 const d=r.height>H*.6?r.top-(V.t+H*.12):c-(V.t+H*.48);if(Math.abs(d)<8)return;
 window.scrollTo({top:Math.max(0,scrollY+d),behavior:'instant'})};
-document.addEventListener('focusin',e=>{const t=e.target;if(!kbIs(t))return;cur=t;sync();tm.forEach(clearTimeout);fit(cur,1);tm=[120,350,700].map(ms=>setTimeout(()=>fit(cur),ms))},true);
+/* v25.27: app cài trên máy (không nằm trong khung claude.ai): để iPhone tự đưa ô lên trên bàn phím như bình thường,
+   app chỉ chỉnh MỘT lần sau khi bàn phím hiện xong và chỉ khi ô bị che (dưới bàn phím hoặc dưới thanh nút phía trên) -> hết nhảy trang. */
+const EMB=(()=>{try{return window.self!==window.top}catch(e){return true}})();
+let gT=0;
+const fitG=(t,late)=>{if(!t||t!==document.activeElement||!document.contains(t)||!kbIs(t)||t.tagName=='SELECT'||!coarse()||shWd())return;
+if(t.closest('#m .mb')&&!document.body.classList.contains('mpg'))return;
+if(known()<100&&!late)return;
+const V=view(),r=t.getBoundingClientRect(),top=V.t+76,bot=V.b-14;let d=0;
+if(r.bottom>bot)d=(r.top+r.bottom)/2-(V.t+(V.b-V.t)*.66);else if(r.top<top)d=r.top-(V.t+100);
+if(Math.abs(d)<6)return;window.scrollTo({top:Math.max(0,scrollY+d),behavior:'smooth'})};
+document.addEventListener('focusin',e=>{const t=e.target;if(!kbIs(t))return;cur=t;sync();tm.forEach(clearTimeout);if(!EMB){tm=[setTimeout(()=>fitG(cur),450),setTimeout(()=>{if(known()<100)fitG(cur,1)},900)];return}fit(cur,1);tm=[120,350,700].map(ms=>setTimeout(()=>fit(cur),ms))},true);
 document.addEventListener('focusout',()=>{setTimeout(sync,120)},true);
-if(vv){const f=()=>{clearTimeout(rt);rt=setTimeout(()=>{sync();if(editing())fit(document.activeElement)},160)};vv.addEventListener('resize',f);vv.addEventListener('scroll',()=>{clearTimeout(rt);rt=setTimeout(sync,90)})}
+if(vv){const f=()=>{clearTimeout(rt);rt=setTimeout(()=>{sync();if(editing()){if(EMB)fit(document.activeElement);else{clearTimeout(gT);gT=setTimeout(()=>fitG(document.activeElement),120)}}},160)};vv.addEventListener('resize',f);vv.addEventListener('scroll',()=>{clearTimeout(rt);rt=setTimeout(sync,90)})}
 /* Safari không báo blur khi ô nhập bị gỡ khỏi trang (đổi trang, vuốt quay lại): theo dõi thay đổi trang để cập nhật lại */
 try{new MutationObserver(()=>{if(mo)return;mo=requestAnimationFrame(()=>{mo=0;sync()})}).observe(document.body,{childList:true,subtree:true})}catch(e){}
 addEventListener('pageshow',sync);document.addEventListener('visibilitychange',sync);
@@ -3376,7 +3604,7 @@ function pmTg(k){if(!ADM)return;const c=pmCfg();c[k]=c[k]?0:1;if(k=='on'&&c.on)c
 function pmSet(){if(!ADM)return;const c=pmCfg(),h=($('#pm_h')||{}).value||c.h;if(!/^\d\d:\d\d$/.test(h))return toast('Chọn giờ gửi');c.h=h;S.cfg.prem=c;save();toast('Đã lưu giờ gửi thư tổng hợp '+h);if(c.dg)R()}
 async function pmTest(){if(!ADM||!rmSB())return;const b=$('#pm_t');if(b)b.disabled=true;try{const r=await SB.functions.invoke('nhac-nho',{body:{test:1,pre:1}});if(r.error)throw r.error;toast('Đã gửi thư thử đơn đặt trước tới tài khoản quản trị')}catch(e){toast('Chưa gửi được: '+String((e&&e.message)||e).slice(0,80)+'. Kiểm tra lại mục Nhắc qua email trong HUONG-DAN')}finally{if(b)b.disabled=false}}
 function pmH(){const c=pmCfg(),h=esc(c.h);return `<h4 class="sgsec">Đơn đặt trước</h4><div class="sggrp">${sgSw(!!c.on,"pmTg('on')",'Gửi mail khi có đơn mới',c.on?'Đang bật: có đơn đặt trước mới (từ bất kỳ máy nào) thì gửi ngay 1 thư tới quản trị. Mỗi đơn chỉ gửi 1 lần, sửa hay hủy đơn không gửi.':'Đang tắt: không gửi thư khi có đơn mới.')}${sgSw(!!c.dg,"pmTg('dg')",'Gửi thư tổng hợp mỗi ngày',c.dg?'Đang bật: đến '+h+' gửi 1 thư liệt kê đơn giao HÔM NAY và đơn giao NGÀY MAI, tách riêng 2 phần. Không có đơn thì không gửi.':'Đang tắt: không gửi thư tổng hợp.')}</div><label>Giờ gửi thư tổng hợp (giờ Việt Nam)<input id="pm_h" type="time" value="${h}" onchange="pmSet()"></label><p class="ihint">Thư gửi tới email tài khoản quản trị. Đơn tạo lúc mất mạng sẽ gửi khi máy có mạng và đồng bộ lên. Đơn đã giao hoặc đã hủy không có trong thư tổng hợp.</p>${rmSB()?'<button type="button" class="ghost" id="pm_t" onclick="pmTest()">Gửi thử đơn đặt trước cho tôi</button>':''}`}
-{const o=rmH;rmH=function(){pmInit();let h=o();h=h.replace('<div class="sggrp">','<h4 class="sgsec">Nhắc nhập liệu</h4><div class="sggrp">');const i=h.lastIndexOf('</div>');return i<0?h+pmH():h.slice(0,i)+pmH()+h.slice(i)}}
+/* (v25.27: rmH mới đã gồm phần đơn đặt trước) */
 
 /* ===== v25.25: danh sách Đơn hàng hiện số kg từng món, tổng kg mỗi đơn, mỗi ngày và cả kỳ ===== */
 const oKgM=u=>{const x=UCV[unk(u)];return !!(x&&x[0]=='m')};
@@ -3401,7 +3629,96 @@ if(/Failed to send a request|Failed to fetch|NetworkError|not found|404/i.test(m
 return m.slice(0,200)}
 async function rmTest(){if(!ADM||!rmSB())return;const b=$('#rm_t');if(b)b.disabled=true;try{const r=await SB.functions.invoke('nhac-nho',{body:{test:1}});if(r.error)throw r.error;toast('Đã gửi email thử tới tài khoản quản trị')}catch(e){toast('Chưa gửi được: '+await fnErr(e),10000)}finally{if(b)b.disabled=false}}
 async function pmTest(){if(!ADM||!rmSB())return;const b=$('#pm_t');if(b)b.disabled=true;try{const r=await SB.functions.invoke('nhac-nho',{body:{test:1,pre:1}});if(r.error)throw r.error;toast('Đã gửi thư thử đơn đặt trước tới tài khoản quản trị')}catch(e){toast('Chưa gửi được: '+await fnErr(e),10000)}finally{if(b)b.disabled=false}}
-(async()=>{lkWrap();if('serviceWorker' in navigator){const had=!!navigator.serviceWorker.controller;navigator.serviceWorker.register('sw.js').catch(()=>{});navigator.serviceWorker.addEventListener('controllerchange',()=>{if(had)try{toast('Đã có bản mới. Mở lại app để cập nhật.')}catch(e){}})}
+
+/* ===== v25.27: thiết kế lại trang Nhắc qua email (thẻ từng loại thư, vòng tiến độ, danh sách thiết lập, bố cục 2 cột trên iPad ngang/máy tính) ===== */
+const RXI={mail:'<svg class="ico" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg>',
+bell:'<svg class="ico" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0112 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 004 0"/></svg>',
+bolt:'<svg class="ico" viewBox="0 0 24 24"><path d="M13 3L5 13.5h6L10 21l8-10.5h-6z"/></svg>',
+moon:'<svg class="ico" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 019.5 4a8 8 0 1010.5 10.5z"/></svg>',
+send:'<svg class="ico" viewBox="0 0 24 24"><path d="M21 3L10 14M21 3l-7 18-4-7-7-4z"/></svg>'};
+const rxLast=()=>{try{return JSON.parse(localStorage.getItem('giocha_rmlast')||'null')}catch(e){return null}};
+const rxSetLast=o=>{try{localStorage.setItem('giocha_rmlast',JSON.stringify(o))}catch(e){}};
+const rxT=t=>{const d=new Date(t);return String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')+' '+String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0')};
+function rxRing(n,of){const r=26,c=2*Math.PI*r,p=of?n/of:0;return `<div class="rx-ring" role="img" aria-label="${n} trên ${of} loại thư đang bật"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="${r}" class="rx-rt"/><circle cx="32" cy="32" r="${r}" class="rx-rv" stroke-dasharray="${(c*p).toFixed(1)} ${c.toFixed(1)}"/></svg><span><b>${n}/${of}</b><small>đang bật</small></span></div>`}
+function rxCard(o){return `<article class="rx-card ${o.on?'on':''}"><div class="rx-ch"><span class="rx-ic ${o.cl}">${o.ic}</span><span class="rx-tt"><b>${o.t}</b><small>${o.s}</small></span><span class="rx-st ${o.on?'ok':''}">${o.on?'Đang bật':'Đang tắt'}</span></div>
+<div class="rx-big">${o.big}</div><p class="rx-d">${o.d}</p>${o.sw}${o.foot||''}</article>`}
+function rmH(){pmInit();const c=rmCfg(),p=pmCfg(),sb=rmSB(),em=rmDef(),L=rxLast(),n=(c.on?1:0)+(p.on?1:0)+(p.dg?1:0),t=today(),t2=addD(t,1);
+let w0=0,w1=0;try{pWait().forEach(x=>{if(x.due==t)w0++;else if(x.due==t2)w1++})}catch(e){}
+const steps=[[sb,'Kết nối máy chủ Supabase',sb?'Đã kết nối':'Bản này chưa nối máy chủ, chưa gửi được thư'],
+[!!(L&&L.ok),'Gửi thử thành công',L?(L.ok?'Lần gần nhất '+rxT(L.t):'Lỗi lúc '+rxT(L.t)+': '+esc(String(L.err||'').slice(0,90))):(sb?'Bấm một nút “Gửi thử” bên dưới':'Cần nối máy chủ trước')],
+[n>0,'Bật ít nhất 1 loại thư',n?n+' / 3 loại đang bật':'Chưa bật loại nào']],done=steps.filter(s=>s[0]).length;
+const hero=`<section class="rx-hero"><div class="rx-hl"><span class="rx-kick">${RXI.mail}<span>Thư gửi tới quản trị</span></span><h3>${em?esc(em):'Email tài khoản quản trị'}</h3><p>Thư gửi tới email tài khoản quản trị, không cần nhập email. Có nhiều quản trị viên thì gửi cho tất cả. Chọn giờ là tự lưu.</p>
+<div class="rx-pills"><span class="rx-pill ${sb?'ok':'warn'}"><i></i>${sb?'Đã nối máy chủ':'Chưa nối máy chủ'}</span><span class="rx-pill ${L?(L.ok?'ok':'bad'):''}"><i></i>${L?(L.ok?'Gửi thử OK '+rxT(L.t):'Gửi thử lỗi '+rxT(L.t)):'Chưa gửi thử'}</span></div></div>${rxRing(n,3)}</section>`;
+const warn=sb?'':'<div class="sgw"><div>Bản đang dùng chưa kết nối máy chủ Supabase nên chưa tự gửi được email. Cài đặt vẫn được lưu. Làm theo mục “Nhắc qua email” trong HUONG-DAN để bật gửi thật.</div></div>';
+const tb=(id,fn,lb)=>sb?`<button type="button" class="rx-tb" id="${id}" onclick="${fn}">${RXI.send}<span>${lb}</span></button>`:'';
+const cards=rxCard({on:c.on,cl:'b',ic:RXI.bell,t:'Nhắc nhập liệu',s:'Mỗi ngày tối đa 1 thư',big:`<label class="rx-time"><span>Giờ gửi</span><input id="rm_h" type="time" value="${esc(c.h)}" onchange="rmSet()"></label>`,
+d:`Đến <b>${esc(c.h)}</b> mà hôm nay chưa có đơn hàng, phiếu nhập kho, xay giò hay kiểm kê nào thì gửi 1 thư nhắc.`,sw:`<div class="sggrp rx-sw">${sgSw(!!c.on,'rmTg()','Gửi email nhắc nhập liệu',c.on?'Đang bật':'Đang tắt: không gửi email.')}</div>`,foot:tb('rm_t','rmTest()','Gửi email thử cho tôi')})
++rxCard({on:p.on,cl:'g',ic:RXI.bolt,t:'Đơn đặt trước mới',s:'Gửi ngay khi có đơn',big:`<div class="rx-now"><b>Ngay lập tức</b><small>khoảng 1 phút sau khi đơn lên máy chủ</small></div>`,
+d:'Đơn tạo ở máy nào cũng gửi. Mỗi đơn 1 thư; sửa hay hủy đơn không gửi.',sw:`<div class="sggrp rx-sw">${sgSw(!!p.on,"pmTg('on')",'Gửi mail khi có đơn mới',p.on?'Đang bật: mỗi đơn chỉ gửi 1 lần, sửa hay hủy đơn không gửi.':'Đang tắt: không gửi thư khi có đơn mới.')}</div>`,foot:tb('pm_t','pmTest()','Gửi thử đơn đặt trước cho tôi')})
++rxCard({on:p.dg,cl:'p',ic:RXI.moon,t:'Thư tổng hợp mỗi ngày',s:'HÔM NAY và NGÀY MAI tách riêng',big:`<label class="rx-time"><span>Giờ gửi</span><input id="pm_h" type="time" value="${esc(p.h)}" onchange="pmSet()"></label>`,
+d:`Đến <b>${esc(p.h)}</b> gửi 1 thư liệt kê đơn giao HÔM NAY và NGÀY MAI, kèm số lượng cần chuẩn bị. Không có đơn thì không gửi.`,sw:`<div class="sggrp rx-sw">${sgSw(!!p.dg,"pmTg('dg')",'Gửi thư tổng hợp mỗi ngày',p.dg?'Đang bật: thư liệt kê đơn giao HÔM NAY và đơn giao NGÀY MAI, tách riêng 2 phần.':'Đang tắt: không gửi thư tổng hợp.')}</div>`});
+const side=`<aside class="rx-side"><section class="rx-box"><div class="rx-bh"><b>Thiết lập</b><span class="rx-st ${done==3?'ok':''}">${done}/3 xong</span></div><ol class="rx-steps">${steps.map(s=>`<li class="${s[0]?'ok':''}"><i>${s[0]?ic('chk'):''}</i><span><b>${s[1]}</b><small>${s[2]}</small></span></li>`).join('')}</ol></section>
+<section class="rx-box"><div class="rx-bh"><b>Thư tổng hợp sắp tới</b><span class="rx-st ${p.dg?'ok':''}">${p.dg?esc(p.h):'Tắt'}</span></div><div class="rx-up"><div class="t"><small>Hôm nay ${t.slice(8,10)}/${t.slice(5,7)}</small><b>${w0}</b><em>đơn</em></div><div class="m"><small>Ngày mai ${t2.slice(8,10)}/${t2.slice(5,7)}</small><b>${w1}</b><em>đơn</em></div></div><p class="rx-note">${w0+w1?'Đơn đặt trước đang chờ giao, tính theo dữ liệu trên máy này.':'Hiện chưa có đơn chờ giao hôm nay và ngày mai, nên thư sẽ không gửi.'}</p></section>
+<section class="rx-box rx-tips"><b>Mẹo</b><p>Thư đầu tiên hay vào <b>Spam</b>: mở thư, bấm “Không phải thư rác”. Chưa có tên miền riêng thì Resend chỉ gửi tới email đã đăng ký Resend.</p></section></aside>`;
+return `<div class="nopad rx">${hero}${warn}<div class="rx-grid"><div class="rx-main">${cards}</div>${side}</div></div>`}
+async function rmTest(){if(!ADM||!rmSB())return;const b=$('#rm_t');if(b)b.disabled=true;try{const r=await SB.functions.invoke('nhac-nho',{body:{test:1}});if(r.error)throw r.error;rxSetLast({ok:1,t:Date.now(),k:'rm'});toast('Đã gửi email thử tới tài khoản quản trị');R()}catch(e){const m=await fnErr(e);rxSetLast({ok:0,t:Date.now(),k:'rm',err:m});toast('Chưa gửi được: '+m,10000);R()}finally{const b2=$('#rm_t');if(b2)b2.disabled=false}}
+async function pmTest(){if(!ADM||!rmSB())return;const b=$('#pm_t');if(b)b.disabled=true;try{const r=await SB.functions.invoke('nhac-nho',{body:{test:1,pre:1}});if(r.error)throw r.error;rxSetLast({ok:1,t:Date.now(),k:'pm'});toast('Đã gửi thư thử đơn đặt trước tới tài khoản quản trị');R()}catch(e){const m=await fnErr(e);rxSetLast({ok:0,t:Date.now(),k:'pm',err:m});toast('Chưa gửi được: '+m,10000);R()}finally{const b2=$('#pm_t');if(b2)b2.disabled=false}}
+
+/* ===== v25.27: Phiếu nhập không cho nhập "Giò chả thành phẩm" và "Mọc" (hai thứ này do Xay giò làm ra, kho tự cộng) ===== */
+const sgNoBuy=n=>{const k=nz(String(n||'').trim());return !!k&&(k==nz(SGFG)||k==nz(SGMOC))};
+{const o=isv;isv=function(){if(IF&&(IF.kind||'in')=='in'){const e=$('#i_n'),n=e?e.value.trim():'';const old=IF.id?((S.imports.find(x=>x.id==IF.id)||{}).name||''):'';
+if(n&&sgNoBuy(n)&&nz(old)!=nz(n))return toast('“'+n+'” không nhập mua được: Giò chả thành phẩm và Mọc do Xay giò làm ra, kho tự cộng khi bạn ghi số cối ở mục Xay giò.',7000)}return o.apply(this,arguments)}}
+{const o=nameList;nameList=function(k){const r=o.apply(this,arguments);return IF&&(IF.kind||'in')=='in'&&Array.isArray(r)?r.filter(x=>!sgNoBuy(Array.isArray(x)?x[0]:x)):r}}
+
+/* ===== v25.28: thông báo kiểu iOS — lỗi/cảnh báo là hộp kính mờ giữa màn hình (bấm nút mới tắt), thành công là khung nhỏ phía trên tự ẩn ===== */
+const iaSplit=m=>{m=String(m).trim();const i=m.indexOf(': ');if(i>0&&i<=48)return [m.slice(0,i),m.slice(i+2)];if(m.length<=72)return [m,''];const j=m.indexOf('. ');if(j>0&&j<=72)return [m.slice(0,j+1),m.slice(j+2)];return ['Chưa thực hiện được',m]};
+function iaClose(){const a=$('#ia');if(!a)return;a.classList.remove('on');setTimeout(()=>{const b=$('#ia');if(b&&!b.classList.contains('on'))b.remove()},180);document.removeEventListener('keydown',iaKey,true)}
+function iaKey(e){if(e.key==='Escape'||e.key==='Enter'){e.preventDefault();e.stopPropagation();const p=document.querySelector('#ia .ia-bt .pri');if(e.key==='Enter'&&p)p.click();else iaClose()}}
+/* o = {t:tiêu đề, b:nội dung, btn:[{l:'chữ', fn:()=>{}, pri:true}]} */
+function iaShow(m,o){o=o||{};const sp=iaSplit(m),t=o.t||sp[0],b=o.b!=null?o.b:sp[1];
+try{const a=document.activeElement;if(a&&/^(INPUT|TEXTAREA)$/.test(a.tagName))a.blur()}catch(e){}
+let el=$('#ia');if(!el){el=document.createElement('div');el.id='ia';el.className='iosa';el.setAttribute('role','alertdialog');el.setAttribute('aria-modal','true');document.body.appendChild(el)}
+const bt=(o.btn&&o.btn.length?o.btn:[{l:'Đã hiểu',pri:true}]);window.__iaFn=bt.map(x=>x.fn||null);
+el.innerHTML=`<div class="ia-dim"></div><div class="ia-c" aria-labelledby="ia_t"><h4 id="ia_t">${esc(t)}</h4>${b?`<p>${esc(b)}</p>`:''}<div class="ia-bt ${bt.length>1&&bt.some(x=>String(x.l).length>12)?'v':''}">${bt.map((x,i)=>`<button type="button" class="${x.pri?'pri':''}" onclick="iaClose();const f=(window.__iaFn||[])[${i}];if(f)setTimeout(f,60)">${esc(x.l)}</button>`).join('')}</div></div>`;
+requestAnimationFrame(()=>el.classList.add('on'));document.removeEventListener('keydown',iaKey,true);document.addEventListener('keydown',iaKey,true);
+}
+function toast(m,ms){m=String(m==null?'':m);const e=$('#toast');const ok=/^(Đã|Đang)\s/.test(m),bad=!ok&&/lỗi|không|chưa|phải|lớn hơn|nhập|thiếu|trùng|sai|quá|hết|chọn |cần /i.test(m);
+if(bad&&!window.__TEST_NOIA){if(e){e.className='tbad';e.textContent=m;e.style.display='none';clearTimeout(toast.t)}return iaShow(m)}
+if(bad){if(!e)return;e.className='tbad';e.innerHTML=`<span class="tic">${ic('x')}</span><span class="tmg">${esc(m)}</span>`;e.style.display='flex';clearTimeout(toast.t);toast.t=setTimeout(()=>e.style.display='none',ms||3400);return}
+if(!e)return;e.className='tok it';e.innerHTML=`<span class="tic">${ic('chk')}</span><span class="tmg">${esc(m)}</span><button type="button" class="itx" aria-label="Đóng">×</button><i class="itb" style="animation-duration:${ms||3000}ms"></i>`;e.style.display='flex';e.onclick=()=>{e.style.display='none'};clearTimeout(toast.t);toast.t=setTimeout(()=>e.style.display='none',ms||3000)}
+{const o=isv;isv=function(){if(IF&&(IF.kind||'in')=='in'){const e=$('#i_n'),n=e?e.value.trim():'';const old=IF.id?((S.imports.find(x=>x.id==IF.id)||{}).name||''):'';
+if(n&&sgNoBuy(n)&&nz(old)!=nz(n)&&!window.__TEST_NOIA){const $t=$('#toast');if($t){$t.textContent='“'+n+'” không nhập mua được';$t.style.display='none'}return iaShow('',{t:'Không nhập mua được “'+n+'”',b:'Mọc và Giò chả thành phẩm do Xay giò làm ra, kho tự cộng khi bạn ghi số cối ở mục Xay giò.',btn:[{l:'Đi tới Xay giò',pri:true,fn:()=>{try{closeF()}catch(e){}try{go('imp');IK='stock';R();sgPage()}catch(e){}}},{l:'Đóng'}]})}}return o.apply(this,arguments)}}
+
+/* ===== v25.28: có phiên bản mới -> hỏi Cập nhật (mở lại app) / Để sau ===== */
+function updAsk(){if(document.querySelector('#ia.on'))return;const busy=!!((typeof PF!='undefined'&&PF)||(typeof IF!='undefined'&&IF)||(typeof PRE!='undefined'&&PRE));
+iaShow('',{t:'Có phiên bản mới',b:'App đã tải xong bản mới. Bấm Cập nhật để mở lại app với bản mới. Đơn, phiếu và dữ liệu đã lưu vẫn giữ nguyên.'+(busy?' Phần đang gõ dở chưa bấm Lưu sẽ mất.':''),btn:[{l:'Cập nhật',pri:true,fn:()=>{window.__upd=0;try{save()}catch(e){}location.reload()}},{l:'Để sau'}]})}
+
+/* ===== v26.0: tự sửa tiêu đề thư từng loại + tên người gửi (Cài đặt → Nhắc qua email) ===== */
+const MTD={rem:{k:['cơ sở','ngày'],def:'[{cơ sở}] Hôm nay ({ngày}) chưa có đơn hàng hoặc nhập liệu'},
+pnew:{k:['khách','ngày giao','còn','tổng','còn thu','sđt','cơ sở'],def:'[{cơ sở}] Đơn đặt trước mới: {khách} · giao {ngày giao}'},
+pdg:{k:['đơn hôm nay','đơn ngày mai','hôm nay','ngày mai','cơ sở'],def:'[{cơ sở}] Đơn đặt trước: hôm nay {hôm nay} có {đơn hôm nay} đơn · ngày mai {ngày mai} có {đơn ngày mai} đơn'}};
+const mtCfg=()=>Object.assign({rem:'',pnew:'',pdg:'',from:''},(S.cfg&&S.cfg.mt)||{});
+function mtFill(tpl,vars){let t=String(tpl||'').normalize('NFC').replace(/[\r\n\t]+/g,' ').trim().slice(0,200);if(!t)return '';const V={};Object.keys(vars).forEach(k=>V[k.normalize('NFC').toLowerCase()]=vars[k]);
+t=t.replace(/\{([^{}]{1,24})\}/g,(m,k)=>{const key=k.trim().normalize('NFC').toLowerCase();return Object.prototype.hasOwnProperty.call(V,key)?String(V[key]??''):m});return t.replace(/\s{2,}/g,' ').trim().slice(0,200)}
+function mtVars(k){const shop=(S&&S.shop)||'Cơ sở giò chả',t=today(),t2=addD(t,1),dm=d=>d.slice(8,10)+'/'+d.slice(5,7);let w0=0,w1=0,first=null;try{pWait().forEach(x=>{if(x.due==t)w0++;else if(x.due==t2)w1++;if(!first)first=x})}catch(e){}
+if(k=='rem')return {'cơ sở':shop,'ngày':dm(t)+'/'+t.slice(0,4)};
+if(k=='pnew'){let nm='Chị Lan',ph='0903 111 222',due=t2,tt=850000,left=750000;if(first){try{const c=pCus(first);nm=c.name||nm;ph=c.phone||'';due=first.due||t2;tt=pTot(first);left=pLeft(first)}catch(e){}}const n=Math.round((Date.parse(due)-Date.parse(t))/864e5);
+return {'cơ sở':shop,'khách':nm,'sđt':ph,'ngày giao':dm(due),'tổng':fd(tt),'còn thu':fd(left),'còn':n<0?'quá '+(-n)+' ngày':n==0?'hôm nay':n==1?'ngày mai':'còn '+n+' ngày'}}
+return {'cơ sở':shop,'hôm nay':dm(t),'ngày mai':dm(t2),'đơn hôm nay':w0,'đơn ngày mai':w1}}
+function mtPrev(k){const c=mtCfg(),e=$('#mt_'+k),v=e?e.value:c[k];return mtFill(v,mtVars(k))||mtFill(MTD[k].def,mtVars(k))}
+function mtPv(k){const p=$('#mtp_'+k),s=$('#mts_'+k),t=mtPrev(k);if(p)p.textContent=t;if(s)s.textContent=t}
+function mtSet(k){if(!ADM)return;const c=mtCfg(),e=$('#mt_'+k);if(!e)return;const v=String(e.value||'').replace(/[\r\n\t]+/g,' ').trim().slice(0,k=='from'?60:200);if(c[k]===v)return;c[k]=v;S.cfg.mt=c;save();if(k!='from')mtPv(k);toast(v?'Đã lưu '+(k=='from'?'tên người gửi':'tiêu đề thư'):'Đã dùng lại '+(k=='from'?'tên người gửi':'tiêu đề')+' mặc định')}
+function mtIns(k,key){const e=$('#mt_'+k);if(!e)return;const tok='{'+key+'}',a=document.activeElement===e&&e.selectionStart!=null?e.selectionStart:e.value.length,b=document.activeElement===e&&e.selectionEnd!=null?e.selectionEnd:a;
+const need=a>0&&!/\s$/.test(e.value.slice(0,a))?' ':'';e.value=(e.value.slice(0,a)+need+tok+e.value.slice(b)).slice(0,200);if(document.activeElement===e){const p=a+need.length+tok.length;try{e.setSelectionRange(p,p)}catch(x){}}mtPv(k);mtSet(k)}
+function mtReset(k){const e=$('#mt_'+k);if(!e)return;e.value='';mtSet(k);mtPv(k)}
+function mtBox(k){const c=mtCfg(),d=MTD[k],tp=mtPrev(k);return `<details class="rx-mt"${c[k]?' open':''}><summary><span>Tiêu đề thư</span><b id="mts_${k}">${esc(tp)}</b></summary>
+<label class="rx-mtl">Tiêu đề thư (để trống = mặc định)<input id="mt_${k}" maxlength="200" value="${esc(c[k])}" placeholder="${esc(d.def)}" oninput="mtPv('${k}')" onchange="mtSet('${k}')" autocomplete="off" enterkeyhint="done"></label>
+<div class="rx-chips"><small>Chạm để chèn:</small>${d.k.map(x=>`<button type="button" class="rx-chip" onclick="mtIns('${k}','${x}')">{${esc(x)}}</button>`).join('')}</div>
+<p class="rx-pv"><span>Xem trước</span><b id="mtp_${k}">${esc(tp)}</b></p>${c[k]?`<button type="button" class="rx-lk" onclick="mtReset('${k}')">Về tiêu đề mặc định</button>`:''}</details>`}
+{const o=rxCard;rxCard=function(c){const k={'Nhắc nhập liệu':'rem','Đơn đặt trước mới':'pnew','Thư tổng hợp mỗi ngày':'pdg'}[c&&c.t];if(k)c=Object.assign({},c,{foot:(c.foot||'')+mtBox(k)});return o.call(this,c)}}
+{const o=rmH;rmH=function(){const h=o(),c=mtCfg();const box=`<section class="rx-box"><div class="rx-bh"><b>Tên người gửi</b></div><label class="rx-mtl">Hiện ở mục người gửi trong hộp thư<input id="mt_from" maxlength="60" value="${esc(c.from)}" placeholder="Giò chả" onchange="mtSet('from')" autocomplete="off" enterkeyhint="done"></label><p class="rx-note">Để trống thì dùng “Giò chả”. Địa chỉ gửi không đổi.</p></section>`;
+return h.replace('<aside class="rx-side">','<aside class="rx-side">'+box)}}
+(async()=>{lkWrap();if('serviceWorker' in navigator){const had=!!navigator.serviceWorker.controller;navigator.serviceWorker.register('sw.js').then(r=>{const up=()=>{try{r.update()}catch(e){}};document.addEventListener('visibilitychange',()=>{if(!document.hidden){up();if(window.__upd)try{updAsk()}catch(e){}}});setInterval(up,30*60e3)}).catch(()=>{});navigator.serviceWorker.addEventListener('controllerchange',()=>{if(had){window.__upd=1;try{updAsk()}catch(e){try{toast('Đã có bản mới. Mở lại app để cập nhật.')}catch(x){}}}})}
 const C=window.CFG||{};if(!C.url||!C.key||!window.supabase)return ashow('cfg');
 SB=supabase.createClient(C.url,C.key);
 SB.auth.onAuthStateChange((ev,se)=>{if(ev=='PASSWORD_RECOVERY'){REC=1;return ashow('reset')}if(REC)return;if(ev=='SIGNED_OUT'){location.reload();return}if(se&&!entered){entered=1;setTimeout(()=>enter(se),0)}});

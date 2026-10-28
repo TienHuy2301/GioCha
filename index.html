@@ -1563,8 +1563,10 @@ html body.mpg #m.modal{padding:14px var(--pad,14px) 0!important;background:none!
 html body.mpg #m .mb{background:none!important;border-radius:0!important;box-shadow:none!important;padding:0 0 calc(150px + var(--shkb,0px))!important}
 html body.mpg #m .sgtw{background:var(--io-card,var(--c));border-radius:16px;padding:2px 12px;margin:8px 0}
 /* nút Lưu dính trên đầu: ẩn khi đang dịch chuyển lúc mở bàn phím */
-.abar.stk .abar-fx{transition:opacity .16s ease}
-.abar.stk.mv .abar-fx{opacity:0;transition:none;pointer-events:none}
+/* v26.0c: nút Lưu dính trên đầu dùng "sticky" của trình duyệt thay cho tự tính vị trí theo bàn phím
+   (iOS 26 báo độ dịch khung nhìn khác bản cũ → nút bị cộng dịch 2 lần, nằm lơ lửng giữa màn hình) */
+.abar{position:sticky;top:var(--sp,0px);z-index:3}
+.abar.stk .abar-fx{position:static!important;top:auto!important;left:auto!important;box-shadow:none!important}
 /* v26.0b: ô tìm kiếm dạng viên (Nhà cung cấp, Khách hàng, Đơn hàng): bỏ ô xám thứ hai lồng bên trong */
 main label.hsr input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=file]),#m label.hsr input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=file]){background:transparent!important;border:0!important;box-shadow:none!important;border-radius:0!important;padding-left:0!important}
 /* v26.0b: danh sách nhà cung cấp trùng tên lớp với nút cũ của Xay giò (.sgl) → hiện viền tròn to phía sau các thẻ: bỏ */
@@ -1578,6 +1580,34 @@ html body.mpg #m .sgcard .sgtw{background:none!important;padding:0!important;mar
 html body.mpg #m details.sgdt{background:var(--io-card,var(--c));border-radius:26px;padding:14px 16px;margin:10px 0 12px}
 html body.mpg #m details.sgdt>summary{font-weight:600;color:var(--t)}
 html body.mpg #m details.sgdt .sgnote{border:0!important;background:none!important;padding:8px 0 0!important}
+
+/* v26.0c: thẻ Cần nhập ngay chạm được để xem chi tiết */
+button.ncr.ncb{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:12px;width:100%;cursor:pointer;-webkit-tap-highlight-color:transparent;border-radius:14px}
+button.ncr.ncb:active{opacity:.6}
+button.ncr.ncb:focus-visible{outline:2px solid var(--bl,#0a84ff);outline-offset:3px}
+.ncr .ncn{flex:1;min-width:0}
+.ncgo{flex:none;color:var(--m);opacity:.7}
+/* v26.0c: ô chọn ngày trên iPhone không tràn ra ngoài thẻ, chữ canh trái như các ô khác */
+label input[type=date]{min-width:0;max-width:100%;width:100%;box-sizing:border-box;display:block}
+@supports (-webkit-touch-callout:none){label input[type=date]{-webkit-appearance:none;appearance:none;min-height:46px}}
+label input[type=date]::-webkit-date-and-time-value{text-align:left}
+
+/* v26.0c: Lịch sử xay giò */
+.hm{margin:6px 0 10px}.hmh{display:flex;justify-content:space-between;align-items:baseline;padding:0 4px 6px;gap:8px}.hmh b{font-size:15px}.hmh span{font-size:13px;color:var(--m)}
+.hmt{display:grid;grid-template-columns:1fr 1fr;gap:8px}.hmt>div{background:var(--io-card,var(--c));border-radius:16px;padding:10px 12px}.hmt small{display:block;font-size:12px;color:var(--m)}.hmt b{font-size:18px}
+.hmt .fg b{color:#0a84ff}.hmt .mc b{color:#bf5af2}
+.hx{background:var(--io-card,var(--c));border-radius:22px;padding:14px;margin:0 0 10px}
+.hxh{display:flex;align-items:center;gap:12px}.hxd{width:46px;height:50px;border-radius:12px;background:var(--io-fill,rgba(118,118,128,.12));display:grid;place-items:center;align-content:center;flex:none}.hxd b{font-size:19px;line-height:1.1}.hxd small{font-size:10.5px;color:var(--m)}
+.hxt{flex:1;min-width:0}.hxt b{display:block;font-size:16px}.hxt small{font-size:12.5px;color:var(--m);display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hxdel{flex:none;width:36px;height:36px;min-height:0;padding:0;margin:0;border-radius:50%;border:0;background:rgba(255,59,48,.1);color:#ff3b30;display:grid;place-items:center}.hxdel .ico{width:18px;height:18px}
+.hxg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0 4px}
+.hxc{border-radius:14px;padding:10px 12px;display:grid;gap:1px;min-width:0}.hxc.fg{background:rgba(10,132,255,.1)}.hxc.mc{background:rgba(191,90,242,.1)}
+.hxc .hxlb{font-size:12px;font-weight:600}.hxc.fg .hxlb{color:#0a84ff}.hxc.mc .hxlb{color:#bf5af2}.hxc b{font-size:17px}.hxc em{font-style:normal;font-size:12.5px;color:var(--m)}
+.hxc.off{opacity:.45}
+.hxu{margin-top:8px}.hxu summary{font-size:13.5px;color:#0a84ff;font-weight:600;padding:6px 0;list-style:none;cursor:pointer}.hxu summary::-webkit-details-marker{display:none}
+.hxuc{display:grid;grid-template-columns:1fr 1fr;gap:10px}.hxuc>div{display:grid;gap:4px;align-content:start;min-width:0}.hxuc small{font-size:12px;font-weight:600}.hxuc small.fg{color:#0a84ff}.hxuc small.mc{color:#bf5af2}
+.hxuc span{display:flex;justify-content:space-between;gap:6px;font-size:13px;border-bottom:1px solid var(--io-sep,rgba(60,60,67,.12));padding:3px 0}.hxuc span i{font-style:normal;color:var(--m);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.hxuc span b{flex:none}.hxuc .hx0{color:var(--m);border:0}
+html.wd .hxl{max-width:760px}
 </style></head><body>
 <header id="hd">Giò chả</header>
 <main id="v"></main>
@@ -2669,7 +2699,9 @@ function stockV(){const I=inv();
 if(!I.items.length)return `<div class="hemp">${ic('prods')}<b>Chưa có nguyên liệu trong kho</b><small>Tạo phiếu nhập đầu tiên để theo dõi tồn kho.</small><button class="gbtn pri" onclick="newI()">${ic('plus')}<span>Tạo phiếu nhập</span></button></div>`;
 const R0=stockRows(),nd=R0.filter(x=>x.need).sort((a,b)=>(a.days==null?-1:a.days)-(b.days==null?-1:b.days)),ok=R0.filter(x=>!x.need).sort((a,b)=>(a.days==null?1e9:a.days)-(b.days==null?1e9:b.days)||a.s.name.localeCompare(b.s.name,'vi'));
 const ndH=nd.length?`<div class="ksh warn"><b>CẦN NHẬP NGAY</b></div>`+nd.map(x=>{const s=x.s,{sp}=lastSup(s.key),ph=sp&&sp.phone?String(sp.phone).replace(/[^\d+]/g,''):'',w=x.days==null?(s.q<=1e-9?4:100):clamp(x.days/7*100,6,100);
-return `<div class="nc"><div class="ncr"><span class="nci">${ic('prods')}</span><div class="ncn"><b>${esc(s.name)}</b><small>${s.q<=-1e-9?'Âm kho · cần kiểm kê hoặc nhập thêm':s.q<=1e-9?'Đã hết':`Còn ${num(r3(s.q))} ${esc(s.unit||'')}${x.days!=null?' · đủ dùng '+fDays(x.days):''}`}</small></div></div><div class="nbar"><i style="width:${w}%"></i></div><div class="nca">${ph?`<a class="gbtn grn" href="tel:${ph}">${ic('phone')}<span>Gọi ${esc(sp.name)}</span></a>`:''}<button type="button" class="gbtn pri" onclick="needIn('${esc(s.key)}')">${ic('plus')}<span>Tạo phiếu nhập</span></button></div></div>`}).join(''):'';
+/* v26.0c: chạm thẻ để xem chi tiết; Giò chả thành phẩm và Mọc làm ra từ Xay giò nên không có nút Tạo phiếu nhập */
+const mk=(typeof SGFG!='undefined')&&[nz(SGFG),nz(SGMOC)].includes(nz(String(s.name).trim())),btn=mk?'':`${ph?`<a class="gbtn grn" href="tel:${ph}">${ic('phone')}<span>Gọi ${esc(sp.name)}</span></a>`:''}<button type="button" class="gbtn pri" onclick="needIn('${esc(s.key)}')">${ic('plus')}<span>Tạo phiếu nhập</span></button>`;
+return `<div class="nc"><button type="button" class="ncr ncb" onclick="ih('${esc(s.key)}','k')"><span class="nci">${ic('prods')}</span><div class="ncn"><b>${esc(s.name)}</b><small>${s.q<=-1e-9?'Âm kho · cần kiểm kê hoặc nhập thêm':s.q<=1e-9?'Đã hết':`Còn ${num(r3(s.q))} ${esc(s.unit||'')}${x.days!=null?' · đủ dùng '+fDays(x.days):''}`}</small></div><svg class="ncgo" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button><div class="nbar"><i style="width:${w}%"></i></div>${btn?`<div class="nca">${btn}</div>`:''}</div>`}).join(''):'';
 const okV=ok.reduce((t,x)=>t+(+x.s.v||0),0),stN=n=>{const k=nz(String(n).trim());return k==nz(SGFG)?'Thành phẩm':k==nz(SGMOC)?'Mọc trong tủ':''};
 const okH=ok.length?`<div class="ksh"><b>ĐỦ DÙNG <i class="n2n">${ok.length}</i></b><span class="n2v">${fd(Math.round(okV))} VND</span></div><div class="klist n2l">${ok.map(x=>{const s=x.s,h=ihue(s.name),st=x.days!=null?(x.days<=7?'warn':'ok'):stN(s.name)?'fg':'na',chip=x.days!=null?'Đủ dùng '+fDays(x.days):stN(s.name)||'Chưa có lịch sử dùng',bw=x.days!=null?clamp(x.days/30*100,6,100):0;
 return `<button type="button" class="kr n2r ni" style="--hc:var(--h${h})" onclick="ih('${esc(s.key)}','k')"><span class="n2a" aria-hidden="true">${esc(String(s.name).trim().charAt(0).toUpperCase())}</span><div class="kt"><b>${esc(s.name)}</b><span class="n2c ${st}">${esc(chip)}</span><small>Giá bình quân ${fd(Math.round(s.avg))} / ${esc(s.unit||'đv')}</small></div><div class="nq"><b>${num(r3(s.q))}<em>${esc(s.unit||'')}</em></b><small>${fd(s.v)} VND</small></div>${bw?`<span class="n2bar"><i class="${st}" style="width:${bw}%"></i></span>`:''}</button>`}).join('')}</div>`:'';
@@ -3301,9 +3333,9 @@ if(known()<100&&!late)return;
 const V=view(),r=t.getBoundingClientRect(),top=V.t+4,bot=V.b-2;let d=0;
 if(r.bottom>bot)d=(r.top+r.bottom)/2-(V.t+(V.b-V.t)*.6);else if(r.top<top)d=r.top-(V.t+90);
 if(Math.abs(d)<6)return;window.scrollTo({top:Math.max(0,scrollY+d),behavior:'smooth'})};
-document.addEventListener('focusin',e=>{const t=e.target;if(!kbIs(t))return;cur=t;sync();tm.forEach(clearTimeout);if(!EMB){tm=[setTimeout(()=>fitG(cur),450),setTimeout(()=>{if(known()<100)fitG(cur,1)},900)];return}fit(cur,1);tm=[120,350,700].map(ms=>setTimeout(()=>fit(cur),ms))},true);
+document.addEventListener('focusin',e=>{const t=e.target;if(!kbIs(t))return;cur=t;sync();tm.forEach(clearTimeout);if(!EMB)return;/* v26.0c: app cài trên máy: KHÔNG tự cuộn nữa — iPhone (iOS 26+) tự đưa ô lên đúng chỗ; app tự cuộn thêm làm trang nhảy xuống, ô bị đẩy sát bàn phím */fit(cur,1);tm=[120,350,700].map(ms=>setTimeout(()=>fit(cur),ms))},true);
 document.addEventListener('focusout',()=>{setTimeout(sync,120)},true);
-if(vv){const f=()=>{clearTimeout(rt);rt=setTimeout(()=>{sync();if(editing()){if(EMB)fit(document.activeElement);else{clearTimeout(gT);gT=setTimeout(()=>fitG(document.activeElement),120)}}},160)};vv.addEventListener('resize',f);vv.addEventListener('scroll',()=>{clearTimeout(rt);rt=setTimeout(sync,90)})}
+if(vv){const f=()=>{clearTimeout(rt);rt=setTimeout(()=>{sync();if(editing()){if(EMB)fit(document.activeElement);/* v26.0c: không tự cuộn khi bàn phím đổi chiều cao */}},160)};vv.addEventListener('resize',f);vv.addEventListener('scroll',()=>{clearTimeout(rt);rt=setTimeout(sync,90)})}
 /* Safari không báo blur khi ô nhập bị gỡ khỏi trang (đổi trang, vuốt quay lại): theo dõi thay đổi trang để cập nhật lại */
 try{new MutationObserver(()=>{if(mo)return;mo=requestAnimationFrame(()=>{mo=0;sync()})}).observe(document.body,{childList:true,subtree:true})}catch(e){}
 addEventListener('pageshow',sync);document.addEventListener('visibilitychange',sync);
@@ -3760,6 +3792,21 @@ const o=applyTheme;applyTheme=function(){const r=o.apply(this,arguments);try{sm(
 
 /* v26.0c: form Ghi số cối: gom các ô nhập + phần xem trước vào 1 thẻ trắng */
 {const o=sgForm;sgForm=function(){const h=o.apply(this,arguments),i=h.indexOf('<label'),j=h.lastIndexOf('<div class="seg">');if(i<0||j<i)return h;return h.slice(0,i)+'<div class="sgcard">'+h.slice(i,j)+'</div>'+h.slice(j)}}
+
+/* ===== v26.0c: Lịch sử xay giò — gom theo tháng, mỗi lần xay tách riêng Cối thường / Cối cất tủ ===== */
+sgHistH=function(){const L=sgList();if(!L.length)return '<p class="ihint">Chưa có lần xay giò nào.</p>';
+const by={},addU=(g,n,q,u)=>{const k=nz(String(n).trim());(g[k]=g[k]||{n,q:0,u}).q+=+q||0};
+S.imports.forEach(x=>{if(!x.sg)return;const kd=IKD(x);if(kd!='use'&&kd!='prod')return;const e=by[x.sg]||(by[x.sg]={fg:{},moc:{},by:''});if(x.by&&!e.by)e.by=x.by;const g=e[x.sgo=='moc'?'moc':'fg'];
+if(kd=='use')addU(g,x.name,x.qty,x.unit);else (x.lines||[]).forEach(l=>{if(l)addU(g,l.n,l.q,l.u)})});
+S.imports.forEach(x=>{if(x.sg&&x.by&&by[x.sg]&&!by[x.sg].by)by[x.sg].by=x.by});
+const ul=o=>{const a=Object.values(o);return a.length?a.map(x=>`<span><i>${esc(x.n)}</i><b>${esc(sgQ(r3(x.q),x.u))}</b></span>`).join(''):'<span class="hx0">Không có</span>'};
+const W=['CN','T2','T3','T4','T5','T6','T7'],mo={};L.forEach(e=>{const m=String(e.date).slice(0,7);(mo[m]=mo[m]||[]).push(e)});
+return '<div class="hxl">'+Object.keys(mo).sort().reverse().map(m=>{const A=mo[m],c=A.reduce((s,e)=>s+e.c,0),fg=A.reduce((s,e)=>s+e.fg,0),mk=A.reduce((s,e)=>s+e.mk,0);
+return `<div class="hm"><div class="hmh"><b>Tháng ${+m.slice(5)}/${m.slice(0,4)}</b><span>${A.length} lần · ${esc(num(r3(c)))} cối</span></div><div class="hmt"><div class="fg"><small>Thành phẩm</small><b>+${esc(sgQ(r3(fg),'kg'))}</b></div><div class="mc"><small>Mọc vào tủ</small><b>+${esc(sgQ(r3(mk),'kg'))}</b></div></div></div>`+
+A.map(e=>{const u=by[e.id]||{fg:{},moc:{},by:''},n=sgR6(e.c-e.k),d=new Date(e.date+'T00:00'),who=e.auto?'Thịt dư tự xay mọc':(u.by?'Ghi bởi '+esc(String(u.by).split('@')[0]):'');
+return `<div class="hx"><div class="hxh"><div class="hxd"><b>${+String(e.date).slice(8,10)}</b><small>${W[d.getDay()]||''} · th${+String(e.date).slice(5,7)}</small></div><div class="hxt"><b>${esc(num(e.c))} cối</b>${who?`<small>${who}</small>`:''}</div><button type="button" class="hxdel" onclick="sgDel('${e.id}')" aria-label="Hủy lần xay ngày ${esc(dmy(e.date))}">${ic('trash')}</button></div>
+<div class="hxg"><div class="hxc fg${n>0?'':' off'}"><span class="hxlb">Cối thường</span><b>${esc(num(n))} cối</b><em>+${esc(sgQ(r3(e.fg),'kg'))} thành phẩm</em></div><div class="hxc mc${e.k>0?'':' off'}"><span class="hxlb">Cối cất tủ</span><b>${esc(num(e.k))} cối</b><em>+${esc(sgQ(r3(e.mk),'kg'))} mọc vào tủ</em></div></div>
+<details class="hxu"><summary>Nguyên liệu đã trừ</summary><div class="hxuc"><div><small class="fg">Cối thường</small>${ul(u.fg)}</div><div><small class="mc">Cối cất tủ</small>${ul(u.moc)}</div></div></details></div>`}).join('')}).join('')+'</div>'};
 (async()=>{lkWrap();if('serviceWorker' in navigator){const had=!!navigator.serviceWorker.controller;navigator.serviceWorker.register('sw.js').then(r=>{const up=()=>{try{r.update()}catch(e){}};document.addEventListener('visibilitychange',()=>{if(!document.hidden){up();if(window.__upd)try{updAsk()}catch(e){}}});setInterval(up,30*60e3)}).catch(()=>{});navigator.serviceWorker.addEventListener('controllerchange',()=>{if(had){window.__upd=1;try{updAsk()}catch(e){try{toast('Đã có bản mới. Mở lại app để cập nhật.')}catch(x){}}}})}
 const C=window.CFG||{};if(!C.url||!C.key||!window.supabase)return ashow('cfg');
 SB=supabase.createClient(C.url,C.key);

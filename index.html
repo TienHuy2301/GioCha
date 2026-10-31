@@ -1692,6 +1692,44 @@ html body .sgst input{flex:1;min-width:0;text-align:center;font-size:19px!import
 .bkb,body.mpg #m .bkb,html:not(.wd) .css .bkb.csp{justify-content:center!important;align-items:center!important}
 .bkb .ico{display:block;flex:none}
 #pgq .pgqr{margin:10px 0 4px;padding:14px 12px}#pgq .pgqr>b{font-size:14px}#pgq .qrs{width:min(220px,60vw)}
+.sgtp{align-content:start}.sgtp em{position:static!important;order:-1;justify-self:start;margin-bottom:3px;line-height:1.3}
+/* v26.0.1e: đường kẻ rõ hơn chút; trang cài đặt kiểu iPhone */
+:root{--io-sep:rgba(60,60,67,.2)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--io-sep:rgba(84,84,88,.65)}}
+:root[data-theme="dark"]{--io-sep:rgba(84,84,88,.65)}
+.srow+.srow::before,.grl .srow.gr+.srow.gr::before,.slist .srow+.srow::before{border-top-width:.75px!important}
+.sggrp>*+*::before,.sggrp .sgmn+.sgmn::before{border-top-width:.75px!important}
+.sph{display:block!important;background:var(--io-card);border-radius:26px;padding:18px 18px 16px;margin:4px 0 22px!important}
+.sph .sq.lg{width:58px!important;height:58px!important;border-radius:14px!important;display:grid;place-items:center}
+.sph .sq.lg .ico{width:30px;height:30px}
+.sph h2{margin:12px 0 4px!important;font-size:28px!important;line-height:1.15}
+.sph small{font-size:15px!important;line-height:1.35}
+.ioss{display:block}
+.iosh{margin:22px 18px 8px!important;font-size:15px!important;font-weight:600!important;color:var(--m)!important;text-transform:none!important;letter-spacing:0!important}
+.ioss>.iosh:first-child{margin-top:0!important}
+.iosg{background:var(--io-card);border-radius:26px;padding:14px 16px;margin:0 0 6px}
+.iosg .sggrp,.iosg .sgcard,.iosg .nopad{background:transparent!important;box-shadow:none!important;border:0!important;margin:0!important;padding:0!important;border-radius:0!important}
+.iosg .sggrp .sgmn,.iosg .sggrp .sgsw,.iosg .sggrp>*{padding-left:0!important;padding-right:0!important}
+.iosg>label:first-child,.iosg>*:first-child{margin-top:0!important}
+.iosg .dz{margin:0!important;padding:0!important;border:0!important}
+.iosf{margin:6px 18px 4px!important;font-size:13px;color:var(--m);line-height:1.4}
+.iosg+.iosg{margin-top:18px}
+.iosg:has(>.rcnob:only-child){background:transparent!important;padding:0!important}.iosg>.rcnob{margin:0!important}
+.iosg .ghost{margin:6px 0 0}
+/* v26.0.2: Tổng quan — khi ẩn tên/logo trên đầu trang mà đang báo trạng thái đồng bộ, thanh trên cùng phải TRONG SUỐT (chỉ hiện viên trạng thái);
+   trước đây quy tắc #hd{background:glass;backdrop-filter:blur} phía sau đè lên → dải mờ chồng lên ngày và chữ "Tổng quan". */
+html.hdoff.sybad:not(.wd) #hd{background:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;border:0!important;border-bottom:0!important;box-shadow:none!important}
+html.hdoff.sybad:not(.wd) #v{padding-top:42px!important}
+/* v26.0.2: Kho nguyên liệu — tên trang cùng hàng nút quay về, ở chính giữa, chữ nhỏ gọn như iPhone */
+#v>.bkb+.dh.ihd{display:flex!important;align-items:center;justify-content:center;height:44px;margin:-50px 0 12px!important;padding:0 58px!important;pointer-events:none;position:relative!important;top:0!important;z-index:1;background:none!important;box-shadow:none!important;border:0!important}
+#v>.bkb+.dh.ihd>div{min-width:0;text-align:center}
+#v>.bkb+.dh.ihd h2{font-size:17px!important;font-weight:600!important;line-height:1.2!important;margin:0!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:-.2px}
+#v>.bkb+.dh.ihd small.sub{display:none!important}
+#v>.bkb:has(+.dh.ihd){display:grid!important;margin-bottom:6px!important}
+.mcbox{margin-top:16px;text-align:left}.mcr{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-top:.75px solid var(--io-sep)}.mcr:first-child{border-top:0}
+.mcr i{flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:13px;font-weight:700;color:#fff;background:#8e8e93;margin-top:1px}
+.mcr.mc-ok i{background:#34c759}.mcr.mc-bad i{background:#ff3b30}.mcr.mc-mid i{background:#ff9f0a}.mcr,.mcr *{text-align:left!important}.mcr b{display:block;font-size:15px;font-weight:600;color:var(--t)!important}.mcr.mc-bad b{color:#ff3b30!important}.mcr small{display:block;color:var(--m);font-size:13px;line-height:1.4;margin-top:2px;word-break:break-word}.mcr code{font-size:12px}
+#mc_r{margin-top:10px}
 </style></head><body>
 <div id="spl" aria-hidden="true"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20512%20512%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22bg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%234a8cf8%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%231941b3%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22gl%22%20cx%3D%22.2%22%20cy%3D%22.12%22%20r%3D%22.8%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23fff%22%20stop-opacity%3D%22.30%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23fff%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%3ClinearGradient%20id%3D%22lf%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23e9f8c2%22%2F%3E%3Cstop%20offset%3D%22.45%22%20stop-color%3D%22%23bfe28a%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2378ad45%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22fc%22%20cx%3D%22.42%22%20cy%3D%22.38%22%20r%3D%22.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23ffe6d6%22%2F%3E%3Cstop%20offset%3D%22.7%22%20stop-color%3D%22%23f6c3ac%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23e99c83%22%2F%3E%3C%2FradialGradient%3E%3ClinearGradient%20id%3D%22tw%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%220%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23d9a24a%22%2F%3E%3Cstop%20offset%3D%22.5%22%20stop-color%3D%22%23f1cd83%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23c58a33%22%2F%3E%3C%2FlinearGradient%3E%3Cfilter%20id%3D%22sh%22%20x%3D%22-20%25%22%20y%3D%22-20%25%22%20width%3D%22140%25%22%20height%3D%22150%25%22%3E%3CfeDropShadow%20dx%3D%220%22%20dy%3D%2210%22%20stdDeviation%3D%229%22%20flood-color%3D%22%230a1f66%22%20flood-opacity%3D%22.45%22%2F%3E%3C%2Ffilter%3E%3C%2Fdefs%3E%3Crect%20width%3D%22512%22%20height%3D%22512%22%20rx%3D%22112%22%20fill%3D%22url(%23bg)%22%2F%3E%3Crect%20width%3D%22512%22%20height%3D%22512%22%20rx%3D%22112%22%20fill%3D%22url(%23gl)%22%2F%3E%3Cg%20transform%3D%22translate(254%20262)%20rotate(-28)%20scale(1.2)%20translate(-256%20-256)%22%20filter%3D%22url(%23sh)%22%3E%3Cpath%20d%3D%22M360%20171%20H190%20A85%2085%200%200%200%20190%20341%20H360%20Z%22%20fill%3D%22url(%23lf)%22%2F%3E%3Cpath%20d%3D%22M105%20256%20L152%20212%20Q140%20256%20152%20300%20Z%22%20fill%3D%22%236ea03d%22%20opacity%3D%22.45%22%2F%3E%3Cpath%20d%3D%22M190%20171%20H360%22%20stroke%3D%22%23fff%22%20stroke-width%3D%229%22%20opacity%3D%22.35%22%20stroke-linecap%3D%22round%22%20transform%3D%22translate(0%209)%22%2F%3E%3Cpath%20d%3D%22M214%20168%20Q229%20256%20214%20344%22%20fill%3D%22none%22%20stroke%3D%22%238a5d1c%22%20stroke-width%3D%2215%22%20stroke-linecap%3D%22round%22%20opacity%3D%22.35%22%20transform%3D%22translate(2%202)%22%2F%3E%3Cpath%20d%3D%22M214%20168%20Q229%20256%20214%20344%22%20fill%3D%22none%22%20stroke%3D%22url(%23tw)%22%20stroke-width%3D%2213%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M292%20168%20Q307%20256%20292%20344%22%20fill%3D%22none%22%20stroke%3D%22%238a5d1c%22%20stroke-width%3D%2215%22%20stroke-linecap%3D%22round%22%20opacity%3D%22.35%22%20transform%3D%22translate(2%202)%22%2F%3E%3Cpath%20d%3D%22M292%20168%20Q307%20256%20292%20344%22%20fill%3D%22none%22%20stroke%3D%22url(%23tw)%22%20stroke-width%3D%2213%22%20stroke-linecap%3D%22round%22%2F%3E%3Cellipse%20cx%3D%22360%22%20cy%3D%22256%22%20rx%3D%2250%22%20ry%3D%2287%22%20fill%3D%22%23f9dccb%22%2F%3E%3Cellipse%20cx%3D%22360%22%20cy%3D%22256%22%20rx%3D%2245%22%20ry%3D%2282%22%20fill%3D%22url(%23fc)%22%2F%3E%3Cpath%20d%3D%22M335%20205%20Q350%20178%20372%20176%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%227%22%20stroke-linecap%3D%22round%22%20opacity%3D%22.6%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt=""><b>Quản lý bán hàng giò chả</b><i></i></div><script>try{var __u=JSON.parse(localStorage.getItem("giocha_ui")||"{}");if(__u.th=="light"||__u.th=="dark")document.documentElement.setAttribute("data-theme",__u.th)}catch(e){}if(navigator.webdriver){var __s=document.getElementById("spl");if(__s)__s.remove()}</script>
 <header id="hd">Giò chả</header>
@@ -2061,7 +2099,7 @@ function updFB(){const b=$('#fb');if(b)b.hidden=true;requestAnimationFrame(()=>{
 function fbSave(){const k=fbInfo();if(!k)return;const nm=$('#pn')||document.querySelector('#v [data-k="name"]')||$('#i_n');if(nm&&!nm.value.trim())nm.focus();else if(document.activeElement&&document.activeElement.blur)document.activeElement.blur();k[0]()}
 function updBar(){const b=$('#bar');if(!b)return;const on=tab=='sell'&&!C.done&&C.items.length;b.hidden=!on;if(on){const t=lines().reduce((a,x)=>a+x,0);b.innerHTML=`<span>${C.items.length} món<br><b style="font-size:20px">${t-disc()<0?'Hoàn lại ':''}${money(Math.abs(t-disc()))}</b></span><button onmousedown="event.preventDefault()" onclick="saveO()">${ic('chk')}<span>${C.edit?'Cập nhật đơn':'Lưu đơn'}</span></button>`}}
 let TH=[],SG='',T0={x:0,y:0,t:0,e:null};
-const ah=()=>(typeof acctH=='function'?acctH():'<div class="card"><b>Bản thử trên claude.ai</b><br><small>Chưa có tài khoản và phân quyền. Bản cài đặt riêng có đăng nhập, nhân viên và mã mời.</small></div>')+'<p class="mut" style="text-align:center;font-size:12px">Phiên bản app: v26.0.1</p>';
+const ah=()=>(typeof acctH=='function'?acctH():'<div class="card"><b>Bản thử trên claude.ai</b><br><small>Chưa có tài khoản và phân quyền. Bản cài đặt riêng có đăng nhập, nhân viên và mã mời.</small></div>')+'<p class="mut" style="text-align:center;font-size:12px">Phiên bản app: v26.0.2</p>';
 
 let LB=0;function back(){LB=Date.now();kbBlur();if(!$('#cs').hidden)return csClose();if(!$('#sr').hidden)return closeSr();if(!$('#m').hidden){if($('#m .sgsub')){sgPage();return}return closeM()}if(tab=='sett'&&SS){SS=SSP&&!/^g:/.test(SS)?SSP:null;SSP=null;pgAnim();R();scrollTo(0,0);return}if(shOn())return shClose();if(PF||FM.cus||FM.sup||IF||PRE)return closeF();if(TH.length){tab=TH.pop();pgAnim();R();scrollTo(0,0)}else if(tab!='dash')go('dash')}
 /* ===== Vuốt quay lại: CHỈ bắt đầu từ mép trái và CHỈ ở trang con/biểu mẫu =====
@@ -2149,7 +2187,7 @@ let h=`<div class="sprof"><img class="slogo" src="${LOGO}" alt=""><div class="sp
 h+=`<h3 class="dg">Quản lý</h3><div class="mgrid">${mg.map(r=>`<button class="mt k-${r[3]}" onclick="go('${r[0]}'${r[0]=='prods'?',1':''})"><span class="mti">${ic(r[2])}</span><b>${r[1]}</b></button>`).join('')}</div>`;
 const g1=by(['shop','units','sales','pay','cogs']);if(g1)h+=`<h3 class="dg">Cửa hàng</h3><div class="slist">${g1}</div>`;
 h+=`<h3 class="dg">Cá nhân hóa</h3><div class="slist">${by(['dw','ui'])}</div>`;
-h+=`<h3 class="dg">Hệ thống</h3><div class="slist">${by(['sync','data'])}${ADM&&mm?srow('shield','p','Nhân viên và phân quyền','Mã mời, quyền truy cập',"go('acct')"):''}${srow('user','g','Tài khoản','Thông tin cá nhân, đăng xuất',"go('acct')")}</div><p class="mut" style="text-align:center;font-size:12px;margin:14px 0 0">Phiên bản app: v26.0.1</p>`;
+h+=`<h3 class="dg">Hệ thống</h3><div class="slist">${by(['sync','data'])}${ADM&&mm?srow('shield','p','Nhân viên và phân quyền','Mã mời, quyền truy cập',"go('acct')"):''}${srow('user','g','Tài khoản','Thông tin cá nhân, đăng xuất',"go('acct')")}</div><p class="mut" style="text-align:center;font-size:12px;margin:14px 0 0">Phiên bản app: v26.0.2</p>`;
 return h}
 function sett(){const s=SS&&secAv().find(x=>x.id==SS&&x.b);if(SS&&!s)SS=null;
 if(s)return `<div class="sph"><span class="sq lg k-${s.c}">${ic(s.i)}</span><div><h2>${s.t}</h2><small>${s.s}</small></div></div><div class="card sbody">${s.b()}</div>`;
@@ -2809,8 +2847,8 @@ return `<div class="dh"><h2>Cài đặt</h2></div>`+settHome()}
 function settHome(){const em=(typeof PROF!='undefined'&&PROF&&PROF.email)||'',by=debtOf().by,nd=Object.keys(by).filter(k=>by[k]>0).length,nu=valid().filter(o=>opm(o)=='debt').length,nn=ADM?stockNeed():0,np=S.products.filter(p=>p.active).length;
 const mg=[['prods','Sản phẩm','prods','a',np+' sản phẩm',0],['cus','Khách hàng','cus','p',nd?nd+' khách còn nợ':S.customers.length+' khách',nd],['hist','Đơn hàng','hist','b',nu?nu+' chưa thu':'Xem và sửa đơn',nu],['pre','Đặt hàng trước','cal','a',(()=>{const n=pWait().length;return n?n+' đơn chờ giao':'Đơn Tết, giao sau'})(),preNeed()],['sup','Nhà cung cấp','sup','p',(()=>{const d=supDebt();return d.n?'Còn nợ '+kfmt(d.total):S.suppliers.length+' nhà cung cấp'})(),supDebt().n],['imp','Kho nguyên liệu','imp','b',nn?nn+' sắp hết':'Tồn kho, nhập hàng',nn],['stats','Thống kê','stats','g','Báo cáo lãi lỗ',0]].filter(x=>vis([x[0]]));if(ADM){const i=mg.findIndex(x=>x[0]=='imp');mg.splice(i<0?mg.length:i+1,0,['xg','Xay giò','coi','a',(()=>{const t=sgTodayN();return t.c>0?'Hôm nay '+num(t.c)+' cối':'Nhập số cối'})(),0])}
 return `<button type="button" class="sprof" onclick="go('acct')"><img class="slogo" src="${LOGO}" alt=""><span class="spi"><b>${esc(S.shop)}</b><small><span>${ADM?'Quản trị viên':'Nhân viên'}</span> · <span class="sy2">${esc(SYN)}</span></small></span>${CHV}</button>${!ADM?`<div class="card cnc"><label>Tên thu ngân (in trên hóa đơn)<input value="${esc(UI.cn||'')}" placeholder="Ví dụ: Lan" maxlength="40" onchange="cnSave(this.value)"></label><small class="mut">Để trống thì dùng tên tài khoản đang đăng nhập. Quản trị viên luôn ghi ADMIN.</small></div>`:''}
-<h3 class="dg">Quản lý</h3><div class="mgrid mg2">${mg.map(r=>`<button class="mt k-${r[3]}" onclick="${r[0]=='xg'?"go('imp');sgPage()":`go('${r[0]}'${r[0]=='prods'?',1':''})`}"><span class="mti">${ic(r[2])}</span><span class="mtt"><b>${r[1]}</b><small class="${r[5]?'w':''}">${r[4]}</small></span></button>`).join('')}</div>
-<h3 class="dg">Thiết lập</h3><div class="grl">${GRP().filter(g=>grpRows(g)).map(g=>`<button class="srow gr" onclick="openSec('g:${g.id}')"><span class="sq k-${g.c}">${ic(g.i)}</span><span class="srt"><b>${g.t}</b><small>${g.s}</small></span>${CHV}</button>`).join('')}</div><p class="mut" style="text-align:center;font-size:12px;margin:14px 0 0">Phiên bản app: v26.0.1</p>`}
+<h3 class="dg">Quản lý</h3><div class="mgrid mg2">${mg.map(r=>`<button class="mt k-${r[3]}" onclick="${r[0]=='xg'?"sgPage()":`go('${r[0]}'${r[0]=='prods'?',1':''})`}"><span class="mti">${ic(r[2])}</span><span class="mtt"><b>${r[1]}</b><small class="${r[5]?'w':''}">${r[4]}</small></span></button>`).join('')}</div>
+<h3 class="dg">Thiết lập</h3><div class="grl">${GRP().filter(g=>grpRows(g)).map(g=>`<button class="srow gr" onclick="openSec('g:${g.id}')"><span class="sq k-${g.c}">${ic(g.i)}</span><span class="srt"><b>${g.t}</b><small>${g.s}</small></span>${CHV}</button>`).join('')}</div><p class="mut" style="text-align:center;font-size:12px;margin:14px 0 0">Phiên bản app: v26.0.2</p>`}
 
 /* ===== v20.3: công thức nhiều nguyên liệu, quy đổi đơn vị (g↔kg, lạng, ml↔lít) ===== */
 const UCV={kg:['m',1000],g:['m',1],gr:['m',1],gam:['m',1],gram:['m',1],'lạng':['m',100],'lít':['v',1000],l:['v',1000],lit:['v',1000],ml:['v',1]};
@@ -3454,7 +3492,7 @@ return{rows,bad,n,c,k,fg:fgq,mk:mkq,cf,oF,oM}}
 function sgPage(){if(!ADM)return;SGF=null;SGS=null;modal(mph('Xay giò','','')+sgPageH())}
 function sgPageH(){const fg=sgSt(SGFG),mc=sgSt(SGMOC),t=today(),td=sgList().filter(e=>e.date==t),tc=td.reduce((a,e)=>a+e.c,0),tk=td.reduce((a,e)=>a+e.k,0),cf=sgCfg(),cfM=sgmCfg();
 return `<div class="sgc"><div class="sgn"><div><span>Thành phẩm</span><b>${esc(sgQ(r3(fg.q),fg.u))}</b></div><div><span>Mọc trong tủ</span><b>${esc(sgQ(r3(mc.q),mc.u))}</b></div></div><p class="ihint">${tc>0?'Hôm nay đã ghi <b>'+num(tc)+' cối</b>'+(tk>0?' ('+num(tk)+' cối cất tủ)':'')+'.':'Hôm nay chưa ghi cối nào.'}${sgSoldH()}</p>${sgModeBtn()}<button type="button" class="gbtn pri sgb" onclick="sgOpen()">${ic('plus')}<span>Nhập số cối</span></button><button type="button" class="ghost sgh" onclick="sgSet('t')">Định mức cối thường</button><button type="button" class="ghost sgh" onclick="sgSet('m')">Định mức cối cất tủ</button><button type="button" class="ghost sgh" onclick="sgHist()">Lịch sử xay giò</button>${sgPkH()}<div class="sgnote"><b>Cách tính</b><span>Cối thường: trừ nguyên liệu theo <b>Định mức cối thường</b> (kể cả mọc lấy từ tủ) và cộng ${esc(num(+cf.y))} kg thành phẩm.</span><span>Cối cất tủ: trừ nguyên liệu theo <b>Định mức cối cất tủ</b> (<b>không có mọc</b>); ${esc(num(+cfM.y))} kg làm ra được cất vào tủ thành mọc.</span><span>Mỗi lần ghi, nguyên liệu đã trừ cũng hiện ở mục <b>Xuất dùng</b> (ghi chú “Xay giò”).</span><span>Thành phẩm = làm ra − bán ra − “Xuất dùng”. Bán hàng tự trừ các sản phẩm bán theo kg, g, lạng (tính từ ngày Xay giò đầu tiên); đơn hủy hoặc hàng trả lại thì cộng lại.</span></div></div>`}
-function sgTop(){return `<div class="acts2 ktop ktop3"><button type="button" class="gbtn pri" onclick="newI()">${ic('plus')}<span>Nhập hàng</span></button><button type="button" class="gbtn" onclick="newCount()">${ic('audit')}<span>Kiểm kê kho</span></button>${ADM?`<button type="button" class="gbtn sgtopb" onclick="sgPage()">${ic('tool')}<span>Xay giò</span></button>`:''}</div>`}
+function sgTop(){return `<div class="acts2 ktop ktop3"><button type="button" class="gbtn pri" onclick="newI()">${ic('plus')}<span>Nhập hàng</span></button><button type="button" class="gbtn" onclick="newCount()">${ic('audit')}<span>Kiểm kê kho</span></button></div>`}
 {const o=stockV;stockV=function(){return sgTop()+o()}}
 var SGF=null,SGS=null,SGBUSY=0;
 function sgOpen(){if(!ADM)return;SGF={d:today(),c:'',k:'0'};modal(mph('Xay giò','sgDo()','Ghi số cối','sgPage()')+'<i class="sgsub" hidden></i>'+sgForm())}
@@ -3677,9 +3715,9 @@ const SGSEC=()=>[{id:'xg',i:'tool',c:'a',t:'Xay giò',s:'Thịt dư tự xay m�
 function sgPkH(){const w=SGPKW.slice(0,3).map(x=>'<div class="sgwn">Thịt heo dư '+esc(sgQ(r3(x.left),'kg'))+' ngày '+esc(dmy(x.d))+' chưa chuyển sang mọc'+(x.why?': '+esc(x.why):'')+'</div>').join(''),st=sgPkStk()>1e-6?`<div class="sgact"><button type="button" class="ghost sgh" onclick="sgPkNow()">Chuyển thịt heo đang tồn sang mọc</button></div>`:'';return w||st?`<div class="sggrp sgal"><div class="sgalt"><b>Cần xử lý</b></div>${w}${st}</div><div style="height:10px"></div>`:''}
 function sgPageH(){const fg=sgSt(SGFG),mc=sgSt(SGMOC),t=today(),td=sgList().filter(e=>e.date==t),tc=td.reduce((a,e)=>a+e.c,0),tk=td.reduce((a,e)=>a+e.k,0),cf=sgCfg(),cfM=sgmCfg(),n=sgList().length;
 return `<div class="sgc"><div class="sgn sghero"><div class="hi"><span>Thành phẩm trong kho</span><b>${esc(sgQ(r3(fg.q),fg.u))}</b></div><div><span>Mọc trong tủ</span><b>${esc(sgQ(r3(mc.q),mc.u))}</b></div></div><p class="sgtd">${tc>0?'Hôm nay đã ghi <b>'+num(tc)+' cối</b>'+(tk>0?' ('+num(tk)+' cối cất tủ)':'')+'.':'Hôm nay chưa ghi cối nào.'}${sgSoldH()}</p><button type="button" class="gbtn pri sgb" onclick="sgOpen()">${ic('plus')}<span>Nhập số cối</span></button>
-<div style="height:14px"></div>${sgPkH()}<div class="sggrp">${sgRow('sgHist()','hist','Lịch sử xay giò',n?num(n)+' lần ghi':'Chưa có lần ghi nào')}${sgRow("closeM();openSett('xg')",'tool','Cài đặt Xay giò','Định mức, thịt dư tự xay mọc')}</div>
+<div style="height:14px"></div>${sgPkH()}<div class="sggrp">${sgRow('sgHist()','hist','Lịch sử xay giò',n?num(n)+' lần ghi':'Chưa có lần ghi nào')}${sgRow("sgToSett()",'tool','Cài đặt Xay giò','Định mức, thịt dư tự xay mọc')}</div>
 <details class="sgdt"><summary>Cách tính</summary><div class="sgnote"><span>Cối thường: trừ nguyên liệu theo <b>Định mức cối thường</b> (kể cả mọc lấy từ tủ) và cộng ${esc(num(+cf.y))} kg thành phẩm.</span><span>Cối cất tủ: trừ nguyên liệu theo <b>Định mức cối cất tủ</b> (<b>không có mọc</b>); ${esc(num(+cfM.y))} kg làm ra được cất vào tủ thành mọc.</span><span>Mỗi lần ghi, nguyên liệu đã trừ cũng hiện ở mục <b>Xuất dùng</b> (ghi chú “Xay giò”).</span><span>Thành phẩm = làm ra − bán ra − “Xuất dùng”. Bán hàng tự trừ các sản phẩm bán theo kg, g, lạng; đơn hủy hoặc hàng trả lại thì cộng lại.</span></div></details></div>`}
-{const o=sgPage;sgPage=function(){if(tab=='sett'){closeM();R();return}o()}}
+{const o=sgPage;sgPage=function(){if(tab=='sett'&&SS){closeM();R();return}o()}}
 
 
 /* ===== v25.17: nhắc nhập liệu qua email tài khoản quản trị (cài đặt trong app; phần gửi mail chạy trên Supabase, xem HUONG-DAN) ===== */
@@ -3834,7 +3872,7 @@ if(bad&&!window.__TEST_NOIA){if(e){e.className='tbad';e.textContent=m;e.style.di
 if(bad){if(!e)return;e.className='tbad';e.innerHTML=`<span class="tic">${ic('x')}</span><span class="tmg">${esc(m)}</span>`;e.style.display='flex';clearTimeout(toast.t);toast.t=setTimeout(()=>e.style.display='none',ms||3400);return}
 if(!e)return;e.className='tok it';e.innerHTML=`<span class="tic">${ic('chk')}</span><span class="tmg">${esc(m)}</span><button type="button" class="itx" aria-label="Đóng">×</button><i class="itb" style="animation-duration:${ms||3000}ms"></i>`;e.style.display='flex';e.onclick=()=>{e.style.display='none'};clearTimeout(toast.t);toast.t=setTimeout(()=>e.style.display='none',ms||3000)}
 {const o=isv;isv=function(){if(IF&&(IF.kind||'in')=='in'){const e=$('#i_n'),n=e?e.value.trim():'';const old=IF.id?((S.imports.find(x=>x.id==IF.id)||{}).name||''):'';
-if(n&&sgNoBuy(n)&&nz(old)!=nz(n)&&!window.__TEST_NOIA){const $t=$('#toast');if($t){$t.textContent='“'+n+'” không nhập mua được';$t.style.display='none'}return iaShow('',{t:'Không nhập mua được “'+n+'”',b:'Mọc và Giò chả thành phẩm do Xay giò làm ra, kho tự cộng khi bạn ghi số cối ở mục Xay giò.',btn:[{l:'Đi tới Xay giò',pri:true,fn:()=>{try{closeF()}catch(e){}try{go('imp');IK='stock';R();sgPage()}catch(e){}}},{l:'Đóng'}]})}}return o.apply(this,arguments)}}
+if(n&&sgNoBuy(n)&&nz(old)!=nz(n)&&!window.__TEST_NOIA){const $t=$('#toast');if($t){$t.textContent='“'+n+'” không nhập mua được';$t.style.display='none'}return iaShow('',{t:'Không nhập mua được “'+n+'”',b:'Mọc và Giò chả thành phẩm do Xay giò làm ra, kho tự cộng khi bạn ghi số cối ở mục Xay giò.',btn:[{l:'Đi tới Xay giò',pri:true,fn:()=>{try{closeF()}catch(e){}try{sgPage()}catch(e){}}},{l:'Đóng'}]})}}return o.apply(this,arguments)}}
 
 /* ===== v25.28: có phiên bản mới -> hỏi Cập nhật (mở lại app) / Để sau ===== */
 function updAsk(){if(document.querySelector('#ia.on'))return;const busy=!!((typeof PF!='undefined'&&PF)||(typeof IF!='undefined'&&IF)||(typeof PRE!='undefined'&&PRE));
@@ -3997,8 +4035,8 @@ window.rcPdf=rcPdf;
 /* v26.0e: bật tắt cối cất tủ 5 kg, loại mặc định, định mức đặt sẵn (14 / 16 / 13 kg) */
 const sg5On=()=>S.cfg.sg5!==0;
 const sgTd=()=>S.cfg.sgtd=='5'&&sg5On()?'5':'10';
-function sg5Tg(){if(!ADM)return;S.cfg.sg5=sg5On()?0:1;if(!sg5On()&&S.cfg.sgtd=='5')S.cfg.sgtd='10';save();try{auEv('Xay giò',sg5On()?'Bật cối cất tủ 5 kg':'Tắt cối cất tủ 5 kg')}catch(e){}openSett('xg')}
-function sgTdSet(v){if(!ADM)return;if(v=='5'&&!sg5On())return;S.cfg.sgtd=v=='5'?'5':'10';save();openSett('xg')}
+function sg5Tg(){if(!ADM)return;S.cfg.sg5=sg5On()?0:1;if(!sg5On()&&S.cfg.sgtd=='5')S.cfg.sgtd='10';save();try{auEv('Xay giò',sg5On()?'Bật cối cất tủ 5 kg':'Tắt cối cất tủ 5 kg')}catch(e){}R()}
+function sgTdSet(v){if(!ADM)return;if(v=='5'&&!sg5On())return;S.cfg.sgtd=v=='5'?'5':'10';save();R()}
 function sgMig(){if(!ADM||S.cfg.sgv26e||(window.__TEST_NOIA&&!window.__TEST_MIG))return;try{const t=sgCfg(),a=sgmCfg0(),h=sgm5Cfg();S.cfg.sg={y:14,l:t.l.map(r=>({...r}))};S.cfg.sgm={y:16,l:a.l.map(r=>({...r}))};if(!S.cfg.sgm5)S.cfg.sgm5={y:13,l:h.l.map(r=>({...r}))};else S.cfg.sgm5={...S.cfg.sgm5,y:13};S.cfg.sgv26e=1;save();try{auEv('Định mức xay giò','Đặt sẵn: cối thường ra 14 kg, cối cất tủ 10 kg ra 16 kg mọc, 5 kg ra 13 kg mọc')}catch(e){}}catch(e){}}
 /* sửa định mức: gom 3 nút khôi phục vào "Tùy chọn khác…" */
 {const o=sgSR;sgSR=function(){o.apply(this,arguments);try{const mb=document.querySelector('#m .mb');if(!mb)return;const bs=[...mb.querySelectorAll('button.ghost')].filter(b=>/sgSave\(1\)|sgRs\(/.test(b.getAttribute('onclick')||''));if(!bs.length)return;const has=!!sgDf(SGS.w);bs.forEach(b=>b.remove());
@@ -4013,7 +4051,7 @@ function sgTodayH(d){const t=sgTodayN(d),lb=(!d||d==today())?'Hôm nay':'Ngày '
 {const o=sgPageH;sgPageH=function(){return o.apply(this,arguments).replace(/<p class="sgtd">[\s\S]*?<\/p>/,()=>sgTodayH()+(sgSoldH()?`<p class="sgtd">${sgSoldH()}</p>`:''))}}
 /* chỉ dùng loại cối mặc định; bấm loại kia thì báo và đưa tới cài đặt */
 sgTp=function(v){v=v=='5'?'5':'10';if(v==sgTd()){window.SGT=v;if($('#sg_c'))sgRead();return sgFormR()}
-const off=v=='5'&&!sg5On();iaShow('',{t:off?'Cối 5 kg đang tắt':'Cối '+v+' kg không phải loại mặc định',b:off?'Muốn dùng cối 5 kg, vào Cài đặt → Xay giò bật "Dùng cối 5 kg thịt" và chọn mặc định 5 kg.':'Muốn ghi cối '+v+' kg, vào Cài đặt → Xay giò đổi "Mặc định khi ghi" sang '+v+' kg.',btn:[{l:'Để sau'},{l:'Đi tới cài đặt',pri:true,fn:()=>{closeM();openSett('xg')}}]})};
+const off=v=='5'&&!sg5On();iaShow('',{t:off?'Cối 5 kg đang tắt':'Cối '+v+' kg không phải loại mặc định',b:off?'Muốn dùng cối 5 kg, vào Cài đặt → Xay giò bật "Dùng cối 5 kg thịt" và chọn mặc định 5 kg.':'Muốn ghi cối '+v+' kg, vào Cài đặt → Xay giò đổi "Mặc định khi ghi" sang '+v+' kg.',btn:[{l:'Để sau'},{l:'Đi tới cài đặt',pri:true,fn:()=>{sgToSett()}}]})};
 /* hóa đơn in giống trang chi tiết đơn */
 rcptHtml=function(o){const B=bk(),c=S.customers.find(x=>x.id==o.cid),T=pay(o),pm=opm(o),k=RCP[rcPaper()],R=rcOpt(o),sp=oSp(o),wide=!!k.mm,fs=k.fs,nar=k.w=='48mm',V=nar?' đ':' VND',r=(a,b,cl)=>`<div class="r ${cl||''}"><span>${a}</span><b>${b}</b></div>`;
 const rows=o.items.map(i=>`<tr><td>${i.qty<0?'(Trả) ':''}${esc(i.name)}</td><td class="n">${(i.qty<0?'-':'')+num(Math.abs(i.qty))} ${esc(i.unit||'')}</td><td class="n">${fd(i.price)}</td><td class="n">${(i.qty<0?'-':'')+fd(sp.ln(i))}</td></tr>`).join('');
@@ -4023,7 +4061,7 @@ ${r('Ngày đặt',fdt(o.ts))}${R.cash?r('Ngày in',fdt(Date.now()))+r('Thu ngâ
 <div class="kh"><span>Khách hàng:</span><b>${esc(R.cn)}</b></div>${c&&c.phone?`<p>ĐT: ${esc(c.phone)}</p>`:''}<div class="sp"></div>
 <div class="lb">SẢN PHẨM</div><table><thead><tr><th>Tên</th><th class="n">SL</th><th class="n">Đơn giá</th><th class="n">Thành tiền</th></tr></thead><tbody>${rows}<tr class="t"><td>Tổng</td><td class="n">${esc(sp.has?sp.qt:sp.qt)}</td><td></td><td class="n">${fd(sp.has?sp.tk-sp.rt:tot(o))}</td></tr></tbody></table><div class="sp"></div>
 <div class="lb">THANH TOÁN</div>${r('Tổng tiền hàng',fd(sp.has?sp.tk-sp.rt:tot(o))+V)}${r('Chiết khấu',fd(o.discount||0)+V)}${r(T<0?'Hoàn lại khách':'Phải thanh toán',fd(Math.abs(T))+V,'big')}${r('Phương thức',pmL[pm])}${pm=='cash'&&o.paid>0&&T>0?r('Tiền khách đưa',fd(o.paid)+V)+r('Tiền thừa',fd(Math.max(0,o.paid-T))+V):''}${pm=='debt'?r('Còn nợ',fd(T)+V):''}
-${R.qr&&pm=='bank'&&B&&T>0?`<div class="q">${qrSvg(vietqr(B.bin,B.acc,T,qrCode(o.code)),'100%')}</div><p class="c">${esc(bankOf(B.bin))} ${esc(B.acc)}</p><p class="c">ND: ${qrCode(o.code)}</p>`:''}${R.note?`<p style="margin-top:6px">Ghi chú: ${esc(R.note)}</p>`:''}<div class="sp"></div><p class="c">${esc(R.foot)}</p></body></html>`};
+${(q=>q?`<p class="c" style="margin-top:6px"><b>${q.l}</b></p><div class="q">${qrSvg(vietqr(B.bin,B.acc,q.a,qrCode(o.code)),'100%')}</div><p class="c">${esc(bankOf(B.bin))} ${esc(B.acc)}</p>${B.name?`<p class="c">${esc(B.name)}</p>`:''}<p class="c">ND: ${qrCode(o.code)}</p>`:'')(rcQr(R,B,pm,T))}${R.note?`<p style="margin-top:6px">Ghi chú: ${esc(R.note)}</p>`:''}<div class="sp"></div><p class="c">${esc(R.foot)}</p></body></html>`};
 /* bản ảnh / PDF / Bluetooth cùng bố cục */
 rcptCanvas=function(o){const B=bk(),c=S.customers.find(x=>x.id==o.cid),T=pay(o),pm=opm(o),R=rcOpt(o),sp=oSp(o);return cvBuild(({ln,pr,sp:dash,qr,fs,ops})=>{
 ln(S.shop,'c',1,fs+5);if(R.addr&&S.cfg.addr)ln(S.cfg.addr,'c');if(R.addr&&S.cfg.phone)ln('ĐT: '+S.cfg.phone,'c');ln(R.t+' · '+o.code,'c',1);dash();
@@ -4032,7 +4070,7 @@ pr('Khách hàng:',R.cn,1,fs+2);if(c&&c.phone)ln('ĐT: '+c.phone,'l');dash();
 ln('SẢN PHẨM','l',1,fs-2);ops.push({tb:['Tên','SL','Đơn giá','Thành tiền'],h:1});o.items.forEach(i=>ops.push({tb:[(i.qty<0?'(Trả) ':'')+i.name,(i.qty<0?'-':'')+num(Math.abs(i.qty))+' '+(i.unit||''),fd(i.price),(i.qty<0?'-':'')+fd(sp.ln(i))]}));ops.push({tb:['Tổng',sp.qt,'',fd(sp.has?sp.tk-sp.rt:tot(o))],b:1});dash();
 ln('THANH TOÁN','l',1,fs-2);pr('Tổng tiền hàng',fd(sp.has?sp.tk-sp.rt:tot(o))+' VND');pr('Chiết khấu',fd(o.discount||0)+' VND');pr(T<0?'Hoàn lại khách':'Phải thanh toán',fd(Math.abs(T))+' VND',1,fs+3);pr('Phương thức',pmL[pm]);
 if(pm=='cash'&&o.paid>0&&T>0){pr('Tiền khách đưa',fd(o.paid)+' VND');pr('Tiền thừa',fd(Math.max(0,o.paid-T))+' VND')}if(pm=='debt')pr('Còn nợ',fd(T)+' VND');
-if(R.qr&&pm=='bank'&&B&&T>0){qr(vietqr(B.bin,B.acc,T,qrCode(o.code)));ln(bankOf(B.bin)+' '+B.acc,'c');ln('ND: '+qrCode(o.code),'c')}if(R.note)ln('Ghi chú: '+R.note,'l');dash();ln(R.foot,'c');ops.push({gap:1})})};
+{const q=rcQr(R,B,pm,T);if(q){ln(q.l,'c');qr(vietqr(B.bin,B.acc,q.a,qrCode(o.code)));ln(bankOf(B.bin)+' '+B.acc,'c');if(B.name)ln(B.name,'c');ln('ND: '+qrCode(o.code),'c')}}if(R.note)ln('Ghi chú: '+R.note,'l');dash();ln(R.foot,'c');ops.push({gap:1})})};
 /* màn hình In: chỉ khổ giấy, máy in, chia sẻ */
 prnO=function(id){const o=S.orders.find(x=>x.id==id);if(!o)return;RCE=null;const p=rcPaper();
 modal(mph('In hóa đơn '+esc(o.code),'','')+`<div class="rcpv"><iframe id="rc_pv" title="Xem trước hóa đơn"></iframe></div><div class="lbl">Khổ giấy</div><div class="seg rcps" id="pps">${[['58','58 mm'],['80','80 mm'],['A5','A5'],['A4','A4']].map(x=>`<button type="button" data-p="${x[0]}" class="${p==x[0]?'on':''}" onclick="setPaper('${x[0]}');rcPv('${id}')">${x[1]}</button>`).join('')}</div>
@@ -4050,19 +4088,114 @@ return `<div class="nopad"><h4 class="sgsec">Khổ giấy mặc định (máy n�
 
 /* chuyển giò thành phẩm sang mọc (Cài đặt → Xay giò) */
 function sgMvOpen(){if(!ADM)return;const fg=inv().items.find(z=>z.key==nz(SGFG));const q=fg?r3(fg.q):0;
-modal(mph('Chuyển thành phẩm sang mọc','','',"closeM();openSett('xg')")+`<p class="ihint">Giò chả thành phẩm còn dư (ví dụ hàng cũ) đem xay lại làm mọc: kho trừ thành phẩm, cộng cùng số kg vào mọc trong tủ, giữ nguyên giá vốn.</p><div class="sgcard"><div class="sgtot"><span>Thành phẩm trong kho</span><b>${esc(sgQ(q,fg?fg.unit||'kg':'kg'))}</b></div><label>Số kg chuyển sang mọc<input id="mv_q" inputmode="decimal" placeholder="Ví dụ 3" autocomplete="off"></label><label>Ngày<input id="mv_d" type="date" value="${today()}"></label></div><div class="seg"><button type="button" onclick="closeM();openSett('xg')">Hủy</button><button type="button" class="on" onclick="sgMvGo()">Chuyển</button></div>`)}
+modal(mph('Chuyển thành phẩm sang mọc','','',"closeM()")+`<p class="ihint">Giò chả thành phẩm còn dư (ví dụ hàng cũ) đem xay lại làm mọc: kho trừ thành phẩm, cộng cùng số kg vào mọc trong tủ, giữ nguyên giá vốn.</p><div class="sgcard"><div class="sgtot"><span>Thành phẩm trong kho</span><b>${esc(sgQ(q,fg?fg.unit||'kg':'kg'))}</b></div><label>Số kg chuyển sang mọc<input id="mv_q" inputmode="decimal" placeholder="Ví dụ 3" autocomplete="off"></label><label>Ngày<input id="mv_d" type="date" value="${today()}"></label></div><div class="seg"><button type="button" onclick="closeM()">Hủy</button><button type="button" class="on" onclick="sgMvGo()">Chuyển</button></div>`)}
 function sgMvGo(ok){const q=pq(($('#mv_q')||{}).value)||0,d=($('#mv_d')||{}).value||today(),I=inv(),fg=I.items.find(z=>z.key==nz(SGFG)),mc=I.items.find(z=>z.key==nz(SGMOC));
 if(!(q>0))return toast('Nhập số kg cần chuyển');if(!fg||fg.q<q-1e-9)return toast('Thành phẩm trong kho không đủ (còn '+sgQ(fg?r3(fg.q):0,'kg')+')');
 if(ok!==1)return iaShow('',{t:'Chuyển '+sgQ(q,'kg')+' sang mọc?',b:'Thành phẩm −'+sgQ(q,'kg')+', mọc trong tủ +'+sgQ(q,'kg')+'. Ngày '+dmy(d)+'.',btn:[{l:'Sửa lại'},{l:'Chuyển',pri:true,fn:()=>sgMvGo(1)}]});
 const avg=fg.q>0?Math.round((fg.v||0)/fg.q):0,fu=fg.unit||'kg',mu=(mc&&mc.unit)||fu,cv=ucv(q,fu,mu),mq=cv.ok?cv.q:q,T=Date.now(),id='mv_'+T;
 S.imports.push({id:uid(),ts:T,date:d,kind:'use',name:fg.name,qty:sgR6(q),unit:fu,price:0,sid:'',sname:'',mv:id,note:'Chuyển sang mọc'},{id:uid(),ts:T+1,date:d,kind:'in',name:(mc&&mc.name)||SGMOC,qty:sgR6(mq),unit:mu,price:cv.ok&&mq?Math.round(avg*q/mq):avg,paid:null,sid:'',sname:'',mv:id,note:'Chuyển từ giò thành phẩm'});
-try{auEv('Xay giò','Chuyển '+q+' kg giò thành phẩm sang mọc, ngày '+d)}catch(e){}save();R();closeM();openSett('xg');toast('Đã chuyển '+sgQ(q,'kg')+' thành phẩm sang mọc')}
+try{auEv('Xay giò','Chuyển '+q+' kg giò thành phẩm sang mọc, ngày '+d)}catch(e){}save();closeM();R();toast('Đã chuyển '+sgQ(q,'kg')+' thành phẩm sang mọc')}
 {const o=sgSettH;sgSettH=function(){return o.apply(this,arguments).replace('<h4 class="sgsec">Tự động</h4>',`<h4 class="sgsec">Chuyển kho</h4><div class="sggrp">${sgRow('sgMvOpen()','tool','Chuyển giò thành phẩm sang mọc','Thành phẩm còn dư đem xay lại làm mọc')}</div><h4 class="sgsec">Tự động</h4>`)}}
 
 /* ---------- v26.0.1b: QR khi giao đơn đặt trước bằng chuyển khoản; icon Xay giò ---------- */
 IP.coi='<path d="M3 11h18"/><path d="M4.5 11a7.5 7.5 0 0015 0"/><path d="M9 21h6"/><path d="M16.5 3L12 11"/>';
 function preQrH(id){const x=S.imports.find(y=>y.id==id);if(!x)return '';const l=pLeft(x);if(l<=0)return '<p class="ihint">Đã cọc đủ, không cần chuyển thêm.</p>';const B=bk();if(!B)return `<div class="card qrc sm pgqr"><b>Mã QR thanh toán</b><p class="mut">Chưa cài tài khoản ngân hàng nhận tiền.</p><button type="button" class="ghost" onclick="closeM();openSett('pay')">Cài đặt thanh toán</button></div>`;const cd=qrCode(ocode());return `<div class="card qrc sm pgqr"><b>Đưa khách quét mã để chuyển khoản</b>${qrSvg(vietqr(B.bin,B.acc,l,cd))}<div class="qrm"><b>${money(l)}</b><small>${esc(bankOf(B.bin))} · ${esc(B.acc)}</small>${B.name?`<small>${esc(B.name)}</small>`:''}<small>Nội dung chuyển khoản: <b>${cd}</b></small></div></div>`}
 function prePG(id,k,btn){PG=k;document.querySelectorAll('#pgs button').forEach(b=>b.classList.toggle('on',b===btn));const h=$('#pgh');if(h)h.textContent=k=='bank'?'Khách quét mã xong, kiểm tra tiền đã vào tài khoản rồi bấm Xác nhận đã giao.':preGH(id);const q=$('#pgq');if(q){q.innerHTML=k=='bank'?preQrH(id):'';q.hidden=k!='bank';if(k=='bank')setTimeout(()=>{try{q.scrollIntoView({block:'nearest',behavior:'smooth'})}catch(e){}},30)}}
+
+/* ---------- v26.0.1d: quay về đúng trang khi đi từ Xay giò; QR trên hóa đơn ---------- */
+let SGRET=0;
+function sgToSett(){SGRET=1;closeM();openSett('xg')}
+{const ob=back;back=function(){if(SGRET&&tab=='sett'&&SS=='xg'&&$('#m').hidden&&$('#cs').hidden&&$('#sr').hidden){SGRET=0;SS=null;SSP=null;R();scrollTo(0,0);sgPage();return}return ob.apply(this,arguments)}}
+{const o=openSett;openSett=function(sec){if(sec!=='xg')SGRET=0;return o.apply(this,arguments)}}
+{const o=openSec;openSec=function(id){SGRET=0;return o.apply(this,arguments)}}
+{const o=navTo;navTo=function(t){SGRET=0;return o.apply(this,arguments)}}
+function rcQr(R,B,pm,T){if(!R||!R.qr||!B||!(T>0))return null;if(pm=='bank')return {a:T,l:'Quét mã để chuyển khoản'};if(pm=='debt')return {a:T,l:'Quét mã để trả nợ'};return {a:0,l:'Chuyển khoản cho tiệm'}}
+/* ---------- v26.0.1e: trang cài đặt tách nhóm kiểu iPhone (thẻ đầu trang + từng nhóm riêng) ---------- */
+function iosSplit(html){try{const t=document.createElement('template');t.innerHTML=html;let ns=[...t.content.children];
+if(!ns.length||ns.some(n=>n.classList.contains('rx')||n.querySelector('.rx')))return null;
+ns=ns.flatMap(n=>n.classList.contains('nopad')&&n.querySelector(':scope>h4.sgsec,:scope>h4.sh4')?[...n.children]:[n]);
+const isH=n=>n.matches('h4.sh4,h4.sgsec,div.lbl'),isF=n=>n.matches('small,p.ihint'),G=[];let g=null;
+const cap=s=>{s=s.trim();return s===s.toUpperCase()&&/[A-ZĐ]/.test(s)?s.charAt(0)+s.slice(1).toLowerCase():s};
+ns.forEach(n=>{if(isH(n)){g={h:cap(n.textContent),it:[]};G.push(g);return}
+if(n.matches('.dz')||(n.matches('.nopad')&&g&&g.it.length)){g={h:'',it:[n]};G.push(g);g=n.matches('.dz')?null:g;return}
+if(!g){g={h:'',it:[]};G.push(g)}g.it.push(n)});
+return G.map(g=>{let it=g.it.slice(),ft=[];if(it.some(n=>!isF(n)))while(it.length&&isF(it[it.length-1]))ft.unshift(it.pop());
+return (g.h?`<h4 class="iosh">${esc(g.h)}</h4>`:'')+(it.length?`<div class="iosg">${it.map(n=>n.outerHTML).join('')}</div>`:'')+ft.map(n=>`<p class="iosf">${n.innerHTML}</p>`).join('')}).join('')}catch(e){return null}}
+{const o=T.sett;T.sett=function(){const h=o.apply(this,arguments);if(!SS||/^g:/.test(SS))return h;
+const i=h.indexOf('<div class="card sbody">');if(i<0||!h.endsWith('</div>'))return h;const body=h.slice(i+24,-6),sp=iosSplit(body);
+return sp==null?h:h.slice(0,i)+`<div class="ioss">${sp}</div>`};sett=T.sett}
+{const o=rcSettH;rcSettH=function(){const h=o.apply(this,arguments);return (rcTpl().qr!==0&&!bk()?`<div class="sgwn rcnob">Mã QR đang bật nhưng chưa cài tài khoản nhận tiền nên hóa đơn chưa in được mã. <button type="button" class="sglk" onclick="openSec('pay')">Cài tài khoản ngân hàng ›</button></div>`:'')+h}}
+/* ---------- v26.0.2: giữ dữ liệu form Đặt hàng trước ----------
+   Nguyên nhân mất dữ liệu: loadAll() chạy mỗi 60 giây / khi máy khác lưu / khi có mạng lại / khi mở lại app, rồi gọi refresh() → R().
+   refresh() có bỏ qua khi đang mở form sản phẩm, khách hàng, phiếu nhập… nhưng THIẾU form Đặt hàng trước (PRE), và preForm() vẽ lại
+   từ biến PRE (không chứa khách/số kg đang gõ) → khách và số kg bị xóa. Sửa: (1) chép giá trị đang nhập vào PRE trước mọi lần vẽ lại,
+   (2) refresh() không vẽ lại khi đang mở form đặt trước, (3) lưu bản nháp trên máy để khôi phục nếu lỡ thoát/tải lại trang. */
+function preSync(){if(!PRE||!$('#pcs'))return;const f=PRE,cs=$('#pcs');f.cid=cs.value||'';
+if(f.cid){const c=S.customers.find(z=>z.id==f.cid);if(c)f.cname=c.name}else{const nm=$('#pcnm'),ph=$('#pcph');f.cname=nm?nm.value:'';f.phone=ph?ph.value:''}
+const d=$('#pdue');if(d&&d.value)f.due=d.value;
+const items=[],seen={};S.products.forEach(p=>{const qe=document.getElementById('pq_'+p.id),pe=document.getElementById('pp_'+p.id);if(!qe)return;seen[p.id]=1;const q=qe.value.trim(),man=pe&&pe.dataset.man;if(q||man)items.push({pid:p.id,name:p.name,unit:p.unit||'',qty:q,price:pe?(pp(pe.value)||0):0})});
+(f.items||[]).forEach(i=>{if(!seen[i.pid])items.push(i)});f.items=items;
+const dc=$('#pdc'),dp=$('#pdp'),nt=$('#pnt');if(dc)f.disc=dc.value;if(dp)f.dep=dp.value;if(nt)f.note=nt.value}
+let PRESK=0;{const o=R;R=function(){if(PRESK)PRESK=0;else try{preSync()}catch(e){}return o.apply(this,arguments)}}
+{const o=refresh;refresh=function(){if(PRE&&$('#pcs')){try{preSync();preDraftSave()}catch(e){}try{bump();localStorage.setItem(K,JSON.stringify(S))}catch(e){}return}return o.apply(this,arguments)}}
+const PDK=()=>'giocha_predraft_'+(((typeof PROF!='undefined'&&PROF)&&(PROF.id||PROF.email))||'may');
+function preHas(f){return !!(f&&((f.cid)||String(f.cname||'').trim()||(f.items||[]).some(i=>String(i.qty).trim()&&pq(i.qty)>0)||pp(f.dep||'')>0||String(f.note||'').trim()))}
+function preDraftSave(){try{if(!PRE)return;preSync();if(!preHas(PRE))return localStorage.removeItem(PDK());localStorage.setItem(PDK(),JSON.stringify({t:Date.now(),shop:(typeof PROF!='undefined'&&PROF&&PROF.shop_id)||'',f:PRE}))}catch(e){}}
+function preDraftGet(){try{const d=JSON.parse(localStorage.getItem(PDK())||'null');if(!d||!d.f||Date.now()-d.t>3*864e5)return null;if(d.shop&&typeof PROF!='undefined'&&PROF&&PROF.shop_id&&d.shop!=PROF.shop_id)return null;return d}catch(e){return null}}
+function preDraftDel(){try{localStorage.removeItem(PDK())}catch(e){}}
+let PDT=0;['input','change'].forEach(ev=>document.addEventListener(ev,e=>{if(PRE&&e.target&&e.target.closest&&e.target.closest('#v')){clearTimeout(PDT);PDT=setTimeout(preDraftSave,350)}},true));
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&PRE)preDraftSave()});addEventListener('pagehide',()=>{if(PRE)preDraftSave()});
+{const o=openF;openF=function(f){const had=PRE;const r=o.apply(this,arguments);if(PRE&&!had&&!PRE.fromCart){const d=preDraftGet(),cur=PRE;
+if(d&&preHas(d.f)&&String(d.f.id||'')==String(cur.id||'')&&(!cur.id||S.imports.some(x=>x.id==cur.id))){const n=(d.f.items||[]).filter(i=>pq(i.qty)>0).length,tm=new Date(d.t),hm=String(tm.getHours()).padStart(2,'0')+':'+String(tm.getMinutes()).padStart(2,'0');
+setTimeout(()=>iaShow('',{t:'Khôi phục đơn đang nhập dở?',b:'Lúc '+hm+' '+dmy(dk(d.t))+' bạn đang nhập '+(cur.id?'sửa đơn':'đơn')+(String(d.f.cname||'').trim()?' cho '+d.f.cname:'')+(n?', '+n+' món':'')+' nhưng chưa lưu.',btn:[{l:'Bỏ bản nháp',fn:()=>preDraftDel()},{l:'Khôi phục',pri:true,fn:()=>{if(!PRE)return;PRE=d.f;PRESK=1;R();toast('Đã khôi phục đơn đang nhập')}}]}),80)}}return r}}
+{const o=preSave;preSave=function(){const r=o.apply(this,arguments);if(!PRE)preDraftDel();return r}}
+{const o=preCancel;preCancel=function(id){const d=preDraftGet();if(d&&d.f&&d.f.id==id)preDraftDel();return o.apply(this,arguments)}}
+/* ---------- v26.0.2: sửa tên khách hàng thì các đơn cũ đổi theo ---------- */
+{const o=dsv;dsv=function(m){const F=FM[m];let old=null;if(m=='cus'&&F&&F.id){const c=S.customers.find(x=>x.id==F.id);old=c?c.name:null}
+const r=o.apply(this,arguments);if(m=='cus'&&F&&F.id&&old!=null){const c=S.customers.find(x=>x.id==F.id);if(c&&c.name!==old){let n=0;
+S.orders.forEach(x=>{if(x.cid==c.id&&x.cname!==c.name){x.cname=c.name;n++}});S.imports.forEach(x=>{if(x.cid==c.id&&x.kind=='pre'&&x.cname!==c.name){x.cname=c.name;n++}});
+if(n){save();R();toast('Đã đổi tên khách ở '+n+' đơn')}}}return r}}
+/* ---------- v26.0.2: kiểm tra đường gửi thư TỰ ĐỘNG (khác thư thử: thư thử dùng phiên đăng nhập, thư đơn mới do máy chủ tự gọi bằng CRON_KEY) ---------- */
+function mcRow(ok,t,d){return `<div class="mcr ${ok===true?'mc-ok':ok===false?'mc-bad':'mc-mid'}"><i>${ok===true?'✓':ok===false?'✕':'!'}</i><div><b>${esc(t)}</b>${d?`<small>${d}</small>`:''}</div></div>`}
+function mcName(id){const x=S.imports.find(y=>y.id==id);return x?(x.cname||'Khách lẻ')+(x.due?' · giao '+dmy(x.due):''):'đơn '+id}
+function mcSent(L){return (L||[]).map(s=>s.id?`${esc(s.to)}: Resend đã nhận (ID <code>${esc(s.id)}</code>)`:`${esc(s.to)}: bị từ chối HTTP ${esc(s.status)} – ${esc(s.error||'')}`).join('<br>')}
+function mcCall(x){const t=x.at?new Date(x.at):null,tm=t?String(t.getHours()).padStart(2,'0')+':'+String(t.getMinutes()).padStart(2,'0')+' '+dmy(dk(t.getTime())):'';let j=null;try{j=JSON.parse(x.body||'')}catch(e){}
+if(x.err||x.timeout)return mcRow(false,tm+' · không gọi được hàm',esc(x.err||'quá thời gian chờ'));
+if(x.http==200&&j){if(j.sent)return mcRow(j.sent.some(s=>s.id),tm+' · '+(j.id?'thư đơn mới: '+mcName(j.id):'thư thử'),mcSent(j.sent));
+if(j.skip)return mcRow(null,tm+' · '+(j.id?mcName(j.id):'')+' · không gửi: '+j.skip,j.skip=='tắt'?'Đang tắt "Gửi mail khi có đơn mới".':j.skip=='đơn tạo trước khi bật'?'Đơn tạo trước lúc bật gửi mail.':'');
+if(j.result)return mcRow(!j.result.some(r=>r.error),tm+' · lịch 30 phút',j.result.map(r=>esc(r.shop||'')+': '+(r.error?'lỗi '+esc(r.error):r.sent?mcSent(r.sent):esc(r.skip||r.pre||''))).join('<br>'));
+return mcRow(true,tm+' · HTTP 200','')}
+const er=j&&(j.error||j.message)||x.body||'';
+if(x.http==401&&/Không được phép/.test(er))return mcRow(false,tm+' · HTTP 401: sai CRON_KEY','Khóa CRON_KEY trong Supabase Secrets khác khóa trong file SQL. Đây là lý do thư thử gửi được mà thư đơn mới không gửi.');
+if(x.http==401)return mcRow(false,tm+' · HTTP 401: hàm đang bật "Verify JWT"','Supabase chặn lời gọi tự động trước khi tới hàm. Tắt Verify JWT của hàm nhac-nho hoặc deploy lại với --no-verify-jwt. ('+esc(String(er).slice(0,80))+')');
+if(x.http==404)return mcRow(false,tm+' · HTTP 404: chưa có hàm nhac-nho','Deploy lại hàm nhac-nho đúng tên.');
+if(/Resend 403/.test(er))return mcRow(false,tm+' · Resend từ chối (403)',esc(er.slice(0,220))+'<br>Chưa xác minh tên miền thì Resend chỉ gửi tới đúng email đăng ký Resend.');
+return mcRow(false,tm+' · HTTP '+esc(x.http)+(j&&j.id?' · '+esc(mcName(j.id)):''),esc(String(er).slice(0,220)))}
+function mcH(a,ea,c,ec){let h='';
+h+=a?mcRow(true,'Hàm nhac-nho trên máy chủ phản hồi'):mcRow(false,'Không gọi được hàm nhac-nho',esc(ea||''));
+if(a){h+=mcRow(!!a.resendKey,'Khóa Resend (RESEND_API_KEY)',a.resendKey?'Đã cài trên máy chủ.':'Chưa cài: chạy lệnh secrets set RESEND_API_KEY=...');
+h+=mcRow(!!a.cronKey,'Khóa CRON_KEY trong Supabase Secrets',a.cronKey?'':'Chưa cài: thư tự động sẽ bị từ chối 401.');
+const pm=a.prem||{};h+=mcRow(!!pm.on,'Bật "Gửi mail khi có đơn mới"',pm.on?'':'Đang tắt trong app.');
+h+=mcRow(a.admins&&a.admins.length?true:false,'Email quản trị nhận thư',(a.admins||[]).map(esc).join(', ')+'<br>Gửi từ: '+esc(a.from||'')+'. Chưa xác minh tên miền thì chỉ email đăng ký Resend nhận được thư.')}
+if(!c)h+=mcRow(false,'Chưa đọc được trạng thái máy chủ',/mail_check|Could not find|does not exist|function/i.test(ec)?'Chạy file <b>kiem-tra-email.sql</b> trong Supabase SQL Editor rồi bấm kiểm tra lại.':esc(ec));
+else{if(a&&a.cronKey)h+=mcRow(!!c.kv_hash&&c.kv_hash==a.cronHash,'CRON_KEY trong SQL khớp với Supabase Secrets',c.kv_hash==a.cronHash?'Khớp.':'KHÔNG khớp: máy chủ sẽ từ chối thư đơn mới (401). Chạy lại lệnh secrets set CRON_KEY=... bằng đúng khóa trong cai-dat-tat-ca.sql, rồi deploy lại hàm.');
+h+=mcRow(!!c.pg_net,'Tiện ích pg_net (máy chủ tự gọi hàm)',c.pg_net?'':'Chưa bật: Database > Extensions > bật pg_net, rồi chạy lại cai-dat-tat-ca.sql.');
+h+=mcRow(!!c.trigger,'Trigger "đơn đặt trước mới"',c.trigger?'':'Chưa có: chạy lại cai-dat-tat-ca.sql.');
+h+=mcRow(!!c.pre_mail_table,'Bảng chống gửi trùng (pre_mail)',c.pre_mail_table?'':'Chưa có: chạy lại cai-dat-tat-ca.sql.');
+const cj=c.cron_jobs||[];h+=mcRow(cj.some(j=>j.active),'Lịch chạy 30 phút (nhắc nhập liệu, thư tổng hợp)',cj.length?cj.map(j=>esc(j.schedule)+(j.active?'':' (đang tắt)')).join(', '):esc(c.cron_error||'Chưa có lịch.'));
+const L=c.calls||[];h+=`<h4 class="iosh" style="margin:14px 0 6px!important">Các lần máy chủ tự gọi gần đây</h4>`+(L.length?L.map(mcCall).join(''):`<p class="ihint">${c.calls_error?esc(c.calls_error):'Chưa có lần gọi nào (pg_net giữ lịch sử khoảng 6 giờ). Tạo 1 đơn đặt trước thử rồi bấm kiểm tra lại sau 1 phút.'}</p>`);
+const pmR=c.pre_mail_recent||[];if(pmR.length)h+=`<h4 class="iosh" style="margin:14px 0 6px!important">Đơn đặt trước đã gửi email</h4>`+pmR.map(x=>mcRow(true,mcName(x.id),x.at?'Lúc '+new Date(x.at).toLocaleString('vi-VN'):'')).join('')}
+return h+`<p class="ihint" style="margin-top:10px">“Resend đã nhận” nghĩa là Resend chấp nhận gửi (có Email ID). Thư đã tới hộp thư hay chưa xem ở resend.com &gt; Emails (Delivered/Bounced). Đơn hàng luôn được lưu dù email lỗi.</p>`}
+async function mcRun(){if(!ADM)return;const b=$('#mc_b'),o=$('#mc_r');if(!o)return;if(!rmSB()){o.innerHTML=mcRow(false,'Bản này chưa kết nối máy chủ Supabase','Kiểm tra trên app đã cài (giocha…workers.dev).');return}
+if(b)b.disabled=true;o.innerHTML='<p class="ihint">Đang kiểm tra…</p>';let a=null,ea='',c=null,ec='';
+try{const r=await SB.functions.invoke('nhac-nho',{body:{test:1,auto:1}});if(r.error)throw r.error;a=r.data&&r.data.auto||null;if(!a)ea='Hàm trên máy chủ là bản cũ (chưa có chế độ kiểm tra). Deploy lại hàm nhac-nho bản 26.0.2.'}catch(e){ea=await fnErr(e)}
+try{const r=await SB.rpc('mail_check');if(r.error)throw r.error;c=r.data}catch(e){ec=String((e&&e.message)||e)}
+o.innerHTML=mcH(a,ea,c,ec);if(b)b.disabled=false}
+{const o=rmH;rmH=function(){return o.apply(this,arguments)+(ADM?`<div class="iosg mcbox"><b style="display:block;font-size:17px">Kiểm tra gửi thư tự động</b><p class="ihint" style="margin:4px 0 10px">Thư thử gửi được chưa chắc thư đơn mới gửi được: thư đơn mới do máy chủ tự gọi bằng CRON_KEY. Bấm để xem từng bước và kết quả thật (mã HTTP, Email ID Resend). Không gửi thư.</p><button type="button" id="mc_b" class="ghost" onclick="mcRun()">Kiểm tra gửi thư tự động</button><div id="mc_r"></div></div>`:'')}}
+/* thư thử: báo Email ID Resend trả về */
+{const sh=(r)=>{const L=(r&&r.data&&r.data.sent)||[];const ok=L.filter(s=>s.id);return ok.length?' · Resend đã nhận (ID '+ok[0].id+')':''};
+rmTest=async function(){if(!ADM||!rmSB())return;const b=$('#rm_t');if(b)b.disabled=true;try{const r=await SB.functions.invoke('nhac-nho',{body:{test:1}});if(r.error)throw r.error;toast('Đã gửi email thử'+sh(r),6000)}catch(e){toast('Chưa gửi được: '+(await fnErr(e)),7000)}finally{if(b)b.disabled=false}};
+pmTest=async function(){if(!ADM||!rmSB())return;const b=$('#pm_t');if(b)b.disabled=true;try{const r=await SB.functions.invoke('nhac-nho',{body:{test:1,pre:1}});if(r.error)throw r.error;toast('Đã gửi thư thử đơn đặt trước'+sh(r),6000)}catch(e){toast('Chưa gửi được: '+(await fnErr(e)),7000)}finally{if(b)b.disabled=false}}}
 (async()=>{lkWrap();if('serviceWorker' in navigator){const had=!!navigator.serviceWorker.controller;navigator.serviceWorker.register('sw.js').then(r=>{const up=()=>{try{r.update()}catch(e){}};document.addEventListener('visibilitychange',()=>{if(!document.hidden){up();if(window.__upd)try{updAsk()}catch(e){}}});setInterval(up,30*60e3)}).catch(()=>{});navigator.serviceWorker.addEventListener('controllerchange',()=>{if(had){window.__upd=1;try{updAsk()}catch(e){try{toast('Đã có bản mới. Mở lại app để cập nhật.')}catch(x){}}}})}
 const C=window.CFG||{};if(!C.url||!C.key||!window.supabase)return ashow('cfg');
 SB=supabase.createClient(C.url,C.key);

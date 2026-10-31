@@ -1788,6 +1788,69 @@ html.nbon.nbroot.hdoff.sybad:not(.wd) #v{padding-top:86px!important}
 html.nbon:not(.wd) body:not(.kbf) .abar{top:calc(var(--sp,0px) + 52px)!important}
 html.nbm:not(.wd) body.mpg #m{padding-top:54px!important}
 html.nbon.hdoff.sybad:not(.wd) body.mpg #m{padding-top:88px!important}
+
+/* v26.3: bỏ dải mờ 3 lớp dưới thanh trạng thái iPhone (chỉ có khi chạy dạng app có vùng an toàn, nên bản web không thấy) */
+html.sat:not(.wd)::before,html.sat:not(.wd)::after,html.sat:not(.wd) body::after{display:none!important;content:none!important;background:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;-webkit-mask-image:none!important;mask-image:none!important}
+
+/* v26.3: lớp mờ thanh tiêu đề 85% (đậm 85% + làm mờ nền) ; trang Bán hàng có tên trong thanh */
+#nb .nbbg{background:color-mix(in srgb,var(--bg) 85%,transparent)!important;-webkit-backdrop-filter:blur(20px) saturate(170%)!important;backdrop-filter:blur(20px) saturate(170%)!important}
+html.nbon:not(.wd) #v>.shd{position:relative!important;top:auto!important;transform:none!important;opacity:1!important;pointer-events:auto!important}
+/* v26.3: header cũ (khi bật hiện tên/logo) cũng bỏ lớp mờ: nền phẳng cùng màu trang */
+html:not(.wd) #hd{background:var(--bg)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+
+/* v26.3.1: mọi trang hiện tên lớn như trang Sản phẩm; tên nhỏ + dải mờ 80% chỉ hiện dần khi vuốt */
+#nb .nbbg{opacity:var(--nbe,0)!important;transition:none!important;background:color-mix(in srgb,var(--bg) 80%,transparent)!important;-webkit-backdrop-filter:blur(20px) saturate(170%)!important;backdrop-filter:blur(20px) saturate(170%)!important}
+#nb .nbt{opacity:var(--nbq,0)!important;transform:translateY(calc((1 - var(--nbq,0))*5px))!important;transition:none!important}
+html.nbsub:not(.wd) #v>.dh,html.nbsub:not(.wd) #v>h2:first-of-type{display:block!important}
+html.nbsub:not(.wd) #v>.dh button,html.nbsub:not(.wd) #v>.dh .dhb{display:none!important}
+html.nbsub:not(.wd) #v>.bkb+.dh.ihd{display:block!important;height:auto!important;margin:0 0 12px!important;padding:0!important;pointer-events:auto!important;justify-content:initial}
+html.nbsub:not(.wd) #v>.bkb+.dh.ihd>div{text-align:left}
+html.nbsub:not(.wd) #v>.bkb+.dh.ihd h2{font-size:34px!important;font-weight:800!important;line-height:1.1!important;margin:2px 2px 2px!important;white-space:normal}
+html.nbsub:not(.wd) #v>.bkb+.dh.ihd small.sub{display:block!important}
+html.nbsub:not(.wd) #v,html.nbhero:not(.wd) #v{padding-top:50px!important}
+html.nbm:not(.wd) body.mpg #m h2.fh2{display:block!important;font-size:34px;letter-spacing:-.02em;line-height:1.1;margin:2px 2px 10px}
+html.nbm:not(.wd) body.mpg #m{padding-top:50px!important}
+
+/* =====================================================================
+   v26.4: Apple Liquid Glass — Design System dùng chung
+   Chỉ đổi giao diện (CSS). Không đụng dữ liệu, tính toán, đăng nhập, đồng bộ.
+   Cấu trúc: (1) biến thiết kế  (2) bề mặt kính lớn có blur  (3) bề mặt kính nhẹ không blur (danh sách dài)
+             (4) ô nhập  (5) nút  (6) popup  (7) hiệu năng + Reduce Transparency/Motion + Chế độ nhẹ
+   ===================================================================== */
+:root{--lg-fill:rgba(255,255,255,.58);--lg-fill-soft:rgba(255,255,255,.50);--lg-fill-ctl:rgba(255,255,255,.46);--lg-edge:rgba(255,255,255,.82);--lg-edge-soft:rgba(255,255,255,.38);--lg-spec:linear-gradient(180deg,rgba(255,255,255,.34),rgba(255,255,255,0) 42%);--lg-hi:inset 0 1px 0 rgba(255,255,255,.92),inset 0 -1px 0 rgba(255,255,255,.28);--lg-sh:0 10px 28px rgba(40,60,120,.10),0 1px 2px rgba(40,60,120,.06);--lg-sh-s:0 4px 14px rgba(40,60,120,.07);--lg-blur:blur(22px) saturate(180%);--lg-blur-s:blur(14px) saturate(160%);--lg-pop:rgba(255,255,255,.66);--lg-dim:rgba(20,28,50,.30);--lg-press:.97}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--lg-fill:rgba(46,56,84,.52);--lg-fill-soft:rgba(46,56,84,.44);--lg-fill-ctl:rgba(120,130,160,.20);--lg-edge:rgba(255,255,255,.20);--lg-edge-soft:rgba(255,255,255,.08);--lg-spec:linear-gradient(180deg,rgba(255,255,255,.09),rgba(255,255,255,0) 42%);--lg-hi:inset 0 1px 0 rgba(255,255,255,.20),inset 0 -1px 0 rgba(255,255,255,.04);--lg-sh:0 12px 30px rgba(0,0,0,.38);--lg-sh-s:0 4px 14px rgba(0,0,0,.28);--lg-pop:rgba(44,48,66,.72);--lg-dim:rgba(0,0,0,.46)}}
+:root[data-theme="dark"]{--lg-fill:rgba(46,56,84,.52);--lg-fill-soft:rgba(46,56,84,.44);--lg-fill-ctl:rgba(120,130,160,.20);--lg-edge:rgba(255,255,255,.20);--lg-edge-soft:rgba(255,255,255,.08);--lg-spec:linear-gradient(180deg,rgba(255,255,255,.09),rgba(255,255,255,0) 42%);--lg-hi:inset 0 1px 0 rgba(255,255,255,.20),inset 0 -1px 0 rgba(255,255,255,.04);--lg-sh:0 12px 30px rgba(0,0,0,.38);--lg-sh-s:0 4px 14px rgba(0,0,0,.28);--lg-pop:rgba(44,48,66,.72);--lg-dim:rgba(0,0,0,.46)}
+/* nền trang: vài vệt màu nhạt phía sau để kính có chiều sâu */
+html:not(.wd):not(.lite) body::before{background:radial-gradient(420px 380px at -6% 0%,rgba(120,170,255,.50),transparent 70%),radial-gradient(380px 360px at 108% 34%,rgba(190,160,255,.40),transparent 70%),radial-gradient(360px 340px at 10% 100%,rgba(110,220,170,.34),transparent 70%)!important}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]):not(.wd):not(.lite) body::before{background:radial-gradient(420px 380px at -6% 0%,rgba(53,115,230,.36),transparent 70%),radial-gradient(380px 360px at 108% 34%,rgba(124,92,230,.28),transparent 70%),radial-gradient(360px 340px at 10% 100%,rgba(34,163,90,.20),transparent 70%)!important}}
+:root[data-theme="dark"]:not(.wd):not(.lite) body::before{background:radial-gradient(420px 380px at -6% 0%,rgba(53,115,230,.36),transparent 70%),radial-gradient(380px 360px at 108% 34%,rgba(124,92,230,.28),transparent 70%),radial-gradient(360px 340px at 10% 100%,rgba(34,163,90,.20),transparent 70%)!important}
+/* (2) kính lớn có blur: ít phần tử, nằm ngoài danh sách dài */
+:is(#v,#m) :is(.card:not(.oc):not(.sbody),.slist,.grl,.sph,.sprof,.bt:not(.hero),.skc,.shero,.hk,.isg.ikt,.sgnote,.sgtot,.sggrp,.sgdt,.rx-card,.rx-box,.sdn,.pcd){background:var(--lg-spec),var(--lg-fill)!important;-webkit-backdrop-filter:var(--lg-blur);backdrop-filter:var(--lg-blur);border:.5px solid var(--lg-edge)!important;box-shadow:var(--lg-hi),var(--lg-sh)!important}
+/* (3) kính nhẹ không blur: thẻ trong danh sách dài / lưới (mượt trên iPhone) */
+:is(#v,#m) :is(.oc,.ptile:not(.add):not(.sel),.mt,.klist,.pdt,.sc,.irow,.row2,.stat,.kpi,.nc:not(.warn),.hsr,.pay,.ilr,.agt,.itl>div){background:var(--lg-spec),var(--lg-fill-soft)!important;border:.5px solid var(--lg-edge)!important;box-shadow:var(--lg-hi),var(--lg-sh-s)!important}
+:is(#v,#m) :is(.seg2,.seg){background:var(--lg-fill-ctl)!important;border:.5px solid var(--lg-edge-soft)!important;-webkit-backdrop-filter:var(--lg-blur-s);backdrop-filter:var(--lg-blur-s)}
+:is(#v,#m) :is(.cc:not(.on),.tbn,.icb,.qci){background:var(--lg-fill)!important;-webkit-backdrop-filter:var(--lg-blur-s);backdrop-filter:var(--lg-blur-s);border:.5px solid var(--lg-edge)!important;box-shadow:var(--lg-hi),var(--lg-sh-s)!important}
+/* ô tìm kiếm: vỏ là kính, ô nhập bên trong trong suốt */
+:is(#v,#m) .hsr{-webkit-backdrop-filter:var(--lg-blur-s);backdrop-filter:var(--lg-blur-s)}
+:is(#v,#m) .hsr input{background:transparent!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;border:0!important;box-shadow:none!important}
+/* (4) ô nhập kính */
+:is(#v,#m) :is(input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=file]):not([type=color]),select,textarea):not(.hsr input){background:var(--lg-fill-ctl)!important;-webkit-backdrop-filter:var(--lg-blur-s);backdrop-filter:var(--lg-blur-s);border:.5px solid var(--lg-edge)!important;box-shadow:inset 0 1px 2px rgba(30,50,110,.08)!important}
+:is(#v,#m) :is(input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=file]):not([type=color]),select,textarea):focus:not(.hsr input){background:var(--lg-fill)!important;border-color:var(--io-blue,#007aff)!important;box-shadow:0 0 0 3px rgba(0,122,255,.26),inset 0 1px 2px rgba(30,50,110,.06)!important}
+/* (5) nút */
+:is(#v,#m) :is(.gbtn.pri,button.big,.btn.pri,.fab,.pri2){background:linear-gradient(180deg,rgba(255,255,255,.36),rgba(255,255,255,0) 56%),var(--io-blue,#007aff)!important;border:.5px solid rgba(255,255,255,.45)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 8px 20px rgba(0,122,255,.30)!important}
+:is(#v,#m) .gbtn:not(.pri){background:var(--lg-fill)!important;-webkit-backdrop-filter:var(--lg-blur-s);backdrop-filter:var(--lg-blur-s);border:.5px solid var(--lg-edge)!important;box-shadow:var(--lg-hi),var(--lg-sh-s)!important}
+:is(#v,#m) :is(button,.mt,.ptile,.oc,.srow,.gbtn,.cc,.tbn,.icb){transition:transform .16s cubic-bezier(.2,.8,.2,1),background-color .2s,box-shadow .2s}
+:is(#v,#m) :is(button,.mt,.ptile,.oc,.srow,.gbtn,.cc,.tbn,.icb):active{transform:scale(var(--lg-press))}
+/* (6) popup kính nổi, nền phía sau mờ */
+.ia-c{background:var(--lg-spec),var(--lg-pop)!important;-webkit-backdrop-filter:blur(30px) saturate(190%)!important;backdrop-filter:blur(30px) saturate(190%)!important;border:.5px solid var(--lg-edge)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 24px 64px rgba(0,0,0,.28)!important}
+#ia{background:var(--lg-dim)!important;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+/* (7) hiệu năng + hỗ trợ truy cập */
+html.swp :is(#v,#m) *,html.tsg :is(#v,#m) *{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+html.lite,html.lite:not([data-theme="light"]),html[data-theme="dark"].lite{--lg-fill:var(--io-card);--lg-fill-soft:var(--io-card);--lg-fill-ctl:var(--io-card2);--lg-spec:none}
+html.lite :is(#v,#m) *{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+@media(prefers-reduced-transparency:reduce){:root,:root:not([data-theme="light"]),:root[data-theme="dark"]{--lg-fill:var(--io-card);--lg-fill-soft:var(--io-card);--lg-fill-ctl:var(--io-card2);--lg-spec:none;--lg-pop:var(--io-card);--lg-dim:rgba(0,0,0,.5)}
+:is(#v,#m) *,.ia-c,#ia{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}}
+@media(prefers-reduced-motion:reduce){:is(#v,#m) :is(button,.mt,.ptile,.oc,.srow,.gbtn,.cc,.tbn,.icb){transition:none!important}:is(#v,#m) :is(button,.mt,.ptile,.oc,.srow,.gbtn,.cc,.tbn,.icb):active{transform:none!important}}
 </style></head><body>
 <div id="spl" aria-hidden="true"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20512%20512%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22bg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%234a8cf8%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%231941b3%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22gl%22%20cx%3D%22.2%22%20cy%3D%22.12%22%20r%3D%22.8%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23fff%22%20stop-opacity%3D%22.30%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23fff%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%3ClinearGradient%20id%3D%22lf%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23e9f8c2%22%2F%3E%3Cstop%20offset%3D%22.45%22%20stop-color%3D%22%23bfe28a%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2378ad45%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22fc%22%20cx%3D%22.42%22%20cy%3D%22.38%22%20r%3D%22.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23ffe6d6%22%2F%3E%3Cstop%20offset%3D%22.7%22%20stop-color%3D%22%23f6c3ac%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23e99c83%22%2F%3E%3C%2FradialGradient%3E%3ClinearGradient%20id%3D%22tw%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%220%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23d9a24a%22%2F%3E%3Cstop%20offset%3D%22.5%22%20stop-color%3D%22%23f1cd83%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23c58a33%22%2F%3E%3C%2FlinearGradient%3E%3Cfilter%20id%3D%22sh%22%20x%3D%22-20%25%22%20y%3D%22-20%25%22%20width%3D%22140%25%22%20height%3D%22150%25%22%3E%3CfeDropShadow%20dx%3D%220%22%20dy%3D%2210%22%20stdDeviation%3D%229%22%20flood-color%3D%22%230a1f66%22%20flood-opacity%3D%22.45%22%2F%3E%3C%2Ffilter%3E%3C%2Fdefs%3E%3Crect%20width%3D%22512%22%20height%3D%22512%22%20rx%3D%22112%22%20fill%3D%22url(%23bg)%22%2F%3E%3Crect%20width%3D%22512%22%20height%3D%22512%22%20rx%3D%22112%22%20fill%3D%22url(%23gl)%22%2F%3E%3Cg%20transform%3D%22translate(254%20262)%20rotate(-28)%20scale(1.2)%20translate(-256%20-256)%22%20filter%3D%22url(%23sh)%22%3E%3Cpath%20d%3D%22M360%20171%20H190%20A85%2085%200%200%200%20190%20341%20H360%20Z%22%20fill%3D%22url(%23lf)%22%2F%3E%3Cpath%20d%3D%22M105%20256%20L152%20212%20Q140%20256%20152%20300%20Z%22%20fill%3D%22%236ea03d%22%20opacity%3D%22.45%22%2F%3E%3Cpath%20d%3D%22M190%20171%20H360%22%20stroke%3D%22%23fff%22%20stroke-width%3D%229%22%20opacity%3D%22.35%22%20stroke-linecap%3D%22round%22%20transform%3D%22translate(0%209)%22%2F%3E%3Cpath%20d%3D%22M214%20168%20Q229%20256%20214%20344%22%20fill%3D%22none%22%20stroke%3D%22%238a5d1c%22%20stroke-width%3D%2215%22%20stroke-linecap%3D%22round%22%20opacity%3D%22.35%22%20transform%3D%22translate(2%202)%22%2F%3E%3Cpath%20d%3D%22M214%20168%20Q229%20256%20214%20344%22%20fill%3D%22none%22%20stroke%3D%22url(%23tw)%22%20stroke-width%3D%2213%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M292%20168%20Q307%20256%20292%20344%22%20fill%3D%22none%22%20stroke%3D%22%238a5d1c%22%20stroke-width%3D%2215%22%20stroke-linecap%3D%22round%22%20opacity%3D%22.35%22%20transform%3D%22translate(2%202)%22%2F%3E%3Cpath%20d%3D%22M292%20168%20Q307%20256%20292%20344%22%20fill%3D%22none%22%20stroke%3D%22url(%23tw)%22%20stroke-width%3D%2213%22%20stroke-linecap%3D%22round%22%2F%3E%3Cellipse%20cx%3D%22360%22%20cy%3D%22256%22%20rx%3D%2250%22%20ry%3D%2287%22%20fill%3D%22%23f9dccb%22%2F%3E%3Cellipse%20cx%3D%22360%22%20cy%3D%22256%22%20rx%3D%2245%22%20ry%3D%2282%22%20fill%3D%22url(%23fc)%22%2F%3E%3Cpath%20d%3D%22M335%20205%20Q350%20178%20372%20176%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%227%22%20stroke-linecap%3D%22round%22%20opacity%3D%22.6%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt=""><b>Quản lý bán hàng giò chả</b><i></i></div><script>try{var __u=JSON.parse(localStorage.getItem("giocha_ui")||"{}");if(__u.th=="light"||__u.th=="dark")document.documentElement.setAttribute("data-theme",__u.th)}catch(e){}if(navigator.webdriver){var __s=document.getElementById("spl");if(__s)__s.remove()}</script>
 <header id="hd">Giò chả</header>
@@ -2157,7 +2220,7 @@ function updFB(){const b=$('#fb');if(b)b.hidden=true;requestAnimationFrame(()=>{
 function fbSave(){const k=fbInfo();if(!k)return;const nm=$('#pn')||document.querySelector('#v [data-k="name"]')||$('#i_n');if(nm&&!nm.value.trim())nm.focus();else if(document.activeElement&&document.activeElement.blur)document.activeElement.blur();k[0]()}
 function updBar(){const b=$('#bar');if(!b)return;const on=tab=='sell'&&!C.done&&C.items.length;b.hidden=!on;if(on){const t=lines().reduce((a,x)=>a+x,0);b.innerHTML=`<span>${C.items.length} món<br><b style="font-size:20px">${t-disc()<0?'Hoàn lại ':''}${money(Math.abs(t-disc()))}</b></span><button onmousedown="event.preventDefault()" onclick="saveO()">${ic('chk')}<span>${C.edit?'Cập nhật đơn':'Lưu đơn'}</span></button>`}}
 let TH=[],SG='',T0={x:0,y:0,t:0,e:null};
-const ah=()=>(typeof acctH=='function'?acctH():'<div class="card"><b>Bản thử trên claude.ai</b><br><small>Chưa có tài khoản và phân quyền. Bản cài đặt riêng có đăng nhập, nhân viên và mã mời.</small></div>')+'<p class="mut" style="text-align:center;font-size:12px">Phiên bản app: v26.2</p>';
+const ah=()=>(typeof acctH=='function'?acctH():'<div class="card"><b>Bản thử trên claude.ai</b><br><small>Chưa có tài khoản và phân quyền. Bản cài đặt riêng có đăng nhập, nhân viên và mã mời.</small></div>')+'<p class="mut" style="text-align:center;font-size:12px">Phiên bản app: v26.4</p>';
 
 let LB=0;function back(){LB=Date.now();kbBlur();if(!$('#cs').hidden)return csClose();if(!$('#sr').hidden)return closeSr();if(!$('#m').hidden){if($('#m .sgsub')){sgPage();return}return closeM()}if(tab=='sett'&&SS){SS=SSP&&!/^g:/.test(SS)?SSP:null;SSP=null;pgAnim();R();scrollTo(0,0);return}if(shOn())return shClose();if(PF||FM.cus||FM.sup||IF||PRE)return closeF();if(TH.length){tab=TH.pop();pgAnim();R();scrollTo(0,0)}else if(tab!='dash')go('dash')}
 /* ===== Vuốt quay lại: CHỈ bắt đầu từ mép trái và CHỈ ở trang con/biểu mẫu =====
@@ -2217,7 +2280,7 @@ function applyTheme(){const r=document.documentElement;if(UI.th=='light'||UI.th=
 applyTheme();
 function setTheme(v){UI.th=v;saveUI();applyTheme();document.querySelectorAll('[data-th]').forEach(b=>b.classList.toggle('on',b.dataset.th==v))}
 function setPV(v){UI.pv=v;saveUI();document.querySelectorAll('[data-pv]').forEach(b=>b.classList.toggle('on',b.dataset.pv==v));const e=$('#pl');if(e&&tab=='prods'&&!PF){e.className=v=='l'?'plist':'pgrid';e.innerHTML=pl()}}
-const uiH=()=>`<div class="lbl">Chế độ màu</div><div class="seg">${[['auto','Tự động'],['light','Sáng'],['dark','Tối']].map(x=>`<button data-th="${x[0]}" class="${UI.th==x[0]?'on':''}" onclick="setTheme('${x[0]}')">${x[1]}</button>`).join('')}</div><div class="lbl">Hiển thị sản phẩm</div><div class="seg">${[['g','Lưới gọn'],['l','Danh sách']].map(x=>`<button data-pv="${x[0]}" class="${UI.pv==x[0]?'on':''}" onclick="setPV('${x[0]}')">${x[1]}</button>`).join('')}</div><div class="nopad"><label class="sw hdsw"><span><b>Hiện tên và logo cơ sở trên đầu trang</b><small>Tắt để màn hình điện thoại rộng hơn. Khi mất mạng hoặc lỗi, app vẫn báo ở đầu trang.</small></span><input type="checkbox" ${UI.hd?'checked':''} onchange="setHd(this.checked)"><i></i></label><label class="sw sysw"><span><b>Hiện trạng thái đồng bộ</b><small>Hiện “Đã đồng bộ ✓” trên đầu trang. Khi mất mạng hoặc lỗi, app vẫn luôn báo.</small></span><input type="checkbox" ${UI.sy?'checked':''} onchange="setSy(this.checked)"><i></i></label><label class="sw tssw"><span><b>Vuốt ngang để chuyển tab</b><small>Vuốt trái hoặc phải để chuyển giữa các tab ở thanh dưới. Ở Bán hàng chỉ vuốt được khi giỏ hàng đang trống.</small></span><input type="checkbox" ${UI.sw?'checked':''} onchange="setSw(this.checked)"><i></i></label><label class="sw ltsw"><span><b>Chế độ nhẹ</b><small>Tắt hiệu ứng mờ kính, bóng đổ, chuyển động và nền màu loang để app chạy mượt hơn trên máy cũ hoặc yếu. Vuốt chuyển tab vẫn dùng được nhưng không có hình xem trước.</small></span><input type="checkbox" ${UI.lt?'checked':''} onchange="setLt(this.checked)"><i></i></label></div><small>Chỉ áp dụng cho thiết bị này.</small>`;
+const uiH=()=>`<div class="lbl">Chế độ màu</div><div class="seg">${[['auto','Tự động'],['light','Sáng'],['dark','Tối']].map(x=>`<button data-th="${x[0]}" class="${UI.th==x[0]?'on':''}" onclick="setTheme('${x[0]}')">${x[1]}</button>`).join('')}</div><div class="lbl">Hiển thị sản phẩm</div><div class="seg">${[['g','Lưới gọn'],['l','Danh sách']].map(x=>`<button data-pv="${x[0]}" class="${UI.pv==x[0]?'on':''}" onclick="setPV('${x[0]}')">${x[1]}</button>`).join('')}</div><div class="nopad"><label class="sw tssw"><span><b>Vuốt ngang để chuyển tab</b><small>Vuốt trái hoặc phải để chuyển giữa các tab ở thanh dưới. Ở Bán hàng chỉ vuốt được khi giỏ hàng đang trống.</small></span><input type="checkbox" ${UI.sw?'checked':''} onchange="setSw(this.checked)"><i></i></label><label class="sw ltsw"><span><b>Chế độ nhẹ</b><small>Tắt hiệu ứng mờ kính, bóng đổ, chuyển động và nền màu loang để app chạy mượt hơn trên máy cũ hoặc yếu. Vuốt chuyển tab vẫn dùng được nhưng không có hình xem trước.</small></span><input type="checkbox" ${UI.lt?'checked':''} onchange="setLt(this.checked)"><i></i></label></div><small>Chỉ áp dụng cho thiết bị này.</small>`;
 /* menu ba gạch */
 const SO={};
 const CHV='<svg class="ico chv" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>';
@@ -2245,7 +2308,7 @@ let h=`<div class="sprof"><img class="slogo" src="${LOGO}" alt=""><div class="sp
 h+=`<h3 class="dg">Quản lý</h3><div class="mgrid">${mg.map(r=>`<button class="mt k-${r[3]}" onclick="go('${r[0]}'${r[0]=='prods'?',1':''})"><span class="mti">${ic(r[2])}</span><b>${r[1]}</b></button>`).join('')}</div>`;
 const g1=by(['shop','units','sales','pay','cogs']);if(g1)h+=`<h3 class="dg">Cửa hàng</h3><div class="slist">${g1}</div>`;
 h+=`<h3 class="dg">Cá nhân hóa</h3><div class="slist">${by(['dw','ui'])}</div>`;
-h+=`<h3 class="dg">Hệ thống</h3><div class="slist">${by(['sync','data'])}${ADM&&mm?srow('shield','p','Nhân viên và phân quyền','Mã mời, quyền truy cập',"go('acct')"):''}${srow('user','g','Tài khoản','Thông tin cá nhân, đăng xuất',"go('acct')")}</div><p class="mut" style="text-align:center;font-size:12px;margin:14px 0 0">Phiên bản app: v26.2</p>`;
+h+=`<h3 class="dg">Hệ thống</h3><div class="slist">${by(['sync','data'])}${ADM&&mm?srow('shield','p','Nhân viên và phân quyền','Mã mời, quyền truy cập',"go('acct')"):''}${srow('user','g','Tài khoản','Thông tin cá nhân, đăng xuất',"go('acct')")}</div><p class="mut" style="text-align:center;font-size:12px;margin:14px 0 0">Phiên bản app: v26.4</p>`;
 return h}
 function sett(){const s=SS&&secAv().find(x=>x.id==SS&&x.b);if(SS&&!s)SS=null;
 if(s)return `<div class="sph"><span class="sq lg k-${s.c}">${ic(s.i)}</span><div><h2>${s.t}</h2><small>${s.s}</small></div></div><div class="card sbody">${s.b()}</div>`;
@@ -2906,7 +2969,7 @@ function settHome(){const em=(typeof PROF!='undefined'&&PROF&&PROF.email)||'',by
 const mg=[['prods','Sản phẩm','prods','a',np+' sản phẩm',0],['cus','Khách hàng','cus','p',nd?nd+' khách còn nợ':S.customers.length+' khách',nd],['hist','Đơn hàng','hist','b',nu?nu+' chưa thu':'Xem và sửa đơn',nu],['pre','Đặt hàng trước','cal','a',(()=>{const n=pWait().length;return n?n+' đơn chờ giao':'Đơn Tết, giao sau'})(),preNeed()],['sup','Nhà cung cấp','sup','p',(()=>{const d=supDebt();return d.n?'Còn nợ '+kfmt(d.total):S.suppliers.length+' nhà cung cấp'})(),supDebt().n],['imp','Kho nguyên liệu','imp','b',nn?nn+' sắp hết':'Tồn kho, nhập hàng',nn],['stats','Thống kê','stats','g','Báo cáo lãi lỗ',0]].filter(x=>vis([x[0]]));if(ADM){const i=mg.findIndex(x=>x[0]=='imp');mg.splice(i<0?mg.length:i+1,0,['xg','Xay giò','coi','a',(()=>{const t=sgTodayN();return t.c>0?'Hôm nay '+num(t.c)+' cối':'Nhập số cối'})(),0])}
 return `<button type="button" class="sprof" onclick="go('acct')"><img class="slogo" src="${LOGO}" alt=""><span class="spi"><b>${esc(S.shop)}</b><small><span>${ADM?'Quản trị viên':'Nhân viên'}</span> · <span class="sy2">${esc(SYN)}</span></small></span>${CHV}</button>${!ADM?`<div class="card cnc"><label>Tên thu ngân (in trên hóa đơn)<input value="${esc(UI.cn||'')}" placeholder="Ví dụ: Lan" maxlength="40" onchange="cnSave(this.value)"></label><small class="mut">Để trống thì dùng tên tài khoản đang đăng nhập. Quản trị viên luôn ghi ADMIN.</small></div>`:''}
 <h3 class="dg">Quản lý</h3><div class="mgrid mg2">${mg.map(r=>`<button class="mt k-${r[3]}" onclick="${r[0]=='xg'?"sgPage()":`go('${r[0]}'${r[0]=='prods'?',1':''})`}"><span class="mti">${ic(r[2])}</span><span class="mtt"><b>${r[1]}</b><small class="${r[5]?'w':''}">${r[4]}</small></span></button>`).join('')}</div>
-<h3 class="dg">Thiết lập</h3><div class="grl">${GRP().filter(g=>grpRows(g)).map(g=>`<button class="srow gr" onclick="openSec('g:${g.id}')"><span class="sq k-${g.c}">${ic(g.i)}</span><span class="srt"><b>${g.t}</b><small>${g.s}</small></span>${CHV}</button>`).join('')}</div><p class="mut" style="text-align:center;font-size:12px;margin:14px 0 0">Phiên bản app: v26.2</p>`}
+<h3 class="dg">Thiết lập</h3><div class="grl">${GRP().filter(g=>grpRows(g)).map(g=>`<button class="srow gr" onclick="openSec('g:${g.id}')"><span class="sq k-${g.c}">${ic(g.i)}</span><span class="srt"><b>${g.t}</b><small>${g.s}</small></span>${CHV}</button>`).join('')}</div><p class="mut" style="text-align:center;font-size:12px;margin:14px 0 0">Phiên bản app: v26.4</p>`}
 
 /* ===== v20.3: công thức nhiều nguyên liệu, quy đổi đơn vị (g↔kg, lạng, ml↔lít) ===== */
 const UCV={kg:['m',1000],g:['m',1],gr:['m',1],gam:['m',1],gram:['m',1],'lạng':['m',100],'lít':['v',1000],l:['v',1000],lit:['v',1000],ml:['v',1]};
@@ -4254,7 +4317,7 @@ o.innerHTML=mcH(a,ea,c,ec);if(b)b.disabled=false}
 {const sh=(r)=>{const L=(r&&r.data&&r.data.sent)||[];const ok=L.filter(s=>s.id);return ok.length?' · Resend đã nhận (ID '+ok[0].id+')':''};
 rmTest=async function(){if(!ADM||!rmSB())return;const b=$('#rm_t');if(b)b.disabled=true;try{const r=await SB.functions.invoke('nhac-nho',{body:{test:1}});if(r.error)throw r.error;toast('Đã gửi email thử'+sh(r),6000)}catch(e){toast('Chưa gửi được: '+(await fnErr(e)),7000)}finally{if(b)b.disabled=false}};
 pmTest=async function(){if(!ADM||!rmSB())return;const b=$('#pm_t');if(b)b.disabled=true;try{const r=await SB.functions.invoke('nhac-nho',{body:{test:1,pre:1}});if(r.error)throw r.error;toast('Đã gửi thư thử đơn đặt trước'+sh(r),6000)}catch(e){toast('Chưa gửi được: '+(await fnErr(e)),7000)}finally{if(b)b.disabled=false}}}
-/* ---------- v26.2: thanh tiêu đề kiểu iOS — nút quay về kính + tên trang ở giữa, đứng yên khi cuộn ---------- */
+/* ---------- v26.4: thanh tiêu đề kiểu iOS — nút quay về kính + tên trang ở giữa, đứng yên khi cuộn ---------- */
 (()=>{if(window.__nb)return;window.__nb=1;
 const nb=document.createElement('div');nb.id='nb';nb.setAttribute('role','navigation');nb.innerHTML='<div class="nbbg"></div><button type="button" class="nbb" aria-label="Quay lại" onclick="nbBack()"></button><div class="nbt" role="heading" aria-level="1"></div><div class="nbr"></div>';document.body.appendChild(nb);
 const H=document.documentElement,B=document.body;let mode='',tEl=null,rafq=0,src=null;
@@ -4262,7 +4325,7 @@ const mpgOn=()=>B.classList.contains('mpg')&&$('#m')&&!$('#m').hidden;
 window.nbBack=function(){const b=src&&src.bk;if(b&&b.isConnected){b.click();return}back()};
 window.nbSync=function(){try{const v=$('#v');if(!v||H.classList.contains('wd')){H.classList.remove('nbon','nbsub','nbhero','nbroot','nbbk','nbm');return}
 const m=mpgOn(),root=m?$('#m'):v;
-const bk=m?root.querySelector('.mbk'):v.querySelector(':scope>.bkb'),sph=m?null:v.querySelector(':scope>.sph'),dh=m?root.querySelector('h2.fh2'):v.querySelector(':scope>.dh, :scope>h2');
+const bk=m?root.querySelector('.mbk'):v.querySelector(':scope>.bkb'),sph=m?null:v.querySelector(':scope>.sph'),dh=m?root.querySelector('h2.fh2'):v.querySelector(':scope>.dh, :scope>.shd, :scope>h2');
 src={bk};nb.querySelector('.nbb').innerHTML=(bk&&bk.querySelector('svg')?bk.querySelector('svg').outerHTML:'')||'';
 const h2=sph?sph.querySelector('h2'):dh?(dh.matches('h2')?dh:dh.querySelector('h2')):null;tEl=h2;
 nb.querySelector('.nbt').textContent=h2?h2.textContent.trim():'';
@@ -4271,9 +4334,14 @@ H.classList.add('nbon');H.classList.toggle('nbsub',mode=='sub');H.classList.togg
 const r=nb.querySelector('.nbr');r.innerHTML='';
 if(!m&&mode=='sub'&&dh&&!dh.matches('h2')){[...dh.querySelectorAll('button')].filter(b=>b.offsetParent!==null||getComputedStyle(b).display!='none').forEach(b=>{const c=b.cloneNode(true);c.removeAttribute('id');c.classList.add('nbx');const lb=b.getAttribute('aria-label')||b.innerText.trim()||b.title||'';c.setAttribute('aria-label',lb);c.title=lb;r.appendChild(c)})}
 requestAnimationFrame(()=>{const L=nb.querySelector('.nbb').offsetWidth||0,Rr=r.offsetWidth||0;nb.style.setProperty('--nbp',(Math.max(L,Rr,44)+22)+'px')});nbScroll()}catch(e){}};
-window.nbScroll=function(){if(!H.classList.contains('nbon'))return;nb.classList.toggle('nb-sc',scrollY>4);
-let showT=mode=='sub';if(!showT&&tEl&&tEl.isConnected){const b=tEl.getBoundingClientRect();showT=b.bottom<nb.getBoundingClientRect().bottom-4}
-nb.classList.toggle('nb-tt',showT)};
+window.nbScroll=function(){if(!H.classList.contains('nbon'))return;
+const y=Math.max(0,scrollY),bot=nb.getBoundingClientRect().bottom,ok=tEl&&tEl.isConnected;let sTop=6,sBot=26;
+const rt=mpgOn()?$('#m'):$('#v');let f=null;if(rt){for(const c of rt.children){if(c.classList.contains('mbk')||c.classList.contains('abar')||c.offsetHeight<4)continue;const cs=getComputedStyle(c);if(cs.display==='none'||cs.position==='fixed')continue;f=c;break}}
+if(f)sTop=Math.max(6,f.getBoundingClientRect().top+y-bot);
+if(ok)sBot=Math.max(sTop+20,tEl.getBoundingClientRect().bottom+y-bot);
+const cl=x=>x<0?0:x>1?1:x,e=cl((y-sTop)/26),q=ok?cl((y-sBot)/20):0;
+nb.style.setProperty('--nbe',e.toFixed(3));nb.style.setProperty('--nbq',q.toFixed(3));
+nb.classList.toggle('nb-sc',e>.02);nb.classList.toggle('nb-tt',q>.5)};
 addEventListener('scroll',()=>{if(rafq)return;rafq=requestAnimationFrame(()=>{rafq=0;nbScroll()})},{passive:true});
 addEventListener('resize',()=>nbSync());
 {const o=R;R=function(){const x=o.apply(this,arguments);nbSync();return x}}
@@ -4281,7 +4349,7 @@ let mq=0;const mo=new MutationObserver(()=>{if(mq)return;mq=requestAnimationFram
 const mm=$('#m');if(mm)mo.observe(mm,{attributes:true,attributeFilter:['hidden'],childList:true});mo.observe(B,{attributes:true,attributeFilter:['class']});
 nbSync()})();
 
-/* v26.2: giải thích lỗi 403 của Resend bằng tiếng Việt (chưa xác minh tên miền) */
+/* v26.4: giải thích lỗi 403 của Resend bằng tiếng Việt (chưa xác minh tên miền) */
 function mcFr(er){const m=/only send testing emails to your own email address \(([^)\s]+)\)/.exec(String(er||''));return m?'Resend chưa cho gửi tới địa chỉ này: tài khoản Resend chưa xác minh tên miền nên chỉ gửi được cho '+m[1]+'.':String(er||'')}
 function mcSent(L){return (L||[]).map(s=>s.id?`${esc(s.to)}: Resend đã nhận (ID <code>${esc(s.id)}</code>)`:`${esc(s.to)}: bị từ chối HTTP ${esc(s.status)} – ${esc(mcFr(s.error))}`).join('<br>')}
 {const o=mcCall;mcCall=function(x){try{const b=String(x&&x.body||''),dom=/only send testing emails to your own email address \(([^)\s]+)\)/.exec(b);
@@ -4293,6 +4361,10 @@ const okc=j&&j.sent?j.sent.filter(s=>s.id).length:0;
 return mcRow(okc?null:null,tm+' · '+(sch?'lịch 30 phút':rid?'thư đơn mới: '+mcName(rid):'thư thử')+' · chỉ gửi được tới '+esc(dom[1]),
 'Resend chưa xác minh tên miền nên chỉ giao thư cho email chủ tài khoản Resend ('+esc(dom[1])+')'+(bad.length?'. Bị chặn: '+bad.map(esc).join(', '):'')+'.<br>Cách sửa: vào resend.com/domains xác minh tên miền, rồi đặt FROM_EMAIL (Supabase Secrets) bằng địa chỉ thuộc tên miền đó. Hoặc để riêng email chủ tài khoản trong ô email quản trị.')}}catch(e){}
 return o(x)}}
+
+/* v26.4.1: tắt hẳn tùy chọn "Hiện tên và logo cơ sở trên đầu trang" (luôn ẩn header, chỉ còn tên trang + thanh iOS) */
+{const o=syApply;syApply=function(){UI.hd=0;return o.apply(this,arguments)}}
+try{UI.hd=0;syApply()}catch(e){}
 (async()=>{lkWrap();if('serviceWorker' in navigator){const had=!!navigator.serviceWorker.controller;navigator.serviceWorker.register('sw.js').then(r=>{const up=()=>{try{r.update()}catch(e){}};document.addEventListener('visibilitychange',()=>{if(!document.hidden){up();if(window.__upd)try{updAsk()}catch(e){}}});setInterval(up,30*60e3)}).catch(()=>{});navigator.serviceWorker.addEventListener('controllerchange',()=>{if(had){window.__upd=1;try{updAsk()}catch(e){try{toast('Đã có bản mới. Mở lại app để cập nhật.')}catch(x){}}}})}
 const C=window.CFG||{};if(!C.url||!C.key||!window.supabase)return ashow('cfg');
 SB=supabase.createClient(C.url,C.key);

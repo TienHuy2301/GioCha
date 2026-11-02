@@ -2080,6 +2080,37 @@ html.nbon:not(.wd) #nfab{background:#007aff!important;background-image:none!impo
 button,[role="button"],.kr,.ptile,#nv button,.mt{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 :is(#v,#m) #kl .klist .kr.ok:not(#z9){padding:7px 14px!important;text-align:left}
 :is(#v,#m) #kl .kr .knm b:not(#z9){color:inherit;margin:0}
+
+/* v26.12: Thống kê chi tiết, thu tiền, tồn kho, thẻ thành phẩm */
+.sxk{font:inherit;color:inherit;text-align:left;cursor:pointer;position:relative;width:100%;padding-right:26px}
+.sxk .ki{align-self:flex-start}
+.sxk:active,.sxr:not(.flat):active,.fgt:active{transform:scale(.985)}
+.sxc{position:absolute;right:10px;top:50%;margin-top:-6px;width:8px;height:8px;border-right:2px solid var(--m);border-bottom:2px solid var(--m);transform:rotate(-45deg);opacity:.7;pointer-events:none;transition:transform .15s}
+.sxk .sxc{top:14px;margin-top:0}
+.sxr{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:10px 24px 10px 2px;border-bottom:1px solid var(--b);font-size:14px;position:relative;min-height:44px;cursor:pointer;text-align:left}
+.sxr.flat{cursor:default;padding-right:2px}
+.sxr>span{color:var(--t);min-width:0;overflow-wrap:anywhere}.sxr>span small{margin-left:6px;color:var(--m);font-weight:500}
+.sxr>b{font-weight:700;text-align:right;white-space:nowrap;display:flex;flex-direction:column;align-items:flex-end;gap:1px}
+.sxr>b small{font-weight:600;font-size:12px;color:var(--m);white-space:normal}.sxr>b small.neg,.sxr.neg>b small{color:var(--r)}.sxr>b small.low{color:#b45309}
+.sxr.sub>span{padding-left:12px;color:var(--m)}.sxr.tot>span{font-weight:700}.sxr.tot>b{font-weight:800}.sxr.hi{background:rgba(22,101,52,.06)}
+.sxr[aria-expanded="true"] .sxc{transform:rotate(45deg)}
+.sxd{padding:2px 0 8px 10px;border-bottom:1px solid var(--b);background:rgba(127,127,127,.05);border-radius:0 0 10px 10px}.sxd[hidden]{display:none!important}
+.sxl{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:6px 8px;font-size:13.5px}.sxl>span{color:var(--m);min-width:0;overflow-wrap:anywhere}.sxl>span small{margin-left:5px;font-weight:500}.sxl>b{font-weight:600;white-space:nowrap;color:var(--t)}.sxl.b>b,.sxl.b>span{font-weight:800;color:var(--t)}.sxl.sub>span{padding-left:10px}
+.sxsh{display:flex;justify-content:space-between;align-items:baseline;margin:14px 2px 4px;font-weight:800;font-size:13.5px;color:var(--g)}.sxsh small{font-weight:700;color:var(--m)}
+.sxwn{margin:6px 8px;font-size:12.5px;color:var(--r)}
+.sxnt{margin:8px 2px 0;font-size:12.5px}
+.sxsheet{margin:6px 0 10px}.sxsheet .sxl{border-bottom:1px solid var(--b)}.sxsheet .sxr{padding-right:24px}
+.sxchs{display:flex;flex-wrap:wrap;gap:6px;padding:8px 0 6px}
+.sxch{flex:0 0 auto;border:1px solid var(--b);background:var(--c);color:var(--m);border-radius:999px;padding:6px 12px;font-size:12.5px;font-weight:600;min-height:34px}.sxch.on{background:var(--g);border-color:var(--g);color:#fff}
+.sxbar{display:flex;height:12px;border-radius:99px;overflow:hidden;background:var(--b);margin:10px 0 6px}.sxbar i{display:block;height:100%}
+.sxbar .c1,.dot.c1{background:#22863a}.sxbar .c2,.dot.c2{background:#2563eb}.sxbar .c3,.dot.c3{background:#d97706}
+.sxp{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:8px 2px;font-size:14px;border-bottom:1px solid var(--b)}.sxp>span{display:flex;align-items:center;gap:8px;color:var(--t)}.sxp small{color:var(--m);font-weight:500}.sxp b{font-weight:700}.sxp.tot{border-bottom:0}.sxp.tot b{font-weight:800}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;flex:0 0 10px}
+.sxlk{display:block;margin:6px 0 2px;padding:6px 0}
+.fgs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 12px}
+.fgt{font:inherit;color:inherit;text-align:left;cursor:pointer;background:var(--c);border:1px solid var(--b);border-radius:16px;padding:12px 14px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.fgt small{color:var(--m);font-size:12.5px;font-weight:600}.fgt b{font-size:22px;font-weight:800;line-height:1.2;overflow-wrap:anywhere}.fgt b i{font-style:normal;font-size:13px;font-weight:600;color:var(--m)}.fgt em{font-style:normal;font-size:12px;color:var(--m)}.fgt.neg b{color:var(--r)}
+.fgt.k-a{border-left:4px solid #d97706}.fgt.k-p{border-left:4px solid #7c3aed}
 </style></head><body>
 <div id="spl" aria-hidden="true"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20512%20512%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22bg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%234a8cf8%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%231941b3%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22gl%22%20cx%3D%22.2%22%20cy%3D%22.12%22%20r%3D%22.8%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23fff%22%20stop-opacity%3D%22.30%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23fff%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%3ClinearGradient%20id%3D%22lf%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23e9f8c2%22%2F%3E%3Cstop%20offset%3D%22.45%22%20stop-color%3D%22%23bfe28a%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2378ad45%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22fc%22%20cx%3D%22.42%22%20cy%3D%22.38%22%20r%3D%22.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23ffe6d6%22%2F%3E%3Cstop%20offset%3D%22.7%22%20stop-color%3D%22%23f6c3ac%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23e99c83%22%2F%3E%3C%2FradialGradient%3E%3ClinearGradient%20id%3D%22tw%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%220%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23d9a24a%22%2F%3E%3Cstop%20offset%3D%22.5%22%20stop-color%3D%22%23f1cd83%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23c58a33%22%2F%3E%3C%2FlinearGradient%3E%3Cfilter%20id%3D%22sh%22%20x%3D%22-20%25%22%20y%3D%22-20%25%22%20width%3D%22140%25%22%20height%3D%22150%25%22%3E%3CfeDropShadow%20dx%3D%220%22%20dy%3D%2210%22%20stdDeviation%3D%229%22%20flood-color%3D%22%230a1f66%22%20flood-opacity%3D%22.45%22%2F%3E%3C%2Ffilter%3E%3C%2Fdefs%3E%3Crect%20width%3D%22512%22%20height%3D%22512%22%20rx%3D%22112%22%20fill%3D%22url(%23bg)%22%2F%3E%3Crect%20width%3D%22512%22%20height%3D%22512%22%20rx%3D%22112%22%20fill%3D%22url(%23gl)%22%2F%3E%3Cg%20transform%3D%22translate(254%20262)%20rotate(-28)%20scale(1.2)%20translate(-256%20-256)%22%20filter%3D%22url(%23sh)%22%3E%3Cpath%20d%3D%22M360%20171%20H190%20A85%2085%200%200%200%20190%20341%20H360%20Z%22%20fill%3D%22url(%23lf)%22%2F%3E%3Cpath%20d%3D%22M105%20256%20L152%20212%20Q140%20256%20152%20300%20Z%22%20fill%3D%22%236ea03d%22%20opacity%3D%22.45%22%2F%3E%3Cpath%20d%3D%22M190%20171%20H360%22%20stroke%3D%22%23fff%22%20stroke-width%3D%229%22%20opacity%3D%22.35%22%20stroke-linecap%3D%22round%22%20transform%3D%22translate(0%209)%22%2F%3E%3Cpath%20d%3D%22M214%20168%20Q229%20256%20214%20344%22%20fill%3D%22none%22%20stroke%3D%22%238a5d1c%22%20stroke-width%3D%2215%22%20stroke-linecap%3D%22round%22%20opacity%3D%22.35%22%20transform%3D%22translate(2%202)%22%2F%3E%3Cpath%20d%3D%22M214%20168%20Q229%20256%20214%20344%22%20fill%3D%22none%22%20stroke%3D%22url(%23tw)%22%20stroke-width%3D%2213%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M292%20168%20Q307%20256%20292%20344%22%20fill%3D%22none%22%20stroke%3D%22%238a5d1c%22%20stroke-width%3D%2215%22%20stroke-linecap%3D%22round%22%20opacity%3D%22.35%22%20transform%3D%22translate(2%202)%22%2F%3E%3Cpath%20d%3D%22M292%20168%20Q307%20256%20292%20344%22%20fill%3D%22none%22%20stroke%3D%22url(%23tw)%22%20stroke-width%3D%2213%22%20stroke-linecap%3D%22round%22%2F%3E%3Cellipse%20cx%3D%22360%22%20cy%3D%22256%22%20rx%3D%2250%22%20ry%3D%2287%22%20fill%3D%22%23f9dccb%22%2F%3E%3Cellipse%20cx%3D%22360%22%20cy%3D%22256%22%20rx%3D%2245%22%20ry%3D%2282%22%20fill%3D%22url(%23fc)%22%2F%3E%3Cpath%20d%3D%22M335%20205%20Q350%20178%20372%20176%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%227%22%20stroke-linecap%3D%22round%22%20opacity%3D%22.6%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt=""><b>Quản lý bán hàng giò chả</b><i></i></div><script>try{var __u=JSON.parse(localStorage.getItem("giocha_ui")||"{}");if(__u.th=="light"||__u.th=="dark")document.documentElement.setAttribute("data-theme",__u.th)}catch(e){}if(navigator.webdriver){var __s=document.getElementById("spl");if(__s)__s.remove()}</script>
 <header id="hd">Giò chả</header>
@@ -2514,7 +2545,7 @@ function updFB(){const b=$('#fb');if(b)b.hidden=true;requestAnimationFrame(()=>{
 function fbSave(){const k=fbInfo();if(!k)return;const nm=$('#pn')||document.querySelector('#v [data-k="name"]')||$('#i_n');if(nm&&!nm.value.trim())nm.focus();else if(document.activeElement&&document.activeElement.blur)document.activeElement.blur();k[0]()}
 function updBar(){const b=$('#bar');if(!b)return;const on=tab=='sell'&&!C.done&&C.items.length;b.hidden=!on;if(on){const t=lines().reduce((a,x)=>a+x,0);b.innerHTML=`<span>${C.items.length} món<br><b style="font-size:20px">${t-disc()<0?'Hoàn lại ':''}${money(Math.abs(t-disc()))}</b></span><button onmousedown="event.preventDefault()" onclick="saveO()">${ic('chk')}<span>${C.edit?'Cập nhật đơn':'Lưu đơn'}</span></button>`}}
 let TH=[],SG='',T0={x:0,y:0,t:0,e:null};
-const ah=()=>(typeof acctH=='function'?acctH():'<div class="card"><b>Bản thử trên claude.ai</b><br><small>Chưa có tài khoản và phân quyền. Bản cài đặt riêng có đăng nhập, nhân viên và mã mời.</small></div>')+'<p class="mut" style="text-align:center;font-size:12px">Phiên bản app: v26.11</p>';
+const ah=()=>(typeof acctH=='function'?acctH():'<div class="card"><b>Bản thử trên claude.ai</b><br><small>Chưa có tài khoản và phân quyền. Bản cài đặt riêng có đăng nhập, nhân viên và mã mời.</small></div>')+'<p class="mut" style="text-align:center;font-size:12px">Phiên bản app: v26.12</p>';
 
 let LB=0;function back(){LB=Date.now();kbBlur();if(!$('#cs').hidden)return csClose();if(!$('#sr').hidden)return closeSr();if(!$('#m').hidden){if($('#m .sgsub')){sgPage();return}return closeM()}if(tab=='sett'&&SS){SS=SSP&&!/^g:/.test(SS)?SSP:null;SSP=null;pgAnim();R();scrollTo(0,0);return}if(shOn())return shClose();if(PF||FM.cus||FM.sup||IF||PRE)return closeF();if(TH.length){tab=TH.pop();pgAnim();R();scrollTo(0,0)}else if(tab!='dash')go('dash')}
 /* ===== Vuốt quay lại: CHỈ bắt đầu từ mép trái và CHỈ ở trang con/biểu mẫu =====
@@ -2602,7 +2633,7 @@ let h=`<div class="sprof"><img class="slogo" src="${LOGO}" alt=""><div class="sp
 h+=`<h3 class="dg">Quản lý</h3><div class="mgrid">${mg.map(r=>`<button class="mt k-${r[3]}" onclick="go('${r[0]}'${r[0]=='prods'?',1':''})"><span class="mti">${ic(r[2])}</span><b>${r[1]}</b></button>`).join('')}</div>`;
 const g1=by(['shop','units','sales','pay','cogs']);if(g1)h+=`<h3 class="dg">Cửa hàng</h3><div class="slist">${g1}</div>`;
 h+=`<h3 class="dg">Cá nhân hóa</h3><div class="slist">${by(['dw','ui'])}</div>`;
-h+=`<h3 class="dg">Hệ thống</h3><div class="slist">${by(['sync','data'])}${ADM&&mm?srow('shield','p','Nhân viên và phân quyền','Mã mời, quyền truy cập',"go('acct')"):''}${srow('user','g','Tài khoản','Thông tin cá nhân, đăng xuất',"go('acct')")}</div><p class="mut" style="text-align:center;font-size:12px;margin:14px 0 0">Phiên bản app: v26.11</p>`;
+h+=`<h3 class="dg">Hệ thống</h3><div class="slist">${by(['sync','data'])}${ADM&&mm?srow('shield','p','Nhân viên và phân quyền','Mã mời, quyền truy cập',"go('acct')"):''}${srow('user','g','Tài khoản','Thông tin cá nhân, đăng xuất',"go('acct')")}</div><p class="mut" style="text-align:center;font-size:12px;margin:14px 0 0">Phiên bản app: v26.12</p>`;
 return h}
 function sett(){const s=SS&&secAv().find(x=>x.id==SS&&x.b);if(SS&&!s)SS=null;
 if(s)return `<div class="sph"><span class="sq lg k-${s.c}">${ic(s.i)}</span><div><h2>${s.t}</h2><small>${s.s}</small></div></div><div class="card sbody">${s.b()}</div>`;
@@ -3176,7 +3207,7 @@ o+=`<div class="bt k-${x[6]} ${wide?'wide':''}"><div class="btt"><span class="ki
 return o+'</div>'}
 function dash(){const t=today(),ms=mS(t),M=plR(ms,t);
 const warn=ADM&&M.noCost>0&&S.cfg.cogs!='nvl'&&M.n>0?`<div class="note18" role="status">${ic('tool')}<span>Còn <b>${M.noCost}</b> sản phẩm chưa có <b>giá vốn${AUM()?' hoặc công thức':''}</b> nên lợi nhuận đang bị tính cao hơn thực tế. <button class="lnk" onclick="go('prods',1)">Nhập giá vốn</button></span></div>`:'';
-return `<div class="dh dhh"><div><small class="eyebrow">${DOWN[(dow(t)+1)%7]}, ${t.slice(8)}/${t.slice(5,7)}</small><h2>Tổng quan</h2></div><button class="icb" onclick="dwSet()" aria-label="Tùy chỉnh Tổng quan">${ic('cog')}</button></div>${bentoH()}${qaH()}${preDashH()}${dcOn('warn')?warn:''}${dcOn('chart')?`<div class="card" style="margin-top:12px"><b>Doanh thu</b><div id="chart">${chartH()}</div></div>`:''}${dcOn('prod')?pdH():''}`}
+return `<div class="dh dhh"><div><small class="eyebrow">${DOWN[(dow(t)+1)%7]}, ${t.slice(8)}/${t.slice(5,7)}</small><h2>Tổng quan</h2></div><button class="icb" onclick="dwSet()" aria-label="Tùy chỉnh Tổng quan">${ic('cog')}</button></div>${bentoH()}${dcOn('fgs')?fgsH():''}${qaH()}${preDashH()}${dcOn('warn')?warn:''}${dcOn('chart')?`<div class="card" style="margin-top:12px"><b>Doanh thu</b><div id="chart">${chartH()}</div></div>`:''}${dcOn('prod')?pdH():''}`}
 /* ---------- Khách hàng: Còn nợ / Đã đủ / Tất cả, chọn nhiều khách để In / Gửi sao kê ---------- */
 let KF=null,KM=0,KSL={},KO=null;
 function cusRows(q){const by=debtOf().by,cnt={},last={};valid().forEach(o=>{if(o.cid&&opm(o)=='debt'){cnt[o.cid]=(cnt[o.cid]||0)+1;last[o.cid]=Math.max(last[o.cid]||0,o.ts)}});
@@ -3409,7 +3440,7 @@ function preDone(id){const x=S.imports.find(y=>y.id==id);if(!x||pSt(x)!='wait')r
 const o={id:uid(),code:ocode(),ts:t,items:(x.items||[]).map(i=>({pid:i.pid,name:i.name,unit:i.unit,qty:i.qty,price:i.price,cost:pcm[i.pid]||0})),discount:+x.disc||0,note:'Đặt trước'+(+x.dep>0?' · đã cọc '+fd(+x.dep):'')+(x.note?' · '+x.note:''),pm:PG,paid:0,status:'ok',log:[{ts:t,t:'Giao đơn đặt trước'}],cashier:cashier(),cid:x.cid||'',cname:x.cname||'',type:x.type||'le',dep:+x.dep||0};
 S.orders.push(o);x.st='done';x.dd=today();x.oid=o.id;x.oc=o.code;save();closeM();R();toast('Đã giao · tạo đơn '+o.code)}
 /* ---------- Tùy chỉnh Tổng quan: ô chỉ số, lối tắt, thẻ hiển thị (v20.5) ---------- */
-const SHL=()=>[['pre','Thẻ đơn đặt trước','cal','a',1],['chart','Biểu đồ doanh thu','trend','g',0],['prod','Bảng sản phẩm bán ra','prods','b',0],['warn','Nhắc thiếu giá vốn','tool','r',1],['alert','Thông báo đơn đặt khi mở app','cal','p',1]].filter(x=>ADM||!x[4]);
+const SHL=()=>[['pre','Thẻ đơn đặt trước','cal','a',1],['chart','Biểu đồ doanh thu','trend','g',0],['prod','Bảng sản phẩm bán ra','prods','b',0],['warn','Nhắc thiếu giá vốn','tool','r',1],['alert','Thông báo đơn đặt khi mở app','cal','p',1],['fgs','Giò thành phẩm và mọc trong tủ','prods','a',1]].filter(x=>ADM||!x[4]);
 const dwC2=()=>DWT=='qa'?[qaSel(),QMAX]:DWT=='sh'?[SHL().filter(x=>dcOn(x[0])).map(x=>x[0]),99]:[dwSel(),DWMAX];
 const dwN2=()=>{if(DWT=='sh'){const n=SHL().filter(x=>dcOn(x[0])).length;return `<span>Đang bật <b>${n}/${SHL().length}</b> mục</span><small>Tắt mục nào thì mục đó ẩn khỏi Tổng quan</small>`}const[l,m]=dwC2();return `<span>Đã chọn <b>${l.length}/${m}</b> ${DWT=='qa'?'lối tắt':'ô'}</span><small>${l.length>=m?'Bỏ bớt một mục để chọn mục khác':'Chọn tối đa '+m+' mục'}</small>`};
 function dwList(){const[sel,mx]=dwC2(),full=sel.length>=mx,L=DWT=='qa'?qaAv().map(x=>[x[0],x[1],x[2],x[3]]):DWT=='sh'?SHL().map(x=>[x[0],x[1],x[2],x[3]]):dwAv().map(x=>[x[0],x[1],x[2],x[6]]);
@@ -4775,6 +4806,134 @@ function cgOhTg(){if(!ADM)return;S.cfg.cgOHon=cgOhOn()?0:1;if(S.cfg.cgOHon&&!Arr
 function cgOhN(i){if(!ADM)return;const n=cgOhNames()[i];if(!n)return;const a=cgOhSel().slice(),k=nz(n),at=a.findIndex(x=>nz(String(x).trim())==k);if(at>=0)a.splice(at,1);else a.push(n);S.cfg.cgOHn=a;save();R()}
 function cgOhSw(){if(!cgOn())return '';const on=cgOhOn(),r=cgOhRate();return sgSw(on,'cgOhTg()','Tính chi phí điện, nước, gas, bao bì vào giá vốn',on?'Đang bật: chi phí các khoản chọn bên dưới (nhập ở Kho › Chi phí) trong 30 ngày gần nhất ÷ số kg làm ra'+(r>0?' = <b>'+fd(Math.round(r))+' đ/kg</b>':' (chưa có chi phí hoặc chưa ghi cối trong 30 ngày)')+'. Cộng vào Vốn và Lãi % ở Sản phẩm. Thống kê vẫn trừ đủ các khoản này ở Lợi nhuận ròng, không trừ hai lần.':'Đang tắt: Vốn ở Sản phẩm chỉ gồm nguyên liệu và bao bì theo sản phẩm, chưa gồm điện, nước, gas.')}
 function cgOhNH(){if(!cgOhOn())return '';const sel=cgOhSel().map(x=>nz(String(x).trim()));return '<h4 class="sgsec">Khoản chi tính vào giá vốn</h4><div class="sggrp">'+cgOhNames().map((n,i)=>sgSw(sel.includes(nz(n)),'cgOhN('+i+')',esc(n),'')).join('')+'</div>'}
+
+/* ===== v26.12: Thống kê thiết kế lại, bấm xem chi tiết; Đã thu / Còn nợ; Tồn kho chi tiết; thẻ Giò thành phẩm và Mọc ===== */
+const SXO={};
+function sxTg(el){const id=el.dataset.id,d=el.nextElementSibling;if(!d)return;const o=d.hidden;d.hidden=!o;el.setAttribute('aria-expanded',o?'true':'false');SXO[id]=o?1:0}
+const sxDM=d=>String(d).split('-').reverse().join('/').slice(0,5);
+const sxQ=(q,u)=>qn(q,u)+(u?' '+esc(u):'');
+function sxRow(id,label,val,det,cls){const op=!!SXO[id];
+if(!det)return `<div class="sxr flat ${cls||''}"><span>${label}</span><b>${val}</b></div>`;
+return `<div class="sxr ${cls||''}" role="button" tabindex="0" aria-expanded="${op}" data-id="${esc(id)}" onclick="sxTg(this)" onkeydown="if(event.key=='Enter')this.click()"><span>${label}</span><b>${val}</b><i class="sxc" aria-hidden="true"></i></div><div class="sxd" ${op?'':'hidden'}>${det}</div>`}
+const sxL=(a,b,cls)=>`<div class="sxl ${cls||''}"><span>${a}</span><b>${b}</b></div>`;
+const sxMoney=v=>v<0?'− '+money(-v):money(v);
+
+/* tổng hợp theo kỳ: chi phí theo khoản, hao hụt theo nguyên liệu, thanh toán, loại khách, khách mua nhiều */
+function sxData(a,b){return memo('sxd|'+a+'|'+b,()=>{const I=inv(),exp={},loss={},pm={cash:{v:0,n:0},bank:{v:0,n:0},debt:{v:0,n:0}},ty={si:{v:0,n:0},le:{v:0,n:0}},cu={};
+S.imports.forEach(x=>{if(x.date<a||x.date>b)return;const k=IKD(x),nm=String(x.name||'').trim()||'Khác';
+if(k=='exp'){const e=exp[nm]||(exp[nm]={name:nm,v:0,n:0});e.v+=iamt(x);e.n++}
+else if(k=='loss'){const e=loss[nm]||(loss[nm]={name:nm,v:0,q:0,u:x.unit||''});e.v+=I.cost[x.id]||0;e.q+=+x.qty||0}});
+valid().forEach(o=>{const d=dk(o.ts);if(d<a||d>b)return;const v=pay(o),m=opm(o),p=pm[m]||pm.cash;p.v+=v;p.n++;const t=(o.type=='si')?'si':'le';ty[t].v+=v;ty[t].n++;
+const key=o.cid||('~'+(o.cname||(t=='si'?'Khách sỉ':'Khách lẻ')));const c=cu[key]||(cu[key]={name:o.cname||(t=='si'?'Khách sỉ':'Khách lẻ'),v:0,n:0});c.v+=v;c.n++});
+return{exp:Object.values(exp).sort((x,y)=>y.v-x.v),loss:Object.values(loss).sort((x,y)=>y.v-x.v),pm,ty,cu:Object.values(cu).sort((x,y)=>y.v-x.v)}})}
+
+/* sản phẩm bán ra, chiết khấu của đơn chia theo tỷ lệ tiền hàng để cộng lại khớp doanh thu thuần */
+function sxProd(a,b){return memo('sxp|'+a+'|'+b,()=>{const AU=AUM(),af=AUF(),rm=recOf(),I=inv(),m={};
+valid().forEach(o=>{const d=dk(o.ts);if(d<a||d>b)return;const post=AU&&d>=af,T=tot(o),dc=o.discount||0;
+o.items.forEach((i,ix)=>{const k=i.name+'|'+i.unit,p=m[k]||(m[k]={name:i.name,unit:i.unit,q:0,g:0,c:0,d:0,n:0}),v=Math.round(i.qty*i.price);p.q+=i.qty;p.g+=v;p.n++;
+const rc=post&&rm[i.pid];p.c+=rc?rc.reduce((z,_,j)=>z+(I.cost['a:'+o.id+':'+ix+':'+j]||0),0):Math.round(i.qty*icost(i));if(dc>0&&T>0)p.d+=dc*v/T})});
+return Object.values(m).map(p=>{p.d=Math.round(p.d);p.v=p.g-p.d;p.gp=p.v-p.c;p.pc=p.v>0?p.gp*100/p.v:0;return p})})}
+
+/* ----- biểu đồ: cột theo ngày, giờ chỉ vẽ lãi gộp; theo tháng mới vẽ lợi nhuận ròng ----- */
+function series(a,b,m){if(m=='day'){const h=Array.from({length:24},(_,i)=>({l:i%3==0?String(i):'',rev:0,net:0,t:`${i}h–${i+1}h`}));valid().forEach(o=>{if(dk(o.ts)!=a)return;const k=Math.floor(((o.ts+V)%864e5)/36e5);h[k].rev+=pay(o);h[k].net+=pay(o)-oCogs(o)});h.k='gross';return h}
+const days=Math.round((Date.parse(b)-Date.parse(a))/864e5)+1,out=[];
+if(m=='year'||days>62){let d=mS(a);while(d<=b){const e=mE(d),r=plR(d<a?a:d,e>b?b:e);out.push({l:d.slice(5,7),rev:r.rev,net:r.net,t:`Tháng ${d.slice(5,7)}/${d.slice(0,4)}`});d=addD(e,1);if(out.length>60)break}out.k='net'}
+else{for(let d=a;d<=b;d=addD(d,1)){const r=plR(d,d);out.push({l:days>10?(+d.slice(8)%5==0?d.slice(8):''):(m=='week'?WD[dow(d)]:d.slice(8)),rev:r.rev,net:r.gross,t:`${d.slice(8)}/${d.slice(5,7)}`})}out.k='gross'}
+return out}
+function chartS(){const[a,b]=sr(),[pa,pb]=prevR(a,b),cur=series(a,b,ST.m);
+if(ADM&&ST.m!='day'&&ST.mt!='cmp')return dbars(cur.map(x=>({l:x.l,t:x.t,a:x.rev,b:x.net})),'Doanh thu',cur.k=='net'?'Lợi nhuận ròng':'Lãi gộp','tip2')+(cur.k=='gross'?'<p class="mut sxnt">Cột lãi gộp theo ngày chưa trừ điện, nước, lương. Lợi nhuận ròng xem ở tab Tháng hoặc Năm.</p>':'');
+const pv=series(pa,pb,ST.m);return dbars(cur.map((x,i)=>({l:x.l,t:x.t,a:x.rev,b:pv[i]?pv[i].rev:0})),'Kỳ này','Kỳ trước','tip2')}
+
+/* ----- cảnh báo thiếu giá vốn: không báo nhầm khi giá vốn đã tự tính theo Xay giò ----- */
+{const o=plR;plR=function(a,b){const r=o.apply(this,arguments);if(r&&cgOn()&&!r._nc){r._nc=1;const AU=AUM(),rm=recOf(),no=p=>p.active&&!(+p.cost>0)&&!(pcAutoRaw(p.id,p.unit)>0);
+r.noCost=AU?S.products.filter(p=>no(p)&&!rm[p.id]).length:S.cfg.cogs=='nvl'?0:S.products.filter(no).length}return r}}
+
+/* ----- ô chỉ số: lãi gộp theo hôm nay và tuần, thêm Giò thành phẩm, Mọc trong tủ ----- */
+const sxSt=k=>{const s=inv().items.find(z=>z.key==nz(k));return s||{q:0,v:0,unit:'kg'}};
+{const o=dwDefs;dwDefs=function(){const L=o.apply(this,arguments),t=today(),D=plR(t,t),W=plR(wkS(t),t);
+L.forEach(x=>{if(x[0]=='profit_d'){x[1]='Lãi gộp hôm nay';x[3]=D.gross}else if(x[0]=='profit_w'){x[1]='Lãi gộp tuần này';x[3]=W.gross}});
+const f=sxSt(SGFG),m=sxSt(SGMOC);
+L.push(['fg_q','Giò thành phẩm trong kho','prods',qn(f.q,f.unit||'kg')+' '+(f.unit||'kg'),'n',1,'a'],['moc_q','Mọc trong tủ','prods',qn(m.q,m.unit||'kg')+' '+(m.unit||'kg'),'n',1,'p']);return L}}
+
+/* ----- thẻ xem nhanh ở Tổng quan ----- */
+function fgsH(){if(!ADM)return '';const I=inv(),f=I.items.find(z=>z.key==nz(SGFG)),m=I.items.find(z=>z.key==nz(SGMOC));if(!f&&!m)return '';
+const tile=(s,lb,cl)=>{const q=s?s.q:0,u=(s&&s.unit)||'kg';return `<button type="button" class="fgt k-${cl}${q<-1e-9?' neg':''}" onclick="IK='stock';go('imp')"><small>${lb}</small><b>${qn(q,u)} <i>${esc(u)}</i></b><em>${s&&s.v?'Giá trị '+money(s.v):'Chưa có'}</em></button>`};
+return `<div class="fgs" role="group" aria-label="Kho thành phẩm">${tile(f,'Giò chả thành phẩm','a')}${tile(m,'Mọc trong tủ','p')}</div>`}
+
+/* ----- phần Thống kê ----- */
+function sxCard(k,ic_,lb,val,sub,cl,neg){return `<button type="button" class="skc sxk k-${cl}${neg?' ng':''}" onclick="sxSheet('${k}')" aria-label="${lb}, chạm để xem chi tiết"><span class="ki">${ic(ic_)}</span><small>${lb}</small><b class="${neg?'neg':''}">${val}</b><em>${sub}</em><i class="sxc" aria-hidden="true"></i></button>`}
+function sxByProd(P,key){return P.length?P.slice().sort((x,y)=>y[key]-x[key]).map(p=>sxL(`${esc(p.name)} <small>${sxQ(p.q,p.unit)}</small>`,money(p[key]))).join(''):'<p class="mut">Chưa có dữ liệu</p>'}
+function sxPlRows(R,a,b){const D=sxData(a,b),P=sxProd(a,b),rows=plRows(R),out=[];
+rows.forEach(x=>{const lb=x[0],neg=x[1]<0&&x[2].includes('tot'),val=x[1]<0&&!x[2].includes('tot')?'− '+money(-x[1]):money(x[1]),mg=x[3]||'';
+let det='',id='pl'+lb;
+if(/^Doanh thu bán hàng/.test(lb)&&P.length)det=sxByProd(P,'g');
+else if(/^\(−\) Giá vốn/.test(lb)&&P.length)det=sxByProd(P,'c');
+else if(/^\(−\) Chi phí vận hành/.test(lb)&&D.exp.length)det=D.exp.map(e=>sxL(`${esc(e.name)} <small>${e.n} lần</small>`,money(e.v))).join('');
+else if(/^\(−\) Hao hụt nguyên liệu/.test(lb)&&D.loss.length)det=D.loss.map(e=>sxL(`${esc(e.name)} <small>${qn(e.q,e.u)} ${esc(e.u)}</small>`,money(e.v))).join('');
+out.push(sxRow(id,esc(lb),`<span class="${neg?'neg':''}">${val}</span>${mg}`,det,x[2]))});
+return out.join('')}
+function sxPayH(a,b){const D=sxData(a,b),p=D.pm,T=p.cash.v+p.bank.v+p.debt.v;if(!(T>0)&&!(p.debt.n))return '';
+const pc=v=>T>0?Math.max(0,v*100/T):0,seg=(k,cl)=>pc(p[k].v)>0?`<i class="${cl}" style="width:${pc(p[k].v)}%"></i>`:'';
+const row=(k,lb,cl)=>`<div class="sxp"><span><i class="dot ${cl}"></i>${lb}<small>${p[k].n} đơn</small></span><b>${money(p[k].v)}</b></div>`;
+return `<div class="card"><b>Thu tiền</b><div class="sxbar" aria-hidden="true">${seg('cash','c1')}${seg('bank','c2')}${seg('debt','c3')}</div>${row('cash','Tiền mặt','c1')}${row('bank','Chuyển khoản','c2')}${row('debt','Còn nợ chưa thu','c3')}
+<div class="sxp tot"><span>Đã thu</span><b>${money(p.cash.v+p.bank.v)}</b></div>${p.debt.v>0?`<button type="button" class="lnk sxlk" onclick="go('cus')">Xem khách còn nợ</button>`:''}<small>Đơn ghi nợ đã được khách trả sẽ chuyển sang Tiền mặt, nên số này là phần đang còn nợ.</small></div>`}
+function sxProdH(a,b){const A=ADM,P=sxProd(a,b).slice(),k=PS.k;P.sort((x,y)=>k=='name'?PS.d*x.name.localeCompare(y.name,'vi'):PS.d*((k=='g'?x.gp:k=='pc'?x.pc:k=='c'?x.c:x[k])-(k=='g'?y.gp:k=='pc'?y.pc:k=='c'?y.c:y[k])));
+const ch=(key,t)=>`<button type="button" class="sxch ${PS.k==key?'on':''}" onclick="psSort('${key}')">${t}${PS.k==key?(PS.d>0?' ▲':' ▼'):''}</button>`;
+const tv=P.reduce((s,p)=>s+p.v,0),tc=P.reduce((s,p)=>s+p.c,0);
+const pcf=v=>(Math.round(v*10)/10).toLocaleString('vi-VN')+'%';
+const rows=P.map((p,i)=>{const det=[sxL('Tiền hàng',money(p.g)),p.d?sxL('Chiết khấu của đơn (chia theo tỷ lệ)','− '+money(p.d)):'',sxL('Doanh thu',money(p.v),'b'),
+...(A?[sxL('Giá vốn',money(p.c)),sxL('Lãi gộp',sxMoney(p.gp),'b'),p.q?sxL('Giá bán trung bình / '+esc(p.unit),money(Math.round(p.v/p.q))):'',p.q&&p.c?sxL('Giá vốn trung bình / '+esc(p.unit),money(Math.round(p.c/p.q))):'']:[]),sxL('Số dòng bán',p.n)].join('');
+return sxRow('pd'+p.name+'|'+p.unit,`${esc(p.name)} <small>${sxQ(p.q,p.unit)}</small>`,`${money(p.v)}${A?`<small class="${p.gp<0?'neg':p.pc<20?'low':''}">Lãi ${sxMoney(p.gp)} · ${pcf(p.pc)}</small>`:''}`,det,'pr')}).join('');
+return `<div class="card"><div class="chh"><b>Sản phẩm bán ra</b></div><div class="sxchs" role="group" aria-label="Sắp xếp">${ch('v','Doanh thu')}${A?ch('g','Lãi gộp')+ch('pc','% lãi'):''}${ch('q','Số lượng')}${ch('name','Tên')}</div>
+<div class="sxlist">${rows||'<p class="mut">Chưa có dữ liệu</p>'}</div>${P.length>1?`<div class="sxr flat tot"><span>Tổng</span><b>${money(tv)}${A?`<small class="${tv-tc<0?'neg':''}">Lãi ${sxMoney(tv-tc)} · ${pcf(tv>0?(tv-tc)*100/tv:0)}</small>`:''}</b></div>`:''}<small>Doanh thu đã trừ phần chiết khấu của đơn. Chạm vào sản phẩm để xem chi tiết.</small></div>`}
+
+function sxMov(I,key,a,b){const L=(I.led||{})[key]||[];let pq=0;const r={inq:0,inv:0,use:0,usec:0,loss:0,lossc:0,last:null};
+L.forEach(e=>{const d=e.x.date,dq=e.q-pq;pq=e.q;const k=IKD(e.x),inR=d>=a&&d<=b;
+if(k=='in'){if(inR){r.inq+=dq;r.inv+=Math.round(dq*(+e.x.price||0))}if(dq>0&&(!r.last||d>=r.last.d))r.last={d,q:dq,p:+e.x.price||0}}
+else if(inR){if(k=='loss'){r.loss+=-dq;r.lossc+=e.c||0}else if(k=='use'){r.use+=-dq;r.usec+=e.c||0}}});return r}
+function sxStockRows(I,a,b,list){return list.map(s=>{const m=sxMov(I,s.key,a,b),u=s.unit||'',neg=s.q<-1e-9;
+const det=[sxL('Tồn cuối kỳ',`${sxQ(s.q,u)}`),sxL('Giá bình quân',`${money(Math.round(s.avg||0))} / ${esc(u||'đơn vị')}`),sxL('Giá trị tồn',money(s.v),'b'),
+m.inq?sxL('Nhập trong kỳ',`+${sxQ(m.inq,u)} · ${money(m.inv)}`):'',m.use?sxL('Dùng trong kỳ',`− ${sxQ(m.use,u)} · ${money(m.usec)}`):'',m.loss?sxL('Hao hụt trong kỳ',`− ${sxQ(m.loss,u)} · ${money(m.lossc)}`):'',
+m.last?sxL('Nhập gần nhất',`${sxDM(m.last.d)} · ${sxQ(m.last.q,u)}${m.last.p?' × '+fd(m.last.p):''}`):'',
+neg?`<p class="sxwn">Tồn đang âm: đã dùng hoặc bán nhiều hơn số đã nhập. Kiểm tra phiếu nhập còn thiếu.</p>`:''].join('');
+return sxRow('st'+s.key,esc(s.name),`${sxQ(s.q,u)}<small class="${neg?'neg':''}">${money(s.v)}</small>`,det,neg?'neg':'')}).join('')}
+function sxStockH(a,b){const I=inv(b);if(!I.items.length)return '';const fg=[nz(SGFG),nz(SGMOC)],F=I.items.filter(s=>fg.includes(s.key)),N=I.items.filter(s=>!fg.includes(s.key)),tf=F.reduce((s,x)=>s+x.v,0),tn=N.reduce((s,x)=>s+x.v,0);
+return `<div class="card"><div class="chh"><b>Tồn kho cuối kỳ</b><button type="button" class="lnk" onclick="closeM();IK='stock';go('imp')">Mở kho</button></div>
+${F.length?`<p class="sxsh">Thành phẩm <small>${money(tf)}</small></p>${sxStockRows(I,a,b,F)}`:''}${N.length?`<p class="sxsh">Nguyên liệu <small>${money(tn)}</small></p>${sxStockRows(I,a,b,N)}`:''}
+<div class="sxr flat tot"><span>Tổng giá trị tồn</span><b>${money(I.total)}</b></div><small>Chạm vào từng dòng để xem nhập, dùng, hao hụt trong kỳ.</small></div>`}
+
+function sxSheet(k){const[a,b]=sr(),R=plR(a,b),[pa,pb]=prevR(a,b),Q=plR(pa,pb),D=sxData(a,b),I=inv(b);let t='',h='';
+if(k=='rev'){t='Doanh thu';const p=D.pm,T=p.cash.v+p.bank.v+p.debt.v,days=Math.round((Date.parse(b)-Date.parse(a))/864e5)+1;
+h=sxL('Doanh thu thuần',money(R.rev),'b')+sxL('So với kỳ trước',pct(R.rev,Q.rev)+' ('+money(Q.rev)+')')+sxL('Số đơn',R.n)+sxL('Trung bình mỗi đơn',money(R.n?Math.round(R.rev/R.n):0))
++`<p class="sxsh">Theo cách thanh toán</p>`+sxL(`Tiền mặt <small>${p.cash.n} đơn</small>`,money(p.cash.v))+sxL(`Chuyển khoản <small>${p.bank.n} đơn</small>`,money(p.bank.v))+sxL(`Còn nợ <small>${p.debt.n} đơn</small>`,money(p.debt.v))
++`<p class="sxsh">Theo loại khách</p>`+sxL(`Khách sỉ <small>${D.ty.si.n} đơn</small>`,money(D.ty.si.v))+sxL(`Khách lẻ <small>${D.ty.le.n} đơn</small>`,money(D.ty.le.v))
++(D.cu.length?`<p class="sxsh">Khách mua nhiều nhất</p>`+D.cu.slice(0,5).map(c=>sxL(`${esc(c.name)} <small>${c.n} đơn</small>`,money(c.v))).join(''):'');
+let dl='';if(days<=62){for(let d=b;d>=a;d=addD(d,-1)){const r=plR(d,d);if(r.n)dl+=sxL(`${sxDM(d)} <small>${r.n} đơn</small>`,money(r.rev))}}
+else{let d=mS(a);const arr=[];while(d<=b&&arr.length<60){const e=mE(d),r=plR(d<a?a:d,e>b?b:e);if(r.n)arr.unshift(sxL(`Tháng ${d.slice(5,7)}/${d.slice(0,4)} <small>${r.n} đơn</small>`,money(r.rev)));d=addD(e,1)}dl=arr.join('')}
+h+=dl?`<p class="sxsh">Theo ngày</p>${dl}`:''}
+else if(k=='cost'){t='Chi phí';h=sxL('Tổng chi phí',money(R.cost),'b')+`<p class="sxsh">Giá vốn hàng bán <small>${money(R.cogs)}</small></p>`+sxByProd(sxProd(a,b),'c')+(R.hh>0?sxL('↳ trong đó hao hụt sản xuất',money(R.hh),'sub'):'')
++`<p class="sxsh">Chi phí vận hành <small>${money(R.exp)}</small></p>`+(D.exp.length?D.exp.map(e=>sxL(`${esc(e.name)} <small>${e.n} lần</small>`,money(e.v))).join(''):'<p class="mut">Chưa có khoản chi nào</p>')
++`<p class="sxsh">Hao hụt nguyên liệu <small>${money(R.loss)}</small></p>`+(D.loss.length?D.loss.map(e=>sxL(`${esc(e.name)} <small>${qn(e.q,e.u)} ${esc(e.u)}</small>`,money(e.v))).join(''):'<p class="mut">Không có hao hụt</p>')}
+else if(k=='net'){t='Lợi nhuận ròng';const mg=v=>R.rev>0?Math.round(v*1000/R.rev)/10+'%':'-';
+h=`<div class="sxl b"><span>Lợi nhuận ròng</span><b class="${R.net<0?'neg':''}">${sxMoney(R.net)}</b></div>`+sxL('Biên lợi nhuận ròng',mg(R.net))+sxL('Lợi nhuận gộp',money(R.gross))+sxL('Biên lợi nhuận gộp',mg(R.gross))+sxL('So với kỳ trước',pct(R.net,Q.net)+' ('+sxMoney(Q.net)+')')
++`<p class="sxsh">Cách tính</p>`+sxPlRows(R,a,b)+(ST.m=='day'||ST.m=='week'?'<p class="sxnt mut">Điện, nước, lương tính theo tháng nên lợi nhuận ròng theo ngày hoặc tuần chưa đúng. Hãy xem tab Tháng hoặc Năm.</p>':'')}
+else{t='Tồn kho cuối kỳ';h=sxStockH(a,b).replace(/^<div class="card">/,'<div>')}
+modal(`<div class="mh"><b>${t}</b><button class="srx" onclick="closeM()" aria-label="Đóng">×</button></div><div class="sxsheet">${h}</div><div class="rcb"><button type="button" class="ghost" onclick="closeM()"><span>Đóng</span></button></div>`)}
+
+function stats(){const[a,b]=sr(),R=plR(a,b),[pa,pb]=prevR(a,b),Q=plR(pa,pb),I=inv(b);ST.mt=ST.mt=='cmp'?'cmp':'both';
+const nav=ST.m=='custom'?`<div class="grid"><label>Từ ngày${dbx(ST.a,'ST.a=this.value||today();R()')}</label><label>Đến ngày${dbx(ST.b,'ST.b=this.value||today();R()')}</label></div>`:`<div class="stn"><button onclick="stNav(-1)" aria-label="Kỳ trước">${ic('dn')}</button><div class="stl"><b>${stLbl(a,b)}</b>${ST.m=='year'?'':dbx(ST.d,'ST.d=this.value||today();R()',{cls:'stdb'})}</div><button onclick="stNav(1)" aria-label="Kỳ sau">${ic('up')}</button></div>`;
+const mgn=R.rev>0?Math.round(R.net*1000/R.rev)/10:0;
+const cards=ADM?`<div class="sk">${sxCard('rev','money','Doanh thu',money(R.rev),pct(R.rev,Q.rev)+' so với kỳ trước','g')}${sxCard('cost','tool','Chi phí',money(R.cost),'Giá vốn + vận hành + hao hụt','r')}${sxCard('net','trend','Lợi nhuận ròng',money(R.net),'Biên lợi nhuận '+mgn+'%','g',R.net<0)}${sxCard('stock','prods','Tồn kho cuối kỳ',money(I.total),I.items.length+' loại','p')}</div>`
+:`<div class="sk">${sxCard('rev','money','Doanh thu',money(R.rev),pct(R.rev,Q.rev)+' so với kỳ trước','g')}<div class="skc k-b"><span class="ki">${ic('sell')}</span><small>Số đơn</small><b>${R.n}</b><em>đơn hợp lệ</em></div><div class="skc k-b"><span class="ki">${ic('cart')}</span><small>Trung bình mỗi đơn</small><b>${money(R.n?Math.round(R.rev/R.n):0)}</b><em>&nbsp;</em></div><div class="skc k-a"><span class="ki">${ic('prods')}</span><small>Đã bán</small><b class="kt">${esc(us(R.u))}</b><em>&nbsp;</em></div></div>`;
+const warn=ADM&&R.noCost>0&&R.n>0?`<div class="note18" role="status">${ic('tool')}<span>Còn <b>${R.noCost}</b> sản phẩm chưa có giá vốn${AUM()?' hoặc công thức':''} nên lợi nhuận tạm tính cao hơn thực tế. <button class="lnk" onclick="go('prods',1)">Nhập giá vốn</button></span></div>`:'';
+const cs=series(a,b,ST.m);
+return `<h2>Thống kê</h2><div class="seg pm5" role="tablist">${[['day','Ngày'],['week','Tuần'],['month','Tháng'],['year','Năm'],['custom','Tùy chọn']].map(x=>`<button role="tab" aria-selected="${ST.m==x[0]}" class="${ST.m==x[0]?'on':''}" onclick="ST.m='${x[0]}';R()">${x[1]}</button>`).join('')}</div>${nav}${cards}${warn}
+<div class="card"><div class="chh"><b>${ST.m=='day'?'Doanh thu theo giờ':ADM&&ST.mt!='cmp'?(cs.k=='net'?'Doanh thu và lợi nhuận ròng':'Doanh thu và lãi gộp'):'Doanh thu so với kỳ trước'}</b>${ADM&&ST.m!='day'?`<div class="seg2 mini">${[['both','Thu & lãi'],['cmp','So kỳ trước']].map(x=>`<button class="${ST.mt==x[0]?'on':''}" onclick="ST.mt='${x[0]}';R()">${x[1]}</button>`).join('')}</div>`:''}</div><div id="stc">${chartS()}</div></div>
+${sxPayH(a,b)}
+${ADM?`<div class="card"><b>Kết quả kinh doanh</b><div class="sxlist pl">${sxPlRows(R,a,b)}</div><small>Giá vốn tính theo ${AUM()?'công thức nguyên liệu của sản phẩm (tự động, bình quân tức thời)':S.cfg.cogs=='nvl'?'nguyên liệu xuất dùng (bình quân tức thời)':'giá vốn từng sản phẩm đã bán'}. Chạm vào dòng có mũi tên để xem chi tiết. <button class="lnk" onclick="openSett('cogs')">Đổi cách tính</button></small></div>`:''}
+${sxProdH(a,b)}
+${ADM?sxStockH(a,b):''}
+<button class="big" onclick="expX(sr()[0],sr()[1])">${ic('file')}<span>Xuất báo cáo Excel</span></button>`}
 (async()=>{lkWrap();if('serviceWorker' in navigator){const had=!!navigator.serviceWorker.controller;navigator.serviceWorker.register('sw.js').then(r=>{const up=()=>{try{r.update()}catch(e){}};document.addEventListener('visibilitychange',()=>{if(!document.hidden){up();if(window.__upd)try{updAsk()}catch(e){}}});setInterval(up,30*60e3)}).catch(()=>{});navigator.serviceWorker.addEventListener('controllerchange',()=>{if(had){window.__upd=1;try{updAsk()}catch(e){try{toast('Đã có bản mới. Mở lại app để cập nhật.')}catch(x){}}}})}
 const C=window.CFG||{};if(!C.url||!C.key||!window.supabase)return ashow('cfg');
 SB=supabase.createClient(C.url,C.key);

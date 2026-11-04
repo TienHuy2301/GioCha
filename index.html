@@ -2193,7 +2193,7 @@ button,[role="button"],.kr,.ptile,#nv button,.mt{touch-action:manipulation;-webk
 .txf .txft b{font-size:16px}
 .txf .txft em{font-style:normal;font-size:12px;color:var(--m);line-height:1.3}
 .txf>i{font-style:normal;font-size:13px;font-weight:600;color:var(--io-blue,#1d5bd6);flex:none}
-.txseg{margin:0}
+
 .txp .stn{margin:0}
 .txp .stn button:disabled{opacity:.35}
 .txp .stl small{display:block;font-size:11.5px;color:var(--m);margin-top:1px}
@@ -2219,11 +2219,11 @@ button,[role="button"],.kr,.ptile,#nv button,.mt{touch-action:manipulation;-webk
 /* chọn mẫu sổ */
 .txol{display:grid;gap:8px;margin-bottom:12px}
 .txo{display:flex;align-items:center;gap:12px;width:100%;padding:12px 14px;border:1px solid var(--b);border-radius:16px;background:var(--io-card,var(--c));text-align:left;color:var(--t)}
-.txo.on{border-color:var(--io-blue,#1d5bd6);background:var(--tint)}
+.txo.sel{border-color:var(--io-blue,#1d5bd6);background:var(--tint)}
 .txo.off{opacity:.55}
 .txo .txrd{width:20px;height:20px;border-radius:50%;border:2px solid var(--b);flex:none;display:grid;place-items:center}
-.txo.on .txrd{border-color:var(--io-blue,#1d5bd6)}
-.txo.on .txrd::after{content:'';width:10px;height:10px;border-radius:50%;background:var(--io-blue,#1d5bd6)}
+.txo.sel .txrd{border-color:var(--io-blue,#1d5bd6)}
+.txo.sel .txrd::after{content:'';width:10px;height:10px;border-radius:50%;background:var(--io-blue,#1d5bd6)}
 .txo .txot{display:grid;gap:1px;min-width:0;flex:1}
 .txo .txot b{font-size:15px}
 .txo .txot small{font-size:12px;color:var(--m);line-height:1.3}
@@ -2248,6 +2248,47 @@ button,[role="button"],.kr,.ptile,#nv button,.mt{touch-action:manipulation;-webk
 #v .txg .txr{background:transparent}
 #v .txg .txr input:not(#tx_a){border:0!important;background:transparent!important;box-shadow:none!important;height:26px!important;padding:0!important;border-radius:0!important;margin:0!important;width:auto!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
 #v .txg label.txr{margin:0!important;padding:12px 16px!important;min-height:0!important;gap:12px}
+
+#v .txo.sel,#m .txo.sel{background:var(--tint)!important;color:var(--t)!important;border-color:var(--io-blue,#1d5bd6)!important}
+#m .txo,#m .txo b,#m .txo small{color:inherit}
+#m .txo .txot b{color:var(--t)!important}
+#m .txo .txot small{color:var(--m)!important}
+#m .txo .txbd{background:var(--io-fill,rgba(118,118,128,.12))!important;color:var(--m)!important}
+#m .txo .txbd.ok{background:var(--gnb)!important;color:var(--gn)!important}
+#v .seg.txseg{display:grid!important;grid-template-columns:repeat(4,1fr);gap:4px;padding:4px;border:1.5px solid color-mix(in srgb,var(--t) 24%,transparent)!important}
+#v .seg.txseg button{display:flex;align-items:center;justify-content:center;text-align:center;width:100%;padding:0 4px;white-space:nowrap}
+#v .seg.txseg button:not(#tx_a){width:100%!important;flex:none!important;margin:0!important;justify-self:stretch;min-width:0;height:38px;border-radius:999px}
+
+#v .txseg{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;padding:4px;margin:0;border:1.5px solid color-mix(in srgb,var(--t) 24%,transparent);border-radius:999px;background:var(--io-card,var(--c))}
+#v .txseg .txs:not(#tx_a){display:flex;align-items:center;justify-content:center;width:100%;min-width:0;height:38px;margin:0;padding:0 4px;border:0!important;border-radius:999px;background:transparent!important;color:var(--t)!important;font-size:14px;font-weight:600;white-space:nowrap;box-shadow:none!important}
+#v .txseg .txs.sel:not(#tx_a){background:var(--io-blue,#007aff)!important;color:#fff!important}
+
+/* ===== v27.0: nhóm gập, nội dung ghi sổ, sửa từng ngày ===== */
+.txgp{border:1px solid var(--b);border-radius:18px;background:var(--io-card,var(--c));overflow:hidden}
+#v .txgp .txgh:not(#tx_a){display:flex;align-items:center;gap:10px;width:100%;padding:12px 14px;margin:0;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;color:var(--t)!important;text-align:left}
+.txgh .txgt{display:grid;gap:1px;min-width:0;flex:1}
+.txgh .txgt b{font-size:15px}
+.txgh .txgt small{font-size:12px;color:var(--m);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.txgh .ico{width:18px;height:18px;flex:none;color:var(--m);transition:transform .2s}
+.txgp.open .txgh .ico{transform:rotate(180deg)}
+#v .txgp .sggrp:not(#tx_a){border-radius:0!important;border:0!important;border-top:1px solid var(--sline)!important;background:transparent!important;box-shadow:none!important;margin:0!important}
+.txin{display:grid;gap:6px;padding:10px 16px;position:relative}
+.txin+.txin::before,.txr+.txin::before,.txex+.txin::before{content:'';position:absolute;left:16px;right:0;top:0;border-top:1px solid var(--sline)}
+.txin>span{font-size:13px;color:var(--m);display:flex;justify-content:space-between;align-items:center}
+.txin>span em{font-style:normal;font-size:12.5px;color:var(--io-blue,#007aff);font-weight:600;cursor:pointer}
+#v .txin input:not(#tx_a){height:40px!important;border:1px solid var(--b)!important;border-radius:12px!important;padding:0 12px!important;background:var(--io-card2,var(--bg))!important;font-size:16px!important;color:var(--t);width:100%!important;text-align:left;box-shadow:none!important;margin:0!important}
+.txex{margin:0;padding:2px 16px 12px;font-size:12.5px;color:var(--m);line-height:1.45}.txex b{color:var(--t)}
+.txpv td.ed{cursor:pointer}
+.txpv td.ed .pen{display:inline-block;width:13px;height:13px;margin-left:6px;vertical-align:-1px;opacity:.5}
+.txdot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#ff9500;margin-right:6px;vertical-align:1px}
+.txpv tr.editing td{background:var(--tint);padding:10px 12px}
+.txel{font-size:12px;color:var(--m);margin-bottom:6px}
+#m .txpv input:not(#tx_a){width:100%!important;height:40px!important;border:1.5px solid var(--io-blue,#007aff)!important;border-radius:10px!important;padding:0 10px!important;font-size:15px!important;background:var(--io-card,#fff)!important;color:var(--t);box-shadow:none!important;margin:0!important}
+.txea{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+#m .txea button:not(#tx_a){border:0!important;background:transparent!important;box-shadow:none!important;padding:6px 2px;font-size:13px;font-weight:600;color:var(--m)!important;height:auto!important}
+#m .txea button.ok:not(#tx_a){color:var(--io-blue,#007aff)!important;font-size:14px}
+.txtip{font-size:12px;color:var(--m);margin:0 2px 8px;text-align:center}
+.txpv td:first-child{white-space:nowrap}
 </style></head><body>
 <div id="spl" aria-hidden="true"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20512%20512%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22bg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%234a8cf8%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%231941b3%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22gl%22%20cx%3D%22.2%22%20cy%3D%22.12%22%20r%3D%22.8%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23fff%22%20stop-opacity%3D%22.30%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23fff%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%3ClinearGradient%20id%3D%22lf%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23e9f8c2%22%2F%3E%3Cstop%20offset%3D%22.45%22%20stop-color%3D%22%23bfe28a%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2378ad45%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22fc%22%20cx%3D%22.42%22%20cy%3D%22.38%22%20r%3D%22.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23ffe6d6%22%2F%3E%3Cstop%20offset%3D%22.7%22%20stop-color%3D%22%23f6c3ac%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23e99c83%22%2F%3E%3C%2FradialGradient%3E%3ClinearGradient%20id%3D%22tw%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%220%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23d9a24a%22%2F%3E%3Cstop%20offset%3D%22.5%22%20stop-color%3D%22%23f1cd83%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23c58a33%22%2F%3E%3C%2FlinearGradient%3E%3Cfilter%20id%3D%22sh%22%20x%3D%22-20%25%22%20y%3D%22-20%25%22%20width%3D%22140%25%22%20height%3D%22150%25%22%3E%3CfeDropShadow%20dx%3D%220%22%20dy%3D%2210%22%20stdDeviation%3D%229%22%20flood-color%3D%22%230a1f66%22%20flood-opacity%3D%22.45%22%2F%3E%3C%2Ffilter%3E%3C%2Fdefs%3E%3Crect%20width%3D%22512%22%20height%3D%22512%22%20rx%3D%22112%22%20fill%3D%22url(%23bg)%22%2F%3E%3Crect%20width%3D%22512%22%20height%3D%22512%22%20rx%3D%22112%22%20fill%3D%22url(%23gl)%22%2F%3E%3Cg%20transform%3D%22translate(254%20262)%20rotate(-28)%20scale(1.2)%20translate(-256%20-256)%22%20filter%3D%22url(%23sh)%22%3E%3Cpath%20d%3D%22M360%20171%20H190%20A85%2085%200%200%200%20190%20341%20H360%20Z%22%20fill%3D%22url(%23lf)%22%2F%3E%3Cpath%20d%3D%22M105%20256%20L152%20212%20Q140%20256%20152%20300%20Z%22%20fill%3D%22%236ea03d%22%20opacity%3D%22.45%22%2F%3E%3Cpath%20d%3D%22M190%20171%20H360%22%20stroke%3D%22%23fff%22%20stroke-width%3D%229%22%20opacity%3D%22.35%22%20stroke-linecap%3D%22round%22%20transform%3D%22translate(0%209)%22%2F%3E%3Cpath%20d%3D%22M214%20168%20Q229%20256%20214%20344%22%20fill%3D%22none%22%20stroke%3D%22%238a5d1c%22%20stroke-width%3D%2215%22%20stroke-linecap%3D%22round%22%20opacity%3D%22.35%22%20transform%3D%22translate(2%202)%22%2F%3E%3Cpath%20d%3D%22M214%20168%20Q229%20256%20214%20344%22%20fill%3D%22none%22%20stroke%3D%22url(%23tw)%22%20stroke-width%3D%2213%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M292%20168%20Q307%20256%20292%20344%22%20fill%3D%22none%22%20stroke%3D%22%238a5d1c%22%20stroke-width%3D%2215%22%20stroke-linecap%3D%22round%22%20opacity%3D%22.35%22%20transform%3D%22translate(2%202)%22%2F%3E%3Cpath%20d%3D%22M292%20168%20Q307%20256%20292%20344%22%20fill%3D%22none%22%20stroke%3D%22url(%23tw)%22%20stroke-width%3D%2213%22%20stroke-linecap%3D%22round%22%2F%3E%3Cellipse%20cx%3D%22360%22%20cy%3D%22256%22%20rx%3D%2250%22%20ry%3D%2287%22%20fill%3D%22%23f9dccb%22%2F%3E%3Cellipse%20cx%3D%22360%22%20cy%3D%22256%22%20rx%3D%2245%22%20ry%3D%2282%22%20fill%3D%22url(%23fc)%22%2F%3E%3Cpath%20d%3D%22M335%20205%20Q350%20178%20372%20176%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%227%22%20stroke-linecap%3D%22round%22%20opacity%3D%22.6%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt=""><b>Quản lý bán hàng giò chả</b><i></i></div><script>try{var __u=JSON.parse(localStorage.getItem("giocha_ui")||"{}");if(__u.th=="light"||__u.th=="dark")document.documentElement.setAttribute("data-theme",__u.th)}catch(e){}if(navigator.webdriver){var __s=document.getElementById("spl");if(__s)__s.remove()}</script>
 <header id="hd">Giò chả</header>
@@ -2697,7 +2738,7 @@ function updFB(){const b=$('#fb');if(b)b.hidden=true;requestAnimationFrame(()=>{
 function fbSave(){const k=fbInfo();if(!k)return;const nm=$('#pn')||document.querySelector('#v [data-k="name"]')||$('#i_n');if(nm&&!nm.value.trim())nm.focus();else if(document.activeElement&&document.activeElement.blur)document.activeElement.blur();k[0]()}
 function updBar(){const b=$('#bar');if(!b)return;const on=tab=='sell'&&!C.done&&C.items.length;b.hidden=!on;if(on){const t=lines().reduce((a,x)=>a+x,0);b.innerHTML=`<span>${C.items.length} món<br><b style="font-size:20px">${t-disc()<0?'Hoàn lại ':''}${money(Math.abs(t-disc()))}</b></span><button onmousedown="event.preventDefault()" onclick="saveO()">${ic('chk')}<span>${C.edit?'Cập nhật đơn':'Lưu đơn'}</span></button>`}}
 let TH=[],SG='',T0={x:0,y:0,t:0,e:null};
-const ah=()=>(typeof acctH=='function'?acctH():'<div class="card"><b>Bản thử trên claude.ai</b><br><small>Chưa có tài khoản và phân quyền. Bản cài đặt riêng có đăng nhập, nhân viên và mã mời.</small></div>')+'<p class="mut" style="text-align:center;font-size:12px">Phiên bản app: v26.17</p>';
+const ah=()=>(typeof acctH=='function'?acctH():'<div class="card"><b>Bản thử trên claude.ai</b><br><small>Chưa có tài khoản và phân quyền. Bản cài đặt riêng có đăng nhập, nhân viên và mã mời.</small></div>')+'<p class="mut" style="text-align:center;font-size:12px">Phiên bản app: v27.0</p>';
 
 let LB=0;function back(){LB=Date.now();kbBlur();if(!$('#cs').hidden)return csClose();if(!$('#sr').hidden)return closeSr();if(!$('#m').hidden){if($('#m .sgsub')){sgPage();return}return closeM()}if(tab=='sett'&&SS){SS=SSP&&!/^g:/.test(SS)?SSP:null;SSP=null;pgAnim();R();scrollTo(0,0);return}if(shOn())return shClose();if(PF||FM.cus||FM.sup||IF||PRE)return closeF();if(TH.length){tab=TH.pop();pgAnim();R();scrollTo(0,0)}else if(tab!='dash')go('dash')}
 /* ===== Vuốt quay lại: CHỈ bắt đầu từ mép trái và CHỈ ở trang con/biểu mẫu =====
@@ -2785,7 +2826,7 @@ let h=`<div class="sprof"><img class="slogo" src="${LOGO}" alt=""><div class="sp
 h+=`<h3 class="dg">Quản lý</h3><div class="mgrid">${mg.map(r=>`<button class="mt k-${r[3]}" onclick="go('${r[0]}'${r[0]=='prods'?',1':''})"><span class="mti">${ic(r[2])}</span><b>${r[1]}</b></button>`).join('')}</div>`;
 const g1=by(['shop','units','sales','pay','cogs']);if(g1)h+=`<h3 class="dg">Cửa hàng</h3><div class="slist">${g1}</div>`;
 h+=`<h3 class="dg">Cá nhân hóa</h3><div class="slist">${by(['dw','ui'])}</div>`;
-h+=`<h3 class="dg">Hệ thống</h3><div class="slist">${by(['sync','data'])}${ADM&&mm?srow('shield','p','Nhân viên và phân quyền','Mã mời, quyền truy cập',"go('acct')"):''}${srow('user','g','Tài khoản','Thông tin cá nhân, đăng xuất',"go('acct')")}</div><p class="mut" style="text-align:center;font-size:12px;margin:14px 0 0">Phiên bản app: v26.17</p>`;
+h+=`<h3 class="dg">Hệ thống</h3><div class="slist">${by(['sync','data'])}${ADM&&mm?srow('shield','p','Nhân viên và phân quyền','Mã mời, quyền truy cập',"go('acct')"):''}${srow('user','g','Tài khoản','Thông tin cá nhân, đăng xuất',"go('acct')")}</div><p class="mut" style="text-align:center;font-size:12px;margin:14px 0 0">Phiên bản app: v27.0</p>`;
 return h}
 function sett(){const s=SS&&secAv().find(x=>x.id==SS&&x.b);if(SS&&!s)SS=null;
 if(s)return `<div class="sph"><span class="sq lg k-${s.c}">${ic(s.i)}</span><div><h2>${s.t}</h2><small>${s.s}</small></div></div><div class="card sbody">${s.b()}</div>`;
@@ -3448,7 +3489,7 @@ function settHome(){const em=(typeof PROF!='undefined'&&PROF&&PROF.email)||'',by
 const mg=[['prods','Sản phẩm','prods','a',np+' sản phẩm',0],['cus','Khách hàng','cus','p',nd?nd+' khách còn nợ':S.customers.length+' khách',nd],['hist','Đơn hàng','hist','b',nu?nu+' chưa thu':'Xem và sửa đơn',nu],['pre','Đặt hàng trước','cal','a',(()=>{const n=pWait().length;return n?n+' đơn chờ giao':'Đơn Tết, giao sau'})(),preNeed()],['sup','Nhà cung cấp','sup','p',(()=>{const d=supDebt();return d.n?'Còn nợ '+kfmt(d.total):S.suppliers.length+' nhà cung cấp'})(),supDebt().n],['imp','Kho nguyên liệu','imp','b',nn?nn+' sắp hết':'Tồn kho, nhập hàng',nn],['stats','Thống kê','stats','g','Báo cáo lãi lỗ',0]].filter(x=>vis([x[0]]));if(ADM){const i=mg.findIndex(x=>x[0]=='imp');mg.splice(i<0?mg.length:i+1,0,['xg','Xay giò','coi','a',(()=>{const t=sgTodayN();return t.c>0?'Hôm nay '+num(t.c)+' cối':'Nhập số cối'})(),0])}
 return `<button type="button" class="sprof" onclick="go('acct')"><img class="slogo" src="${LOGO}" alt=""><span class="spi"><b>${esc(S.shop)}</b><small><span>${ADM?'Quản trị viên':'Nhân viên'}</span> · <span class="sy2">${esc(SYN)}</span></small></span>${CHV}</button>${!ADM?`<div class="card cnc"><label>Tên thu ngân (in trên hóa đơn)<input value="${esc(UI.cn||'')}" placeholder="Ví dụ: Lan" maxlength="40" onchange="cnSave(this.value)"></label><small class="mut">Để trống thì dùng tên tài khoản đang đăng nhập. Quản trị viên luôn ghi ADMIN.</small></div>`:''}
 <h3 class="dg">Quản lý</h3><div class="mgrid mg2">${mg.map(r=>`<button class="mt k-${r[3]}" onclick="${r[0]=='xg'?"sgPage()":`go('${r[0]}'${r[0]=='prods'?',1':''})`}"><span class="mti">${ic(r[2])}</span><span class="mtt"><b>${r[1]}</b><small class="${r[5]&&r[0]!='imp'?'w':''}">${r[0]=='imp'?'Tồn kho, nhập hàng':r[4]}</small>${r[0]=='imp'&&r[5]?`<i class="lowb" aria-label="${r[5]} sắp hết">${r[5]}</i>`:''}</span></button>`).join('')}</div>
-<h3 class="dg">Thiết lập</h3><div class="grl">${GRP().filter(g=>grpRows(g)).map(g=>`<button class="srow gr" onclick="openSec('g:${g.id}')"><span class="sq k-${g.c}">${ic(g.i)}</span><span class="srt"><b>${g.t}</b><small>${g.s}</small></span>${CHV}</button>`).join('')}</div><p class="mut" style="text-align:center;font-size:12px;margin:14px 0 0">Phiên bản app: v26.17</p>`}
+<h3 class="dg">Thiết lập</h3><div class="grl">${GRP().filter(g=>grpRows(g)).map(g=>`<button class="srow gr" onclick="openSec('g:${g.id}')"><span class="sq k-${g.c}">${ic(g.i)}</span><span class="srt"><b>${g.t}</b><small>${g.s}</small></span>${CHV}</button>`).join('')}</div><p class="mut" style="text-align:center;font-size:12px;margin:14px 0 0">Phiên bản app: v27.0</p>`}
 
 /* ===== v20.3: công thức nhiều nguyên liệu, quy đổi đơn vị (g↔kg, lạng, ml↔lít) ===== */
 const UCV={kg:['m',1000],g:['m',1],gr:['m',1],gam:['m',1],gram:['m',1],'lạng':['m',100],'lít':['v',1000],l:['v',1000],lit:['v',1000],ml:['v',1]};
@@ -5161,7 +5202,9 @@ function txDays(a,b){const from=txv('taxFrom','2026-11-01'),t=today(),s=a<from?f
 const m={};valid().forEach(x=>{const d=dk(x.ts);if(d>=s&&d<=e)m[d]=(m[d]||0)+pay(x)});const sun=!!txv('taxSun',1),zero=!!txv('taxZero',1);
 for(let d=s;d<=e;d=addD(d,1)){const v=m[d]||0;if(sun&&dow(d)==6){o.rows.push({d,k:'rest'});o.nrest++;o.skip+=v;continue}
 if(v>0){o.rows.push({d,k:'sale',v});o.tot+=v;o.nsale++}else if(zero)o.rows.push({d,k:'zero'})}return o}
-const txTxt=r=>r.k=='rest'?'Ngày nghỉ (Chủ nhật)':r.k=='zero'?'Không phát sinh doanh thu':'Doanh thu ngày '+dmy(r.d);
+const TXD={sale:'Doanh thu ngày {ngày}',rest:'Ngày nghỉ (Chủ nhật)',zero:'Không phát sinh doanh thu'},TXK={sale:'taxTxS',rest:'taxTxR',zero:'taxTxZ'};
+const txTpl=k=>String(txv(TXK[k],'')).trim()||TXD[k],txDef=r=>txTpl(r.k).replace(/\{ng[àa]y\}/gi,dmy(r.d)),txEdm=()=>S.cfg.taxEd&&typeof S.cfg.taxEd=='object'?S.cfg.taxEd:{};
+const txTxt=r=>txEdm()[r.d]||txDef(r);
 /* ---- dựng file Excel từ khuôn mẫu gốc ---- */
 const SKX=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 function skRow(F,src,set,rn){const T=F.rows[src];if(!T)return '';set=set||{};let x=`<row r="${rn}"${T.h?` ht="${T.h}"`:''}${T.ch?' customHeight="1"':''}>`;
@@ -5199,27 +5242,41 @@ function txExport(){txInit();if(!txv('taxName','').trim()){toast('Nhập tên ch
 try{const blob=skBook(TX.f,txPlan(TX.f,a,b,sub,D));XL.saveFile(txFn(TX.f,lbl)+'.xlsx',blob);toast('Đã tạo tệp Excel')}catch(e){console.error(e);toast('Không tạo được tệp Excel')}}
 /* ---- giao diện ---- */
 const TXM=[['month','Tháng'],['quarter','Quý'],['half','6 tháng'],['year','Năm']];
-function txSet(k,v){S.cfg[k]=v;save();if(k=='taxFrom'||k=='taxSun'||k=='taxZero')R()}
+function txSet(k,v){S.cfg[k]=v;save();if(k=='taxFrom'||k=='taxSun'||k=='taxZero'||/^taxTx/.test(k))R()}
 function txSw(k){txSet(k,txv(k,1)?0:1)}
 function txForm(k){TX.f=k;S.cfg.taxForm=k;save();closeM();R()}
-function txPick(){const rows=TXF.map(f=>`<button type="button" class="txo ${f[3]?'':'off'} ${TX.f==f[0]?'on':''}" ${f[3]?`onclick="txForm('${f[0]}')"`:'disabled'}><span class="txrd"></span><span class="txot"><b>${f[1]}</b><small>${f[2]}</small></span><i class="txbd ${f[3]?'ok':''}">${f[4]}</i></button>`).join('');
+function txPick(){const rows=TXF.map(f=>`<button type="button" class="txo ${f[3]?'':'off'} ${TX.f==f[0]?'sel':''}" ${f[3]?`onclick="txForm('${f[0]}')"`:'disabled'}><span class="txrd"></span><span class="txot"><b>${f[1]}</b><small>${f[2]}</small></span><i class="txbd ${f[3]?'ok':''}">${f[4]}</i></button>`).join('');
 modal(`<div class="mh"><b>Chọn mẫu sổ</b><button class="srx" onclick="closeM()" aria-label="Đóng">×</button></div><p class="mut" style="margin:0 2px 10px">Mẫu theo Thông tư 152/2025/TT-BTC. Hộ của bạn dùng mẫu nào thì hỏi thuế hoặc kế toán.</p><div class="txol">${rows}</div>`)}
 function txPrev(){txInit();const[a,b,lbl,sub]=txPer(TX.m,TX.d),D=txDays(a,b),f=TXF.find(x=>x[0]==TX.f);if(!D.rows.length){toast('Kỳ này chưa có dữ liệu ghi sổ');return}
 let rows='',head='<tr><th>Ngày</th><th>Giao dịch</th><th>Số tiền</th></tr>';
 if(TX.f=='s2c'){const c=plR(D.s,D.e),mat=Math.round((c.cogs||0)+(c.loss||0)),svc=Math.round(c.exp||0),rv=Math.round(D.tot);head='<tr><th colspan="2">Chỉ tiêu</th><th>Số tiền</th></tr>';
 rows=[['1. Doanh thu bán hàng hóa, dịch vụ',rv],['2. Chi phí hợp lý',mat+svc],['   a) Nguyên liệu, vật liệu (giá vốn + hao hụt)',mat],['   d) Dịch vụ mua ngoài (điện, nước, gas, bao bì…)',svc],['3. Chênh lệch (1) − (2)',rv-mat-svc],['4. Thuế TNCN phải nộp','']].map(x=>`<tr><td colspan="2">${x[0]}</td><td>${x[1]===''?'':num(x[1])}</td></tr>`).join('')}
-else rows=D.rows.map(r=>`<tr class="${r.k=='rest'?'cn':r.k=='zero'?'zr':''}"><td>${dmy(r.d)}</td><td>${txTxt(r)}</td><td>${r.k=='sale'?num(r.v):''}</td></tr>`).join('')+`<tr class="tot"><td></td><td><b>Tổng cộng</b></td><td><b>${num(D.tot)}</b></td></tr>`;
-modal(`<div class="mh"><b>Xem trước ${f[1]}</b><button class="srx" onclick="closeM()" aria-label="Đóng">×</button></div><p class="mut" style="margin:0 2px 8px;text-align:center">${esc(txv('taxName','').trim()||'(Chưa nhập tên chủ hộ)')} · ${sub}<br>Đơn vị tính: đồng</p><div class="sgtw txpv"><table class="sgtb"><thead>${head}</thead><tbody>${rows}</tbody></table></div><div class="mf2"><button class="gbtn" onclick="closeM()">Đóng</button><button class="gbtn pri" onclick="closeM();txExport()">Xuất Excel</button></div>`)}
+else{const ov=txEdm(),pen='<svg class="pen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/></svg>';
+rows=D.rows.map(r=>{if(TXE==r.d)return `<tr class="editing"><td colspan="3"><div class="txel">Nội dung ngày ${dmy(r.d)}</div><input id="txei" value="${esc(txTxt(r))}" data-def="${esc(txDef(r))}" enterkeyhint="done" onkeydown="if(event.key==='Enter')txEdOk()"><div class="txea"><button type="button" onclick="txEdReset()">Khôi phục mặc định</button><button type="button" class="ok" onclick="txEdOk()">Xong</button></div></td></tr>`;
+return `<tr class="${r.k=='rest'?'cn':r.k=='zero'?'zr':''}"><td>${dmy(r.d).slice(0,5)}</td><td class="ed" onclick="txEd('${r.d}')">${ov[r.d]?'<i class="txdot" title="Đã sửa riêng"></i>':''}${esc(txTxt(r))}${pen}</td><td>${r.k=='sale'?num(r.v):''}</td></tr>`}).join('')+`<tr class="tot"><td></td><td><b>Tổng cộng</b></td><td><b>${num(D.tot)}</b></td></tr>`}
+modal(`<div class="mh"><b>Xem trước ${f[1]}</b><button class="srx" onclick="TXE='';closeM();R()" aria-label="Đóng">×</button></div><p class="mut" style="margin:0 2px 8px;text-align:center">${esc(txv('taxName','').trim()||'(Chưa nhập tên chủ hộ)')} · ${sub}<br>Đơn vị tính: đồng</p>${TX.f=='s2c'?'':'<p class="txtip">Chạm nội dung một ngày để sửa riêng ngày đó. Chấm cam là ngày đã sửa.</p>'}<div class="sgtw txpv"><table class="sgtb"><thead>${head}</thead><tbody>${rows}</tbody></table></div><div class="mf2"><button class="gbtn" onclick="TXE='';closeM();R()">Đóng</button><button class="gbtn pri" onclick="TXE='';closeM();R();txExport()">Xuất Excel</button></div>`)}
+let TXE='',TXO={};
+const txPvY=()=>{const e=document.querySelector('#m .txpv');return e?e.scrollTop:0};
+function txPvShow(y){txPrev();const e=document.querySelector('#m .txpv');if(e&&y)e.scrollTop=y;const i=document.getElementById('txei');if(i){i.focus();try{i.select()}catch(e){}}}
+function txEdSave(){const i=document.getElementById('txei');if(!TXE||!i)return;const v=i.value.trim(),ov=Object.assign({},txEdm());if(!v||v==i.dataset.def)delete ov[TXE];else ov[TXE]=v;S.cfg.taxEd=ov;save()}
+function txEd(d){const y=txPvY();txEdSave();TXE=d;txPvShow(y)}
+function txEdOk(){const y=txPvY();txEdSave();TXE='';txPvShow(y)}
+function txEdReset(){const y=txPvY(),ov=Object.assign({},txEdm());delete ov[TXE];S.cfg.taxEd=ov;save();TXE='';txPvShow(y)}
+function txPrevOpen(){TXE='';txPrev()}
+function txGp(id,t,sum,body,dflt){const o=TXO[id]!==undefined?TXO[id]:dflt;return `<div class="txgp${o?' open':''}"><button type="button" class="txgh" aria-expanded="${o?'true':'false'}" onclick="TXO['${id}']=${!o};R()"><span class="txgt"><b>${t}</b><small>${sum}</small></span>${ic('dn')}</button>${o?`<div class="sggrp txg">${body}</div>`:''}</div>`}
+function txIn(l,k,ph){return `<label class="txin"><span>${l}</span><input value="${esc(txv(k,''))}" placeholder="${esc(ph)}" onchange="txSet('${k}',this.value.trim())" enterkeyhint="done"></label>`}
+function txEdAll(){const n=Object.keys(txEdm()).length;ask('Khôi phục nội dung mặc định cho '+n+' ngày đã sửa riêng?',()=>{S.cfg.taxEd={};save();R()},'Khôi phục')}
 function txRow(l,k,ph,type){return `<label class="txr"><span>${l}</span><input value="${esc(txv(k,''))}" placeholder="${ph||''}" onchange="txSet('${k}',this.value.trim())" enterkeyhint="done"${type?` inputmode="${type}"`:''}></label>`}
 function taxH(){txInit();const[a,b,lbl,sub]=txPer(TX.m,TX.d),D=txDays(a,b),f=TXF.find(x=>x[0]==TX.f)||TXF[0],miss=!txv('taxMst','').trim(),from=txv('taxFrom','2026-11-01');
 const own=TX.f=='s2a'||TX.f=='s2b';
 return `<div class="nopad txp"><button type="button" class="txf" onclick="txPick()"><span class="txfi">${ic('file')}</span><span class="txft"><small>Mẫu sổ</small><b>${f[1]}</b><em>${f[2]}</em></span><i>Đổi</i></button>
-<div class="seg pm5 txseg" role="tablist">${TXM.map(m=>`<button role="tab" aria-selected="${TX.m==m[0]}" class="${TX.m==m[0]?'on':''}" onclick="TX.m='${m[0]}';R()">${m[1]}</button>`).join('')}</div>
+<div class="txseg" role="tablist">${TXM.map(m=>`<button type="button" role="tab" aria-selected="${TX.m==m[0]}" class="txs ${TX.m==m[0]?'sel':''}" onclick="TX.m='${m[0]}';R()">${m[1]}</button>`).join('')}</div>
 <div class="stn"><button onclick="txNavTo(-1)" aria-label="Kỳ trước"${txNavOk(-1)?'':' disabled'}>${ic('dn')}</button><div class="stl"><b>${lbl}</b><small>${dmy(a)} – ${dmy(b)}${b<from?' · trước ngày ghi sổ ('+dmy(from)+')':a<from?' · sổ ghi từ '+dmy(from).slice(0,5):''}</small></div><button onclick="txNavTo(1)" aria-label="Kỳ sau"${txNavOk(1)?'':' disabled'}>${ic('up')}</button></div>
 <div class="txh"><small>Doanh thu ghi sổ</small><b>${money(D.tot)}</b><div class="txc"><span>${D.nsale} ngày bán</span><span>${D.nrest} Chủ nhật nghỉ</span>${D.skip>0?`<span class="w">CN bỏ qua ${kfmt(D.skip)}</span>`:''}</div></div>
-<div class="sgrow2 txbt"><button class="gbtn" onclick="txPrev()">Xem trước</button><button class="gbtn pri" onclick="txExport()">Xuất Excel</button></div>
-<div class="ioss"><h4 class="iosh">Thông tin chủ hộ</h4><div class="sggrp txg">${txRow('Tên chủ hộ','taxName','Họ và tên')}${txRow('Địa chỉ','taxAddr','Số nhà, phường, tỉnh')}${txRow('Mã số thuế','taxMst','Chưa nhập','numeric')}${txRow('Nơi kinh doanh','taxPlace','Giống địa chỉ nếu để trống')}${own?txRow('Ngành nghề','taxNg','Sản xuất, bán giò chả'):''}</div>${miss?'<p class="ihint txw">Chưa có mã số thuế. Vẫn xuất được, bạn điền tay sau.</p>':''}
-<h4 class="iosh">Cách ghi sổ</h4><div class="sggrp">${sgSw(!!txv('taxSun',1),"txSw('taxSun')",'Chủ nhật không tính doanh thu','Ghi “Ngày nghỉ (Chủ nhật)”, bỏ tiền bán trong ngày')}${sgSw(!!txv('taxZero',1),"txSw('taxZero')",'Ngày thường không bán','Ghi “Không phát sinh doanh thu”')}<div class="sgtdr txfrom"><span class="sgswt"><b>Bắt đầu ghi sổ từ</b><small>Đơn ghi nợ tính theo ngày bán</small></span><span class="txd">${dbx(from,"txSet('taxFrom',this.value||'2026-11-01')")}</span></div></div>
+<div class="sgrow2 txbt"><button class="gbtn" onclick="txPrevOpen()">Xem trước</button><button class="gbtn pri" onclick="txExport()">Xuất Excel</button></div>
+<div class="ioss">${txGp('own','Thông tin chủ hộ',esc(txv('taxName','').trim()||'Chưa nhập tên chủ hộ')+(txv('taxName','').trim()?(txv('taxMst','').trim()?' · MST '+esc(txv('taxMst','').trim()):' · chưa có MST'):''),txRow('Tên chủ hộ','taxName','Họ và tên')+txRow('Địa chỉ','taxAddr','Số nhà, phường, tỉnh')+txRow('Mã số thuế','taxMst','Chưa nhập','numeric')+txRow('Nơi kinh doanh','taxPlace','Giống địa chỉ nếu để trống')+(own?txRow('Ngành nghề','taxNg','Sản xuất, bán giò chả'):'')+(miss?'<p class="ihint txw">Chưa có mã số thuế. Vẫn xuất được, bạn điền tay sau.</p>':''),!txv('taxName','').trim())}
+${TX.f=='s2c'?'':txGp('txt','Nội dung ghi trong sổ',esc(txTpl('sale'))+(Object.keys(txEdm()).length?' · '+Object.keys(txEdm()).length+' ngày sửa riêng':''),txIn('Ngày có bán','taxTxS',TXD.sale)+txIn('Chủ nhật nghỉ','taxTxR',TXD.rest)+txIn('Ngày thường không bán','taxTxZ',TXD.zero)+`<p class="txex">Gõ <b>{ngày}</b> để app tự điền ngày. Ví dụ trong sổ: <b>${esc(txDef({k:'sale',d:addD(today(),-1)}))}</b>. Dùng cho mọi mẫu (S1a, S2a, S2b). Muốn đổi riêng một ngày thì chạm dòng đó ở Xem trước.</p>`+(Object.keys(txEdm()).length?`<div class="txin"><span>Đã sửa riêng ${Object.keys(txEdm()).length} ngày <em onclick="txEdAll()">Khôi phục hết</em></span></div>`:''),false)}
+${txGp('how','Cách ghi sổ',(txv('taxSun',1)?'Chủ nhật nghỉ':'Tính cả Chủ nhật')+' · từ '+dmy(from),sgSw(!!txv('taxSun',1),"txSw('taxSun')",'Chủ nhật không tính doanh thu','Ghi “'+esc(txTpl('rest'))+'”, bỏ tiền bán trong ngày')+sgSw(!!txv('taxZero',1),"txSw('taxZero')",'Ngày thường không bán','Ghi “'+esc(txTpl('zero'))+'”')+`<div class="sgtdr txfrom"><span class="sgswt"><b>Bắt đầu ghi sổ từ</b><small>Đơn ghi nợ tính theo ngày bán</small></span><span class="txd">${dbx(from,"txSet('taxFrom',this.value||'2026-11-01')")}</span></div>`,false)}
 <p class="ihint">Số liệu lấy từ đơn hàng, cùng cách tính với trang Thống kê. File Excel được tạo ngay trên máy, không tốn dữ liệu mạng.${TX.f=='s2c'?' Mẫu S2c: chi phí lấy từ giá vốn, hao hụt và chi phí vận hành trong app, nhờ kế toán kiểm tra phân loại.':''}${own?' Dòng thuế GTGT, TNCN để trống cho kế toán điền.':''}</p></div></div>`}
 function taxOpen(){TXRET=1;go('sett');SSP='g:sys';SS='tax';R();scrollTo(0,0)}
 {const ob=back;back=function(){if(TXRET&&tab=='sett'&&SS=='tax'&&$('#m').hidden&&$('#cs').hidden&&$('#sr').hidden){TXRET=0;SS=null;SSP=null;go('stats');scrollTo(0,0);return}return ob.apply(this,arguments)}}
